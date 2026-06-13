@@ -1905,88 +1905,83 @@ function mergeTargets(loaded) {
   };
 }
 
-const PRESETS = [
-  // === Protein anchors (ppKc > 10) ===
-  { name: 'Chicken breast (grilled) 200g', sub: 'plain protein base', kcal: 330, p: 62, f: 7, c: 0, fiber: 0, cat: 'anchor', tags: ['lunch', 'dinner', 'staple'], cuisine: 'generic' },
-  { name: 'Protein shake', sub: '1 scoop whey + banana + milk', kcal: 350, p: 40, f: 5, c: 38, fiber: 2, cat: 'anchor', tags: ['breakfast', 'shake', 'staple'], cuisine: 'generic' },
-  { name: 'Whey + water', sub: 'quick protein, 1 scoop', kcal: 120, p: 25, f: 2, c: 3, fiber: 0, cat: 'anchor', tags: ['snack'], cuisine: 'generic' },
-  { name: 'Greek yogurt 200g', sub: 'plain, non-fat', kcal: 130, p: 20, f: 4, c: 8, fiber: 0, cat: 'anchor', tags: ['snack', 'staple'], cuisine: 'generic' },
-  { name: 'White fish (grilled) 200g', sub: 'cod, tilapia, or similar', kcal: 220, p: 44, f: 4, c: 0, fiber: 0, cat: 'anchor', tags: ['lunch', 'dinner'], cuisine: 'generic' },
-  { name: 'Cottage cheese 150g', sub: '', kcal: 145, p: 20, f: 5, c: 6, fiber: 0, cat: 'anchor', tags: ['snack'], cuisine: 'generic' },
-  { name: 'Steak (sirloin 200g) + veg', sub: 'lean cut, trimmed', kcal: 420, p: 52, f: 22, c: 4, fiber: 2, cat: 'anchor', tags: ['dinner'], cuisine: 'american' },
-  { name: 'BBQ pulled chicken', sub: 'shredded, light sauce', kcal: 300, p: 40, f: 10, c: 12, fiber: 1, cat: 'anchor', tags: ['dinner'], cuisine: 'american' },
-  { name: 'Shrimp & tomato (no pasta)', sub: 'garlic, olive oil, tomato', kcal: 240, p: 36, f: 6, c: 8, fiber: 2, cat: 'anchor', tags: ['dinner'], cuisine: 'mediterranean' },
-  { name: 'Teriyaki chicken + veg (no rice)', sub: 'glazed thigh, steamed veg', kcal: 345, p: 42, f: 12, c: 18, fiber: 3, cat: 'anchor', tags: ['lunch', 'dinner'], cuisine: 'asian' },
-  { name: 'Shrimp ceviche', sub: 'lime-cured shrimp, onion, cilantro', kcal: 200, p: 30, f: 4, c: 12, fiber: 2, cat: 'anchor', tags: ['lunch'], cuisine: 'mexican' },
-  { name: 'Tandoori chicken (2 legs)', sub: 'yogurt marinade, no butter baste', kcal: 350, p: 44, f: 16, c: 2, fiber: 0, cat: 'anchor', tags: ['lunch', 'dinner'], cuisine: 'indian' },
-  { name: 'Chicken tikka 200g', sub: 'boneless, grilled', kcal: 300, p: 40, f: 14, c: 2, fiber: 0, cat: 'anchor', tags: ['lunch', 'dinner'], cuisine: 'indian' },
-
-  // === Balanced meals (6–10 g/100kcal) ===
-  { name: 'Boiled eggs × 3', sub: '', kcal: 215, p: 18, f: 15, c: 1, fiber: 0, cat: 'balanced', tags: ['breakfast', 'snack', 'staple'], cuisine: 'generic' },
-  { name: 'Protein bar', sub: 'adjust to your brand', kcal: 220, p: 20, f: 8, c: 22, fiber: 3, cat: 'balanced', tags: ['snack'], cuisine: 'generic' },
-  { name: 'Grilled chicken sandwich', sub: 'grilled breast, bun, salad', kcal: 450, p: 38, f: 12, c: 45, fiber: 3, cat: 'balanced', tags: ['lunch'], cuisine: 'american' },
-  { name: 'Cheeseburger (single)', sub: 'beef patty, cheese, bun', kcal: 540, p: 34, f: 28, c: 38, fiber: 2, cat: 'balanced', tags: ['dinner', 'treat'], cuisine: 'american' },
-  { name: 'Turkey & cheese sandwich', sub: 'deli turkey, cheese, bread', kcal: 400, p: 30, f: 14, c: 40, fiber: 3, cat: 'balanced', tags: ['lunch'], cuisine: 'american' },
-  { name: 'Caesar salad with chicken', sub: 'grilled chicken, romaine, dressing', kcal: 400, p: 35, f: 24, c: 12, fiber: 3, cat: 'balanced', tags: ['lunch'], cuisine: 'american' },
-  { name: 'Scrambled eggs + toast', sub: '2 eggs, 1 slice toast', kcal: 340, p: 21, f: 17, c: 26, fiber: 2, cat: 'balanced', tags: ['breakfast'], cuisine: 'american' },
-  { name: 'Buffalo chicken wrap', sub: 'chicken, hot sauce, tortilla', kcal: 480, p: 35, f: 20, c: 40, fiber: 3, cat: 'balanced', tags: ['lunch'], cuisine: 'american' },
-  { name: 'Protein pancakes (3)', sub: 'oat + whey batter', kcal: 380, p: 30, f: 10, c: 45, fiber: 3, cat: 'balanced', tags: ['breakfast'], cuisine: 'american' },
-  { name: 'Greek chicken + roasted veg', sub: 'lemon oregano, olive oil', kcal: 450, p: 40, f: 26, c: 14, fiber: 3, cat: 'balanced', tags: ['dinner'], cuisine: 'mediterranean' },
-  { name: 'Grilled salmon + salad', sub: 'salmon fillet, mixed greens', kcal: 400, p: 38, f: 24, c: 6, fiber: 2, cat: 'balanced', tags: ['dinner'], cuisine: 'mediterranean' },
-  { name: 'Chicken souvlaki + pita', sub: 'skewers, pita, tzatziki', kcal: 520, p: 42, f: 18, c: 45, fiber: 3, cat: 'balanced', tags: ['lunch'], cuisine: 'mediterranean' },
-  { name: 'Pasta with chicken & pesto', sub: '1 plate', kcal: 620, p: 40, f: 24, c: 60, fiber: 4, cat: 'balanced', tags: ['dinner'], cuisine: 'mediterranean' },
-  { name: 'Teriyaki chicken + rice', sub: 'glazed thigh, 1 cup rice', kcal: 605, p: 47, f: 13, c: 76, fiber: 1, cat: 'balanced', tags: ['dinner'], cuisine: 'asian' },
-  { name: 'Chicken stir fry', sub: 'thigh, veg, 1 tbsp oil', kcal: 460, p: 42, f: 26, c: 16, fiber: 3, cat: 'balanced', tags: ['dinner'], cuisine: 'asian' },
-  { name: 'Tofu & veg stir fry', sub: 'firm tofu, mixed veg, soy', kcal: 360, p: 22, f: 18, c: 28, fiber: 4, cat: 'balanced', tags: ['dinner', 'vegetarian'], cuisine: 'asian' },
-  { name: 'Steamed dumplings (6)', sub: 'pork or chicken', kcal: 300, p: 18, f: 10, c: 34, fiber: 2, cat: 'balanced', tags: ['lunch'], cuisine: 'asian' },
-  { name: 'Miso soup + edamame', sub: '1 bowl + 1 cup pods', kcal: 180, p: 14, f: 6, c: 14, fiber: 5, cat: 'balanced', tags: ['snack', 'side'], cuisine: 'asian' },
-  { name: 'Beef & broccoli', sub: 'with light sauce, no rice', kcal: 480, p: 35, f: 24, c: 28, fiber: 3, cat: 'balanced', tags: ['dinner'], cuisine: 'asian' },
-  { name: 'Chicken tacos × 3', sub: 'soft tortillas, toppings', kcal: 520, p: 40, f: 20, c: 45, fiber: 5, cat: 'balanced', tags: ['dinner'], cuisine: 'mexican' },
-  { name: 'Burrito bowl', sub: 'chicken, rice, beans, salsa', kcal: 600, p: 45, f: 18, c: 60, fiber: 9, cat: 'balanced', tags: ['lunch', 'complete'], cuisine: 'mexican' },
-  { name: 'Chicken fajitas', sub: 'peppers, onions, no tortilla', kcal: 480, p: 42, f: 18, c: 35, fiber: 4, cat: 'balanced', tags: ['dinner'], cuisine: 'mexican' },
-  { name: 'Chili con carne', sub: 'beef, kidney beans, tomato', kcal: 530, p: 40, f: 24, c: 32, fiber: 7, cat: 'balanced', tags: ['dinner'], cuisine: 'mexican' },
-  { name: 'Beef enchiladas', sub: '2, sauce + cheese', kcal: 620, p: 38, f: 30, c: 45, fiber: 5, cat: 'balanced', tags: ['dinner'], cuisine: 'mexican' },
-  { name: 'Quesadilla (chicken & cheese)', sub: 'flour tortilla, grilled', kcal: 500, p: 32, f: 26, c: 35, fiber: 3, cat: 'balanced', tags: ['lunch'], cuisine: 'mexican' },
-  { name: 'Paneer tikka 200g', sub: 'grilled, yogurt marinade', kcal: 350, p: 25, f: 24, c: 8, fiber: 0, cat: 'balanced', tags: ['dinner', 'vegetarian'], cuisine: 'indian' },
-  { name: 'Butter chicken + 2 roti', sub: 'cream/butter — varies', kcal: 700, p: 45, f: 32, c: 52, fiber: 3, cat: 'balanced', tags: ['dinner'], cuisine: 'indian' },
-  { name: 'Chicken shawarma plate', sub: 'chicken, hummus, salad, pita', kcal: 550, p: 42, f: 22, c: 45, fiber: 3, cat: 'balanced', tags: ['lunch'], cuisine: 'middle-eastern' },
-  { name: 'Chicken shawarma wrap', sub: 'single wrap', kcal: 420, p: 28, f: 16, c: 40, fiber: 2, cat: 'balanced', tags: ['lunch', 'takeaway'], cuisine: 'middle-eastern' },
-  { name: 'Lamb kofta kebab', sub: 'grilled spiced mince', kcal: 380, p: 32, f: 26, c: 4, fiber: 0, cat: 'balanced', tags: ['dinner'], cuisine: 'middle-eastern' },
-  { name: 'Chicken kebab plate + salad', sub: 'grilled chicken, salad', kcal: 480, p: 45, f: 22, c: 20, fiber: 4, cat: 'balanced', tags: ['dinner'], cuisine: 'middle-eastern' },
-  { name: 'Grilled halloumi 100g', sub: 'pan-seared', kcal: 320, p: 21, f: 26, c: 2, fiber: 0, cat: 'balanced', tags: ['side', 'vegetarian'], cuisine: 'middle-eastern' },
-
-  // === Fillers (< 6 g/100kcal · carbs/fat/fiber) ===
-  { name: 'Oatmeal', sub: '40g oats + milk', kcal: 250, p: 11, f: 6, c: 40, fiber: 4, cat: 'filler', tags: ['breakfast', 'staple'], cuisine: 'generic' },
-  { name: 'Rice (1 cup cooked)', sub: '', kcal: 260, p: 5, f: 1, c: 58, fiber: 0, cat: 'filler', tags: ['side', 'staple'], cuisine: 'generic' },
-  { name: 'Banana', sub: '', kcal: 105, p: 1, f: 0, c: 27, fiber: 3, cat: 'filler', tags: ['snack', 'staple'], cuisine: 'generic' },
-  { name: 'Mixed nuts (30g)', sub: '', kcal: 180, p: 5, f: 16, c: 6, fiber: 2, cat: 'filler', tags: ['snack'], cuisine: 'generic' },
-  { name: 'Peanut butter toast (1 slice)', sub: '', kcal: 250, p: 9, f: 14, c: 22, fiber: 2, cat: 'filler', tags: ['breakfast', 'snack'], cuisine: 'generic' },
-  { name: 'Apple', sub: '', kcal: 95, p: 0, f: 0, c: 25, fiber: 4, cat: 'filler', tags: ['snack'], cuisine: 'generic' },
-  { name: 'Mac & cheese (1 cup)', sub: '', kcal: 380, p: 14, f: 18, c: 40, fiber: 2, cat: 'filler', tags: ['side', 'treat'], cuisine: 'american' },
-  { name: 'Baked potato + cheese', sub: '1 medium', kcal: 280, p: 8, f: 8, c: 45, fiber: 4, cat: 'filler', tags: ['side'], cuisine: 'american' },
-  { name: 'Greek salad with feta', sub: 'no protein added', kcal: 280, p: 9, f: 22, c: 12, fiber: 4, cat: 'filler', tags: ['lunch', 'side'], cuisine: 'mediterranean' },
-  { name: 'Pasta marinara (1 plate)', sub: 'no meat', kcal: 480, p: 14, f: 10, c: 80, fiber: 5, cat: 'filler', tags: ['dinner'], cuisine: 'mediterranean' },
-  { name: 'Tzatziki + veg sticks', sub: '', kcal: 120, p: 4, f: 8, c: 8, fiber: 2, cat: 'filler', tags: ['snack'], cuisine: 'mediterranean' },
-  { name: 'Minestrone soup (1 bowl)', sub: '', kcal: 220, p: 9, f: 6, c: 32, fiber: 6, cat: 'filler', tags: ['lunch'], cuisine: 'mediterranean' },
-  { name: 'Caprese (mozzarella + tomato)', sub: '', kcal: 280, p: 16, f: 20, c: 8, fiber: 2, cat: 'filler', tags: ['side'], cuisine: 'mediterranean' },
-  { name: 'Pad thai (chicken)', sub: '1 plate', kcal: 580, p: 28, f: 22, c: 65, fiber: 4, cat: 'filler', tags: ['dinner'], cuisine: 'asian' },
-  { name: 'Thai green curry chicken + rice', sub: '1 plate', kcal: 620, p: 28, f: 28, c: 57, fiber: 4, cat: 'filler', tags: ['dinner'], cuisine: 'asian' },
-  { name: 'Sushi rolls (8 pcs)', sub: 'mixed maki', kcal: 350, p: 14, f: 6, c: 60, fiber: 2, cat: 'filler', tags: ['lunch', 'takeaway'], cuisine: 'asian' },
-  { name: 'Chicken fried rice', sub: '1 plate', kcal: 560, p: 28, f: 18, c: 70, fiber: 2, cat: 'filler', tags: ['dinner'], cuisine: 'asian' },
-  { name: 'Black beans + rice', sub: 'side dish', kcal: 360, p: 14, f: 4, c: 66, fiber: 10, cat: 'filler', tags: ['side'], cuisine: 'mexican' },
-  { name: 'Guacamole + chips', sub: '', kcal: 320, p: 4, f: 22, c: 28, fiber: 6, cat: 'filler', tags: ['snack', 'treat'], cuisine: 'mexican' },
-  { name: 'Refried beans (1 cup)', sub: '', kcal: 220, p: 12, f: 4, c: 36, fiber: 9, cat: 'filler', tags: ['side'], cuisine: 'mexican' },
-  { name: 'Dal + rice', sub: '1 bowl dal + 1 cup rice', kcal: 515, p: 19, f: 7, c: 92, fiber: 4, cat: 'filler', tags: ['lunch', 'dinner'], cuisine: 'indian' },
-  { name: 'Chickpea curry (chole) + 2 roti', sub: 'wet gravy, chapati', kcal: 483, p: 16, f: 14, c: 75, fiber: 10, cat: 'filler', tags: ['lunch', 'dinner'], cuisine: 'indian' },
-  { name: 'Rajma (kidney beans) + rice', sub: '', kcal: 533, p: 15, f: 10.5, c: 93, fiber: 6, cat: 'filler', tags: ['lunch', 'dinner'], cuisine: 'indian' },
-  { name: 'Chicken biryani', sub: 'moderate ghee — varies', kcal: 700, p: 35, f: 30, c: 75, fiber: 2, cat: 'filler', tags: ['lunch', 'dinner'], cuisine: 'indian' },
-  { name: 'Roti (6 inch, plain)', sub: '', kcal: 80, p: 2.5, f: 0.8, c: 16, fiber: 1, cat: 'filler', tags: ['side', 'staple'], cuisine: 'indian' },
-  { name: 'Palak paneer + rice', sub: 'spinach + paneer, 1 cup rice', kcal: 600, p: 22, f: 30, c: 55, fiber: 6, cat: 'filler', tags: ['dinner', 'vegetarian'], cuisine: 'indian' },
-  { name: 'Falafel wrap', sub: 'falafel, salad, tahini, pita', kcal: 450, p: 15, f: 20, c: 55, fiber: 8, cat: 'filler', tags: ['lunch', 'vegetarian'], cuisine: 'middle-eastern' },
-  { name: 'Hummus + pita', sub: '', kcal: 320, p: 10, f: 14, c: 40, fiber: 6, cat: 'filler', tags: ['snack', 'side'], cuisine: 'middle-eastern' },
-  { name: 'Tabbouleh salad', sub: 'bulgur, parsley, tomato', kcal: 180, p: 4, f: 10, c: 20, fiber: 4, cat: 'filler', tags: ['side'], cuisine: 'middle-eastern' },
-  { name: 'Lentil soup (1 bowl)', sub: '', kcal: 230, p: 12, f: 5, c: 34, fiber: 8, cat: 'filler', tags: ['lunch'], cuisine: 'middle-eastern' },
-  { name: 'Baba ganoush + pita', sub: 'smoked eggplant dip', kcal: 280, p: 7, f: 14, c: 32, fiber: 5, cat: 'filler', tags: ['snack'], cuisine: 'middle-eastern' },
+const PRESET_DEFS = [
+  { name: "Chicken breast (grilled) 200g", sub: "plain protein base", tags: ["lunch","dinner","staple"], cuisine: "generic", _builder: [{ componentId: "chicken-breast", qty: 200, unit: "g" }] },
+  { name: "Protein shake", sub: "1 scoop whey + banana + milk", tags: ["breakfast","shake","staple"], cuisine: "generic", _builder: [{ componentId: "whey", qty: 1.25, unit: "scoop" }, { componentId: "banana", qty: 1, unit: "pc" }, { componentId: "whole-milk", qty: 150, unit: "ml" }] },
+  { name: "Whey + water", sub: "quick protein, 1 scoop", tags: ["snack"], cuisine: "generic", _builder: [{ componentId: "whey", qty: 1, unit: "scoop" }] },
+  { name: "Greek yogurt 200g", sub: "plain, non-fat", tags: ["snack","staple"], cuisine: "generic", _builder: [{ componentId: "greek-yogurt", qty: 200, unit: "g" }] },
+  { name: "White fish (grilled) 200g", sub: "cod, tilapia, or similar", tags: ["lunch","dinner"], cuisine: "generic", _builder: [{ componentId: "white-fish", qty: 200, unit: "g" }] },
+  { name: "Cottage cheese 150g", sub: "", tags: ["snack"], cuisine: "generic", _builder: [{ componentId: "cottage-cheese", qty: 150, unit: "g" }] },
+  { name: "Steak (sirloin 200g) + veg", sub: "lean cut, trimmed", tags: ["dinner"], cuisine: "american", _builder: [{ componentId: "steak-sirloin", qty: 200, unit: "g" }, { componentId: "steamed-veg", qty: 100, unit: "g" }] },
+  { name: "BBQ pulled chicken", sub: "shredded, light sauce", tags: ["dinner"], cuisine: "american", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }] },
+  { name: "Shrimp & tomato (no pasta)", sub: "garlic, olive oil, tomato", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "prawns", qty: 180, unit: "g" }, { componentId: "tomato", qty: 100, unit: "g" }, { componentId: "olive-oil", qty: 0.25, unit: "tbsp" }] },
+  { name: "Teriyaki chicken + veg (no rice)", sub: "glazed thigh, steamed veg", tags: ["lunch","dinner"], cuisine: "asian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }] },
+  { name: "Shrimp ceviche", sub: "lime-cured shrimp, onion, cilantro", tags: ["lunch"], cuisine: "mexican", _builder: [{ componentId: "prawns", qty: 150, unit: "g" }, { componentId: "tomato", qty: 100, unit: "g" }, { componentId: "onion", qty: 50, unit: "g" }] },
+  { name: "Tandoori chicken (2 legs)", sub: "yogurt marinade, no butter baste", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "chicken-thigh", qty: 240, unit: "g" }, { componentId: "greek-yogurt", qty: 30, unit: "g" }] },
+  { name: "Chicken tikka 200g", sub: "boneless, grilled", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "greek-yogurt", qty: 30, unit: "g" }] },
+  { name: "Boiled eggs × 3", sub: "", tags: ["breakfast","snack","staple"], cuisine: "generic", _builder: [{ componentId: "egg", qty: 3, unit: "pc" }] },
+  { name: "Protein bar", sub: "adjust to your brand", tags: ["snack"], cuisine: "generic", _builder: [{ componentId: "protein-bar", qty: 1, unit: "pc" }] },
+  { name: "Grilled chicken sandwich", sub: "grilled breast, bun, salad", tags: ["lunch"], cuisine: "american", _builder: [{ componentId: "chicken-breast", qty: 120, unit: "g" }, { componentId: "burger-bun", qty: 1, unit: "pc" }, { componentId: "side-salad", qty: 40, unit: "g" }, { componentId: "salad-dressing", qty: 1, unit: "tbsp" }] },
+  { name: "Cheeseburger (single)", sub: "beef patty, cheese, bun", tags: ["dinner","treat"], cuisine: "american", _builder: [{ componentId: "ground-beef", qty: 110, unit: "g" }, { componentId: "burger-bun", qty: 1, unit: "pc" }, { componentId: "cheese-shredded", qty: 30, unit: "g" }] },
+  { name: "Turkey & cheese sandwich", sub: "deli turkey, cheese, bread", tags: ["lunch"], cuisine: "american", _builder: [{ componentId: "turkey-deli", qty: 100, unit: "g" }, { componentId: "bread-toast", qty: 2, unit: "pc" }, { componentId: "cheese-shredded", qty: 25, unit: "g" }] },
+  { name: "Caesar salad with chicken", sub: "grilled chicken, romaine, dressing", tags: ["lunch"], cuisine: "american", _builder: [{ componentId: "chicken-breast", qty: 120, unit: "g" }, { componentId: "side-salad", qty: 100, unit: "g" }, { componentId: "salad-dressing", qty: 2, unit: "tbsp" }, { componentId: "cheese-shredded", qty: 15, unit: "g" }] },
+  { name: "Scrambled eggs + toast", sub: "2 eggs, 1 slice toast", tags: ["breakfast"], cuisine: "american", _builder: [{ componentId: "egg", qty: 3, unit: "pc" }, { componentId: "bread-toast", qty: 1, unit: "pc" }, { componentId: "butter", qty: 0.5, unit: "tbsp" }] },
+  { name: "Buffalo chicken wrap", sub: "chicken, hot sauce, tortilla", tags: ["lunch"], cuisine: "american", _builder: [{ componentId: "chicken-breast", qty: 110, unit: "g" }, { componentId: "flour-tortilla", qty: 1.5, unit: "pc" }, { componentId: "salad-dressing", qty: 1.5, unit: "tbsp" }, { componentId: "side-salad", qty: 40, unit: "g" }] },
+  { name: "Protein pancakes (3)", sub: "oat + whey batter", tags: ["breakfast"], cuisine: "american", _builder: [{ componentId: "protein-pancakes", qty: 3, unit: "pc" }] },
+  { name: "Greek chicken + roasted veg", sub: "lemon oregano, olive oil", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "roasted-veg", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 1, unit: "tbsp" }] },
+  { name: "Grilled salmon + salad", sub: "salmon fillet, mixed greens", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "salmon", qty: 150, unit: "g" }, { componentId: "side-salad", qty: 100, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Chicken souvlaki + pita", sub: "skewers, pita, tzatziki", tags: ["lunch"], cuisine: "mediterranean", _builder: [{ componentId: "chicken-thigh", qty: 180, unit: "g" }, { componentId: "pita", qty: 1, unit: "pc" }, { componentId: "tzatziki", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Pasta with chicken & pesto", sub: "1 plate", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "regular-pasta", qty: 90, unit: "g" }, { componentId: "chicken-breast", qty: 100, unit: "g" }, { componentId: "pesto", qty: 2, unit: "tbsp" }] },
+  { name: "Teriyaki chicken + rice", sub: "glazed thigh, 1 cup rice", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }, { componentId: "rice-white", qty: 1, unit: "cup" }] },
+  { name: "Chicken stir fry", sub: "thigh, veg, 1 tbsp oil", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 1, unit: "tbsp" }] },
+  { name: "Tofu & veg stir fry", sub: "firm tofu, mixed veg, soy", tags: ["dinner","vegetarian"], cuisine: "asian", _builder: [{ componentId: "tofu", qty: 150, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }] },
+  { name: "Steamed dumplings (6)", sub: "pork or chicken", tags: ["lunch"], cuisine: "asian", _builder: [{ componentId: "dumplings", qty: 6, unit: "pc" }] },
+  { name: "Miso soup + edamame", sub: "1 bowl + 1 cup pods", tags: ["snack","side"], cuisine: "asian", _builder: [{ componentId: "miso-soup", qty: 1, unit: "bowl" }, { componentId: "edamame", qty: 100, unit: "g" }] },
+  { name: "Beef & broccoli", sub: "with light sauce, no rice", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "steak-sirloin", qty: 130, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "teriyaki-glaze", qty: 3, unit: "tbsp" }, { componentId: "olive-oil", qty: 0.75, unit: "tbsp" }] },
+  { name: "Chicken tacos × 3", sub: "soft tortillas, toppings", tags: ["dinner"], cuisine: "mexican", _builder: [{ componentId: "chicken-mince", qty: 130, unit: "g" }, { componentId: "flour-tortilla", qty: 3, unit: "pc" }, { componentId: "cheese-shredded", qty: 20, unit: "g" }, { componentId: "salsa", qty: 50, unit: "g" }] },
+  { name: "Burrito bowl", sub: "chicken, rice, beans, salsa", tags: ["lunch","complete"], cuisine: "mexican", _builder: [{ componentId: "chicken-thigh", qty: 130, unit: "g" }, { componentId: "rice-white", qty: 0.5, unit: "cup" }, { componentId: "black-beans", qty: 100, unit: "g" }, { componentId: "cheese-shredded", qty: 30, unit: "g" }, { componentId: "guacamole", qty: 30, unit: "g" }, { componentId: "salsa", qty: 50, unit: "g" }] },
+  { name: "Chicken fajitas", sub: "peppers, onions, no tortilla", tags: ["dinner"], cuisine: "mexican", _builder: [{ componentId: "chicken-breast", qty: 140, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "onion", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 1, unit: "tbsp" }] },
+  { name: "Chili con carne", sub: "beef, kidney beans, tomato", tags: ["dinner"], cuisine: "mexican", _builder: [{ componentId: "ground-beef", qty: 140, unit: "g" }, { componentId: "rajma", qty: 120, unit: "g" }, { componentId: "tomato", qty: 100, unit: "g" }, { componentId: "onion", qty: 50, unit: "g" }] },
+  { name: "Beef enchiladas", sub: "2, sauce + cheese", tags: ["dinner"], cuisine: "mexican", _builder: [{ componentId: "ground-beef", qty: 100, unit: "g" }, { componentId: "flour-tortilla", qty: 2, unit: "pc" }, { componentId: "enchilada-sauce", qty: 100, unit: "ml" }, { componentId: "cheese-shredded", qty: 40, unit: "g" }] },
+  { name: "Quesadilla (chicken & cheese)", sub: "flour tortilla, grilled", tags: ["lunch"], cuisine: "mexican", _builder: [{ componentId: "flour-tortilla", qty: 2, unit: "pc" }, { componentId: "cheese-shredded", qty: 50, unit: "g" }, { componentId: "chicken-mince", qty: 80, unit: "g" }] },
+  { name: "Paneer tikka 200g", sub: "grilled, yogurt marinade", tags: ["dinner","vegetarian"], cuisine: "indian", _builder: [{ componentId: "paneer", qty: 130, unit: "g" }, { componentId: "greek-yogurt", qty: 20, unit: "g" }] },
+  { name: "Butter chicken + 2 roti", sub: "cream/butter — varies", tags: ["dinner"], cuisine: "indian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "butter", qty: 1, unit: "tbsp" }, { componentId: "cream", qty: 2, unit: "tbsp" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "roti", qty: 2.5, unit: "pc" }] },
+  { name: "Chicken shawarma plate", sub: "chicken, hummus, salad, pita", tags: ["lunch"], cuisine: "middle-eastern", _builder: [{ componentId: "chicken-thigh", qty: 180, unit: "g" }, { componentId: "hummus", qty: 60, unit: "g" }, { componentId: "side-salad", qty: 100, unit: "g" }, { componentId: "pita", qty: 1, unit: "pc" }] },
+  { name: "Chicken shawarma wrap", sub: "single wrap", tags: ["lunch","takeaway"], cuisine: "middle-eastern", _builder: [{ componentId: "chicken-thigh", qty: 120, unit: "g" }, { componentId: "pita", qty: 1, unit: "pc" }, { componentId: "tzatziki", qty: 50, unit: "g" }, { componentId: "hummus", qty: 20, unit: "g" }, { componentId: "side-salad", qty: 50, unit: "g" }] },
+  { name: "Lamb kofta kebab", sub: "grilled spiced mince", tags: ["dinner"], cuisine: "middle-eastern", _builder: [{ componentId: "lamb-mince", qty: 200, unit: "g" }, { componentId: "onion", qty: 30, unit: "g" }] },
+  { name: "Chicken kebab plate + salad", sub: "grilled chicken, salad", tags: ["dinner"], cuisine: "middle-eastern", _builder: [{ componentId: "chicken-thigh", qty: 220, unit: "g" }, { componentId: "side-salad", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }, { componentId: "hummus", qty: 30, unit: "g" }] },
+  { name: "Grilled halloumi 100g", sub: "pan-seared", tags: ["side","vegetarian"], cuisine: "middle-eastern", _builder: [{ componentId: "halloumi", qty: 100, unit: "g" }] },
+  { name: "Oatmeal", sub: "40g oats + milk", tags: ["breakfast","staple"], cuisine: "generic", _builder: [{ componentId: "oats-dry", qty: 45, unit: "g" }, { componentId: "whole-milk", qty: 150, unit: "ml" }] },
+  { name: "Rice (1 cup cooked)", sub: "", tags: ["side","staple"], cuisine: "generic", _builder: [{ componentId: "rice-white", qty: 1, unit: "cup" }] },
+  { name: "Banana", sub: "", tags: ["snack","staple"], cuisine: "generic", _builder: [{ componentId: "banana", qty: 1, unit: "pc" }] },
+  { name: "Mixed nuts (30g)", sub: "", tags: ["snack"], cuisine: "generic", _builder: [{ componentId: "nuts", qty: 30, unit: "g" }] },
+  { name: "Peanut butter toast (1 slice)", sub: "", tags: ["breakfast","snack"], cuisine: "generic", _builder: [{ componentId: "bread-toast", qty: 1, unit: "pc" }, { componentId: "peanut-butter", qty: 1.5, unit: "tbsp" }] },
+  { name: "Apple", sub: "", tags: ["snack"], cuisine: "generic", _builder: [{ componentId: "apple", qty: 1, unit: "pc" }] },
+  { name: "Mac & cheese (1 cup)", sub: "", tags: ["side","treat"], cuisine: "american", _builder: [{ componentId: "regular-pasta", qty: 55, unit: "g" }, { componentId: "cheese-shredded", qty: 35, unit: "g" }, { componentId: "butter", qty: 0.5, unit: "tbsp" }] },
+  { name: "Baked potato + cheese", sub: "1 medium", tags: ["side"], cuisine: "american", _builder: [{ componentId: "mashed-potato", qty: 250, unit: "g" }, { componentId: "cheese-shredded", qty: 20, unit: "g" }] },
+  { name: "Greek salad with feta", sub: "no protein added", tags: ["lunch","side"], cuisine: "mediterranean", _builder: [{ componentId: "side-salad", qty: 150, unit: "g" }, { componentId: "feta", qty: 60, unit: "g" }, { componentId: "olive-oil", qty: 0.75, unit: "tbsp" }, { componentId: "tomato", qty: 100, unit: "g" }] },
+  { name: "Pasta marinara (1 plate)", sub: "no meat", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "regular-pasta", qty: 110, unit: "g" }, { componentId: "marinara-sauce", qty: 150, unit: "ml" }] },
+  { name: "Tzatziki + veg sticks", sub: "", tags: ["snack"], cuisine: "mediterranean", _builder: [{ componentId: "tzatziki", qty: 100, unit: "g" }, { componentId: "side-salad", qty: 100, unit: "g" }] },
+  { name: "Minestrone soup (1 bowl)", sub: "", tags: ["lunch"], cuisine: "mediterranean", _builder: [{ componentId: "minestrone", qty: 1, unit: "bowl" }] },
+  { name: "Caprese (mozzarella + tomato)", sub: "", tags: ["side"], cuisine: "mediterranean", _builder: [{ componentId: "mozzarella", qty: 80, unit: "g" }, { componentId: "tomato", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Pad thai (chicken)", sub: "1 plate", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "pad-thai", qty: 375, unit: "g" }] },
+  { name: "Thai green curry chicken + rice", sub: "1 plate", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "chicken-thigh", qty: 130, unit: "g" }, { componentId: "coconut-milk", qty: 100, unit: "ml" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "rice-white", qty: 1, unit: "cup" }] },
+  { name: "Sushi rolls (8 pcs)", sub: "mixed maki", tags: ["lunch","takeaway"], cuisine: "asian", _builder: [{ componentId: "sushi-roll", qty: 8, unit: "pc" }] },
+  { name: "Chicken fried rice", sub: "1 plate", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "chicken-thigh", qty: 100, unit: "g" }, { componentId: "egg", qty: 1, unit: "pc" }, { componentId: "stir-fry-veg", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Black beans + rice", sub: "side dish", tags: ["side"], cuisine: "mexican", _builder: [{ componentId: "black-beans", qty: 150, unit: "g" }, { componentId: "rice-white", qty: 0.5, unit: "cup" }] },
+  { name: "Guacamole + chips", sub: "", tags: ["snack","treat"], cuisine: "mexican", _builder: [{ componentId: "guacamole", qty: 80, unit: "g" }, { componentId: "tortilla-chips", qty: 40, unit: "g" }] },
+  { name: "Refried beans (1 cup)", sub: "", tags: ["side"], cuisine: "mexican", _builder: [{ componentId: "refried-beans", qty: 1, unit: "cup" }] },
+  { name: "Dal + rice", sub: "1 bowl dal + 1 cup rice", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "toor-dal", qty: 1, unit: "cup" }, { componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "tadka", qty: 1, unit: "tsp" }] },
+  { name: "Chickpea curry (chole) + 2 roti", sub: "wet gravy, chapati", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "chickpeas", qty: 1, unit: "cup" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "roti", qty: 2, unit: "pc" }, { componentId: "ghee", qty: 1, unit: "tsp" }] },
+  { name: "Rajma (kidney beans) + rice", sub: "", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "rajma", qty: 1, unit: "cup" }, { componentId: "rice-white", qty: 0.8, unit: "cup" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "ghee", qty: 1, unit: "tsp" }] },
+  { name: "Chicken biryani", sub: "moderate ghee — varies", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "rice-white", qty: 1.2, unit: "cup" }, { componentId: "chicken-thigh", qty: 150, unit: "g" }, { componentId: "ghee", qty: 3, unit: "tsp" }, { componentId: "gravy-base", qty: 1, unit: "katori" }] },
+  { name: "Roti (6 inch, plain)", sub: "", tags: ["side","staple"], cuisine: "indian", _builder: [{ componentId: "roti", qty: 1, unit: "pc" }] },
+  { name: "Palak paneer + rice", sub: "spinach + paneer, 1 cup rice", tags: ["dinner","vegetarian"], cuisine: "indian", _builder: [{ componentId: "paneer", qty: 100, unit: "g" }, { componentId: "steamed-veg", qty: 150, unit: "g" }, { componentId: "cream", qty: 2, unit: "tbsp" }, { componentId: "rice-white", qty: 0.8, unit: "cup" }] },
+  { name: "Falafel wrap", sub: "falafel, salad, tahini, pita", tags: ["lunch","vegetarian"], cuisine: "middle-eastern", _builder: [{ componentId: "falafel", qty: 3, unit: "pc" }, { componentId: "flour-tortilla", qty: 1, unit: "pc" }, { componentId: "tahini", qty: 0.5, unit: "tbsp" }, { componentId: "side-salad", qty: 50, unit: "g" }] },
+  { name: "Hummus + pita", sub: "", tags: ["snack","side"], cuisine: "middle-eastern", _builder: [{ componentId: "hummus", qty: 60, unit: "g" }, { componentId: "pita", qty: 1, unit: "pc" }] },
+  { name: "Tabbouleh salad", sub: "bulgur, parsley, tomato", tags: ["side"], cuisine: "middle-eastern", _builder: [{ componentId: "tabbouleh", qty: 150, unit: "g" }] },
+  { name: "Lentil soup (1 bowl)", sub: "", tags: ["lunch"], cuisine: "middle-eastern", _builder: [{ componentId: "lentil-soup", qty: 1, unit: "bowl" }] },
+  { name: "Baba ganoush + pita", sub: "smoked eggplant dip", tags: ["snack"], cuisine: "middle-eastern", _builder: [{ componentId: "baba-ganoush", qty: 80, unit: "g" }, { componentId: "pita", qty: 1, unit: "pc" }] },
 ];
 
 const CATEGORIES = [
@@ -2118,6 +2113,37 @@ const BUILDER_COMPONENTS = [
   { id: 'lentil-soup',       name: 'Lentil soup',             group: 'dish', sub: 'Soups',         defaultUnit: 'bowl', units: ['bowl'], defaultQty: 1, step: 0.5, macros: { kcal: 250, p: 14, f: 5, c: 34, fiber: 8 } },
   { id: 'minestrone',        name: 'Minestrone',              group: 'dish', sub: 'Soups',         defaultUnit: 'bowl', units: ['bowl'], defaultQty: 1, step: 0.5, macros: { kcal: 220, p: 9, f: 6, c: 32, fiber: 6 } },
 ];
+
+function resolveComposition(builder) {
+  const t = { kcal: 0, p: 0, f: 0, c: 0, fiber: 0 };
+  if (!Array.isArray(builder)) return t;
+  for (const r of builder) {
+    const comp = BUILDER_COMPONENTS.find(x => x.id === r.componentId);
+    if (!comp) continue;
+    const factor = (comp.unitFactor && comp.unitFactor[r.unit] != null) ? comp.unitFactor[r.unit] : 1;
+    const ratio = ((Number(r.qty) || 0) * factor) / comp.defaultQty;
+    t.kcal += comp.macros.kcal * ratio;
+    t.p += comp.macros.p * ratio;
+    t.f += comp.macros.f * ratio;
+    t.c += comp.macros.c * ratio;
+    t.fiber += comp.macros.fiber * ratio;
+  }
+  return t;
+}
+
+// Presets derive macros + category from their component composition, so the
+// numbers can never drift from the parts. Edit a component → its presets follow.
+const PRESETS = PRESET_DEFS.map(d => {
+  const m = resolveComposition(d._builder);
+  const r1 = (n) => Math.round(n * 10) / 10;
+  return {
+    ...d,
+    kcal: Math.round(m.kcal),
+    p: r1(m.p), f: r1(m.f), c: r1(m.c), fiber: r1(m.fiber),
+    cat: categoryFromPp(m.kcal > 0 ? (m.p / m.kcal) * 100 : 0),
+  };
+});
+
 
 const BUILDER_GROUPS = [
   { key: 'protein', label: 'Protein' },
