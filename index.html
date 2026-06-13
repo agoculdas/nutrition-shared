@@ -2036,6 +2036,17 @@ const BUILDER_COMPONENTS = [
   { id: 'salt-lassi',        name: 'Yogurt drink (lassi)',    group: 'protein', sub: 'Drinks',     defaultUnit: 'glass', units: ['glass', 'ml'],  defaultQty: 1,   step: 0.5, unitFactor: { glass: 1, ml: 1 / 250 }, macros: { kcal: 150, p: 8, f: 5, c: 18, fiber: 0 } },
   { id: 'whey',              name: 'Whey protein',            group: 'protein', sub: 'Supplement', defaultUnit: 'scoop', units: ['scoop', 'g'],   defaultQty: 1,   step: 0.5, unitFactor: { scoop: 1, g: 1 / 30 }, macros: { kcal: 120, p: 25, f: 2, c: 3, fiber: 0 } },
   { id: 'creatine',          name: 'Creatine',                group: 'protein', sub: 'Supplement', defaultUnit: 'g',     units: ['g'],            defaultQty: 5,   step: 1, macros: { kcal: 0, p: 0, f: 0, c: 0, fiber: 0 } },
+  { id: 'egg',               name: 'Egg (whole)',             group: 'protein', sub: 'Eggs',       defaultUnit: 'pc',    units: ['pc'],           defaultQty: 1,   step: 1, macros: { kcal: 72, p: 6.3, f: 4.8, c: 0.4, fiber: 0 } },
+  { id: 'white-fish',        name: 'White fish (cod, cooked)',group: 'protein', sub: 'Seafood',    defaultUnit: 'g',     units: ['g'],            defaultQty: 100, step: 50, macros: { kcal: 105, p: 23, f: 1, c: 0, fiber: 0 } },
+  { id: 'salmon',            name: 'Salmon (cooked)',         group: 'protein', sub: 'Seafood',    defaultUnit: 'g',     units: ['g'],            defaultQty: 100, step: 50, macros: { kcal: 208, p: 22, f: 13, c: 0, fiber: 0 } },
+  { id: 'ground-beef',       name: 'Ground beef (90/10, cooked)', group: 'protein', sub: 'Meat',   defaultUnit: 'g',     units: ['g'],            defaultQty: 100, step: 50, macros: { kcal: 215, p: 26, f: 12, c: 0, fiber: 0 } },
+  { id: 'turkey-deli',       name: 'Deli turkey',             group: 'protein', sub: 'Meat',       defaultUnit: 'g',     units: ['g'],            defaultQty: 100, step: 25, macros: { kcal: 105, p: 17, f: 2, c: 4, fiber: 0 } },
+  { id: 'cottage-cheese',    name: 'Cottage cheese',          group: 'protein', sub: 'Dairy',      defaultUnit: 'g',     units: ['g'],            defaultQty: 100, step: 50, macros: { kcal: 98, p: 11, f: 4.3, c: 3.4, fiber: 0 } },
+  { id: 'feta',              name: 'Feta',                    group: 'protein', sub: 'Dairy',      defaultUnit: 'g',     units: ['g'],            defaultQty: 30,  step: 10, macros: { kcal: 79, p: 4.3, f: 6.4, c: 1.2, fiber: 0 } },
+  { id: 'mozzarella',        name: 'Fresh mozzarella',        group: 'protein', sub: 'Dairy',      defaultUnit: 'g',     units: ['g'],            defaultQty: 50,  step: 25, macros: { kcal: 125, p: 9, f: 9, c: 1, fiber: 0 } },
+  { id: 'halloumi',          name: 'Halloumi',                group: 'protein', sub: 'Dairy',      defaultUnit: 'g',     units: ['g'],            defaultQty: 100, step: 25, macros: { kcal: 320, p: 22, f: 26, c: 2, fiber: 0 } },
+  { id: 'edamame',           name: 'Edamame (shelled)',       group: 'protein', sub: 'Legumes',    defaultUnit: 'g',     units: ['g', 'cup'],     defaultQty: 100, step: 50, unitFactor: { g: 1, cup: 155 }, macros: { kcal: 121, p: 12, f: 5, c: 9, fiber: 5 } },
+  { id: 'refried-beans',     name: 'Refried beans',           group: 'protein', sub: 'Legumes',    defaultUnit: 'g',     units: ['g', 'cup'],     defaultQty: 100, step: 50, unitFactor: { g: 1, cup: 240 }, macros: { kcal: 100, p: 6, f: 2, c: 15, fiber: 5 } },
 
   // === Carbs ===
   { id: 'rice-white',        name: 'Rice (white, cooked)',    group: 'carb', sub: 'Grains',     defaultUnit: 'g',  units: ['g', 'cup'],   defaultQty: 100, step: 50, unitFactor: { g: 1, cup: 200 }, macros: { kcal: 130, p: 2.5, f: 0.5, c: 29, fiber: 0 } },
@@ -2059,6 +2070,9 @@ const BUILDER_COMPONENTS = [
   { id: 'mango',             name: 'Mango',                   group: 'carb', sub: 'Fruits',     defaultUnit: 'pc', units: ['pc'],         defaultQty: 1,   step: 0.5, macros: { kcal: 150, p: 1, f: 0, c: 35, fiber: 3 } },
   { id: 'apple',             name: 'Apple',                   group: 'carb', sub: 'Fruits',     defaultUnit: 'pc', units: ['pc'],         defaultQty: 1,   step: 0.5, macros: { kcal: 95, p: 0.5, f: 0, c: 25, fiber: 4 } },
   { id: 'teriyaki-glaze',    name: 'Teriyaki glaze',          group: 'carb', sub: 'Sweet sauce',defaultUnit: 'tbsp', units: ['tbsp'],     defaultQty: 1,   step: 0.5, macros: { kcal: 25, p: 0.5, f: 0, c: 6, fiber: 0 } },
+  { id: 'pita',              name: 'Pita bread',              group: 'carb', sub: 'Breads',     defaultUnit: 'pc', units: ['pc'],         defaultQty: 1,   step: 0.5, macros: { kcal: 165, p: 5.5, f: 1, c: 33, fiber: 1.5 } },
+  { id: 'burger-bun',        name: 'Burger bun',              group: 'carb', sub: 'Breads',     defaultUnit: 'pc', units: ['pc'],         defaultQty: 1,   step: 1, macros: { kcal: 150, p: 5, f: 2, c: 27, fiber: 1 } },
+  { id: 'tortilla-chips',    name: 'Tortilla chips',          group: 'carb', sub: 'Snacks',     defaultUnit: 'g',  units: ['g'],          defaultQty: 30,  step: 10, macros: { kcal: 150, p: 2, f: 8, c: 18, fiber: 1.5 } },
 
   // === Veg / fiber ===
   { id: 'steamed-veg',       name: 'Steamed veg',             group: 'veg', sub: 'Cooked veg',  defaultUnit: 'g',     units: ['g', 'cup'],     defaultQty: 100, step: 50, unitFactor: { g: 1, cup: 100 }, macros: { kcal: 35, p: 2.5, f: 0, c: 6, fiber: 3 } },
@@ -2071,6 +2085,7 @@ const BUILDER_COMPONENTS = [
   { id: 'gravy-base',        name: 'Onion-tomato gravy',      group: 'veg', sub: 'Sauces',      defaultUnit: 'katori', units: ['katori', 'cup'], defaultQty: 1, step: 0.5, unitFactor: { katori: 1, cup: 1.5 }, macros: { kcal: 30, p: 1, f: 0, c: 6, fiber: 1 } },
   { id: 'enchilada-sauce',   name: 'Enchilada sauce',         group: 'veg', sub: 'Sauces',      defaultUnit: 'ml',    units: ['ml', 'tbsp'],   defaultQty: 50,  step: 25, unitFactor: { ml: 1, tbsp: 15 }, macros: { kcal: 20, p: 0.5, f: 0.5, c: 3.5, fiber: 0 } },
   { id: 'salsa',             name: 'Salsa',                   group: 'veg', sub: 'Sauces',      defaultUnit: 'g',     units: ['g', 'tbsp'],    defaultQty: 50,  step: 25, unitFactor: { g: 1, tbsp: 15 }, macros: { kcal: 15, p: 0.5, f: 0, c: 3, fiber: 0.5 } },
+  { id: 'tomato',            name: 'Tomato',                  group: 'veg', sub: 'Raw',         defaultUnit: 'g',     units: ['g'],            defaultQty: 100, step: 50, macros: { kcal: 18, p: 1, f: 0, c: 4, fiber: 1 } },
 
   // === Fat / extras ===
   { id: 'butter',            name: 'Butter',                  group: 'fat', sub: 'Cooking fat', defaultUnit: 'tbsp', units: ['tbsp', 'g'],   defaultQty: 1, step: 0.5, unitFactor: { tbsp: 1, g: 1 / 14 }, macros: { kcal: 100, p: 0, f: 11, c: 0, fiber: 0 } },
@@ -2083,6 +2098,25 @@ const BUILDER_COMPONENTS = [
   { id: 'guacamole',         name: 'Guacamole',               group: 'fat', sub: 'Spreads',     defaultUnit: 'g',    units: ['g', 'tbsp'],   defaultQty: 50, step: 25, unitFactor: { g: 1, tbsp: 15 }, macros: { kcal: 80, p: 1, f: 7, c: 4, fiber: 2 } },
   { id: 'hummus',            name: 'Hummus',                  group: 'fat', sub: 'Spreads',     defaultUnit: 'g',    units: ['g', 'tbsp'],   defaultQty: 30, step: 10, unitFactor: { g: 1, tbsp: 15 }, macros: { kcal: 80, p: 3, f: 5, c: 6, fiber: 1 } },
   { id: 'peanut-butter',     name: 'Peanut butter',           group: 'fat', sub: 'Spreads',     defaultUnit: 'tbsp', units: ['tbsp', 'g'],   defaultQty: 1, step: 0.5, unitFactor: { tbsp: 1, g: 1 / 16 }, macros: { kcal: 95, p: 4, f: 8, c: 3, fiber: 1 } },
+  { id: 'nuts',              name: 'Mixed nuts',              group: 'fat', sub: 'Nuts',        defaultUnit: 'g',    units: ['g'],           defaultQty: 30, step: 10, macros: { kcal: 180, p: 5, f: 16, c: 6, fiber: 2 } },
+  { id: 'olive-oil',         name: 'Olive oil',               group: 'fat', sub: 'Cooking fat', defaultUnit: 'tbsp', units: ['tbsp', 'ml'],  defaultQty: 1, step: 0.5, unitFactor: { tbsp: 1, ml: 1 / 15 }, macros: { kcal: 119, p: 0, f: 13.5, c: 0, fiber: 0 } },
+  { id: 'pesto',             name: 'Pesto',                   group: 'fat', sub: 'Sauces',      defaultUnit: 'tbsp', units: ['tbsp', 'g'],   defaultQty: 1, step: 0.5, unitFactor: { tbsp: 1, g: 1 / 15 }, macros: { kcal: 80, p: 1, f: 8, c: 1, fiber: 0 } },
+  { id: 'tahini',            name: 'Tahini',                  group: 'fat', sub: 'Spreads',     defaultUnit: 'tbsp', units: ['tbsp', 'g'],   defaultQty: 1, step: 0.5, unitFactor: { tbsp: 1, g: 1 / 15 }, macros: { kcal: 89, p: 2.5, f: 8, c: 3, fiber: 1.5 } },
+  { id: 'tzatziki',          name: 'Tzatziki',                group: 'fat', sub: 'Spreads',     defaultUnit: 'g',    units: ['g', 'tbsp'],   defaultQty: 100, step: 25, unitFactor: { g: 1, tbsp: 15 }, macros: { kcal: 90, p: 3, f: 7, c: 3, fiber: 0 } },
+  { id: 'salad-dressing',    name: 'Creamy dressing',         group: 'fat', sub: 'Sauces',      defaultUnit: 'tbsp', units: ['tbsp'],        defaultQty: 1, step: 0.5, macros: { kcal: 75, p: 0.5, f: 8, c: 1, fiber: 0 } },
+
+  // === Prepared dishes (hybrid: scalable composites that don't decompose cleanly) ===
+  { id: 'protein-bar',       name: 'Protein bar',             group: 'dish', sub: 'Bars',          defaultUnit: 'pc',   units: ['pc'],   defaultQty: 1, step: 1, macros: { kcal: 220, p: 20, f: 8, c: 22, fiber: 3 } },
+  { id: 'protein-pancakes',  name: 'Protein pancakes',        group: 'dish', sub: 'Breakfast',     defaultUnit: 'pc',   units: ['pc'],   defaultQty: 3, step: 1, macros: { kcal: 380, p: 30, f: 10, c: 45, fiber: 3 } },
+  { id: 'pad-thai',          name: 'Pad thai',                group: 'dish', sub: 'Asian',         defaultUnit: 'g',    units: ['g'],    defaultQty: 100, step: 50, macros: { kcal: 155, p: 8, f: 7, c: 16, fiber: 1.5 } },
+  { id: 'sushi-roll',        name: 'Sushi (maki)',            group: 'dish', sub: 'Asian',         defaultUnit: 'pc',   units: ['pc'],   defaultQty: 8, step: 1, macros: { kcal: 350, p: 14, f: 5.5, c: 60, fiber: 2 } },
+  { id: 'dumplings',         name: 'Dumplings',               group: 'dish', sub: 'Asian',         defaultUnit: 'pc',   units: ['pc'],   defaultQty: 6, step: 1, macros: { kcal: 300, p: 15, f: 12, c: 36, fiber: 2 } },
+  { id: 'miso-soup',         name: 'Miso soup',               group: 'dish', sub: 'Asian',         defaultUnit: 'bowl', units: ['bowl'], defaultQty: 1, step: 0.5, macros: { kcal: 50, p: 3, f: 1.5, c: 6, fiber: 1 } },
+  { id: 'falafel',           name: 'Falafel',                 group: 'dish', sub: 'Middle Eastern', defaultUnit: 'pc',  units: ['pc'],   defaultQty: 1, step: 1, macros: { kcal: 110, p: 4, f: 6, c: 9, fiber: 2 } },
+  { id: 'tabbouleh',         name: 'Tabbouleh',               group: 'dish', sub: 'Middle Eastern', defaultUnit: 'g',   units: ['g'],    defaultQty: 100, step: 50, macros: { kcal: 120, p: 2, f: 7, c: 12, fiber: 3 } },
+  { id: 'baba-ganoush',      name: 'Baba ganoush',            group: 'dish', sub: 'Middle Eastern', defaultUnit: 'g',   units: ['g', 'tbsp'], defaultQty: 100, step: 25, unitFactor: { g: 1, tbsp: 15 }, macros: { kcal: 165, p: 4, f: 14, c: 6, fiber: 3 } },
+  { id: 'lentil-soup',       name: 'Lentil soup',             group: 'dish', sub: 'Soups',         defaultUnit: 'bowl', units: ['bowl'], defaultQty: 1, step: 0.5, macros: { kcal: 250, p: 14, f: 5, c: 34, fiber: 8 } },
+  { id: 'minestrone',        name: 'Minestrone',              group: 'dish', sub: 'Soups',         defaultUnit: 'bowl', units: ['bowl'], defaultQty: 1, step: 0.5, macros: { kcal: 220, p: 9, f: 6, c: 32, fiber: 6 } },
 ];
 
 const BUILDER_GROUPS = [
@@ -2090,6 +2124,7 @@ const BUILDER_GROUPS = [
   { key: 'carb',    label: 'Carb' },
   { key: 'veg',     label: 'Veg' },
   { key: 'fat',     label: 'Fat' },
+  { key: 'dish',    label: 'Dishes' },
 ];
 
 // All persisted keys are namespaced so this shared build never collides with
