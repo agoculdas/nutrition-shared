@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0A0A0B" />
+  <meta name="theme-color" content="#F4EFE6" />
   <title>Nutrition</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" type="image/svg+xml" href="icon.svg" />
@@ -13,43 +13,89 @@
   <meta name="apple-mobile-web-app-title" content="Nutrition" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     :root {
-      --bg: #0A0A0B;
-      --surface: #101013;
-      --surface-2: #16161A;
-      --hairline: #1F1F23;
-      --hairline-strong: #2A2A30;
-      --ink: #EDEDEF;
-      --ink-2: #B8B8BE;
-      --muted: #6E6E76;
-      --dim: #4A4A52;
+      /* === Tidepool (default) — deep teal & mist, punchy green signal === */
+      --bg: #EAF0EF;
+      --surface: #FFFFFF;
+      --surface-2: #F4F8F7;
+      --hairline: #DBE4E2;
+      --hairline-strong: #C9D5D2;
+      --ink: #1A201F;
+      --ink-2: #4E5654;
+      --muted: #7E8784;
+      --dim: #A8B0AD;
 
-      --good: oklch(0.82 0.16 145);
-      --good-bg: oklch(0.32 0.07 145 / 0.18);
-      --good-line: oklch(0.45 0.10 145 / 0.5);
+      /* protein/anchor signal — punchy, pushed off the teal accent */
+      --good-h: 142;
+      --good: oklch(0.585 0.152 142);
+      --good-bg: oklch(0.585 0.152 142 / 0.14);
+      --good-line: oklch(0.585 0.152 142 / 0.34);
 
-      --warn: oklch(0.80 0.14 78);
-      --warn-bg: oklch(0.32 0.07 78 / 0.18);
-      --warn-line: oklch(0.45 0.10 78 / 0.5);
+      --warn: oklch(0.56 0.10 67);
+      --warn-bg: oklch(0.62 0.105 70 / 0.15);
+      --warn-line: oklch(0.60 0.105 70 / 0.38);
 
-      --bad: oklch(0.68 0.22 25);
-      --bad-bg: oklch(0.32 0.10 25 / 0.22);
-      --bad-line: oklch(0.45 0.14 25 / 0.5);
+      --bad: oklch(0.52 0.15 33);
+      --bad-bg: oklch(0.55 0.145 33 / 0.13);
+      --bad-line: oklch(0.55 0.145 33 / 0.36);
 
-      --info: oklch(0.78 0.10 245);
-      --info-bg: oklch(0.32 0.05 245 / 0.20);
-      --info-line: oklch(0.45 0.08 245 / 0.5);
+      /* balanced signal — periwinkle, kept clear of the teal accent */
+      --info: oklch(0.52 0.07 268);
+      --info-bg: oklch(0.55 0.07 268 / 0.13);
+      --info-line: oklch(0.55 0.07 268 / 0.32);
 
-      --radius: 10px;
-      --radius-sm: 6px;
-      --shadow-sheet: 0 -8px 32px rgba(0,0,0,0.5);
+      /* highlight / brand accent */
+      --accent-h: 205;
+      --accent: oklch(0.50 0.075 205);
+      --accent-press: oklch(0.43 0.075 205);
+      --accent-bg: oklch(0.50 0.075 205 / 0.10);
+      --accent-line: oklch(0.50 0.075 205 / 0.30);
+      --on-accent: #F1F8F7;
 
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow-sheet: 0 -10px 44px rgba(20,30,28,0.20);
+      --shadow-card: 0 1px 2px rgba(20,30,28,0.05), 0 6px 18px rgba(20,30,28,0.07);
+
+      --font-sans: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    }
+
+    /* === Harbor — denim & pale sky, punchy green signal === */
+    :root[data-theme="harbor"] {
+      --bg: #ECF0F2;
+      --surface-2: #F5F8FA;
+      --hairline: #DEE4E8;
+      --hairline-strong: #CBD4DA;
+      --ink: #1B1F23;
+      --ink-2: #4F555B;
+      --muted: #7F868D;
+      --dim: #AAB2B8;
+
+      --good-h: 145;
+      --good: oklch(0.575 0.152 145);
+      --good-bg: oklch(0.575 0.152 145 / 0.14);
+      --good-line: oklch(0.575 0.152 145 / 0.34);
+
+      /* balanced signal — teal, kept clear of the denim accent */
+      --info: oklch(0.52 0.07 200);
+      --info-bg: oklch(0.55 0.07 200 / 0.13);
+      --info-line: oklch(0.55 0.07 200 / 0.32);
+
+      --accent-h: 248;
+      --accent: oklch(0.52 0.10 248);
+      --accent-press: oklch(0.44 0.10 248);
+      --accent-bg: oklch(0.52 0.10 248 / 0.10);
+      --accent-line: oklch(0.52 0.10 248 / 0.30);
+      --on-accent: #F3F7FB;
+
+      --shadow-sheet: 0 -10px 44px rgba(20,26,32,0.20);
+      --shadow-card: 0 1px 2px rgba(20,26,32,0.05), 0 6px 18px rgba(20,26,32,0.07);
     }
 
     html { background: var(--bg); }
@@ -1492,7 +1538,7 @@
       font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
       color: var(--ink-2);
     }
-    .cuisine-label { font-size: 13px; font-weight: 500; letter-spacing: -0.005em; }
+    .cuisine-label { font-size: 13px; font-weight: 500; letter-spacing: -0.005em; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .cuisine-count {
       font-size: 10.5px; color: var(--muted);
       padding: 2px 6px;
@@ -1867,6 +1913,111 @@
       pointer-events: none;
       z-index: 5;
     }
+
+    /* ============================================================
+       Pantry re-theme refinements — carried across the whole app.
+       (Token swap above re-skins most of it; these are the
+       intentional type/accent moments + dark-assuming fixes.)
+       ============================================================ */
+    body { font-feature-settings: normal; }
+
+    /* Editorial serif for identity + display numbers */
+    .topbar-h { font-family: var(--font-serif); font-size: 16px; font-weight: 500; letter-spacing: -0.01em; white-space: nowrap; }
+    .hero-num { font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.03em; }
+    .hero-num .unit, .hero-num .target { font-family: var(--font-sans); font-weight: 500; }
+    .meal-name > span:first-child { font-family: var(--font-serif); font-size: 16px; font-weight: 500; letter-spacing: -0.012em; }
+    .sheet-title { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; white-space: nowrap; }
+    .fab { white-space: nowrap; }
+    .sheet-section-title { font-family: var(--font-serif); font-weight: 500; font-size: 15px; letter-spacing: -0.01em; }
+
+    /* Ease micro-labels off the tight mono/IDE tracking */
+    .eyebrow, .hero-label, .hero-status, .pace-strip-delta { letter-spacing: 0.05em; }
+    .eyebrow { white-space: nowrap; }
+
+    /* Warm elevation on surfaces */
+    .card, .hero, .ratio-strip, .pace-strip { box-shadow: var(--shadow-card); }
+
+    /* Clay accent on primary actions */
+    .btn { background: var(--accent); color: var(--on-accent); }
+    .btn:active { background: var(--accent-press); }
+    .fab { background: var(--accent); color: var(--on-accent); box-shadow: 0 8px 22px oklch(0.52 0.09 var(--accent-h) / 0.30); }
+
+    /* Dark-assuming hardcoded colors → warm equivalents */
+    .history-day.today { background: var(--accent-bg); }
+    .history-day-bars .fill.hit { background: var(--good); }
+    .history-day-bars .fill.under { background: var(--warn); }
+    .history-day-bars .fill.over { background: var(--bad); }
+    .history-day-bars .val.hit { color: var(--good); }
+    .history-day-bars .val.over { color: var(--bad); }
+    .field-shell:focus-within { box-shadow: 0 0 0 3px var(--accent-bg) !important; border-color: var(--accent); }
+    .builder-summary-macros .bsm-pp-anchor { color: var(--good); }
+    .builder-summary-macros .bsm-pp-balanced { color: var(--info); }
+    .builder-summary-macros .bsm-pp-filler { color: var(--warn); }
+    @keyframes pulse-good {
+      0% { box-shadow: 0 0 0 0 oklch(0.58 0.15 var(--good-h) / 0.45); }
+      100% { box-shadow: 0 0 0 16px oklch(0.58 0.15 var(--good-h) / 0); }
+    }
+
+    /* ===== Preset cards — Variation B (anchor + ingredient chips) ===== */
+    .food-grid { grid-template-columns: 1fr; gap: 10px; }
+    .pcard {
+      position: relative; width: 100%; text-align: left; cursor: pointer;
+      background: var(--surface); border: 1px solid var(--hairline);
+      border-radius: var(--radius); padding: 14px 15px; box-shadow: var(--shadow-card);
+      display: flex; flex-direction: column; gap: 11px;
+      transition: transform 0.12s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      -webkit-tap-highlight-color: transparent; user-select: none;
+    }
+    .pcard:active { transform: scale(0.99); }
+    .pcard.pressing { border-color: var(--accent-line); box-shadow: 0 0 0 3px var(--accent-bg), var(--shadow-card); }
+    .pcard-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .pcard-titles { flex: 1 1 auto; min-width: 0; }
+    .pcard-name { font-family: var(--font-serif); font-size: 18px; font-weight: 500; line-height: 1.15; letter-spacing: -0.012em; color: var(--ink); }
+    .pcard-sub { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+    .pcard-macro { flex: 0 0 auto; text-align: right; }
+    .pcard-macro .k { font-family: var(--font-serif); font-size: 22px; font-weight: 500; line-height: 1; letter-spacing: -0.01em; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .pcard-macro .kc { font-size: 10.5px; color: var(--muted); }
+    .pcard-macro .pr { font-size: 12px; color: var(--good); font-weight: 600; margin-top: 4px; font-variant-numeric: tabular-nums; }
+    .pcard-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pcard-chip { display: inline-flex; align-items: baseline; gap: 4px; padding: 4px 9px; border-radius: 999px; font-size: 11.5px; background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--hairline); white-space: nowrap; }
+    .pcard-chip .q { color: var(--muted); font-variant-numeric: tabular-nums; }
+    .pcard-chip.lead { background: var(--good-bg); color: var(--good); border-color: var(--good-line); font-weight: 600; }
+    .pcard-chip.lead .q { color: var(--good); }
+    .pcard-chip.more { background: transparent; color: var(--accent); border: 1px dashed var(--hairline-strong); font-weight: 600; }
+    .pcard-hint { font-size: 10.5px; color: var(--dim); display: inline-flex; align-items: center; gap: 5px; margin-top: -2px; }
+    .pcard-hint svg { width: 12px; height: 12px; }
+
+    /* ===== Build tab — components / totals mode switch ===== */
+    .build-modeswitch { display: flex; gap: 6px; padding: 4px; background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 999px; margin-bottom: 16px; }
+    .build-modeswitch button { flex: 1; appearance: none; border: none; cursor: pointer; border-radius: 999px; padding: 9px 8px; font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; color: var(--muted); background: none; line-height: 1.25; }
+    .build-modeswitch button.on { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-card); }
+    .build-modeswitch button .sub { display: block; font-weight: 400; font-size: 10px; color: var(--muted); margin-top: 1px; }
+    .build-modeswitch button.on .sub { color: var(--ink-2); }
+    .adjust-banner { display: flex; align-items: center; gap: 8px; padding: 10px 13px; background: var(--accent-bg); border: 1px solid var(--accent-line); border-radius: var(--radius-sm); margin-bottom: 14px; font-size: 12.5px; color: var(--ink-2); }
+    .adjust-banner svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
+    .adjust-banner b { color: var(--ink); font-weight: 600; }
+    .totals-hint { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 10px; }
+    .totals-hint b { color: var(--ink-2); font-weight: 600; }
+
+    /* ===== Appearance / accent-theme picker (Settings) ===== */
+    .theme-picker { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .theme-opt {
+      position: relative; display: flex; align-items: center; gap: 11px; text-align: left;
+      padding: 11px 12px; border-radius: var(--radius); cursor: pointer;
+      background: var(--surface); border: 1px solid var(--hairline-strong);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .theme-opt.active { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
+    .theme-swatch {
+      position: relative; width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      border: 1px solid var(--hairline); overflow: hidden;
+    }
+    .theme-swatch .sw-accent { position: absolute; left: 7px; bottom: 7px; width: 17px; height: 17px; border-radius: 5px; }
+    .theme-swatch .sw-good { position: absolute; right: 7px; top: 7px; width: 11px; height: 11px; border-radius: 50%; }
+    .theme-labels { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+    .theme-name { font-family: var(--font-serif); font-size: 15px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+    .theme-desc { font-size: 11px; color: var(--muted); }
+    .theme-check { position: absolute; top: 10px; right: 10px; width: 16px; height: 16px; color: var(--accent); }
   </style>
 </head>
 <body>
@@ -2153,6 +2304,30 @@ const BUILDER_GROUPS = [
   { key: 'dish',    label: 'Dishes' },
 ];
 
+// ── Composition display helpers (surfacing a preset's parts on its card) ──
+const COMP_BY_ID = {};
+for (const _c of BUILDER_COMPONENTS) COMP_BY_ID[_c.id] = _c;
+
+const FRAC_MAP = { '0.25': '¼', '0.5': '½', '0.75': '¾', '1.25': '1¼', '1.5': '1½', '1.75': '1¾', '2.5': '2½', '0.8': '⅘' };
+function fmtFrac(q) { const k = String(q); return FRAC_MAP[k] || k; }
+// short, lowercase ingredient name for chips: "Rice (white, cooked)" → "rice"
+function compShort(c) {
+  if (!c) return '';
+  return c.name.replace(/\s*\([^)]*\)/g, '').replace(/\s*\/.*$/, '').trim().toLowerCase();
+}
+// compact quantity for a chip: 200g · ×3 · ½ cup · 2 tbsp
+function chipQty(qty, unit) {
+  if (unit === 'g' || unit === 'ml') return qty + unit;
+  if (unit === 'pc') return '×' + fmtFrac(qty);
+  if (unit === 'cup') return fmtFrac(qty) + ' cup';
+  return fmtFrac(qty) + ' ' + unit;
+}
+function presetComponents(p) {
+  if (!Array.isArray(p._builder)) return [];
+  return p._builder.map(r => ({ comp: COMP_BY_ID[r.componentId], qty: r.qty, unit: r.unit })).filter(x => x.comp);
+}
+
+
 // All persisted keys are namespaced so this shared build never collides with
 // another Nutrition app on the same origin (e.g. GitHub Pages project sites
 // all share <user>.github.io). Bump or change NS to fork storage again.
@@ -2222,24 +2397,28 @@ function App() {
   const [editingBuilderMeal, setEditingBuilderMeal] = useState(null); // meal being rebuilt in Builder
   const [now, setNow] = useState(new Date());
   const [sheetOpen, setSheetOpen] = useState(false);
-  const [sheetTab, setSheetTab] = useState('quick');
+  const [sheetTab, setSheetTab] = useState('presets');
+  const [builderPrefill, setBuilderPrefill] = useState(null); // preset being adjusted before logging
   const [recentlyAddedId, setRecentlyAddedId] = useState(null);
   const [targets, setTargets] = useState(DEFAULT_TARGETS);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
+  const [theme, setTheme] = useState('tidepool'); // 'tidepool' | 'harbor'
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const [mealsRaw, savedRaw, targetsRaw] = await Promise.all([
+      const [mealsRaw, savedRaw, targetsRaw, themeRaw] = await Promise.all([
         storage.get(activeKey),
         storage.get('meals:saved'),
         storage.get('targets:v1'),
+        storage.get('theme:v1'),
       ]);
       if (cancelled) return;
       try { setMeals(mealsRaw ? JSON.parse(mealsRaw) || [] : []); } catch (e) { setMeals([]); }
       try { setSavedMeals(savedRaw ? JSON.parse(savedRaw) || [] : []); } catch (e) { setSavedMeals([]); }
       try { setTargets(mergeTargets(targetsRaw ? JSON.parse(targetsRaw) : null)); } catch (e) { setTargets(DEFAULT_TARGETS); }
+      if (themeRaw === 'harbor' || themeRaw === 'tidepool') setTheme(themeRaw);
       setLoaded(true);
     })();
     return () => { cancelled = true; };
@@ -2248,6 +2427,16 @@ function App() {
   useEffect(() => {
     if (loaded) storage.set('targets:v1', JSON.stringify(targets));
   }, [targets, loaded]);
+
+  // Apply + persist the accent theme (Tidepool / Harbor) on the root element.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'harbor') root.setAttribute('data-theme', 'harbor');
+    else root.removeAttribute('data-theme');
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'harbor' ? '#ECF0F2' : '#EAF0EF');
+    if (loaded) storage.set('theme:v1', theme);
+  }, [theme, loaded]);
 
   useEffect(() => {
     if (loaded) storage.set(activeKey, JSON.stringify(meals));
@@ -2393,8 +2582,8 @@ function App() {
   const worstFrac = Math.min(kcalFrac, proteinFrac);
   const paceDelta = worstFrac - paceFrac;
   let paceStatus = 'good', paceMsg = 'On pace';
-  if (meals.length === 0 && paceFrac < 0.15) {
-    paceStatus = ''; paceMsg = 'Day not started';
+  if (meals.length === 0) {
+    paceStatus = ''; paceMsg = 'Not started';
   } else if (paceDelta < -0.20) {
     paceStatus = 'bad'; paceMsg = 'Behind pace';
   } else if (paceDelta < -0.10) {
@@ -2425,6 +2614,7 @@ function App() {
         kcalFrac={kcalFrac}
         proteinFrac={proteinFrac}
         paceStatus={paceStatus}
+        hasLogged={meals.length > 0}
       />
 
       <BudgetTable totals={totals} kcalRemaining={kcalRemaining} proteinRemaining={proteinRemaining} />
@@ -2452,18 +2642,18 @@ function App() {
           onUpdate={updateMeal}
           onRemove={removeMeal}
           onSaveQuick={saveForQuickAdd}
-          onRebuild={(m) => { setEditingBuilderMeal(m); setSheetTab('builder'); setSheetOpen(true); }}
+          onRebuild={(m) => { setEditingBuilderMeal(m); setSheetTab('build'); setSheetOpen(true); }}
           recentlyAddedId={recentlyAddedId}
         />
       )}
 
       {meals.length > 0 && <DaySummary totals={totals} />}
 
-      <FabAdd onClick={() => setSheetOpen(true)} />
+      <FabAdd onClick={() => { setEditingBuilderMeal(null); setBuilderPrefill(null); setSheetTab('presets'); setSheetOpen(true); }} />
 
       {sheetOpen && (
         <AddSheet
-          onClose={() => { setSheetOpen(false); setEditingBuilderMeal(null); }}
+          onClose={() => { setSheetOpen(false); setEditingBuilderMeal(null); setBuilderPrefill(null); }}
           onAdd={(m) => {
             if (editingBuilderMeal) {
               updateMeal(editingBuilderMeal.id, m);
@@ -2471,15 +2661,18 @@ function App() {
               setSheetOpen(false);
             } else {
               addMeal(m);
+              setBuilderPrefill(null);
             }
           }}
+          onAdjust={(p) => { setBuilderPrefill(p); setSheetTab('build'); }}
           onSavePreset={saveForQuickAdd}
           presets={PRESETS}
           savedMeals={savedMeals}
           onRemoveSaved={removeSaved}
           tab={sheetTab}
           setTab={setSheetTab}
-          editingBuilderMeal={editingBuilderMeal}
+          seedMeal={editingBuilderMeal || builderPrefill}
+          seedKind={editingBuilderMeal ? 'edit' : (builderPrefill ? 'adjust' : null)}
         />
       )}
 
@@ -2487,6 +2680,8 @@ function App() {
         <SettingsSheet
           targets={targets}
           totals={totals}
+          theme={theme}
+          setTheme={setTheme}
           onClose={() => setSettingsOpen(false)}
           onSave={(t) => { setTargets(t); }}
           onReset={() => { setTargets(DEFAULT_TARGETS); }}
@@ -2538,11 +2733,12 @@ function Topbar({ now, paceStatus, paceMsg, mealCount, onClear, onSettings, onHi
 
 function Hero({ totals }) {
   const targets = useContext(TargetsContext);
+  const started = totals.kcal > 0 || totals.p > 0;
   const proteinPct = Math.min(100, (totals.p / targets.protein) * 100);
   const kcalPct = Math.min(100, (totals.kcal / targets.caloriesTarget) * 100);
-  const proteinColor = totals.p >= targets.protein ? 'good' : (totals.p / targets.protein > 0.7 ? 'warn' : 'bad');
-  const kcalColor = totals.kcal >= targets.caloriesTarget ? 'good'
-    : (totals.kcal >= targets.caloriesFloor ? 'warn' : 'bad');
+  const proteinColor = !started ? '' : (totals.p >= targets.protein ? 'good' : (totals.p / targets.protein > 0.7 ? 'warn' : 'bad'));
+  const kcalColor = !started ? '' : (totals.kcal >= targets.caloriesTarget ? 'good'
+    : (totals.kcal >= targets.caloriesFloor ? 'warn' : 'bad'));
   const proteinLeft = Math.max(0, targets.protein - totals.p);
   const kcalLeft = Math.max(0, targets.caloriesTarget - totals.kcal);
 
@@ -2551,7 +2747,7 @@ function Hero({ totals }) {
       <div className="hero-col">
         <div className="hero-label-row">
           <span className="hero-label">Protein</span>
-          <span className={`hero-status ${proteinColor}`}>{proteinLeft === 0 ? '✓ HIT' : `−${Math.round(proteinLeft)}g`}</span>
+          <span className={`hero-status ${proteinColor}`}>{!started ? `goal ${targets.protein}g` : proteinLeft === 0 ? '✓ hit' : `${Math.round(proteinLeft)}g to go`}</span>
         </div>
         <div className="hero-num mono">
           {Math.round(totals.p)}<span className="target">/{targets.protein}</span>
@@ -2564,7 +2760,7 @@ function Hero({ totals }) {
       <div className="hero-col">
         <div className="hero-label-row">
           <span className="hero-label">Calories</span>
-          <span className={`hero-status ${kcalColor}`}>{kcalLeft === 0 ? '✓ HIT' : `−${Math.round(kcalLeft)}`}</span>
+          <span className={`hero-status ${kcalColor}`}>{!started ? `goal ${targets.caloriesTarget}` : kcalLeft === 0 ? '✓ hit' : `${Math.round(kcalLeft)} to go`}</span>
         </div>
         <div className="hero-num mono">
           {Math.round(totals.kcal)}<span className="target">/{targets.caloriesTarget}</span>
@@ -2618,13 +2814,14 @@ function ImpliedRatio({ impliedRatio, proteinHit, kcalHit, proteinRemaining, kca
   );
 }
 
-function PaceStrip({ now, paceFrac, kcalFrac, proteinFrac, paceStatus }) {
+function PaceStrip({ now, paceFrac, kcalFrac, proteinFrac, paceStatus, hasLogged }) {
   const kcalAt = Math.max(0, Math.round(kcalFrac * 100));
   const proteinAt = Math.max(0, Math.round(proteinFrac * 100));
+  const started = hasLogged && paceFrac >= 0.05;
 
   const rowStatus = (frac) => {
     const d = frac - paceFrac;
-    if (paceFrac < 0.05) return 'neutral';
+    if (!started) return 'neutral';
     if (d < -0.20) return 'bad';
     if (d < -0.10) return 'warn';
     return 'good';
@@ -2634,9 +2831,10 @@ function PaceStrip({ now, paceFrac, kcalFrac, proteinFrac, paceStatus }) {
 
   const worstFrac = Math.min(kcalFrac, proteinFrac);
   const delta = Math.round((worstFrac - paceFrac) * 100);
-  const headlineStatus = paceFrac < 0.05 ? '' : (delta < -20 ? 'bad' : delta < -10 ? 'warn' : 'good');
-  const headline = paceFrac < 0.05
-    ? 'Day not started'
+  const headlineStatus = !started ? '' : (delta < -20 ? 'bad' : delta < -10 ? 'warn' : 'good');
+  const headline = !hasLogged
+    ? 'Not started'
+    : !started ? 'Early'
     : delta >= 0 ? `+${delta}% vs ideal`
     : `${delta}% vs ideal`;
 
@@ -2661,7 +2859,9 @@ function PaceStrip({ now, paceFrac, kcalFrac, proteinFrac, paceStatus }) {
   const kcalDelta = Math.round((kcalFrac - paceFrac) * 100);
   const proteinDelta = Math.round((proteinFrac - paceFrac) * 100);
   let foot;
-  if (paceFrac < 0.05) {
+  if (!hasLogged) {
+    foot = <>Your eating window is <span className="num">8a–9p</span>. Log a meal and pace tracking begins.</>;
+  } else if (paceFrac < 0.05) {
     foot = <>Eating window <span className="num">8a–9p</span>. Pace tracker activates after 8a.</>;
   } else if (paceFrac >= 1) {
     foot = <>Window closed at <span className="num">9p</span>.</>;
@@ -2852,7 +3052,7 @@ function ProteinDensityChart({ meals }) {
         ))}
 
         {/* target band */}
-        <rect x={padL} y={bandTop} width={plotW} height={bandBot - bandTop} fill="oklch(0.82 0.16 145 / 0.18)" />
+        <rect x={padL} y={bandTop} width={plotW} height={bandBot - bandTop} fill="color-mix(in oklab, var(--good) 18%, transparent)" />
         <line x1={padL} y1={yScale(TARGET)} x2={W - padR} y2={yScale(TARGET)} stroke="var(--good)" strokeWidth="1" strokeDasharray="3 3" opacity="0.85" />
         <text x={W - padR - 4} y={yScale(TARGET) - 4} fill="var(--good)" fontSize="9" textAnchor="end" fontFamily="var(--font-mono)" letterSpacing="0.04em">
           TARGET {TARGET.toFixed(1)}
@@ -2939,7 +3139,7 @@ function MealItem({ meal, flash, onEdit, onRemove, onSaveQuick, onRebuild }) {
   const roleLabel = role === 'anchor' ? 'ANCHOR' : role === 'balanced' ? 'BALANCED' : 'FILLER';
 
   return (
-    <div className="meal" style={flash ? { background: 'oklch(0.82 0.16 145 / 0.06)' } : null}>
+    <div className="meal" style={flash ? { background: 'color-mix(in oklab, var(--good) 8%, transparent)' } : null}>
       <div>
         <div className="meal-name">
           <span>{meal.name}</span>
@@ -3030,7 +3230,7 @@ function FabAdd({ onClick }) {
   );
 }
 
-function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveSaved, tab, setTab, editingBuilderMeal }) {
+function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveSaved, tab, setTab, seedMeal, seedKind, onAdjust }) {
   const [pulseId, setPulseId] = useState(null);
   const handleAdd = (m) => {
     setPulseId(m.name);
@@ -3038,6 +3238,8 @@ function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveS
     setTimeout(() => setPulseId(null), 200);
     // do not close — allow stacking adds
   };
+  const locked = !!seedKind; // editing a logged meal or adjusting a preset → force Build
+  const title = seedKind === 'edit' ? 'Edit meal' : seedKind === 'adjust' ? 'Adjust before logging' : 'Add a meal';
 
   return (
     <>
@@ -3045,11 +3247,10 @@ function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveS
       <div className="sheet" role="dialog" aria-modal="true">
         <div className="sheet-handle" />
         <div className="sheet-head">
-          <div className="sheet-title">{editingBuilderMeal ? 'Edit meal' : 'Add meal'}</div>
+          <div className="sheet-title">{title}</div>
           <div className="sheet-tabs" role="tablist">
-            <button className={`sheet-tab ${tab === 'quick' ? 'active' : ''}`} onClick={() => setTab('quick')} disabled={!!editingBuilderMeal}>Preset</button>
-            <button className={`sheet-tab ${tab === 'custom' ? 'active' : ''}`} onClick={() => setTab('custom')} disabled={!!editingBuilderMeal}>Custom</button>
-            <button className={`sheet-tab ${tab === 'builder' ? 'active' : ''}`} onClick={() => setTab('builder')}>Builder</button>
+            <button className={`sheet-tab ${tab === 'presets' ? 'active' : ''}`} onClick={() => setTab('presets')} disabled={locked}>Presets</button>
+            <button className={`sheet-tab ${tab === 'build' ? 'active' : ''}`} onClick={() => setTab('build')}>Build</button>
           </div>
           <button className="icon-btn" onClick={onClose} aria-label="Close">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -3057,23 +3258,23 @@ function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveS
         </div>
 
         <div className="sheet-body">
-          {tab === 'quick' ? (
+          {tab === 'presets' && !locked ? (
             <QuickAdd
               presets={presets}
               savedMeals={savedMeals}
               onAdd={handleAdd}
+              onAdjust={onAdjust}
               onRemoveSaved={onRemoveSaved}
               pulseId={pulseId}
             />
-          ) : tab === 'builder' ? (
-            <BuilderAdd
+          ) : (
+            <BuildTab
+              seedMeal={seedMeal}
+              seedKind={seedKind}
               onSubmit={(m) => { handleAdd(m); }}
               onCancel={onClose}
               onSavePreset={onSavePreset}
-              editingMeal={editingBuilderMeal}
             />
-          ) : (
-            <CustomAdd onSubmit={(m) => { handleAdd(m); }} onCancel={onClose} />
           )}
         </div>
       </div>
@@ -3081,7 +3282,105 @@ function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveS
   );
 }
 
-function QuickAdd({ presets, savedMeals, onAdd, onRemoveSaved, pulseId }) {
+// Build tab = component picker ("From components") + totals fallback ("Just totals").
+// Absorbs the former Builder and Custom tabs into one surface.
+function BuildTab({ seedMeal, seedKind, onSubmit, onCancel, onSavePreset }) {
+  const [mode, setMode] = useState('components');
+  const locked = !!seedKind; // seeded → always component mode
+  const m = locked ? 'components' : mode;
+  const seedKey = seedMeal ? (seedMeal.id || 'seed:' + seedMeal.name) : 'fresh';
+  return (
+    <div>
+      {seedKind === 'adjust' && (
+        <div className="adjust-banner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+          <span>Pre-filled from <b>{seedMeal.name}</b> — tweak the sizes, then log.</span>
+        </div>
+      )}
+      {!locked && (
+        <div className="build-modeswitch" role="tablist">
+          <button className={m === 'components' ? 'on' : ''} onClick={() => setMode('components')}>From components<span className="sub">I made this out of…</span></button>
+          <button className={m === 'totals' ? 'on' : ''} onClick={() => setMode('totals')}>Just totals<span className="sub">I only know the calories</span></button>
+        </div>
+      )}
+      {m === 'components' ? (
+        <BuilderAdd
+          key={seedKey}
+          onSubmit={onSubmit}
+          onCancel={onCancel}
+          onSavePreset={onSavePreset}
+          editingMeal={seedMeal}
+          submitLabel={seedKind === 'edit' ? 'Save changes' : seedKind === 'adjust' ? 'Log meal' : 'Add meal'}
+        />
+      ) : (
+        <TotalsForm onSubmit={onSubmit} onCancel={onCancel} />
+      )}
+    </div>
+  );
+}
+
+// A preset card: tap logs instantly; press-and-hold (or right-click) opens it
+// pre-filled in Build to adjust sizes first. Shows its component composition.
+function PresetCard({ p, onAdd, onAdjust, pulse }) {
+  const timer = React.useRef(null);
+  const fired = React.useRef(false);
+  const startPt = React.useRef(null);
+  const [pressing, setPressing] = useState(false);
+  const comps = presetComponents(p);
+  const shown = comps.slice(0, 4);
+  const rest = comps.length - shown.length;
+
+  const start = (e) => {
+    fired.current = false;
+    startPt.current = { x: e.clientX, y: e.clientY };
+    setPressing(true);
+    timer.current = setTimeout(() => { fired.current = true; setPressing(false); timer.current = null; onAdjust(p); }, 480);
+  };
+  const end = () => { setPressing(false); if (timer.current) { clearTimeout(timer.current); timer.current = null; } };
+  const move = (e) => {
+    if (!startPt.current || !timer.current) return;
+    const dx = Math.abs(e.clientX - startPt.current.x), dy = Math.abs(e.clientY - startPt.current.y);
+    if (dx > 10 || dy > 10) end();
+  };
+  const click = () => { if (fired.current) { fired.current = false; return; } onAdd(p); };
+
+  return (
+    <button
+      className={`pcard ${pressing ? 'pressing' : ''} ${pulse ? 'pulse-good' : ''}`}
+      onClick={click}
+      onPointerDown={start}
+      onPointerUp={end}
+      onPointerMove={move}
+      onPointerLeave={end}
+      onPointerCancel={end}
+      onContextMenu={(e) => { e.preventDefault(); onAdjust(p); }}
+    >
+      <div className="pcard-top">
+        <div className="pcard-titles">
+          <div className="pcard-name">{p.name}</div>
+          {p.sub && <div className="pcard-sub">{p.sub}</div>}
+        </div>
+        <div className="pcard-macro">
+          <div className="k">{p.kcal}</div>
+          <div className="kc">cal</div>
+          <div className="pr">{p.p}g protein</div>
+        </div>
+      </div>
+      {shown.length > 0 && (
+        <div className="pcard-chips">
+          {shown.map((x, i) => (
+            <span key={i} className={`pcard-chip ${i === 0 ? 'lead' : ''}`}>
+              {compShort(x.comp)}<span className="q">{chipQty(x.qty, x.unit)}</span>
+            </span>
+          ))}
+          {rest > 0 && <span className="pcard-chip more">+{rest} more</span>}
+        </div>
+      )}
+    </button>
+  );
+}
+
+function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId }) {
   const [openCuisine, setOpenCuisine] = useState(null);
   const staples = presets.filter(isStaple);
   const nonStaples = presets.filter(p => !isStaple(p));
@@ -3089,29 +3388,9 @@ function QuickAdd({ presets, savedMeals, onAdd, onRemoveSaved, pulseId }) {
   for (const p of nonStaples) cuisineCounts[p.cuisine] = (cuisineCounts[p.cuisine] || 0) + 1;
   const cuisinesWithItems = CUISINES.filter(c => (cuisineCounts[c.key] || 0) > 0);
 
-  const renderCard = (p) => {
-    const pp = ppKc(p);
-    return (
-      <button
-        key={p.name}
-        className={`food-card ${pulseId === p.name ? 'pulse-good' : ''}`}
-        onClick={() => onAdd(p)}
-      >
-        <div className={`food-card-pp ${p.cat} mono`}>{pp.toFixed(1)}</div>
-        <div className="food-card-name">{p.name}</div>
-        <div className="food-card-meta">
-          <span className="kcal">{p.kcal}</span>
-          <span className="sep">·</span>
-          <span>{p.p}p</span>
-          <span className="sep">·</span>
-          <span>{p.f}f</span>
-          <span className="sep">·</span>
-          <span>{p.c}c</span>
-        </div>
-        {p.sub && <div className="food-card-meta" style={{ color: 'var(--dim)', fontSize: 10.5, fontFamily: 'var(--font-sans)' }}>{p.sub}</div>}
-      </button>
-    );
-  };
+  const renderCard = (p) => (
+    <PresetCard key={p.name} p={p} onAdd={onAdd} onAdjust={onAdjust} pulse={pulseId === p.name} />
+  );
 
   if (openCuisine) {
     const cuisine = CUISINES.find(c => c.key === openCuisine);
@@ -3147,6 +3426,10 @@ function QuickAdd({ presets, savedMeals, onAdd, onRemoveSaved, pulseId }) {
 
   return (
     <div>
+      <div className="pcard-hint" style={{ margin: '2px 2px 14px' }}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11.5V5.5a1.5 1.5 0 0 1 3 0v5"/><path d="M12 10V4.5a1.5 1.5 0 0 1 3 0V10"/><path d="M15 10V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1.5a5 5 0 0 1-3.7-1.6L4 15.2a1.6 1.6 0 0 1 2.3-2.2l1.7 1.5V8a1.5 1.5 0 0 1 3 0"/></svg>
+        Tap to log instantly · hold a card to adjust sizes first
+      </div>
       <div className="sheet-section">
         <div className="sheet-section-head">
           <span className="sheet-section-title">Saved</span>
@@ -3219,7 +3502,7 @@ function saveRecent(r) {
   try { localStorage.setItem(RECENT_KEY, JSON.stringify(r)); } catch (e) {}
 }
 
-function BuilderAdd({ onSubmit, onCancel, onSavePreset, editingMeal }) {
+function BuilderAdd({ onSubmit, onCancel, onSavePreset, editingMeal, submitLabel }) {
   const [rows, setRows] = useState(() => {
     if (editingMeal && Array.isArray(editingMeal._builder)) {
       return editingMeal._builder.map(r => ({
@@ -3685,7 +3968,7 @@ function BuilderAdd({ onSubmit, onCancel, onSavePreset, editingMeal }) {
             {onSavePreset && !editingMeal && (
               <button className="btn btn-secondary" onClick={savePreset} title="Save this combo as a reusable preset">Save preset</button>
             )}
-            <button className="btn" onClick={submit}>{editingMeal ? 'Save changes' : 'Add meal'}</button>
+            <button className="btn" onClick={submit}>{submitLabel || (editingMeal ? 'Save changes' : 'Add meal')}</button>
           </div>
         </>
       )}
@@ -3693,11 +3976,12 @@ function BuilderAdd({ onSubmit, onCancel, onSavePreset, editingMeal }) {
   );
 }
 
-function CustomAdd({ onSubmit, onCancel }) {
+function TotalsForm({ onSubmit, onCancel }) {
   const [form, setForm] = useState({ name: '', kcal: '', p: '', f: '', c: '', fiber: '' });
   const handle = (k) => (e) => setForm(p => ({ ...p, [k]: e.target.value }));
+  const canLog = form.name.trim() && parseFloat(form.kcal) > 0;
   const submit = () => {
-    if (!form.name.trim()) return;
+    if (!canLog) return;
     onSubmit({
       name: form.name.trim(),
       kcal: parseFloat(form.kcal) || 0,
@@ -3710,17 +3994,18 @@ function CustomAdd({ onSubmit, onCancel }) {
   };
   return (
     <div className="custom-form">
-      <input value={form.name} onChange={handle('name')} placeholder="Meal name" />
+      <input value={form.name} onChange={handle('name')} placeholder="What was it? e.g. Mom's lasagne" />
+      <div className="input-with-label"><span className="lbl">CALORIES</span><input className="mono" type="number" inputMode="decimal" value={form.kcal} onChange={handle('kcal')} placeholder="required" /></div>
       <div className="form-grid-3">
-        <div className="input-with-label"><span className="lbl">KCAL</span><input className="mono" type="number" inputMode="decimal" value={form.kcal} onChange={handle('kcal')} /></div>
-        <div className="input-with-label"><span className="lbl">PROTEIN</span><input className="mono" type="number" inputMode="decimal" value={form.p} onChange={handle('p')} /></div>
-        <div className="input-with-label"><span className="lbl">FAT</span><input className="mono" type="number" inputMode="decimal" value={form.f} onChange={handle('f')} /></div>
-        <div className="input-with-label"><span className="lbl">CARBS</span><input className="mono" type="number" inputMode="decimal" value={form.c} onChange={handle('c')} /></div>
-        <div className="input-with-label"><span className="lbl">FIBER</span><input className="mono" type="number" inputMode="decimal" value={form.fiber} onChange={handle('fiber')} /></div>
+        <div className="input-with-label"><span className="lbl">PROTEIN</span><input className="mono" type="number" inputMode="decimal" value={form.p} onChange={handle('p')} placeholder="g" /></div>
+        <div className="input-with-label"><span className="lbl">FAT</span><input className="mono" type="number" inputMode="decimal" value={form.f} onChange={handle('f')} placeholder="g" /></div>
+        <div className="input-with-label"><span className="lbl">CARBS</span><input className="mono" type="number" inputMode="decimal" value={form.c} onChange={handle('c')} placeholder="g" /></div>
       </div>
+      <div className="input-with-label"><span className="lbl">FIBER</span><input className="mono" type="number" inputMode="decimal" value={form.fiber} onChange={handle('fiber')} placeholder="g — optional" /></div>
+      <div className="totals-hint">Only know the calories? <b>Leave the macros blank</b> — it logs as calories-only and your protein density just flags as unknown for that meal.</div>
       <div className="form-actions">
         <button className="btn btn-secondary" onClick={onCancel}>Cancel</button>
-        <button className="btn" onClick={submit}>Add meal</button>
+        <button className="btn" onClick={submit} disabled={!canLog}>Log meal</button>
       </div>
     </div>
   );
@@ -4101,7 +4386,7 @@ function HistorySheet({ targets, activeKey, todayMeals, onClose }) {
   );
 }
 
-function SettingsSheet({ targets, totals, onClose, onSave, onReset }) {
+function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onReset }) {
   const [form, setForm] = useState({
     protein: String(targets.protein),
     caloriesTarget: String(targets.caloriesTarget),
@@ -4270,6 +4555,40 @@ function SettingsSheet({ targets, totals, onClose, onSave, onReset }) {
         </div>
 
         <div className="sheet-body" style={{ padding: 0 }}>
+          <div className="settings-section">
+            <div className="settings-section-head">
+              <span className="settings-section-title">Appearance</span>
+              <span className="settings-section-meta">accent theme</span>
+            </div>
+            <div className="settings-section-help">Sets the highlight color across the app. The protein-anchor green stays a distinct signal in both.</div>
+            <div className="theme-picker">
+              {[
+                { key: 'tidepool', name: 'Tidepool', desc: 'deep teal', bg: '#EAF0EF', accent: 'oklch(0.50 0.075 205)', good: 'oklch(0.585 0.152 142)' },
+                { key: 'harbor', name: 'Harbor', desc: 'denim blue', bg: '#ECF0F2', accent: 'oklch(0.52 0.10 248)', good: 'oklch(0.575 0.152 145)' },
+              ].map(opt => (
+                <button
+                  key={opt.key}
+                  type="button"
+                  className={`theme-opt ${theme === opt.key ? 'active' : ''}`}
+                  onClick={() => setTheme(opt.key)}
+                  aria-pressed={theme === opt.key}
+                >
+                  <span className="theme-swatch" style={{ background: opt.bg }}>
+                    <span className="sw-accent" style={{ background: opt.accent }} />
+                    <span className="sw-good" style={{ background: opt.good }} />
+                  </span>
+                  <span className="theme-labels">
+                    <span className="theme-name">{opt.name}</span>
+                    <span className="theme-desc">{opt.desc}</span>
+                  </span>
+                  {theme === opt.key && (
+                    <svg className="theme-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="settings-section">
             <div className="settings-section-head">
               <span className="settings-section-title">Protein & calories</span>

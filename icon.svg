@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#0A0A0B"></rect>
+  <rect width="512" height="512" rx="112" fill="#2C7E80"></rect>
   
-  <rect x="124" y="108" width="264" height="296" rx="18" fill="none" stroke="#EDEDEF" stroke-width="14"></rect>
+  <rect x="124" y="108" width="264" height="296" rx="18" fill="none" stroke="#F1F8F7" stroke-width="14"></rect>
   
-  <rect x="124" y="108" width="34" height="296" fill="#EDEDEF"></rect>
+  <rect x="124" y="108" width="34" height="296" fill="#F1F8F7"></rect>
   
-  <rect x="194" y="178" width="148" height="10" rx="3" fill="#6E6E76"></rect>
-  <rect x="194" y="222" width="124" height="10" rx="3" fill="#6E6E76"></rect>
-  <rect x="194" y="266" width="158" height="10" rx="3" fill="#6E6E76"></rect>
-  <rect x="194" y="310" width="100" height="10" rx="3" fill="#6E6E76"></rect>
+  <rect x="194" y="178" width="148" height="10" rx="3" fill="#A9DAD2"></rect>
+  <rect x="194" y="222" width="124" height="10" rx="3" fill="#A9DAD2"></rect>
+  <rect x="194" y="266" width="158" height="10" rx="3" fill="#A9DAD2"></rect>
+  <rect x="194" y="310" width="100" height="10" rx="3" fill="#A9DAD2"></rect>
   
-  <path d="M306 348 L320 362 L348 332" fill="none" stroke="#EDEDEF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M306 348 L320 362 L348 332" fill="none" stroke="#7BE3A6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
