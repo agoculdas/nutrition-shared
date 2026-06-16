@@ -661,8 +661,7 @@
     /* Sheet */
     .sheet-backdrop {
       position: fixed; inset: 0;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(2px);
+      background: rgba(20,30,28,0.46);
       z-index: 40;
       animation: fadeIn 0.18s ease;
     }
@@ -678,6 +677,14 @@
       z-index: 41;
       animation: sheet-up 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: var(--shadow-sheet);
+      /* Promote the scroll container to its own GPU layer so inner scrolling
+         composites instead of repainting the sheet (+ its 44px-blur shadow and
+         sticky header) on the CPU every frame. Fixes low-FPS scroll on weaker devices. */
+      transform: translateZ(0);
+      will-change: scroll-position;
+      contain: layout paint;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
     @keyframes sheet-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
     .sheet-handle {
@@ -2018,6 +2025,52 @@
     .theme-name { font-family: var(--font-serif); font-size: 15px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
     .theme-desc { font-size: 11px; color: var(--muted); }
     .theme-check { position: absolute; top: 10px; right: 10px; width: 16px; height: 16px; color: var(--accent); }
+
+    /* ===== Suggestions feature ===== */
+    .refresh-btn { display: inline-flex; align-items: center; gap: 5px; appearance: none; border: 1px solid var(--hairline-strong); background: var(--surface); color: var(--ink-2); border-radius: 999px; padding: 5px 11px; font-family: var(--font-sans); font-size: 12px; font-weight: 600; cursor: pointer; }
+    .refresh-btn svg { width: 13px; height: 13px; }
+    .refresh-btn:active { background: var(--surface-2); }
+
+    .pcard-more { position: absolute; bottom: 9px; right: 9px; width: 28px; height: 28px; display: grid; place-items: center; border: none; background: none; color: var(--dim); border-radius: 7px; cursor: pointer; }
+    .pcard-more svg { width: 18px; height: 18px; }
+    .pcard-more:hover { background: var(--surface-2); color: var(--ink-2); }
+    .pcard-chips { padding-right: 28px; }
+
+    .excluded-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 9px 11px; background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 10px; margin: 10px 0 4px; }
+    .excluded-lbl { font-size: 11.5px; color: var(--muted); font-weight: 600; }
+    .excluded-chip { white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 999px; background: var(--surface); border: 1px solid var(--hairline-strong); color: var(--ink-2); font-size: 11.5px; cursor: pointer; }
+    .excluded-chip svg { width: 11px; height: 11px; }
+    .excluded-restore { font-size: 10.5px; color: var(--dim); margin-left: auto; }
+
+    .modify-back { position: fixed; inset: 0; background: rgba(20,30,28,0.45); display: grid; place-items: end center; z-index: 200; }
+    .modify-sheet { width: 100%; max-width: 460px; background: var(--surface); border-radius: 18px 18px 0 0; padding: 16px 16px 26px; box-shadow: var(--shadow-sheet); animation: modify-rise 0.18s ease-out; }
+    @keyframes modify-rise { from { transform: translateY(12px); opacity: 0.6; } to { transform: none; opacity: 1; } }
+    .modify-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .modify-title { font-family: var(--font-serif); font-size: 19px; font-weight: 500; letter-spacing: -0.012em; }
+    .modify-sub { font-size: 12px; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+    .modify-action { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; padding: 12px 14px; border-radius: 11px; border: 1px solid var(--hairline-strong); background: var(--surface-2); font-family: var(--font-sans); font-size: 14px; font-weight: 500; color: var(--ink); cursor: pointer; margin-bottom: 16px; }
+    .modify-action svg { width: 17px; height: 17px; color: var(--accent); flex-shrink: 0; }
+    .modify-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .modify-exclude-list { display: flex; flex-direction: column; gap: 6px; }
+    .modify-exclude-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 13px; border-radius: 10px; border: 1px solid var(--hairline); background: var(--surface); font-size: 14px; color: var(--ink); cursor: pointer; text-align: left; }
+    .modify-exclude-item:hover { border-color: var(--bad); }
+    .modify-exclude-item .hide { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; color: var(--bad); font-weight: 600; white-space: nowrap; }
+    .modify-exclude-item .hide svg { width: 13px; height: 13px; }
+
+    /* ===== Two-door FAB + full-library search ===== */
+    .fab-row { width: 100%; max-width: 428px; display: flex; gap: 10px; pointer-events: none; }
+    .fab-row .fab { flex: 1; width: auto; max-width: none; pointer-events: auto; }
+    .fab.fab-ghost { background: var(--surface); color: var(--ink); box-shadow: 0 4px 14px rgba(20,30,28,0.10), 0 0 0 1px var(--hairline-strong) inset; }
+    .fab.fab-ghost:active { background: var(--surface-2); }
+    @media (min-width: 720px) { .fab-row { max-width: 528px; } }
+
+    .presets-search { position: relative; margin: 2px 0 14px; }
+    .presets-search input { width: 100%; height: 44px; border-radius: 999px; border: 1px solid var(--hairline-strong); background: var(--surface); padding: 0 40px; font-family: var(--font-sans); font-size: 14.5px; color: var(--ink); }
+    .presets-search input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
+    .presets-search input::placeholder { color: var(--muted); }
+    .presets-search .s-ic { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 17px; height: 17px; color: var(--muted); pointer-events: none; }
+    .presets-search-clear { position: absolute; right: 7px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; border: none; background: var(--surface-2); color: var(--ink-2); cursor: pointer; display: grid; place-items: center; }
+    .presets-search-clear svg { width: 15px; height: 15px; }
   </style>
 </head>
 <body>
@@ -2066,7 +2119,7 @@ const PRESET_DEFS = [
   { name: "Steak (sirloin 200g) + veg", sub: "lean cut, trimmed", tags: ["dinner"], cuisine: "american", _builder: [{ componentId: "steak-sirloin", qty: 200, unit: "g" }, { componentId: "steamed-veg", qty: 100, unit: "g" }] },
   { name: "BBQ pulled chicken", sub: "shredded, light sauce", tags: ["dinner"], cuisine: "american", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }] },
   { name: "Shrimp & tomato (no pasta)", sub: "garlic, olive oil, tomato", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "prawns", qty: 180, unit: "g" }, { componentId: "tomato", qty: 100, unit: "g" }, { componentId: "olive-oil", qty: 0.25, unit: "tbsp" }] },
-  { name: "Teriyaki chicken + veg (no rice)", sub: "glazed thigh, steamed veg", tags: ["lunch","dinner"], cuisine: "asian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }] },
+  { name: "Teriyaki chicken + veg (no rice)", sub: "glazed thigh, steamed veg", tags: ["lunch","dinner"], cuisine: "east-asian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }] },
   { name: "Shrimp ceviche", sub: "lime-cured shrimp, onion, cilantro", tags: ["lunch"], cuisine: "mexican", _builder: [{ componentId: "prawns", qty: 150, unit: "g" }, { componentId: "tomato", qty: 100, unit: "g" }, { componentId: "onion", qty: 50, unit: "g" }] },
   { name: "Tandoori chicken (2 legs)", sub: "yogurt marinade, no butter baste", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "chicken-thigh", qty: 240, unit: "g" }, { componentId: "greek-yogurt", qty: 30, unit: "g" }] },
   { name: "Chicken tikka 200g", sub: "boneless, grilled", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "greek-yogurt", qty: 30, unit: "g" }] },
@@ -2083,12 +2136,12 @@ const PRESET_DEFS = [
   { name: "Grilled salmon + salad", sub: "salmon fillet, mixed greens", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "salmon", qty: 150, unit: "g" }, { componentId: "side-salad", qty: 100, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
   { name: "Chicken souvlaki + pita", sub: "skewers, pita, tzatziki", tags: ["lunch"], cuisine: "mediterranean", _builder: [{ componentId: "chicken-thigh", qty: 180, unit: "g" }, { componentId: "pita", qty: 1, unit: "pc" }, { componentId: "tzatziki", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
   { name: "Pasta with chicken & pesto", sub: "1 plate", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "regular-pasta", qty: 90, unit: "g" }, { componentId: "chicken-breast", qty: 100, unit: "g" }, { componentId: "pesto", qty: 2, unit: "tbsp" }] },
-  { name: "Teriyaki chicken + rice", sub: "glazed thigh, 1 cup rice", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }, { componentId: "rice-white", qty: 1, unit: "cup" }] },
-  { name: "Chicken stir fry", sub: "thigh, veg, 1 tbsp oil", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 1, unit: "tbsp" }] },
-  { name: "Tofu & veg stir fry", sub: "firm tofu, mixed veg, soy", tags: ["dinner","vegetarian"], cuisine: "asian", _builder: [{ componentId: "tofu", qty: 150, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }] },
-  { name: "Steamed dumplings (6)", sub: "pork or chicken", tags: ["lunch"], cuisine: "asian", _builder: [{ componentId: "dumplings", qty: 6, unit: "pc" }] },
-  { name: "Miso soup + edamame", sub: "1 bowl + 1 cup pods", tags: ["snack","side"], cuisine: "asian", _builder: [{ componentId: "miso-soup", qty: 1, unit: "bowl" }, { componentId: "edamame", qty: 100, unit: "g" }] },
-  { name: "Beef & broccoli", sub: "with light sauce, no rice", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "steak-sirloin", qty: 130, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "teriyaki-glaze", qty: 3, unit: "tbsp" }, { componentId: "olive-oil", qty: 0.75, unit: "tbsp" }] },
+  { name: "Teriyaki chicken + rice", sub: "glazed thigh, 1 cup rice", tags: ["dinner"], cuisine: "east-asian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }, { componentId: "rice-white", qty: 1, unit: "cup" }] },
+  { name: "Chicken stir fry", sub: "thigh, veg, 1 tbsp oil", tags: ["dinner"], cuisine: "east-asian", _builder: [{ componentId: "chicken-thigh", qty: 200, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 1, unit: "tbsp" }] },
+  { name: "Tofu & veg stir fry", sub: "firm tofu, mixed veg, soy", tags: ["dinner","vegetarian"], cuisine: "east-asian", _builder: [{ componentId: "tofu", qty: 150, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }] },
+  { name: "Steamed dumplings (6)", sub: "pork or chicken", tags: ["lunch"], cuisine: "east-asian", _builder: [{ componentId: "dumplings", qty: 6, unit: "pc" }] },
+  { name: "Miso soup + edamame", sub: "1 bowl + 1 cup pods", tags: ["snack","side"], cuisine: "east-asian", _builder: [{ componentId: "miso-soup", qty: 1, unit: "bowl" }, { componentId: "edamame", qty: 100, unit: "g" }] },
+  { name: "Beef & broccoli", sub: "with light sauce, no rice", tags: ["dinner"], cuisine: "east-asian", _builder: [{ componentId: "steak-sirloin", qty: 130, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "teriyaki-glaze", qty: 3, unit: "tbsp" }, { componentId: "olive-oil", qty: 0.75, unit: "tbsp" }] },
   { name: "Chicken tacos × 3", sub: "soft tortillas, toppings", tags: ["dinner"], cuisine: "mexican", _builder: [{ componentId: "chicken-mince", qty: 130, unit: "g" }, { componentId: "flour-tortilla", qty: 3, unit: "pc" }, { componentId: "cheese-shredded", qty: 20, unit: "g" }, { componentId: "salsa", qty: 50, unit: "g" }] },
   { name: "Burrito bowl", sub: "chicken, rice, beans, salsa", tags: ["lunch","complete"], cuisine: "mexican", _builder: [{ componentId: "chicken-thigh", qty: 130, unit: "g" }, { componentId: "rice-white", qty: 0.5, unit: "cup" }, { componentId: "black-beans", qty: 100, unit: "g" }, { componentId: "cheese-shredded", qty: 30, unit: "g" }, { componentId: "guacamole", qty: 30, unit: "g" }, { componentId: "salsa", qty: 50, unit: "g" }] },
   { name: "Chicken fajitas", sub: "peppers, onions, no tortilla", tags: ["dinner"], cuisine: "mexican", _builder: [{ componentId: "chicken-breast", qty: 140, unit: "g" }, { componentId: "stir-fry-veg", qty: 150, unit: "g" }, { componentId: "onion", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 1, unit: "tbsp" }] },
@@ -2115,10 +2168,10 @@ const PRESET_DEFS = [
   { name: "Tzatziki + veg sticks", sub: "", tags: ["snack"], cuisine: "mediterranean", _builder: [{ componentId: "tzatziki", qty: 100, unit: "g" }, { componentId: "side-salad", qty: 100, unit: "g" }] },
   { name: "Minestrone soup (1 bowl)", sub: "", tags: ["lunch"], cuisine: "mediterranean", _builder: [{ componentId: "minestrone", qty: 1, unit: "bowl" }] },
   { name: "Caprese (mozzarella + tomato)", sub: "", tags: ["side"], cuisine: "mediterranean", _builder: [{ componentId: "mozzarella", qty: 80, unit: "g" }, { componentId: "tomato", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
-  { name: "Pad thai (chicken)", sub: "1 plate", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "pad-thai", qty: 375, unit: "g" }] },
-  { name: "Thai green curry chicken + rice", sub: "1 plate", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "chicken-thigh", qty: 130, unit: "g" }, { componentId: "coconut-milk", qty: 100, unit: "ml" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "rice-white", qty: 1, unit: "cup" }] },
-  { name: "Sushi rolls (8 pcs)", sub: "mixed maki", tags: ["lunch","takeaway"], cuisine: "asian", _builder: [{ componentId: "sushi-roll", qty: 8, unit: "pc" }] },
-  { name: "Chicken fried rice", sub: "1 plate", tags: ["dinner"], cuisine: "asian", _builder: [{ componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "chicken-thigh", qty: 100, unit: "g" }, { componentId: "egg", qty: 1, unit: "pc" }, { componentId: "stir-fry-veg", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Pad thai (chicken)", sub: "1 plate", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "pad-thai", qty: 375, unit: "g" }] },
+  { name: "Thai green curry chicken + rice", sub: "1 plate", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "chicken-thigh", qty: 130, unit: "g" }, { componentId: "coconut-milk", qty: 100, unit: "ml" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "rice-white", qty: 1, unit: "cup" }] },
+  { name: "Sushi rolls (8 pcs)", sub: "mixed maki", tags: ["lunch","takeaway"], cuisine: "east-asian", _builder: [{ componentId: "sushi-roll", qty: 8, unit: "pc" }] },
+  { name: "Chicken fried rice", sub: "1 plate", tags: ["dinner"], cuisine: "east-asian", _builder: [{ componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "chicken-thigh", qty: 100, unit: "g" }, { componentId: "egg", qty: 1, unit: "pc" }, { componentId: "stir-fry-veg", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
   { name: "Black beans + rice", sub: "side dish", tags: ["side"], cuisine: "mexican", _builder: [{ componentId: "black-beans", qty: 150, unit: "g" }, { componentId: "rice-white", qty: 0.5, unit: "cup" }] },
   { name: "Guacamole + chips", sub: "", tags: ["snack","treat"], cuisine: "mexican", _builder: [{ componentId: "guacamole", qty: 80, unit: "g" }, { componentId: "tortilla-chips", qty: 40, unit: "g" }] },
   { name: "Refried beans (1 cup)", sub: "", tags: ["side"], cuisine: "mexican", _builder: [{ componentId: "refried-beans", qty: 1, unit: "cup" }] },
@@ -2133,6 +2186,90 @@ const PRESET_DEFS = [
   { name: "Tabbouleh salad", sub: "bulgur, parsley, tomato", tags: ["side"], cuisine: "middle-eastern", _builder: [{ componentId: "tabbouleh", qty: 150, unit: "g" }] },
   { name: "Lentil soup (1 bowl)", sub: "", tags: ["lunch"], cuisine: "middle-eastern", _builder: [{ componentId: "lentil-soup", qty: 1, unit: "bowl" }] },
   { name: "Baba ganoush + pita", sub: "smoked eggplant dip", tags: ["snack"], cuisine: "middle-eastern", _builder: [{ componentId: "baba-ganoush", qty: 80, unit: "g" }, { componentId: "pita", qty: 1, unit: "pc" }] },
+
+  // ===== Library expansion — NEW presets (Asian split into East / SE) =====
+  { name: "Tuna (canned) 100g", sub: "in water", tags: ["snack","lunch"], cuisine: "generic", _builder: [{ componentId: "tuna-canned", qty: 100, unit: "g" }] },
+  { name: "Protein oats", sub: "oats + whey + milk", tags: ["breakfast"], cuisine: "generic", _builder: [{ componentId: "oats-dry", qty: 40, unit: "g" }, { componentId: "whey", qty: 1, unit: "scoop" }, { componentId: "whole-milk", qty: 150, unit: "ml" }] },
+  { name: "Greek yogurt + nuts", sub: "200g + 20g", tags: ["snack","breakfast"], cuisine: "generic", _builder: [{ componentId: "greek-yogurt", qty: 200, unit: "g" }, { componentId: "nuts", qty: 20, unit: "g" }] },
+  { name: "Whey + milk", sub: "1 scoop + 250ml", tags: ["snack","shake"], cuisine: "generic", _builder: [{ componentId: "whey", qty: 1, unit: "scoop" }, { componentId: "whole-milk", qty: 250, unit: "ml" }] },
+  { name: "Cottage cheese + apple", sub: "", tags: ["snack"], cuisine: "generic", _builder: [{ componentId: "cottage-cheese", qty: 150, unit: "g" }, { componentId: "apple", qty: 1, unit: "pc" }] },
+  { name: "Mango", sub: "", tags: ["snack"], cuisine: "generic", _builder: [{ componentId: "mango", qty: 1, unit: "pc" }] },
+  { name: "Tuna melt", sub: "tuna, cheese, toast", tags: ["lunch"], cuisine: "american", _builder: [{ componentId: "tuna-canned", qty: 100, unit: "g" }, { componentId: "bread-toast", qty: 2, unit: "pc" }, { componentId: "cheese-shredded", qty: 25, unit: "g" }] },
+  { name: "Steak & eggs", sub: "sirloin + 2 eggs", tags: ["breakfast","dinner"], cuisine: "american", _builder: [{ componentId: "steak-sirloin", qty: 150, unit: "g" }, { componentId: "egg", qty: 2, unit: "pc" }] },
+  { name: "Cobb salad", sub: "chicken, egg, cheese", tags: ["lunch"], cuisine: "american", _builder: [{ componentId: "chicken-breast", qty: 120, unit: "g" }, { componentId: "egg", qty: 1, unit: "pc" }, { componentId: "side-salad", qty: 100, unit: "g" }, { componentId: "cheese-shredded", qty: 20, unit: "g" }, { componentId: "salad-dressing", qty: 1.5, unit: "tbsp" }] },
+  { name: "Pulled pork sandwich", sub: "pork, bun, BBQ", tags: ["lunch","dinner"], cuisine: "american", _builder: [{ componentId: "pork-loin", qty: 120, unit: "g" }, { componentId: "burger-bun", qty: 1, unit: "pc" }, { componentId: "teriyaki-glaze", qty: 1, unit: "tbsp" }] },
+  { name: "Chicken & rice bowl", sub: "breast, rice, veg", tags: ["lunch","dinner"], cuisine: "american", _builder: [{ componentId: "chicken-breast", qty: 150, unit: "g" }, { componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "steamed-veg", qty: 100, unit: "g" }] },
+  { name: "3-egg omelette + cheese", sub: "", tags: ["breakfast"], cuisine: "american", _builder: [{ componentId: "egg", qty: 3, unit: "pc" }, { componentId: "cheese-shredded", qty: 30, unit: "g" }] },
+  { name: "Buffalo wings", sub: "~8 wings, light butter", tags: ["dinner","treat"], cuisine: "american", _builder: [{ componentId: "chicken-thigh", qty: 220, unit: "g" }, { componentId: "butter", qty: 0.5, unit: "tbsp" }] },
+  { name: "Loaded fries", sub: "fries + cheese", tags: ["side","treat"], cuisine: "american", _builder: [{ componentId: "roast-potato", qty: 200, unit: "g" }, { componentId: "cheese-shredded", qty: 40, unit: "g" }] },
+  { name: "Mac & cheese + chicken", sub: "1 bowl", tags: ["dinner"], cuisine: "american", _builder: [{ componentId: "regular-pasta", qty: 55, unit: "g" }, { componentId: "cheese-shredded", qty: 35, unit: "g" }, { componentId: "chicken-breast", qty: 80, unit: "g" }] },
+  { name: "Grilled fish + couscous", sub: "white fish, couscous", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "white-fish", qty: 180, unit: "g" }, { componentId: "couscous", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Shrimp & quinoa salad", sub: "", tags: ["lunch"], cuisine: "mediterranean", _builder: [{ componentId: "prawns", qty: 150, unit: "g" }, { componentId: "quinoa", qty: 100, unit: "g" }, { componentId: "side-salad", qty: 80, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Chicken gyro plate", sub: "chicken, pita, tzatziki", tags: ["lunch"], cuisine: "mediterranean", _builder: [{ componentId: "chicken-thigh", qty: 180, unit: "g" }, { componentId: "pita", qty: 1, unit: "pc" }, { componentId: "tzatziki", qty: 50, unit: "g" }, { componentId: "side-salad", qty: 80, unit: "g" }] },
+  { name: "Shakshuka", sub: "3 eggs in tomato", tags: ["breakfast"], cuisine: "mediterranean", _builder: [{ componentId: "egg", qty: 3, unit: "pc" }, { componentId: "tomato", qty: 150, unit: "g" }, { componentId: "onion", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Tuna Niçoise salad", sub: "tuna, egg, greens", tags: ["lunch"], cuisine: "mediterranean", _builder: [{ componentId: "tuna-canned", qty: 100, unit: "g" }, { componentId: "egg", qty: 1, unit: "pc" }, { componentId: "side-salad", qty: 120, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Lemon chicken + quinoa", sub: "", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "chicken-breast", qty: 150, unit: "g" }, { componentId: "quinoa", qty: 100, unit: "g" }, { componentId: "roasted-veg", qty: 100, unit: "g" }] },
+  { name: "Stuffed peppers", sub: "beef & rice", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "ground-beef", qty: 100, unit: "g" }, { componentId: "rice-white", qty: 0.5, unit: "cup" }, { componentId: "tomato", qty: 100, unit: "g" }] },
+  { name: "Caprese plate", sub: "mozzarella, tomato", tags: ["side","lunch"], cuisine: "mediterranean", _builder: [{ componentId: "mozzarella", qty: 80, unit: "g" }, { componentId: "tomato", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Calamari (grilled) + salad", sub: "", tags: ["dinner"], cuisine: "mediterranean", _builder: [{ componentId: "calamari", qty: 180, unit: "g" }, { componentId: "side-salad", qty: 100, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Falafel mezze", sub: "falafel, hummus, salad", tags: ["lunch","vegetarian"], cuisine: "mediterranean", _builder: [{ componentId: "falafel", qty: 4, unit: "pc" }, { componentId: "hummus", qty: 40, unit: "g" }, { componentId: "side-salad", qty: 80, unit: "g" }] },
+  { name: "Ramen bowl", sub: "1 bowl", tags: ["lunch","dinner"], cuisine: "east-asian", _builder: [{ componentId: "ramen-bowl", qty: 1, unit: "bowl" }] },
+  { name: "Pho (beef)", sub: "1 bowl", tags: ["lunch","dinner"], cuisine: "east-asian", _builder: [{ componentId: "pho-bowl", qty: 1, unit: "bowl" }] },
+  { name: "Bibimbap", sub: "rice, beef, veg, egg", tags: ["dinner"], cuisine: "east-asian", _builder: [{ componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "ground-beef", qty: 100, unit: "g" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "egg", qty: 1, unit: "pc" }, { componentId: "kimchi", qty: 50, unit: "g" }] },
+  { name: "Kimchi fried rice + egg", sub: "", tags: ["lunch","dinner"], cuisine: "east-asian", _builder: [{ componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "kimchi", qty: 80, unit: "g" }, { componentId: "egg", qty: 2, unit: "pc" }, { componentId: "stir-fry-veg", qty: 50, unit: "g" }] },
+  { name: "Salmon teriyaki + rice", sub: "", tags: ["dinner"], cuisine: "east-asian", _builder: [{ componentId: "salmon", qty: 150, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }, { componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "stir-fry-veg", qty: 80, unit: "g" }] },
+  { name: "Edamame (1 cup)", sub: "", tags: ["snack","side"], cuisine: "east-asian", _builder: [{ componentId: "edamame", qty: 1, unit: "cup" }] },
+  { name: "Fried spring rolls (4)", sub: "", tags: ["side","snack"], cuisine: "east-asian", _builder: [{ componentId: "spring-rolls", qty: 4, unit: "pc" }] },
+  { name: "Korean BBQ beef (no rice)", sub: "sirloin, glaze", tags: ["dinner"], cuisine: "east-asian", _builder: [{ componentId: "steak-sirloin", qty: 200, unit: "g" }, { componentId: "teriyaki-glaze", qty: 2, unit: "tbsp" }] },
+  { name: "Tofu katsu + rice", sub: "", tags: ["dinner","vegetarian"], cuisine: "east-asian", _builder: [{ componentId: "tofu", qty: 150, unit: "g" }, { componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "stir-fry-veg", qty: 80, unit: "g" }] },
+  { name: "Egg fried rice", sub: "", tags: ["lunch"], cuisine: "east-asian", _builder: [{ componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "egg", qty: 2, unit: "pc" }, { componentId: "stir-fry-veg", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Seaweed salad", sub: "", tags: ["side","snack"], cuisine: "east-asian", _builder: [{ componentId: "seaweed-salad", qty: 100, unit: "g" }] },
+  { name: "Chicken satay (4 skewers)", sub: "peanut sauce", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "chicken-thigh", qty: 180, unit: "g" }, { componentId: "peanut-butter", qty: 1, unit: "tbsp" }] },
+  { name: "Beef rendang + rice", sub: "", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "steak-sirloin", qty: 130, unit: "g" }, { componentId: "coconut-milk", qty: 80, unit: "ml" }, { componentId: "rice-white", qty: 1, unit: "cup" }] },
+  { name: "Nasi goreng", sub: "fried rice, chicken, egg", tags: ["lunch","dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "chicken-thigh", qty: 100, unit: "g" }, { componentId: "egg", qty: 1, unit: "pc" }, { componentId: "stir-fry-veg", qty: 50, unit: "g" }] },
+  { name: "Summer rolls (3)", sub: "fresh rice paper", tags: ["lunch","snack"], cuisine: "southeast-asian", _builder: [{ componentId: "summer-rolls", qty: 3, unit: "pc" }] },
+  { name: "Pho (chicken)", sub: "1 bowl", tags: ["lunch","dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "pho-bowl", qty: 1, unit: "bowl" }] },
+  { name: "Tom yum + prawns", sub: "spicy soup", tags: ["lunch"], cuisine: "southeast-asian", _builder: [{ componentId: "prawns", qty: 150, unit: "g" }, { componentId: "stir-fry-veg", qty: 80, unit: "g" }] },
+  { name: "Laksa (chicken)", sub: "noodles, coconut broth", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "rice-noodles", qty: 100, unit: "g" }, { componentId: "chicken-thigh", qty: 100, unit: "g" }, { componentId: "coconut-milk", qty: 80, unit: "ml" }, { componentId: "stir-fry-veg", qty: 50, unit: "g" }] },
+  { name: "Thai red curry + rice", sub: "chicken", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "chicken-thigh", qty: 130, unit: "g" }, { componentId: "coconut-milk", qty: 100, unit: "ml" }, { componentId: "stir-fry-veg", qty: 100, unit: "g" }, { componentId: "rice-white", qty: 1, unit: "cup" }] },
+  { name: "Pad see ew (chicken)", sub: "wide noodles", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "rice-noodles", qty: 150, unit: "g" }, { componentId: "chicken-thigh", qty: 100, unit: "g" }, { componentId: "egg", qty: 1, unit: "pc" }, { componentId: "stir-fry-veg", qty: 50, unit: "g" }] },
+  { name: "Banh mi (chicken)", sub: "baguette, pickles", tags: ["lunch"], cuisine: "southeast-asian", _builder: [{ componentId: "chicken-thigh", qty: 100, unit: "g" }, { componentId: "burger-bun", qty: 1, unit: "pc" }, { componentId: "side-salad", qty: 40, unit: "g" }] },
+  { name: "Massaman beef + rice", sub: "", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "steak-sirloin", qty: 120, unit: "g" }, { componentId: "coconut-milk", qty: 80, unit: "ml" }, { componentId: "mashed-potato", qty: 80, unit: "g" }, { componentId: "rice-white", qty: 0.8, unit: "cup" }] },
+  { name: "Pad thai (shrimp)", sub: "1 plate", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "pad-thai", qty: 350, unit: "g" }, { componentId: "prawns", qty: 60, unit: "g" }] },
+  { name: "Coconut chicken curry + rice", sub: "", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "chicken-thigh", qty: 130, unit: "g" }, { componentId: "coconut-milk", qty: 100, unit: "ml" }, { componentId: "rice-white", qty: 1, unit: "cup" }] },
+  { name: "Mango sticky rice", sub: "dessert", tags: ["treat","snack"], cuisine: "southeast-asian", _builder: [{ componentId: "mango", qty: 1, unit: "pc" }, { componentId: "rice-white", qty: 0.5, unit: "cup" }, { componentId: "coconut-milk", qty: 50, unit: "ml" }] },
+  { name: "Chicken larb + rice", sub: "minced, herby", tags: ["lunch","dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "chicken-mince", qty: 150, unit: "g" }, { componentId: "side-salad", qty: 60, unit: "g" }, { componentId: "rice-white", qty: 0.5, unit: "cup" }] },
+  { name: "Singapore noodles", sub: "thin noodles, prawn, egg", tags: ["dinner"], cuisine: "southeast-asian", _builder: [{ componentId: "rice-noodles", qty: 150, unit: "g" }, { componentId: "prawns", qty: 80, unit: "g" }, { componentId: "egg", qty: 1, unit: "pc" }, { componentId: "stir-fry-veg", qty: 50, unit: "g" }] },
+  { name: "Carnitas bowl", sub: "pork, rice, beans", tags: ["lunch","dinner"], cuisine: "mexican", _builder: [{ componentId: "pork-loin", qty: 130, unit: "g" }, { componentId: "rice-white", qty: 0.5, unit: "cup" }, { componentId: "black-beans", qty: 100, unit: "g" }, { componentId: "salsa", qty: 50, unit: "g" }] },
+  { name: "Carne asada", sub: "grilled steak", tags: ["dinner"], cuisine: "mexican", _builder: [{ componentId: "steak-sirloin", qty: 180, unit: "g" }, { componentId: "salsa", qty: 30, unit: "g" }] },
+  { name: "Fish tacos × 3", sub: "white fish, slaw", tags: ["dinner"], cuisine: "mexican", _builder: [{ componentId: "white-fish", qty: 130, unit: "g" }, { componentId: "flour-tortilla", qty: 3, unit: "pc" }, { componentId: "salsa", qty: 50, unit: "g" }, { componentId: "side-salad", qty: 40, unit: "g" }] },
+  { name: "Breakfast burrito", sub: "egg, cheese, salsa", tags: ["breakfast"], cuisine: "mexican", _builder: [{ componentId: "egg", qty: 3, unit: "pc" }, { componentId: "flour-tortilla", qty: 1.5, unit: "pc" }, { componentId: "cheese-shredded", qty: 30, unit: "g" }, { componentId: "salsa", qty: 30, unit: "g" }] },
+  { name: "Taco salad (beef)", sub: "", tags: ["lunch"], cuisine: "mexican", _builder: [{ componentId: "ground-beef", qty: 130, unit: "g" }, { componentId: "side-salad", qty: 120, unit: "g" }, { componentId: "cheese-shredded", qty: 30, unit: "g" }, { componentId: "salsa", qty: 40, unit: "g" }] },
+  { name: "Huevos rancheros", sub: "eggs, beans, salsa", tags: ["breakfast"], cuisine: "mexican", _builder: [{ componentId: "egg", qty: 3, unit: "pc" }, { componentId: "flour-tortilla", qty: 1, unit: "pc" }, { componentId: "refried-beans", qty: 100, unit: "g" }, { componentId: "salsa", qty: 50, unit: "g" }] },
+  { name: "Shrimp burrito bowl", sub: "", tags: ["lunch"], cuisine: "mexican", _builder: [{ componentId: "prawns", qty: 150, unit: "g" }, { componentId: "rice-white", qty: 0.5, unit: "cup" }, { componentId: "black-beans", qty: 100, unit: "g" }, { componentId: "salsa", qty: 50, unit: "g" }] },
+  { name: "Loaded nachos", sub: "chips, cheese, salsa", tags: ["snack","treat"], cuisine: "mexican", _builder: [{ componentId: "tortilla-chips", qty: 60, unit: "g" }, { componentId: "cheese-shredded", qty: 50, unit: "g" }, { componentId: "salsa", qty: 40, unit: "g" }] },
+  { name: "Bean & cheese burrito", sub: "", tags: ["lunch","vegetarian"], cuisine: "mexican", _builder: [{ componentId: "flour-tortilla", qty: 2, unit: "pc" }, { componentId: "refried-beans", qty: 150, unit: "g" }, { componentId: "cheese-shredded", qty: 40, unit: "g" }] },
+  { name: "Chicken enchiladas (2)", sub: "sauce + cheese", tags: ["dinner"], cuisine: "mexican", _builder: [{ componentId: "chicken-mince", qty: 100, unit: "g" }, { componentId: "flour-tortilla", qty: 2, unit: "pc" }, { componentId: "enchilada-sauce", qty: 100, unit: "ml" }, { componentId: "cheese-shredded", qty: 40, unit: "g" }] },
+  { name: "Egg curry + rice", sub: "3 eggs, gravy", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "egg", qty: 3, unit: "pc" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "rice-white", qty: 0.8, unit: "cup" }] },
+  { name: "Fish curry + rice", sub: "coconut gravy", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "white-fish", qty: 150, unit: "g" }, { componentId: "coconut-milk", qty: 80, unit: "ml" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "rice-white", qty: 0.8, unit: "cup" }] },
+  { name: "Chicken curry + 2 roti", sub: "", tags: ["lunch","dinner"], cuisine: "indian", _builder: [{ componentId: "chicken-thigh", qty: 180, unit: "g" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "roti", qty: 2, unit: "pc" }, { componentId: "ghee", qty: 1, unit: "tsp" }] },
+  { name: "Chicken keema + 2 roti", sub: "spiced mince", tags: ["dinner"], cuisine: "indian", _builder: [{ componentId: "chicken-mince", qty: 150, unit: "g" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "roti", qty: 2, unit: "pc" }] },
+  { name: "Masala dosa", sub: "dosa + potato + sambar", tags: ["breakfast","lunch"], cuisine: "indian", _builder: [{ componentId: "dosa", qty: 1, unit: "pc" }, { componentId: "bhaji-mash", qty: 100, unit: "g" }, { componentId: "sambar", qty: 1, unit: "katori" }] },
+  { name: "Idli (3) + sambar", sub: "", tags: ["breakfast"], cuisine: "indian", _builder: [{ componentId: "idli", qty: 3, unit: "pc" }, { componentId: "sambar", qty: 1, unit: "katori" }] },
+  { name: "Chana masala + rice", sub: "chickpea curry", tags: ["lunch","dinner","vegetarian"], cuisine: "indian", _builder: [{ componentId: "chickpeas", qty: 1, unit: "cup" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "rice-white", qty: 0.8, unit: "cup" }] },
+  { name: "Paneer butter masala + naan", sub: "", tags: ["dinner","vegetarian"], cuisine: "indian", _builder: [{ componentId: "paneer", qty: 120, unit: "g" }, { componentId: "cream", qty: 2, unit: "tbsp" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "naan", qty: 1, unit: "pc" }] },
+  { name: "Rajma + 2 roti", sub: "", tags: ["lunch","dinner","vegetarian"], cuisine: "indian", _builder: [{ componentId: "rajma", qty: 1, unit: "cup" }, { componentId: "gravy-base", qty: 1, unit: "katori" }, { componentId: "roti", qty: 2, unit: "pc" }] },
+  { name: "Tandoori fish tikka", sub: "yogurt marinade", tags: ["dinner"], cuisine: "indian", _builder: [{ componentId: "white-fish", qty: 200, unit: "g" }, { componentId: "greek-yogurt", qty: 30, unit: "g" }] },
+  { name: "Beef shawarma plate", sub: "beef, hummus, salad, pita", tags: ["lunch","dinner"], cuisine: "middle-eastern", _builder: [{ componentId: "ground-beef", qty: 160, unit: "g" }, { componentId: "hummus", qty: 60, unit: "g" }, { componentId: "side-salad", qty: 100, unit: "g" }, { componentId: "pita", qty: 1, unit: "pc" }] },
+  { name: "Shish tawook", sub: "chicken skewers", tags: ["dinner"], cuisine: "middle-eastern", _builder: [{ componentId: "chicken-breast", qty: 200, unit: "g" }, { componentId: "tzatziki", qty: 30, unit: "g" }] },
+  { name: "Lamb kofta + rice", sub: "", tags: ["dinner"], cuisine: "middle-eastern", _builder: [{ componentId: "lamb-mince", qty: 180, unit: "g" }, { componentId: "rice-white", qty: 0.8, unit: "cup" }, { componentId: "onion", qty: 30, unit: "g" }] },
+  { name: "Mujadara", sub: "lentils, rice, onion", tags: ["lunch","vegetarian"], cuisine: "middle-eastern", _builder: [{ componentId: "toor-dal", qty: 0.5, unit: "cup" }, { componentId: "rice-white", qty: 0.8, unit: "cup" }, { componentId: "onion", qty: 50, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Fattoush + grilled chicken", sub: "", tags: ["lunch"], cuisine: "middle-eastern", _builder: [{ componentId: "chicken-thigh", qty: 150, unit: "g" }, { componentId: "side-salad", qty: 150, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Grilled halloumi & salad", sub: "", tags: ["lunch","vegetarian"], cuisine: "middle-eastern", _builder: [{ componentId: "halloumi", qty: 100, unit: "g" }, { componentId: "side-salad", qty: 100, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }] },
+  { name: "Falafel plate", sub: "falafel, hummus, tabbouleh", tags: ["lunch","vegetarian"], cuisine: "middle-eastern", _builder: [{ componentId: "falafel", qty: 4, unit: "pc" }, { componentId: "hummus", qty: 60, unit: "g" }, { componentId: "tabbouleh", qty: 100, unit: "g" }] },
+  { name: "Chicken shawarma bowl", sub: "chicken, rice, salad", tags: ["lunch","dinner"], cuisine: "middle-eastern", _builder: [{ componentId: "chicken-thigh", qty: 180, unit: "g" }, { componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "tzatziki", qty: 40, unit: "g" }, { componentId: "side-salad", qty: 50, unit: "g" }] },
+  { name: "Labneh & pita", sub: "strained yogurt dip", tags: ["snack","breakfast"], cuisine: "middle-eastern", _builder: [{ componentId: "greek-yogurt", qty: 100, unit: "g" }, { componentId: "olive-oil", qty: 0.5, unit: "tbsp" }, { componentId: "pita", qty: 1, unit: "pc" }] },
+  { name: "Fish sayadieh", sub: "fish + spiced rice", tags: ["dinner"], cuisine: "middle-eastern", _builder: [{ componentId: "white-fish", qty: 180, unit: "g" }, { componentId: "rice-white", qty: 1, unit: "cup" }, { componentId: "onion", qty: 50, unit: "g" }] },
 ];
 
 const CATEGORIES = [
@@ -2145,7 +2282,8 @@ const CUISINES = [
   { key: 'generic',         label: 'Generic',         glyph: 'GE' },
   { key: 'american',        label: 'American',        glyph: 'US' },
   { key: 'mediterranean',   label: 'Mediterranean',   glyph: 'MD' },
-  { key: 'asian',           label: 'Asian',           glyph: 'AS' },
+  { key: 'east-asian',      label: 'East Asian',      glyph: 'EA' },
+  { key: 'southeast-asian', label: 'SE Asian',        glyph: 'SE' },
   { key: 'mexican',         label: 'Mexican',         glyph: 'MX' },
   { key: 'indian',          label: 'Indian',          glyph: 'IN' },
   { key: 'middle-eastern',  label: 'Middle Eastern',  glyph: 'ME' },
@@ -2263,6 +2401,22 @@ const BUILDER_COMPONENTS = [
   { id: 'baba-ganoush',      name: 'Baba ganoush',            group: 'dish', sub: 'Middle Eastern', defaultUnit: 'g',   units: ['g', 'tbsp'], defaultQty: 100, step: 25, unitFactor: { g: 1, tbsp: 15 }, macros: { kcal: 165, p: 4, f: 14, c: 6, fiber: 3 } },
   { id: 'lentil-soup',       name: 'Lentil soup',             group: 'dish', sub: 'Soups',         defaultUnit: 'bowl', units: ['bowl'], defaultQty: 1, step: 0.5, macros: { kcal: 250, p: 14, f: 5, c: 34, fiber: 8 } },
   { id: 'minestrone',        name: 'Minestrone',              group: 'dish', sub: 'Soups',         defaultUnit: 'bowl', units: ['bowl'], defaultQty: 1, step: 0.5, macros: { kcal: 220, p: 9, f: 6, c: 32, fiber: 6 } },
+
+  // ===== Library expansion — NEW components (estimated macros, audit:true → VERIFY) =====
+  { id: 'tuna-canned', name: "Tuna (canned, in water)", group: 'protein', sub: 'Seafood', defaultUnit: 'g', units: ["g"], defaultQty: 100, step: 25, audit: true, macros: { kcal: 116, p: 26, f: 1, c: 0, fiber: 0 } },
+  { id: 'pork-loin', name: "Pork loin (cooked)", group: 'protein', sub: 'Meat', defaultUnit: 'g', units: ["g"], defaultQty: 100, step: 50, audit: true, macros: { kcal: 175, p: 27, f: 7, c: 0, fiber: 0 } },
+  { id: 'quinoa', name: "Quinoa (cooked)", group: 'carb', sub: 'Grains', defaultUnit: 'g', units: ["g","cup"], defaultQty: 100, step: 50, audit: true, unitFactor: {"g":1,"cup":185}, macros: { kcal: 120, p: 4.4, f: 1.9, c: 21, fiber: 2.8 } },
+  { id: 'couscous', name: "Couscous (cooked)", group: 'carb', sub: 'Grains', defaultUnit: 'g', units: ["g","cup"], defaultQty: 100, step: 50, audit: true, unitFactor: {"g":1,"cup":175}, macros: { kcal: 112, p: 3.8, f: 0.2, c: 23, fiber: 1.4 } },
+  { id: 'rice-noodles', name: "Rice noodles (cooked)", group: 'carb', sub: 'Pasta', defaultUnit: 'g', units: ["g"], defaultQty: 100, step: 50, audit: true, macros: { kcal: 110, p: 1, f: 0, c: 25, fiber: 1 } },
+  { id: 'kimchi', name: "Kimchi", group: 'veg', sub: 'Raw', defaultUnit: 'g', units: ["g"], defaultQty: 50, step: 25, audit: true, macros: { kcal: 30, p: 2, f: 0, c: 4, fiber: 2 } },
+  { id: 'seaweed-salad', name: "Seaweed salad", group: 'veg', sub: 'Raw', defaultUnit: 'g', units: ["g"], defaultQty: 100, step: 25, audit: true, macros: { kcal: 70, p: 1, f: 4, c: 8, fiber: 1 } },
+  { id: 'ramen-bowl', name: "Ramen (bowl)", group: 'dish', sub: 'Asian', defaultUnit: 'bowl', units: ["bowl"], defaultQty: 1, step: 0.5, audit: true, macros: { kcal: 500, p: 26, f: 18, c: 60, fiber: 3 } },
+  { id: 'pho-bowl', name: "Pho (bowl)", group: 'dish', sub: 'Asian', defaultUnit: 'bowl', units: ["bowl"], defaultQty: 1, step: 0.5, audit: true, macros: { kcal: 350, p: 25, f: 5, c: 50, fiber: 2 } },
+  { id: 'spring-rolls', name: "Fried spring rolls", group: 'dish', sub: 'Asian', defaultUnit: 'pc', units: ["pc"], defaultQty: 2, step: 1, audit: true, macros: { kcal: 100, p: 2, f: 5, c: 12, fiber: 1 } },
+  { id: 'summer-rolls', name: "Summer rolls (fresh)", group: 'dish', sub: 'Asian', defaultUnit: 'pc', units: ["pc"], defaultQty: 2, step: 1, audit: true, macros: { kcal: 60, p: 3, f: 1, c: 9, fiber: 1 } },
+  { id: 'dosa', name: "Dosa", group: 'dish', sub: 'Indian', defaultUnit: 'pc', units: ["pc"], defaultQty: 1, step: 1, audit: true, macros: { kcal: 130, p: 3, f: 4, c: 20, fiber: 1 } },
+  { id: 'idli', name: "Idli", group: 'dish', sub: 'Indian', defaultUnit: 'pc', units: ["pc"], defaultQty: 2, step: 1, audit: true, macros: { kcal: 40, p: 2, f: 0.2, c: 8, fiber: 0.5 } },
+  { id: 'sambar', name: "Sambar", group: 'dish', sub: 'Indian', defaultUnit: 'katori', units: ["katori","cup"], defaultQty: 1, step: 0.5, audit: true, unitFactor: {"katori":1,"cup":1.5}, macros: { kcal: 110, p: 5, f: 3, c: 14, fiber: 3 } },
 ];
 
 function resolveComposition(builder) {
@@ -2378,6 +2532,81 @@ function categoryFromPp(pp) {
   return 'filler';
 }
 
+// ── Suggestions engine ──────────────────────────────────────────────
+// Fit lives in the MIX, not the dish: the protein efficiency you still need
+// (g/100kcal of remaining budget) maps to the dish tier that satisfies it,
+// and that sets the anchor/balanced/filler ratio of what you're shown.
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function seededShuffle(arr, rng) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function hashStr(s) { let h = 0; for (let i = 0; i < s.length; i++) h = (Math.imul(31, h) + s.charCodeAt(i)) | 0; return h >>> 0; }
+
+function requiredTier(totals, targets) {
+  const proteinLeft = Math.max(0, targets.protein - totals.p);
+  const kcalLeft = Math.max(0, targets.caloriesTarget - totals.kcal);
+  if (proteinLeft <= 0) return 'filler';        // protein done → anything goes
+  if (kcalLeft <= 0) return 'anchor';           // no room, still short → pure protein
+  const ratio = (proteinLeft / kcalLeft) * 100; // same boundaries as the dish tiers
+  return ratio >= 10 ? 'anchor' : ratio >= 6 ? 'balanced' : 'filler';
+}
+const BASE_MIX = {
+  anchor:   { anchor: 4, balanced: 4, filler: 2 },
+  balanced: { anchor: 3, balanced: 4, filler: 3 },
+  filler:   { anchor: 2, balanced: 4, filler: 4 },
+};
+function mixCounts(tier, count) {
+  const base = BASE_MIX[tier], total = 10;
+  let a = Math.round(base.anchor / total * count), b = Math.round(base.balanced / total * count), f = Math.round(base.filler / total * count);
+  let drift = count - (a + b + f);
+  const order = tier === 'anchor' ? ['anchor', 'balanced', 'filler'] : tier === 'filler' ? ['filler', 'balanced', 'anchor'] : ['balanced', 'anchor', 'filler'];
+  const inc = { anchor: () => a++, balanced: () => b++, filler: () => f++ };
+  const cur = () => ({ anchor: a, balanced: b, filler: f });
+  let gi = 0;
+  while (drift !== 0) { const k = order[gi % 3]; if (drift > 0) { inc[k](); drift--; } else if (cur()[k] > 0) { ({ anchor: () => a--, balanced: () => b--, filler: () => f-- })[k](); drift++; } gi++; }
+  return { anchor: a, balanced: b, filler: f };
+}
+function presetExcluded(p, excludedSet) {
+  if (!excludedSet || excludedSet.size === 0) return false;
+  return Array.isArray(p._builder) && p._builder.some(r => excludedSet.has(r.componentId));
+}
+function drawMix(pool, tier, count, rng) {
+  const want = mixCounts(tier, count);
+  const buckets = { anchor: seededShuffle(pool.filter(p => p.cat === 'anchor'), rng), balanced: seededShuffle(pool.filter(p => p.cat === 'balanced'), rng), filler: seededShuffle(pool.filter(p => p.cat === 'filler'), rng) };
+  const picked = [];
+  const order = tier === 'anchor' ? ['anchor', 'balanced', 'filler'] : tier === 'filler' ? ['filler', 'balanced', 'anchor'] : ['balanced', 'anchor', 'filler'];
+  order.forEach(k => { for (let i = 0; i < want[k] && buckets[k].length; i++) picked.push(buckets[k].shift()); });
+  let guard = 0;
+  while (picked.length < count && guard++ < 60) { let added = false; for (const k of order) { if (buckets[k].length) { picked.push(buckets[k].shift()); added = true; break; } } if (!added) break; }
+  return seededShuffle(picked, mulberry32(Math.floor(rng() * 1e9)));
+}
+function drawSuggestions(presets, tier, count, seed, excludedSet, maxPerCuisine = 2) {
+  const rng = mulberry32(seed);
+  const pool = presets.filter(p => !presetExcluded(p, excludedSet));
+  const want = mixCounts(tier, count);
+  const buckets = { anchor: seededShuffle(pool.filter(p => p.cat === 'anchor'), rng), balanced: seededShuffle(pool.filter(p => p.cat === 'balanced'), rng), filler: seededShuffle(pool.filter(p => p.cat === 'filler'), rng) };
+  const picked = [], cc = {};
+  const order = tier === 'anchor' ? ['anchor', 'balanced', 'filler'] : tier === 'filler' ? ['filler', 'balanced', 'anchor'] : ['balanced', 'anchor', 'filler'];
+  const tryTake = (k, n) => { let taken = 0; const skip = []; while (taken < n && buckets[k].length) { const c = buckets[k].shift(); if ((cc[c.cuisine] || 0) < maxPerCuisine) { picked.push(c); cc[c.cuisine] = (cc[c.cuisine] || 0) + 1; taken++; } else skip.push(c); } buckets[k] = skip.concat(buckets[k]); };
+  order.forEach(k => tryTake(k, want[k]));
+  let guard = 0;
+  while (picked.length < count && guard++ < 80) { let added = false; for (const k of order) { if (buckets[k].length) { picked.push(buckets[k].shift()); added = true; break; } } if (!added) break; }
+  return seededShuffle(picked, mulberry32(seed ^ 0x9e3779b9));
+}
+function drawCuisine(presets, cuisineKey, tier, count, seed, excludedSet) {
+  const pool = presets.filter(p => p.cuisine === cuisineKey && !presetExcluded(p, excludedSet));
+  return drawMix(pool, tier, Math.min(count, pool.length), mulberry32(seed ^ hashStr(cuisineKey)));
+}
+
 // Fraction of "active eating window" elapsed: 8am → 9pm (13h)
 function dayPaceFraction(d = new Date()) {
   const start = 8;
@@ -2399,6 +2628,9 @@ function App() {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [sheetTab, setSheetTab] = useState('presets');
   const [builderPrefill, setBuilderPrefill] = useState(null); // preset being adjusted before logging
+  const [sheetIntent, setSheetIntent] = useState('options'); // 'options' (discover) | 'add' (search/log)
+  const [excluded, setExcluded] = useState(() => new Set()); // never-recommend component ids
+  const [suggestSeed, setSuggestSeed] = useState(1); // bump to re-roll suggestions
   const [recentlyAddedId, setRecentlyAddedId] = useState(null);
   const [targets, setTargets] = useState(DEFAULT_TARGETS);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -2408,17 +2640,19 @@ function App() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const [mealsRaw, savedRaw, targetsRaw, themeRaw] = await Promise.all([
+      const [mealsRaw, savedRaw, targetsRaw, themeRaw, excludesRaw] = await Promise.all([
         storage.get(activeKey),
         storage.get('meals:saved'),
         storage.get('targets:v1'),
         storage.get('theme:v1'),
+        storage.get('excludes:v1'),
       ]);
       if (cancelled) return;
       try { setMeals(mealsRaw ? JSON.parse(mealsRaw) || [] : []); } catch (e) { setMeals([]); }
       try { setSavedMeals(savedRaw ? JSON.parse(savedRaw) || [] : []); } catch (e) { setSavedMeals([]); }
       try { setTargets(mergeTargets(targetsRaw ? JSON.parse(targetsRaw) : null)); } catch (e) { setTargets(DEFAULT_TARGETS); }
       if (themeRaw === 'harbor' || themeRaw === 'tidepool') setTheme(themeRaw);
+      try { const ex = excludesRaw ? JSON.parse(excludesRaw) : []; if (Array.isArray(ex)) setExcluded(new Set(ex)); } catch (e) {}
       setLoaded(true);
     })();
     return () => { cancelled = true; };
@@ -2427,6 +2661,13 @@ function App() {
   useEffect(() => {
     if (loaded) storage.set('targets:v1', JSON.stringify(targets));
   }, [targets, loaded]);
+
+  // Persist never-recommend excludes.
+  useEffect(() => {
+    if (loaded) storage.set('excludes:v1', JSON.stringify([...excluded]));
+  }, [excluded, loaded]);
+  const excludeComponent = (id) => setExcluded(prev => { const n = new Set(prev); n.add(id); return n; });
+  const restoreComponent = (id) => setExcluded(prev => { const n = new Set(prev); n.delete(id); return n; });
 
   // Apply + persist the accent theme (Tidepool / Harbor) on the root element.
   useEffect(() => {
@@ -2649,7 +2890,10 @@ function App() {
 
       {meals.length > 0 && <DaySummary totals={totals} />}
 
-      <FabAdd onClick={() => { setEditingBuilderMeal(null); setBuilderPrefill(null); setSheetTab('presets'); setSheetOpen(true); }} />
+      <FabAdd
+        onOptions={() => { setEditingBuilderMeal(null); setBuilderPrefill(null); setSheetTab('presets'); setSheetIntent('options'); setSheetOpen(true); }}
+        onAdd={() => { setEditingBuilderMeal(null); setBuilderPrefill(null); setSheetTab('presets'); setSheetIntent('add'); setSheetOpen(true); }}
+      />
 
       {sheetOpen && (
         <AddSheet
@@ -2673,6 +2917,14 @@ function App() {
           setTab={setSheetTab}
           seedMeal={editingBuilderMeal || builderPrefill}
           seedKind={editingBuilderMeal ? 'edit' : (builderPrefill ? 'adjust' : null)}
+          totals={totals}
+          targets={targets}
+          excluded={excluded}
+          onExclude={excludeComponent}
+          onRestore={restoreComponent}
+          suggestSeed={suggestSeed}
+          onRefresh={() => setSuggestSeed(s => s + 1)}
+          autoSearch={sheetIntent === 'add'}
         />
       )}
 
@@ -3219,18 +3471,24 @@ function EditMealForm({ meal, onSave, onCancel }) {
   );
 }
 
-function FabAdd({ onClick }) {
+function FabAdd({ onOptions, onAdd }) {
   return (
     <div className="fab-wrap">
-      <button className="fab" onClick={onClick} aria-label="Add meal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        Add meal
-      </button>
+      <div className="fab-row">
+        <button className="fab fab-ghost" onClick={onOptions}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l2.1 4.6L19 8.3l-3.5 3.3.9 4.9L12 14.4 7.6 16.5l.9-4.9L5 8.3l4.9-.7z"/></svg>
+          See options
+        </button>
+        <button className="fab" onClick={onAdd} aria-label="Add meal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          Add meal
+        </button>
+      </div>
     </div>
   );
 }
 
-function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveSaved, tab, setTab, seedMeal, seedKind, onAdjust }) {
+function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveSaved, tab, setTab, seedMeal, seedKind, onAdjust, totals, targets, excluded, onExclude, onRestore, suggestSeed, onRefresh, autoSearch }) {
   const [pulseId, setPulseId] = useState(null);
   const handleAdd = (m) => {
     setPulseId(m.name);
@@ -3266,6 +3524,14 @@ function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveS
               onAdjust={onAdjust}
               onRemoveSaved={onRemoveSaved}
               pulseId={pulseId}
+              totals={totals}
+              targets={targets}
+              excluded={excluded}
+              onExclude={onExclude}
+              onRestore={onRestore}
+              suggestSeed={suggestSeed}
+              onRefresh={onRefresh}
+              autoSearch={autoSearch}
             />
           ) : (
             <BuildTab
@@ -3321,7 +3587,7 @@ function BuildTab({ seedMeal, seedKind, onSubmit, onCancel, onSavePreset }) {
 
 // A preset card: tap logs instantly; press-and-hold (or right-click) opens it
 // pre-filled in Build to adjust sizes first. Shows its component composition.
-function PresetCard({ p, onAdd, onAdjust, pulse }) {
+function PresetCard({ p, onAdd, onModify, pulse }) {
   const timer = React.useRef(null);
   const fired = React.useRef(false);
   const startPt = React.useRef(null);
@@ -3334,7 +3600,7 @@ function PresetCard({ p, onAdd, onAdjust, pulse }) {
     fired.current = false;
     startPt.current = { x: e.clientX, y: e.clientY };
     setPressing(true);
-    timer.current = setTimeout(() => { fired.current = true; setPressing(false); timer.current = null; onAdjust(p); }, 480);
+    timer.current = setTimeout(() => { fired.current = true; setPressing(false); timer.current = null; onModify(p); }, 480);
   };
   const end = () => { setPressing(false); if (timer.current) { clearTimeout(timer.current); timer.current = null; } };
   const move = (e) => {
@@ -3345,16 +3611,22 @@ function PresetCard({ p, onAdd, onAdjust, pulse }) {
   const click = () => { if (fired.current) { fired.current = false; return; } onAdd(p); };
 
   return (
-    <button
+    <div
       className={`pcard ${pressing ? 'pressing' : ''} ${pulse ? 'pulse-good' : ''}`}
+      role="button"
+      tabIndex={0}
       onClick={click}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onAdd(p); } }}
       onPointerDown={start}
       onPointerUp={end}
       onPointerMove={move}
       onPointerLeave={end}
       onPointerCancel={end}
-      onContextMenu={(e) => { e.preventDefault(); onAdjust(p); }}
+      onContextMenu={(e) => { e.preventDefault(); onModify(p); }}
     >
+      <button className="pcard-more" aria-label="Manage meal" onClick={(e) => { e.stopPropagation(); onModify(p); }} onPointerDown={(e) => e.stopPropagation()}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg>
+      </button>
       <div className="pcard-top">
         <div className="pcard-titles">
           <div className="pcard-name">{p.name}</div>
@@ -3376,114 +3648,211 @@ function PresetCard({ p, onAdd, onAdjust, pulse }) {
           {rest > 0 && <span className="pcard-chip more">+{rest} more</span>}
         </div>
       )}
-    </button>
+    </div>
   );
 }
 
-function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId }) {
-  const [openCuisine, setOpenCuisine] = useState(null);
-  const staples = presets.filter(isStaple);
-  const nonStaples = presets.filter(p => !isStaple(p));
-  const cuisineCounts = {};
-  for (const p of nonStaples) cuisineCounts[p.cuisine] = (cuisineCounts[p.cuisine] || 0) + 1;
-  const cuisinesWithItems = CUISINES.filter(c => (cuisineCounts[c.key] || 0) > 0);
-
-  const renderCard = (p) => (
-    <PresetCard key={p.name} p={p} onAdd={onAdd} onAdjust={onAdjust} pulse={pulseId === p.name} />
-  );
-
-  if (openCuisine) {
-    const cuisine = CUISINES.find(c => c.key === openCuisine);
-    const items = nonStaples.filter(p => p.cuisine === openCuisine);
-    return (
-      <div>
-        <div className="sheet-section" style={{ marginTop: 0 }}>
-          <button className="cuisine-back" onClick={() => setOpenCuisine(null)}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
-            All cuisines
-          </button>
-          <div className="sheet-section-head" style={{ marginTop: 12 }}>
-            <span className="sheet-section-title">{cuisine.label}</span>
-            <span className="sheet-section-meta">{items.length} meals</span>
-          </div>
-        </div>
-        {CATEGORIES.map(cat => {
-          const inCat = items.filter(p => p.cat === cat.key);
-          if (inCat.length === 0) return null;
-          return (
-            <div key={cat.key} className="sheet-section">
-              <div className="sheet-section-head">
-                <span className="sheet-section-title">{cat.label}</span>
-                <span className="sheet-section-meta">{cat.meta}</span>
-              </div>
-              <div className="food-grid">{inCat.map(renderCard)}</div>
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
-
+// "Manage this meal" sheet — opened by long-press / right-click / the ⋯ button.
+// Holds the adjust-before-logging path and per-ingredient never-recommend.
+function ModifySheet({ preset, onAdjust, onExclude, onClose }) {
+  if (!preset) return null;
+  const comps = presetComponents(preset).map((x, i) => ({ ...x, id: preset._builder[i] && preset._builder[i].componentId }));
   return (
-    <div>
-      <div className="pcard-hint" style={{ margin: '2px 2px 14px' }}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11.5V5.5a1.5 1.5 0 0 1 3 0v5"/><path d="M12 10V4.5a1.5 1.5 0 0 1 3 0V10"/><path d="M15 10V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1.5a5 5 0 0 1-3.7-1.6L4 15.2a1.6 1.6 0 0 1 2.3-2.2l1.7 1.5V8a1.5 1.5 0 0 1 3 0"/></svg>
-        Tap to log instantly · hold a card to adjust sizes first
-      </div>
-      <div className="sheet-section">
-        <div className="sheet-section-head">
-          <span className="sheet-section-title">Saved</span>
-          <span className="sheet-section-meta">long-press to remove</span>
-        </div>
-        {savedMeals.length === 0 ? (
-          <div className="saved-empty">Star a meal in your log to save it here.</div>
-        ) : (
-          <div className="saved-row">
-            {savedMeals.map(m => (
-              <button
-                key={m.id}
-                className="saved-chip"
-                onClick={() => onAdd(m)}
-                onContextMenu={(e) => { e.preventDefault(); if (window.confirm(`Remove "${m.name}" from saved?`)) onRemoveSaved(m.id); }}
-              >
-                {m.name} <span className="kcal mono">{Math.round(m.kcal)}</span>
-              </button>
-            ))}
+    <div className="modify-back" onClick={onClose}>
+      <div className="modify-sheet" onClick={(e) => e.stopPropagation()}>
+        <div className="modify-head">
+          <div>
+            <div className="modify-title">{preset.name}</div>
+            <div className="modify-sub">{preset.kcal} cal · {preset.p}g protein</div>
           </div>
-        )}
-      </div>
-
-      {CATEGORIES.map(cat => {
-        const items = staples.filter(p => p.cat === cat.key);
-        if (items.length === 0) return null;
-        return (
-          <div key={cat.key} className="sheet-section">
-            <div className="sheet-section-head">
-              <span className="sheet-section-title">Staples · {cat.label}</span>
-              <span className="sheet-section-meta">{items.length} · {cat.meta}</span>
-            </div>
-            <div className="food-grid">{items.map(renderCard)}</div>
-          </div>
-        );
-      })}
-
-      <div className="sheet-section">
-        <div className="sheet-section-head">
-          <span className="sheet-section-title">More by cuisine</span>
-          <span className="sheet-section-meta">{nonStaples.length} meals</span>
+          <button className="icon-btn" onClick={onClose} aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
         </div>
-        <div className="cuisine-grid">
-          {cuisinesWithItems.map(c => (
-            <button key={c.key} className="cuisine-folder" onClick={() => setOpenCuisine(c.key)}>
-              <span className="cuisine-glyph mono">{c.glyph}</span>
-              <span className="cuisine-label">{c.label}</span>
-              <span className="cuisine-count mono">{cuisineCounts[c.key]}</span>
-              <svg className="cuisine-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+        <button className="modify-action" onClick={() => { onAdjust(preset); onClose(); }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
+          Adjust sizes before logging
+        </button>
+        <div className="modify-label">Never recommend</div>
+        <div className="modify-exclude-list">
+          {comps.map((x) => (
+            <button key={x.id} className="modify-exclude-item" onClick={() => { onExclude(x.id); onClose(); }}>
+              <span>{x.comp.name}</span>
+              <span className="hide">hide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
             </button>
           ))}
         </div>
       </div>
     </div>
+  );
+}
+
+function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId, totals, targets, excluded, onExclude, onRestore, suggestSeed, onRefresh, autoSearch }) {
+  const [openCuisine, setOpenCuisine] = useState(null);
+  const [modify, setModify] = useState(null);
+  const [query, setQuery] = useState('');
+  const searchRef = useRef(null);
+  useEffect(() => { if (autoSearch && searchRef.current) searchRef.current.focus(); }, [autoSearch]);
+  const q = query.trim().toLowerCase();
+  const tier = requiredTier(totals || { kcal: 0, p: 0 }, targets);
+
+  const nonStaples = presets.filter(p => !isStaple(p));
+  const staples = presets.filter(isStaple);
+  const cuisineCounts = {};
+  for (const p of nonStaples) cuisineCounts[p.cuisine] = (cuisineCounts[p.cuisine] || 0) + 1;
+  const cuisinesWithItems = CUISINES.filter(c => (cuisineCounts[c.key] || 0) > 0);
+  const excludedList = [...(excluded || [])].map(id => COMP_BY_ID[id]).filter(Boolean);
+  const suggestions = useMemo(() => drawSuggestions(presets, tier, 7, suggestSeed, excluded), [presets, tier, suggestSeed, excluded]);
+  const results = useMemo(() => {
+    if (!q) return null;
+    const terms = q.split(/\s+/);
+    const scored = [];
+    for (const p of presets) {
+      const hay = (p.name + ' ' + (p.sub || '') + ' ' + p._builder.map(r => (COMP_BY_ID[r.componentId] ? COMP_BY_ID[r.componentId].name : '')).join(' ')).toLowerCase();
+      if (!terms.every(t => hay.includes(t))) continue;
+      const nm = p.name.toLowerCase();
+      const rank = nm.startsWith(terms[0]) ? 0 : (nm.includes(terms[0]) ? 1 : 2);
+      scored.push({ p, rank });
+    }
+    scored.sort((a, b) => a.rank - b.rank || a.p.name.localeCompare(b.p.name));
+    return scored.map(s => s.p);
+  }, [q, presets]);
+
+  const searchBar = (
+    <div className="presets-search">
+      <svg className="s-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input ref={searchRef} value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search all meals & ingredients…" />
+      {query && <button className="presets-search-clear" onClick={() => setQuery('')} aria-label="Clear search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>}
+    </div>
+  );
+
+  const renderCard = (p) => (
+    <PresetCard key={p.name} p={p} onAdd={onAdd} onModify={setModify} pulse={pulseId === p.name} />
+  );
+
+  const Refresh = () => (
+    <button className="refresh-btn" onClick={onRefresh} aria-label="Shuffle suggestions">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+      Shuffle
+    </button>
+  );
+
+  const excludedBar = excludedList.length > 0 ? (
+    <div className="excluded-bar">
+      <span className="excluded-lbl">Hidden</span>
+      {excludedList.map(c => (
+        <button key={c.id} className="excluded-chip" onClick={() => onRestore(c.id)}>
+          {compShort(c)} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      ))}
+      <span className="excluded-restore">tap to restore</span>
+    </div>
+  ) : null;
+
+  let bodyEl;
+  if (q) {
+    bodyEl = (
+      <div className="sheet-section">
+        <div className="sheet-section-head">
+          <span className="sheet-section-title">Results</span>
+          <span className="sheet-section-meta">{results.length} found</span>
+        </div>
+        {results.length > 0 ? (
+          <div className="food-grid">{results.map(renderCard)}</div>
+        ) : (
+          <div className="saved-empty">No meals match “{query}”. Switch to <strong>Build</strong> to enter it from components or totals.</div>
+        )}
+      </div>
+    );
+  } else if (openCuisine) {
+    const cuisine = CUISINES.find(c => c.key === openCuisine);
+    const items = drawCuisine(presets, openCuisine, tier, 10, suggestSeed, excluded);
+    bodyEl = (
+      <div>
+        <button className="cuisine-back" onClick={() => setOpenCuisine(null)}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+          All cuisines
+        </button>
+        {excludedBar}
+        <div className="sheet-section">
+          <div className="sheet-section-head">
+            <span className="sheet-section-title">{cuisine.label}</span>
+            <Refresh />
+          </div>
+          <div className="food-grid">{items.map(renderCard)}</div>
+        </div>
+      </div>
+    );
+  } else {
+    bodyEl = (
+      <div>
+        <div className="pcard-hint" style={{ margin: '2px 2px 14px' }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11.5V5.5a1.5 1.5 0 0 1 3 0v5"/><path d="M12 10V4.5a1.5 1.5 0 0 1 3 0V10"/><path d="M15 10V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1.5a5 5 0 0 1-3.7-1.6L4 15.2a1.6 1.6 0 0 1 2.3-2.2l1.7 1.5V8a1.5 1.5 0 0 1 3 0"/></svg>
+          Tap to log instantly · hold a card to adjust or hide
+        </div>
+        {excludedBar}
+        <div className="sheet-section">
+          <div className="sheet-section-head">
+            <span className="sheet-section-title">Saved</span>
+            <span className="sheet-section-meta">long-press to remove</span>
+          </div>
+          {savedMeals.length === 0 ? (
+            <div className="saved-empty">Star a meal in your log to save it here.</div>
+          ) : (
+            <div className="saved-row">
+              {savedMeals.map(m => (
+                <button key={m.id} className="saved-chip" onClick={() => onAdd(m)} onContextMenu={(e) => { e.preventDefault(); if (window.confirm('Remove "' + m.name + '" from saved?')) onRemoveSaved(m.id); }}>
+                  {m.name} <span className="kcal mono">{Math.round(m.kcal)}</span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {autoSearch ? (
+          <div className="sheet-section">
+            <div className="sheet-section-head">
+              <span className="sheet-section-title">Staples</span>
+              <span className="sheet-section-meta">your core items</span>
+            </div>
+            <div className="food-grid">{staples.map(renderCard)}</div>
+          </div>
+        ) : (
+          <div className="sheet-section">
+            <div className="sheet-section-head">
+              <span className="sheet-section-title">Suggestions</span>
+              <Refresh />
+            </div>
+            <div className="food-grid">{suggestions.map(renderCard)}</div>
+          </div>
+        )}
+
+        <div className="sheet-section">
+          <div className="sheet-section-head">
+            <span className="sheet-section-title">More by cuisine</span>
+            <span className="sheet-section-meta">{nonStaples.length} meals</span>
+          </div>
+          <div className="cuisine-grid">
+            {cuisinesWithItems.map(c => (
+              <button key={c.key} className="cuisine-folder" onClick={() => setOpenCuisine(c.key)}>
+                <span className="cuisine-glyph mono">{c.glyph}</span>
+                <span className="cuisine-label">{c.label}</span>
+                <span className="cuisine-count mono">{cuisineCounts[c.key]}</span>
+                <svg className="cuisine-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {searchBar}
+      {bodyEl}
+      <ModifySheet preset={modify} onAdjust={onAdjust} onExclude={onExclude} onClose={() => setModify(null)} />
+    </>
   );
 }
 
