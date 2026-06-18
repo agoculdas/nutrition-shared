@@ -4039,7 +4039,7 @@ function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId
     );
   } else if (openCuisine) {
     const cuisine = CUISINES.find(c => c.key === openCuisine);
-    const items = drawCuisine(presets, openCuisine, tier, 10, suggestSeed, excluded);
+    const items = drawCuisine(presets, openCuisine, tier, 20, suggestSeed, excluded);
     bodyEl = (
       <div>
         <button className="cuisine-back" onClick={() => setOpenCuisine(null)}>
