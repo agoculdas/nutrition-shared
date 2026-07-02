@@ -30,6 +30,7 @@ The data layer is complete; the user explicitly deferred the UI because "show co
 - The LF→CRLF git warnings on Windows are benign.
 - Verify changes by opening `index.html` in a browser — a white screen means a JS/JSX syntax error. Macro/data changes can be sanity-checked by parsing the arrays in Node.
 - Key spots: `PRESET_DEFS`, `BUILDER_COMPONENTS`, `BUILDER_GROUPS`, `resolveComposition`, `categoryFromPp`, `AddSheet`, `QuickAdd`, `BuilderAdd`, `CustomAdd`.
+- Market-specific config (app name, storage namespace, targets, cuisine folders, suggestion caps, pace window, onboarding copy) lives in `EDITIONS`/`EDITION` at the top of the script — see `docs/PLAN-india-fork.md`. First-run onboarding: `Onboarding` + `computeTargetsFrom`, flag `onboarded:v1`, re-openable from Settings.
 
 ## History
 - `Initial commit: shareable nutrition tracker` — genericized food list, neutral targets, medication-agnostic copy, namespaced storage.

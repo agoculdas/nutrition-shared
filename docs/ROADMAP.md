@@ -54,7 +54,8 @@ The app currently answers "how am I doing *today*?" — History answers "what ha
 
 - **Sync / accounts.** The real fix for data durability and multi-device. Smallest viable version: end-to-end-encrypted blob sync of the exported JSON against any dumb storage endpoint. Decide only when there's evidence of multi-device demand — export/import may carry surprisingly long.
 - **Barcode scanning** (OpenFoodFacts) for packaged foods — high value for snacks/supplements, moderate effort, works client-side.
-- **Photo / AI logging.** Highest wow, highest cost (API keys, backend, accuracy liability). The composition model is actually a great substrate for it (LLM → `_builder` rows, user confirms quantities in the existing Builder UI), but it changes the app's economics from free-static to hosted. Park until there's a reason.
+
+**Non-goal — photo / AI meal detection.** Ruled out deliberately, not parked: it's very expensive to run (per-photo inference costs against a free static app), accuracy on mixed home-cooked dishes is poor, and the composition model already makes honest logging a two-tap operation — there's no friction gap for it to close. Nothing elsewhere on this roadmap should assume an AI/backend inference layer exists.
 
 ## 7. Code health *(keep velocity as the file grows)*
 
@@ -72,4 +73,4 @@ The app currently answers "how am I doing *today*?" — History answers "what ha
 | 4 | Usuals, copy-yesterday, recents ranking (§3.1–3.3) | Retention for the newly grown user base |
 | 5 | Weight + weekly review (§4.1–4.2) | Closes the loop, drives long-term retention |
 | 6 | Share-a-day (§5.2), data-layer CI (§7) | Amplify + protect |
-| 7+ | Sync, barcode, AI logging (§6) | Evidence-driven, not speculative |
+| 7+ | Sync, barcode (§6) | Evidence-driven, not speculative |

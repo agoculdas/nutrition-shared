@@ -2070,6 +2070,166 @@
     .presets-search .s-ic { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 17px; height: 17px; color: var(--muted); pointer-events: none; }
     .presets-search-clear { position: absolute; right: 7px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; border: none; background: var(--surface-2); color: var(--ink-2); cursor: pointer; display: grid; place-items: center; }
     .presets-search-clear svg { width: 15px; height: 15px; }
+
+    /* ===== Onboarding ===== */
+    .onboard {
+      position: fixed; inset: 0;
+      background: var(--bg);
+      z-index: 60;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      animation: onboard-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes onboard-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .onboard-inner {
+      max-width: 428px;
+      margin: 0 auto;
+      min-height: 100%;
+      display: flex; flex-direction: column;
+      padding: 18px 20px calc(24px + env(safe-area-inset-bottom));
+    }
+    @media (min-width: 720px) { .onboard-inner { max-width: 560px; } }
+    .onboard-top {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 32px;
+    }
+    .onboard-step-count {
+      font-family: var(--font-mono);
+      font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .onboard-skip {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 12.5px; font-weight: 500;
+      color: var(--muted); padding: 6px 2px;
+    }
+    .onboard-skip:hover { color: var(--ink); }
+    .onboard-body { flex: 1; padding-top: 26px; }
+    .onboard-kicker {
+      font-family: var(--font-mono);
+      font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .onboard-title {
+      font-family: var(--font-serif);
+      font-size: 26px; font-weight: 500; letter-spacing: -0.015em;
+      line-height: 1.2; color: var(--ink);
+      margin: 0 0 12px;
+    }
+    .onboard-lead {
+      font-size: 14.5px; line-height: 1.6; color: var(--ink-2);
+      margin: 0 0 20px;
+    }
+    .onboard-section { margin-top: 18px; }
+    .onboard-section-lbl {
+      font-family: var(--font-mono);
+      font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .onboard-seg {
+      display: flex;
+      background: var(--surface-2);
+      border: 1px solid var(--hairline);
+      border-radius: 9px;
+      padding: 3px; gap: 2px;
+    }
+    .onboard-seg button {
+      flex: 1;
+      padding: 9px 6px;
+      background: transparent; border: none; border-radius: 6px;
+      font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+      color: var(--muted); cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .onboard-seg button.active {
+      background: var(--surface); color: var(--ink);
+      box-shadow: 0 0 0 1px var(--hairline-strong);
+    }
+    .onboard-preview {
+      margin-top: 20px;
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .onboard-preview-rows { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .onboard-preview-num {
+      font-family: var(--font-sans); font-size: 20px; font-weight: 600;
+      letter-spacing: -0.02em; color: var(--ink);
+    }
+    .onboard-preview-num .unit { font-size: 12px; font-weight: 500; color: var(--muted); margin-left: 2px; }
+    .onboard-preview-lbl {
+      font-family: var(--font-mono); font-size: 9.5px;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+      margin-top: 3px;
+    }
+    .onboard-tiers { display: flex; flex-direction: column; gap: 8px; }
+    .onboard-tier {
+      display: flex; align-items: baseline; gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 9px;
+      padding: 11px 12px;
+    }
+    .onboard-tier-text { font-size: 12.5px; line-height: 1.45; color: var(--ink-2); }
+    .onboard-tier-text strong { color: var(--ink); font-weight: 600; }
+    .onboard-tier .food-card-pp { position: static; flex-shrink: 0; }
+    .onboard-democard { margin: 4px 0 12px; }
+    .onboard-democard .food-card { cursor: default; }
+    .onboard-democard .food-card:active { transform: none; background: var(--surface-2); }
+    .onboard-note {
+      font-size: 12px; line-height: 1.55; color: var(--muted);
+      margin-top: 14px;
+    }
+    .onboard-install-steps { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .onboard-install-step {
+      display: flex; gap: 11px; align-items: baseline;
+      background: var(--surface);
+      border: 1px solid var(--hairline);
+      border-radius: 9px;
+      padding: 11px 12px;
+      font-size: 13px; line-height: 1.5; color: var(--ink-2);
+    }
+    .onboard-install-step .n {
+      font-family: var(--font-mono); font-size: 10.5px; color: var(--accent);
+      flex-shrink: 0;
+    }
+    .onboard-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding-top: 26px;
+    }
+    .onboard-dots { display: flex; gap: 6px; }
+    .onboard-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--hairline-strong);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .onboard-dot.active { background: var(--accent); transform: scale(1.25); }
+    .onboard-nav { display: flex; gap: 8px; }
+    .onboard-back {
+      padding: 11px 16px;
+      background: var(--surface); color: var(--ink-2);
+      border: 1px solid var(--hairline-strong); border-radius: 999px;
+      font-family: var(--font-sans); font-size: 13.5px; font-weight: 500;
+      cursor: pointer;
+    }
+    .onboard-next {
+      padding: 11px 22px;
+      background: var(--accent); color: var(--on-accent);
+      border: none; border-radius: 999px;
+      font-family: var(--font-sans); font-size: 13.5px; font-weight: 600;
+      letter-spacing: -0.005em; cursor: pointer;
+    }
+    .onboard-next:active { background: var(--accent-press); }
+    .onboard-defaults {
+      background: none; border: none; cursor: pointer; padding: 8px 0 0;
+      font-size: 12.5px; font-weight: 500; color: var(--muted);
+      text-decoration: underline; text-underline-offset: 3px;
+      font-family: var(--font-sans);
+    }
+    .onboard-defaults:hover { color: var(--ink); }
+    .onboard-defaults.on { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -2082,14 +2242,53 @@
   <script type="text/babel" data-presets="env,react">
 const { useState, useEffect, useMemo, useCallback, useRef, useContext } = React;
 
-const DEFAULT_TARGETS = {
-  protein: 140,
-  caloriesTarget: 2000,
-  caloriesFloor: 1500,
-  fat: { min: 55, max: 75 },
-  carbs: { min: 180, max: 250 },
-  fiber: { min: 25, max: 35 },
+// ── Edition layer ───────────────────────────────────────────────────
+// Everything market-specific lives in one config object; the rest of the
+// app reads from EDITION. A market fork (see docs/PLAN-india-fork.md)
+// changes only the selector line below plus its own manifest/icon —
+// components and presets stay shared across editions.
+const EDITIONS = {
+  base: {
+    key: 'base',
+    appName: 'Daily nutrition',
+    // Storage namespace — per-edition so forks never collide with each
+    // other (or the personal app) on a shared origin like <user>.github.io.
+    ns: 'shared.',
+    targets: {
+      protein: 140,
+      caloriesTarget: 2000,
+      caloriesFloor: 1500,
+      fat: { min: 55, max: 75 },
+      carbs: { min: 180, max: 250 },
+      fiber: { min: 25, max: 35 },
+    },
+    // Cuisine folders; array order = display order in QuickAdd.
+    cuisines: [
+      { key: 'generic',         label: 'Generic',         glyph: 'GE' },
+      { key: 'american',        label: 'American',        glyph: 'US' },
+      { key: 'mediterranean',   label: 'Mediterranean',   glyph: 'MD' },
+      { key: 'east-asian',      label: 'East Asian',      glyph: 'EA' },
+      { key: 'southeast-asian', label: 'SE Asian',        glyph: 'SE' },
+      { key: 'mexican',         label: 'Mexican',         glyph: 'MX' },
+      { key: 'indian',          label: 'Indian',          glyph: 'IN' },
+      { key: 'middle-eastern',  label: 'Middle Eastern',  glyph: 'ME' },
+      { key: 'japanese',        label: 'Japanese',        glyph: 'JP' },
+      { key: 'korean',          label: 'Korean',          glyph: 'KR' },
+    ],
+    // Suggestion draw: cap per cuisine so no single cuisine floods the mix.
+    suggest: { maxPerCuisine: 2 },
+    // Active eating window (hours of day) driving the pace math.
+    pace: { start: 8, end: 21 },
+    onboarding: {
+      tagline: 'One goal: hit your calories with enough protein.',
+      intro: 'Log meals in a couple of taps. The app watches what’s left of your day and leans its suggestions toward food that fits.',
+      dataNote: 'Everything stays on this device — no account, no server, nothing leaves your phone.',
+    },
+  },
 };
+const EDITION = EDITIONS.base;
+
+const DEFAULT_TARGETS = EDITION.targets;
 
 const TargetsContext = React.createContext(DEFAULT_TARGETS);
 
@@ -2454,18 +2653,7 @@ const CATEGORIES = [
   { key: 'filler',   label: 'Fillers',         meta: '< 6 g/100kcal · carbs/fat/fiber' },
 ];
 
-const CUISINES = [
-  { key: 'generic',         label: 'Generic',         glyph: 'GE' },
-  { key: 'american',        label: 'American',        glyph: 'US' },
-  { key: 'mediterranean',   label: 'Mediterranean',   glyph: 'MD' },
-  { key: 'east-asian',      label: 'East Asian',      glyph: 'EA' },
-  { key: 'southeast-asian', label: 'SE Asian',        glyph: 'SE' },
-  { key: 'mexican',         label: 'Mexican',         glyph: 'MX' },
-  { key: 'indian',          label: 'Indian',          glyph: 'IN' },
-  { key: 'middle-eastern',  label: 'Middle Eastern',  glyph: 'ME' },
-  { key: 'japanese',        label: 'Japanese',        glyph: 'JP' },
-  { key: 'korean',          label: 'Korean',          glyph: 'KR' },
-];
+const CUISINES = EDITION.cuisines;
 
 function isStaple(p) { return Array.isArray(p.tags) && p.tags.includes('staple'); }
 
@@ -2726,8 +2914,9 @@ function presetComponents(p) {
 
 // All persisted keys are namespaced so this shared build never collides with
 // another Nutrition app on the same origin (e.g. GitHub Pages project sites
-// all share <user>.github.io). Bump or change NS to fork storage again.
-const NS = 'shared.';
+// all share <user>.github.io). The namespace comes from the edition, so a
+// market fork automatically gets fresh storage.
+const NS = EDITION.ns;
 
 const storage = {
   async get(key) {
@@ -2831,7 +3020,7 @@ function drawMix(pool, tier, count, rng) {
   while (picked.length < count && guard++ < 60) { let added = false; for (const k of order) { if (buckets[k].length) { picked.push(buckets[k].shift()); added = true; break; } } if (!added) break; }
   return seededShuffle(picked, mulberry32(Math.floor(rng() * 1e9)));
 }
-function drawSuggestions(presets, tier, count, seed, excludedSet, maxPerCuisine = 2) {
+function drawSuggestions(presets, tier, count, seed, excludedSet, maxPerCuisine = EDITION.suggest.maxPerCuisine) {
   const rng = mulberry32(seed);
   const pool = presets.filter(p => !presetExcluded(p, excludedSet));
   const want = mixCounts(tier, count);
@@ -2849,10 +3038,10 @@ function drawCuisine(presets, cuisineKey, tier, count, seed, excludedSet) {
   return drawMix(pool, tier, Math.min(count, pool.length), mulberry32(seed ^ hashStr(cuisineKey)));
 }
 
-// Fraction of "active eating window" elapsed: 8am → 9pm (13h)
+// Fraction of the edition's "active eating window" elapsed (base: 8am → 9pm)
 function dayPaceFraction(d = new Date()) {
-  const start = 8;
-  const end = 21;
+  const start = EDITION.pace.start;
+  const end = EDITION.pace.end;
   const hours = d.getHours() + d.getMinutes() / 60;
   if (hours < start) return 0;
   if (hours > end) return 1;
@@ -2878,6 +3067,19 @@ function App() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
   const [theme, setTheme] = useState('tidepool'); // 'tidepool' | 'harbor'
+  const [needsOnboard, setNeedsOnboard] = useState(false); // first run, no 'onboarded:v1' flag
+  const [guideOpen, setGuideOpen] = useState(false); // walkthrough re-opened from Settings
+
+  // First-run check, once per app load (the storage-load effect below
+  // re-runs at midnight when activeKey rolls over; this must not).
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const seen = await storage.get('onboarded:v1');
+      if (!cancelled && !seen) setNeedsOnboard(true);
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -3179,6 +3381,14 @@ function App() {
           onClose={() => setSettingsOpen(false)}
           onSave={(t) => { setTargets(t); }}
           onReset={() => { setTargets(DEFAULT_TARGETS); }}
+          onShowGuide={() => { setSettingsOpen(false); setGuideOpen(true); }}
+        />
+      )}
+      {(needsOnboard || guideOpen) && (
+        <Onboarding
+          firstRun={needsOnboard}
+          onSaveTargets={(t) => setTargets(t)}
+          onDone={() => { storage.set('onboarded:v1', '1'); setNeedsOnboard(false); setGuideOpen(false); }}
         />
       )}
       {historyOpen && (
@@ -3203,7 +3413,7 @@ function Topbar({ now, paceStatus, paceMsg, mealCount, onClear, onSettings, onHi
           <svg viewBox="0 0 14 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="1" width="12" height="14" rx="1.5"/><path d="M1 1v14" stroke="currentColor" strokeWidth="2"/><path d="M5 5h6M5 8h5M5 11h4" opacity="0.6"/></svg>
         </div>
         <div>
-          <div className="topbar-h">Daily nutrition</div>
+          <div className="topbar-h">{EDITION.appName}</div>
           <div className="topbar-date mono">{formatToday()} · {time}</div>
         </div>
       </div>
@@ -5028,7 +5238,7 @@ function HistorySheet({ targets, activeKey, todayMeals, onClose }) {
   );
 }
 
-function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onReset }) {
+function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onReset, onShowGuide }) {
   const [form, setForm] = useState({
     protein: String(targets.protein),
     caloriesTarget: String(targets.caloriesTarget),
@@ -5307,6 +5517,15 @@ function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onRe
             />
           </div>
 
+          <div className="settings-section">
+            <div className="settings-section-head">
+              <span className="settings-section-title">Guide</span>
+              <span className="settings-section-meta">how it works</span>
+            </div>
+            <div className="settings-section-help">The short walkthrough shown on first run — targets, two-tap logging, and how suggestions get picked.</div>
+            <button className="ghost-btn" style={{ marginBottom: 14 }} onClick={onShowGuide}>How this app works</button>
+          </div>
+
           <div className="settings-foot">
             <button className="ghost-btn" onClick={reset}>Reset to defaults</button>
             <span className="settings-section-meta mono" style={{ fontSize: 10 }}>
@@ -5349,6 +5568,205 @@ function DaySummary({ totals }) {
             </span>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+// ── Onboarding ──────────────────────────────────────────────────────
+// First-run walkthrough; re-openable any time from Settings → "How this
+// app works". Market-specific copy comes from EDITION.onboarding.
+
+// Weight + goal → full targets object. Deliberately three inputs, not a
+// full TDEE questionnaire: kcal/kg at moderate activity, adjusted per
+// goal, protein at 1.3–1.6 g/kg. Users can fine-tune in Settings.
+function computeTargetsFrom(sex, weightKg, goal) {
+  const w = Math.min(200, Math.max(35, weightKg));
+  const perKg = sex === 'female' ? 30 : 33;
+  let kcal = w * perKg + (goal === 'lose' ? -400 : goal === 'gain' ? 300 : 0);
+  kcal = Math.max(1200, Math.round(kcal / 50) * 50);
+  const protein = Math.round((w * (goal === 'maintain' ? 1.3 : 1.6)) / 5) * 5;
+  return {
+    protein,
+    caloriesTarget: kcal,
+    caloriesFloor: Math.round((kcal * 0.75) / 50) * 50,
+    fat:   { min: Math.round(kcal * 0.20 / 9 / 5) * 5,   max: Math.round(kcal * 0.35 / 9 / 5) * 5 },
+    carbs: { min: Math.round(kcal * 0.35 / 4 / 10) * 10, max: Math.round(kcal * 0.50 / 4 / 10) * 10 },
+    fiber: { min: 25, max: 35 },
+  };
+}
+
+function OnboardSeg({ options, value, onChange }) {
+  return (
+    <div className="onboard-seg" role="radiogroup">
+      {options.map(o => (
+        <button
+          key={o.key}
+          type="button"
+          className={value === o.key ? 'active' : ''}
+          role="radio"
+          aria-checked={value === o.key}
+          onClick={() => onChange(o.key)}
+        >{o.label}</button>
+      ))}
+    </div>
+  );
+}
+
+function Onboarding({ firstRun, onSaveTargets, onDone }) {
+  const [step, setStep] = useState(0);
+  const [sex, setSex] = useState(null);
+  const [weight, setWeight] = useState('');
+  const [goal, setGoal] = useState('maintain');
+  const [useDefaults, setUseDefaults] = useState(false);
+  const scrollRef = useRef(null);
+  const TOTAL = 4;
+
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, []);
+  useEffect(() => { if (scrollRef.current) scrollRef.current.scrollTop = 0; }, [step]);
+
+  const w = parseFloat(weight);
+  const validW = Number.isFinite(w) && w >= 35 && w <= 200;
+  const computed = (!useDefaults && sex && validW) ? computeTargetsFrom(sex, w, goal) : null;
+  const preview = computed || DEFAULT_TARGETS;
+
+  const demo = useMemo(() => PRESETS.find(p => p.cat === 'anchor' && presetComponents(p).length >= 2) || PRESETS[0], []);
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const standalone = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
+
+  const finish = () => {
+    if (computed) onSaveTargets(computed);
+    onDone();
+  };
+  const next = () => { if (step < TOTAL - 1) setStep(step + 1); else finish(); };
+
+  let body;
+  if (step === 0) {
+    body = (
+      <>
+        <div className="onboard-kicker">{EDITION.appName}</div>
+        <h1 className="onboard-title">{EDITION.onboarding.tagline}</h1>
+        <p className="onboard-lead">{EDITION.onboarding.intro}</p>
+        <div className="onboard-install-steps">
+          <div className="onboard-install-step"><span className="n">01</span><span><strong>Log</strong> what you eat in a couple of taps — no weighing, no barcode hunting.</span></div>
+          <div className="onboard-install-step"><span className="n">02</span><span><strong>See</strong> calories and protein left for the day, and whether you're on pace.</span></div>
+          <div className="onboard-install-step"><span className="n">03</span><span><strong>Pick</strong> from suggestions that lean toward what your day still needs.</span></div>
+        </div>
+      </>
+    );
+  } else if (step === 1) {
+    body = (
+      <>
+        <div className="onboard-kicker">Targets</div>
+        <h1 className="onboard-title">Make the goals yours</h1>
+        <p className="onboard-lead">Three quick answers set your daily calorie target and protein goal. Everything stays adjustable in Settings.</p>
+        <div className="onboard-section">
+          <div className="onboard-section-lbl">You are</div>
+          <OnboardSeg options={[{ key: 'female', label: 'Female' }, { key: 'male', label: 'Male' }]} value={sex} onChange={(v) => { setSex(v); setUseDefaults(false); }} />
+        </div>
+        <div className="onboard-section">
+          <div className="onboard-section-lbl">Body weight</div>
+          <NumField label="Weight" unit="kg" value={weight} onChange={(v) => { setWeight(v); setUseDefaults(false); }} min="35" step="1"
+            error={weight !== '' && !validW ? 'Enter 35–200 kg' : undefined} />
+        </div>
+        <div className="onboard-section">
+          <div className="onboard-section-lbl">Goal</div>
+          <OnboardSeg options={[{ key: 'lose', label: 'Lose fat' }, { key: 'maintain', label: 'Maintain' }, { key: 'gain', label: 'Build' }]} value={goal} onChange={(v) => { setGoal(v); setUseDefaults(false); }} />
+        </div>
+        <div className="onboard-preview">
+          <div className="onboard-section-lbl">{computed ? 'Computed for you' : 'App defaults (until you answer above)'}</div>
+          <div className="onboard-preview-rows">
+            <div>
+              <div className="onboard-preview-num">{preview.caloriesTarget.toLocaleString()}<span className="unit">kcal</span></div>
+              <div className="onboard-preview-lbl">daily target</div>
+            </div>
+            <div>
+              <div className="onboard-preview-num">{preview.protein}<span className="unit">g</span></div>
+              <div className="onboard-preview-lbl">protein</div>
+            </div>
+            <div>
+              <div className="onboard-preview-num">{preview.caloriesFloor.toLocaleString()}<span className="unit">kcal</span></div>
+              <div className="onboard-preview-lbl">eat-enough floor</div>
+            </div>
+          </div>
+        </div>
+        <button type="button" className={`onboard-defaults ${useDefaults ? 'on' : ''}`} onClick={() => setUseDefaults(d => !d)}>
+          {useDefaults ? 'Using the standard defaults — tap to compute instead' : 'Skip this — use the standard defaults'}
+        </button>
+      </>
+    );
+  } else if (step === 2) {
+    body = (
+      <>
+        <div className="onboard-kicker">Logging</div>
+        <h1 className="onboard-title">Two taps, honest numbers</h1>
+        <p className="onboard-lead">Meals are cards. <strong>Tap</strong> one and it's logged. <strong>Hold</strong> it (or tap ⋯) to tweak portion sizes first — the chips show exactly what's inside.</p>
+        <div className="onboard-democard">
+          <PresetCard p={demo} onAdd={() => {}} onModify={() => {}} pulse={false} />
+        </div>
+        <div className="onboard-section">
+          <div className="onboard-section-lbl">Every meal gets a role</div>
+          <div className="onboard-tiers">
+            <div className="onboard-tier"><span className="food-card-pp anchor">ANCHOR</span><span className="onboard-tier-text"><strong>Protein-dense</strong> — over 10g protein per 100 kcal. These do the heavy lifting.</span></div>
+            <div className="onboard-tier"><span className="food-card-pp balanced">BALANCED</span><span className="onboard-tier-text"><strong>Solid protein</strong> with carbs and fat alongside. Most real meals live here.</span></div>
+            <div className="onboard-tier"><span className="food-card-pp filler">FILLER</span><span className="onboard-tier-text"><strong>Low protein</strong> — fills your remaining calories. Great once protein is on track.</span></div>
+          </div>
+        </div>
+        <p className="onboard-note">Suggestions read the rest of your day: short on protein → you'll see more anchors. Protein handled → more balance and fillers. That's the whole trick.</p>
+      </>
+    );
+  } else {
+    body = (
+      <>
+        <div className="onboard-kicker">One last thing</div>
+        <h1 className="onboard-title">Keep it on your phone</h1>
+        <p className="onboard-lead">{standalone ? 'You’re already running the installed app — nothing to do here.' : 'Install it like an app so it’s one tap from your home screen.'}</p>
+        {!standalone && (
+          <div className="onboard-install-steps">
+            {isIOS ? (
+              <>
+                <div className="onboard-install-step"><span className="n">01</span><span>Tap the <strong>Share</strong> button in Safari's toolbar.</span></div>
+                <div className="onboard-install-step"><span className="n">02</span><span>Choose <strong>Add to Home Screen</strong>.</span></div>
+              </>
+            ) : (
+              <>
+                <div className="onboard-install-step"><span className="n">01</span><span>Open the browser menu (⋮).</span></div>
+                <div className="onboard-install-step"><span className="n">02</span><span>Choose <strong>Add to Home screen</strong> / <strong>Install app</strong>.</span></div>
+              </>
+            )}
+          </div>
+        )}
+        <p className="onboard-note">{EDITION.onboarding.dataNote}</p>
+      </>
+    );
+  }
+
+  return (
+    <div className="onboard" ref={scrollRef} role="dialog" aria-modal="true" aria-label="How this app works">
+      <div className="onboard-inner">
+        <div className="onboard-top">
+          <span className="onboard-step-count">Step {step + 1} / {TOTAL}</span>
+          {firstRun
+            ? <button type="button" className="onboard-skip" onClick={onDone}>Skip</button>
+            : <button type="button" className="onboard-skip" onClick={onDone}>Close</button>}
+        </div>
+        <div className="onboard-body">{body}</div>
+        <div className="onboard-foot">
+          <div className="onboard-dots">
+            {Array.from({ length: TOTAL }, (_, i) => <span key={i} className={`onboard-dot ${i === step ? 'active' : ''}`} />)}
+          </div>
+          <div className="onboard-nav">
+            {step > 0 && <button type="button" className="onboard-back" onClick={() => setStep(step - 1)}>Back</button>}
+            <button type="button" className="onboard-next" onClick={next}>
+              {step === TOTAL - 1 ? (computed ? 'Save targets & start' : 'Start logging') : 'Next'}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
