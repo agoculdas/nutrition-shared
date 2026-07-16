@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nutrition-shared.discovery-corpus.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["participant_code", "meal_name", "portion_language", "meal_slot", "dietary_class", "context"],
+  "properties": {
+    "participant_code": { "type": "string", "pattern": "^P[0-9]{3}$" },
+    "meal_name": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "portion_language": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "meal_slot": { "enum": ["breakfast", "lunch", "snack", "dinner"] },
+    "dietary_class": { "enum": ["vegan", "vegetarian", "jain", "eggetarian", "pescatarian", "non-vegetarian"] },
+    "context": { "enum": ["home", "restaurant", "delivery", "packaged", "generic"] }
+  }
+}

@@ -2,6 +2,8 @@ design-fetch/
 .DS_Store
 Thumbs.db
 *.log
+node_modules/
+dist/
 
 Nutrition App Frontend/
 Trace-*.json

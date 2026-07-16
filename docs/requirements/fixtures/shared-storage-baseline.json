@@ -1,0 +1,7 @@
+{
+  "shared.excludes:v1": "[\"creatine\"]",
+  "shared.log:2026-07-16": "[{\"id\":\"baseline-meal-1\",\"name\":\"Baseline meal\",\"sub\":\"fixture\",\"kcal\":650,\"p\":42.5,\"f\":18.2,\"c\":74.4,\"fiber\":9.1,\"addedAt\":\"2026-07-16T08:00:00.000Z\"}]",
+  "shared.meals:saved": "[{\"id\":\"saved-1\",\"name\":\"Saved fixture\",\"kcal\":300,\"p\":25,\"f\":8,\"c\":30,\"fiber\":5}]",
+  "shared.targets:v1": "{\"protein\":140,\"caloriesTarget\":2000,\"caloriesFloor\":1500,\"fat\":{\"min\":55,\"max\":75},\"carbs\":{\"min\":180,\"max\":250},\"fiber\":{\"min\":25,\"max\":35}}",
+  "shared.theme:v1": "tidepool"
+}

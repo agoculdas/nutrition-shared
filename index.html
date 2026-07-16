@@ -2746,6 +2746,86 @@ const storage = {
   },
 };
 
+const BACKUP_SCHEMA_VERSION = 1;
+
+function canonicalize(value) {
+  if (Array.isArray(value)) return value.map(canonicalize);
+  if (value && typeof value === 'object') {
+    return Object.keys(value).sort().reduce((out, key) => {
+      out[key] = canonicalize(value[key]);
+      return out;
+    }, {});
+  }
+  return value;
+}
+
+function canonicalStringify(value) {
+  return JSON.stringify(canonicalize(value), null, 2) + '\n';
+}
+
+function namespaceSnapshot() {
+  const entries = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith(NS)) entries[key] = localStorage.getItem(key);
+  }
+  return entries;
+}
+
+function createBackup() {
+  return {
+    schemaVersion: BACKUP_SCHEMA_VERSION,
+    namespace: NS,
+    entries: namespaceSnapshot(),
+  };
+}
+
+function validateBackup(candidate) {
+  if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate)) throw new Error('Backup must be a JSON object.');
+  if (candidate.schemaVersion !== BACKUP_SCHEMA_VERSION) throw new Error(`Unsupported backup schema version: ${String(candidate.schemaVersion)}`);
+  if (candidate.namespace !== NS) throw new Error(`Backup namespace must be ${NS}`);
+  if (!candidate.entries || typeof candidate.entries !== 'object' || Array.isArray(candidate.entries)) throw new Error('Backup entries must be an object.');
+  for (const [key, value] of Object.entries(candidate.entries)) {
+    if (!key.startsWith(NS)) throw new Error(`Backup key is outside ${NS}: ${key}`);
+    if (typeof value !== 'string') throw new Error(`Backup value must be a string: ${key}`);
+  }
+  return candidate;
+}
+
+function restoreBackup(candidate) {
+  const valid = validateBackup(candidate);
+  const before = namespaceSnapshot();
+  try {
+    Object.keys(before).forEach(key => localStorage.removeItem(key));
+    Object.entries(valid.entries).forEach(([key, value]) => localStorage.setItem(key, value));
+  } catch (error) {
+    Object.keys(namespaceSnapshot()).forEach(key => localStorage.removeItem(key));
+    Object.entries(before).forEach(([key, value]) => localStorage.setItem(key, value));
+    throw error;
+  }
+  return createBackup();
+}
+
+function downloadBackup() {
+  const blob = new Blob([canonicalStringify(createBackup())], { type: 'application/json;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `nutrition-backup-v${BACKUP_SCHEMA_VERSION}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+window.__nutritionBackup = {
+  schemaVersion: BACKUP_SCHEMA_VERSION,
+  canonicalStringify,
+  createBackup,
+  restoreBackup,
+  validateBackup,
+};
+
 function dateKey(d = new Date()) {
   const yyyy = d.getFullYear();
   const mm = String(d.getMonth() + 1).padStart(2, '0');
@@ -5088,6 +5168,7 @@ function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onRe
 
   // Auto-save (debounced)
   const [saveState, setSaveState] = useState('idle'); // idle | saving | saved
+  const backupInput = useRef(null);
   const saveTimer = useRef(null);
   const lastSerialized = useRef(null);
 
@@ -5130,6 +5211,19 @@ function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onRe
       fiberMin: String(DEFAULT_TARGETS.fiber.min),
       fiberMax: String(DEFAULT_TARGETS.fiber.max),
     });
+  };
+
+  const importBackup = async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file) return;
+    try {
+      restoreBackup(JSON.parse(await file.text()));
+      window.alert('Backup restored. The app will reload now.');
+      window.location.reload();
+    } catch (error) {
+      window.alert(`Backup was not imported: ${error.message}`);
+    }
   };
 
   // Live preview math (uses draft parsed targets where valid, else current)
@@ -5305,6 +5399,19 @@ function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onRe
               error={fieldErrors.fiberRange || fieldErrors.fiberMin || fieldErrors.fiberMax}
               context={<>Daily fiber target band.</>}
             />
+          </div>
+
+          <div className="settings-section">
+            <div className="settings-section-head">
+              <span className="settings-section-title">Data backup</span>
+              <span className="settings-section-meta">schema v{BACKUP_SCHEMA_VERSION}</span>
+            </div>
+            <div className="settings-section-help">Export settings, saved meals, exclusions and daily logs to one versioned file, or restore a file you exported earlier.</div>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <button type="button" className="btn btn-secondary" onClick={downloadBackup}>Export backup</button>
+              <button type="button" className="btn btn-secondary" onClick={() => backupInput.current?.click()}>Import backup</button>
+              <input ref={backupInput} type="file" accept="application/json,.json" onChange={importBackup} style={{ display: 'none' }} />
+            </div>
           </div>
 
           <div className="settings-foot">

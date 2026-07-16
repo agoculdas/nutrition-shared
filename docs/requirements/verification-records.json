@@ -1,0 +1,23 @@
+[
+  { "id": "GOV-001", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP0/verification-report.md", "result": "Plan and VCD each contain the same 109 unique identifiers." },
+  { "id": "GOV-002", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP0/verification-report.md", "result": "Requirement lint found exactly one shall in all 109 requirements." },
+  { "id": "GOV-003", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP0/verification-report.md", "result": "Audit found zero missing objective, method, checkpoint or pass-criterion fields." },
+  { "id": "GOV-004", "status": "Pass", "evidencePath": "docs/requirements/change-log.md", "result": "Full inspection finds a complete stakeholder-approved record for the prototype-first checkpoint tailoring." },
+  { "id": "BAS-000", "status": "Not run", "evidencePath": "docs/requirements/change-log.md", "result": "Deferred by stakeholder approval to CP4R after functioning-prototype acceptance." },
+  { "id": "BAS-001", "status": "Pass", "evidencePath": "docs/requirements/baseline-report.md", "result": "Baseline commit, release hashes, 167 components, 314 presets and eight supported flows are recorded." },
+  { "id": "BAS-002", "status": "Not run", "evidencePath": "docs/requirements/change-log.md", "result": "Deferred by stakeholder approval to CP4R after functioning-prototype acceptance." },
+  { "id": "BAS-003", "status": "Not run", "evidencePath": "docs/requirements/discovery-corpus.schema.json", "result": "Schema is controlled at CP0; populated-corpus inspection is scheduled for CP4R." },
+  { "id": "BAS-004", "status": "Not run", "evidencePath": "docs/requirements/change-log.md", "result": "Deferred by stakeholder approval to CP4R after functioning-prototype acceptance." },
+  { "id": "FND-001", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1A/verification-report.md", "result": "npm run build exited 0 and produced the documented dist artifact." },
+  { "id": "FND-002", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1A/browser-report.json", "result": "Observed page assets contained four resources and zero origins other than http://127.0.0.1:4173." },
+  { "id": "FND-003", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1A/verification-report.md", "result": "Eight negative catalog fixtures failed with their expected DATA-RULESET-01 diagnostics." },
+  { "id": "FND-004", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1A/verification-report.md", "result": "Production catalog validation reported zero errors for 167 components and 314 presets." },
+  { "id": "FND-005", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1A/browser-report.json", "result": "390x844 and 1440x900 both rendered the dashboard with zero captured error-level console entries." },
+  { "id": "FND-006", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1A/reproducible-build.json", "result": "Two clean checkouts of temporary commit 8137405f2eb2d713d5f0c785f15fd40813958f13 produced identical hash manifests." },
+  { "id": "FND-007", "status": "Blocked", "evidencePath": "docs/requirements/evidence/CP1B/verification-report.md", "result": "Service worker and cache manifest are implemented; the browser safety policy blocked the final reload after the local server was stopped." },
+  { "id": "FND-008", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1B/browser-report.json", "result": "The baseline shared.* fixture rendered 650 kcal, 42.5 g protein, 18.2 g fat, 74.4 g carbs and 9.1 g fiber with unchanged display rounding." },
+  { "id": "FND-009", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1B/verification-report.md", "result": "Backup schema test included settings, saved meals, exclusions, daily logs and schemaVersion 1." },
+  { "id": "FND-010", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1B/verification-report.md", "result": "Canonical export-import-export comparison was byte-identical." },
+  { "id": "FND-011", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1B/verification-report.md", "result": "Schema version 999 was rejected and pre/post namespace state was byte-identical." },
+  { "id": "FND-012", "status": "Pass", "evidencePath": "docs/requirements/evidence/CP1B/verification-report.md", "result": "Live production returned HTTP 200 and retained baseline SHA-256 d2c33e01b6c40980c5d13bef322c40717625ffeea314098afe794cdad8fc67a5." }
+]

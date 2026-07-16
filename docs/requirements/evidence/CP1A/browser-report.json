@@ -1,0 +1,15 @@
+{
+  "applicationOrigin": "http://127.0.0.1:4173",
+  "assetCount": 4,
+  "assets": [
+    "http://127.0.0.1:4173/vendor/react.production.min.js",
+    "http://127.0.0.1:4173/vendor/react-dom.production.min.js",
+    "http://127.0.0.1:4173/app.js",
+    "http://127.0.0.1:4173/icon.svg"
+  ],
+  "thirdPartyOrigins": [],
+  "viewports": [
+    { "width": 390, "height": 844, "dashboardRendered": true, "uncaughtConsoleErrors": 0 },
+    { "width": 1440, "height": 900, "dashboardRendered": true, "uncaughtConsoleErrors": 0 }
+  ]
+}

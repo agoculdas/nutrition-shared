@@ -1,0 +1,25 @@
+{
+  "name": "nutrition-shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate:catalog": "node scripts/validate-catalog.mjs",
+    "test:backup": "node --test tests/backup.test.mjs",
+    "test:catalog": "node --test tests/catalog-validator.test.mjs",
+    "verify:reproducible": "node scripts/verify-reproducible-build.mjs",
+    "verify:requirements": "node scripts/verify-requirements.mjs",
+    "test": "npm run verify:requirements && npm run test:catalog && npm run validate:catalog && npm run test:backup && npm run build"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.6"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

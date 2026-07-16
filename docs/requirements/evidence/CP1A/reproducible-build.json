@@ -1,0 +1,40 @@
+{
+  "requirement": "FND-006",
+  "sourceCommit": "8137405f2eb2d713d5f0c785f15fd40813958f13",
+  "cleanCheckouts": [
+    true,
+    true
+  ],
+  "identical": true,
+  "manifestSha256": "458a9934682180332d2ad8b7245123745285a8c65ace7d54497bdce3e62f3ee4",
+  "files": [
+    {
+      "file": "app.js",
+      "sha256": "977a59cfc9a4542acf91a6b2beb46afad05c175a39a2938360a2e6aace153a62"
+    },
+    {
+      "file": "icon.svg",
+      "sha256": "836c9da432e43898530d18368418fbda3ea122e827d49a63096f9169dd5325f3"
+    },
+    {
+      "file": "index.html",
+      "sha256": "cc31b69e47b1a1ee819456bede9a9b86ea848aef20713a40ffb80fcc304b922c"
+    },
+    {
+      "file": "manifest.webmanifest",
+      "sha256": "e2b70a42ed55f094cf73b9d7274d38079d517fbd85448fcac96c40bb31e540c1"
+    },
+    {
+      "file": "service-worker.js",
+      "sha256": "0be44367957cb7112c9db3be71708bd2a27fedbca0dbea02ed001d3971a23a32"
+    },
+    {
+      "file": "vendor/react-dom.production.min.js",
+      "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d"
+    },
+    {
+      "file": "vendor/react.production.min.js",
+      "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
+    }
+  ]
+}

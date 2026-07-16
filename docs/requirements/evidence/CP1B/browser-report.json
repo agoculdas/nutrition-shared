@@ -1,0 +1,10 @@
+{
+  "baselineFixture": "docs/requirements/fixtures/shared-storage-baseline.json",
+  "expectedTotals": { "kcal": 650, "protein_g": 42.5, "fat_g": 18.2, "carbs_g": 74.4, "fiber_g": 9.1 },
+  "displayedTotals": { "kcal": 650, "protein_g": 43, "fat_g": 18, "carbs_g": 74, "fiber_g": 9 },
+  "baselineDisplayRounding": { "kcal": 650, "protein_g": 43, "fat_g": 18, "carbs_g": 74, "fiber_g": 9 },
+  "differencesFromBaseline": { "kcal": 0, "protein_g": 0, "fat_g": 0, "carbs_g": 0, "fiber_g": 0 },
+  "uncaughtConsoleErrors": 0,
+  "backupControlsVisible": true,
+  "offlineReload": { "status": "Blocked", "reason": "Testing browser URL safety policy rejected reload after local server shutdown." }
+}
