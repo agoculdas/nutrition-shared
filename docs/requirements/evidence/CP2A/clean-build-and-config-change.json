@@ -1,0 +1,35 @@
+{
+  "requirements": [
+    "EDI-001",
+    "EDI-005"
+  ],
+  "sourceCommit": "e648f2b49b6ec266705a36da992b5df4442bbf9d",
+  "configOnlyCommit": "f1c34e2063a22dd965f1efc57f547eaf66fdab7b",
+  "firstBuild": {
+    "sourceDirty": false,
+    "editionCoreCommits": [
+      "e648f2b49b6ec266705a36da992b5df4442bbf9d",
+      "e648f2b49b6ec266705a36da992b5df4442bbf9d"
+    ],
+    "coreSourceSha256": "d4ec3963fad4344c0b7330a9319c45f2a3089b4cb51a777290cec90bff1b1d4d"
+  },
+  "demonstration": {
+    "changedFiles": [
+      "editions/india.json"
+    ],
+    "secondBuildSourceDirty": false,
+    "coreLogicUnchanged": true,
+    "sharedOutputUnchanged": true,
+    "beforeCoreSourceSha256": "d4ec3963fad4344c0b7330a9319c45f2a3089b4cb51a777290cec90bff1b1d4d",
+    "afterCoreSourceSha256": "d4ec3963fad4344c0b7330a9319c45f2a3089b4cb51a777290cec90bff1b1d4d",
+    "beforeAppSha256": {
+      "shared": "69f8a5a55e776556ca9db62a179204ab9fc88bef6788d8276d914c355ba4322c",
+      "india": "69f8a5a55e776556ca9db62a179204ab9fc88bef6788d8276d914c355ba4322c"
+    },
+    "afterAppSha256": {
+      "shared": "69f8a5a55e776556ca9db62a179204ab9fc88bef6788d8276d914c355ba4322c",
+      "india": "69f8a5a55e776556ca9db62a179204ab9fc88bef6788d8276d914c355ba4322c"
+    }
+  },
+  "pass": true
+}

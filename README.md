@@ -9,21 +9,17 @@ npm ci --ignore-scripts
 npm run build
 ```
 
-The single documented release command is `npm run build`. It creates `dist/` containing:
+The single documented release command is `npm run build`. It creates two complete edition artifacts from the same core:
 
-- `index.html`
-- `app.js`
-- `service-worker.js`
-- `manifest.webmanifest`
-- `icon.svg`
-- `vendor/react.production.min.js`
-- `vendor/react-dom.production.min.js`
-- `release-hashes.json`
+- `dist/shared/`
+- `dist/india/`
 
-The built application uses no third-party origin at runtime. Serve `dist/` over HTTP to install and exercise its offline service worker.
+Each directory contains `index.html`, `app.js`, `edition-config.js`, `service-worker.js`, its manifest and icon, local React vendor files, and `release-hashes.json`. The cross-edition trace is stored at `dist/build-manifest.json`.
+
+The built applications use no third-party origin at runtime. Run `node scripts/serve.mjs` to serve the shared edition, or `node scripts/serve.mjs dist/india` for the India edition. Open `http://127.0.0.1:4173` after starting the server.
 
 ## Verification
 
-Run `npm test` for requirement lint, catalog fixtures, production-catalog validation, backup/restore tests and the release build. Run `npm run verify:reproducible` to compare release hashes from two clean checkouts of one controlled source commit.
+Run `npm test` for requirement lint, catalog fixtures, production-catalog validation, backup/restore tests, the dual-edition build, edition architecture and shared-edition regression. Run `npm run verify:reproducible` to compare release hashes from two clean checkouts of one controlled source commit.
 
 Checkpoint status and evidence live under `docs/requirements/`.

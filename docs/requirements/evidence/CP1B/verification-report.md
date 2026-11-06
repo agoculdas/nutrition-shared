@@ -8,6 +8,6 @@ Recorded 2026-07-16 by Codex.
 - The Settings interface exposes `Export backup` and `Import backup`, identifies schema version 1 and describes its state coverage.
 - The live public site returned HTTP 200 at close and retained its pre-phase `index.html` SHA-256, `d2c33e01b6c40980c5d13bef322c40717625ffeea314098afe794cdad8fc67a5`.
 
-The final installed-app offline reload was attempted by stopping the local server after a successful online load. The testing browser then blocked navigation to the unavailable local URL under its safety policy before page execution. No workaround was used. `FND-007` remains `Blocked` on verification environment policy; `FND-008` through `FND-012` are `Pass`.
+The original automated installed-app offline reload attempt was stopped by the testing browser's local-URL safety policy before page execution. That limitation is retained in `browser-report.json` as raw historical evidence. The repository stakeholder subsequently executed the offline-reopen procedure and verified `FND-007` by demonstration; the signed record is `manual-offline-demonstration.md`.
 
-CP1B therefore remains open only on `FND-007` evidence.
+`FND-007` through `FND-012` are `Pass`. CP1B is closed by the stakeholder go decision in `review-record.md`.

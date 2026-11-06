@@ -10,7 +10,13 @@ const seed = path.join(temp, 'seed');
 const a = path.join(temp, 'checkout-a');
 const b = path.join(temp, 'checkout-b');
 const evidencePath = path.join(project, 'docs', 'requirements', 'evidence', 'CP1A', 'reproducible-build.json');
-const controlled = ['.gitignore', 'index.html', 'icon.svg', 'manifest.webmanifest', 'package.json', 'package-lock.json', 'scripts/build.mjs'];
+const controlled = [
+  '.gitignore', 'index.html', 'icon.svg', 'manifest.webmanifest', 'meal-prep-core.js', 'meal-prep-recipes.js', 'fast-log-core.js', 'food-model-core.js', 'food-model-data.js', 'package.json', 'package-lock.json',
+  'editions/shared.json', 'editions/india.json', 'editions/india-icon.svg',
+  'scripts/build.mjs', 'scripts/editions.mjs', 'scripts/catalog.mjs', 'scripts/validate-food-model.mjs',
+  'tests/food-model.test.mjs', 'tests/food-model-integration.test.mjs',
+  'docs/PLAN-meal-prep-annex.md',
+];
 
 function run(command, args, cwd, env = {}) {
   const isWindowsNpm = process.platform === 'win32' && command === 'npm';
@@ -30,7 +36,11 @@ function copyControlled(target) {
 }
 
 function hashes(checkout) {
-  return JSON.parse(fs.readFileSync(path.join(checkout, 'dist', 'release-hashes.json'), 'utf8'));
+  return {
+    build: JSON.parse(fs.readFileSync(path.join(checkout, 'dist', 'build-manifest.json'), 'utf8')),
+    shared: JSON.parse(fs.readFileSync(path.join(checkout, 'dist', 'shared', 'release-hashes.json'), 'utf8')),
+    india: JSON.parse(fs.readFileSync(path.join(checkout, 'dist', 'india', 'release-hashes.json'), 'utf8')),
+  };
 }
 
 try {
@@ -58,7 +68,7 @@ try {
     cleanCheckouts,
     identical,
     manifestSha256: crypto.createHash('sha256').update(JSON.stringify(first)).digest('hex'),
-    files: first,
+    manifests: first,
   };
   fs.mkdirSync(path.dirname(evidencePath), { recursive: true });
   fs.writeFileSync(evidencePath, JSON.stringify(report, null, 2) + '\n');

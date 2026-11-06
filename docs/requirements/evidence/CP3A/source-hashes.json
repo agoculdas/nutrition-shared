@@ -1,0 +1,22 @@
+[
+  {
+    "path": "index.html",
+    "sha256": "a14f1993ce0ebcb654f58f81e9b8d3af075b17898523abc2bd78e09a3621f879"
+  },
+  {
+    "path": "food-model-core.js",
+    "sha256": "291f1b4a63d91cb7d5fdbef97aa0fd7110651700e7a86cef3fc71376bff535f3"
+  },
+  {
+    "path": "food-model-data.js",
+    "sha256": "13dbf0b0815b5d40e09a400f5520696f6d442e3f489e8008cb8ba6d804aa853c"
+  },
+  {
+    "path": "meal-prep-core.js",
+    "sha256": "c26dc6d1358127e748c3d2a0060938853c52472ae8f5e69e5e222c64a040a3df"
+  },
+  {
+    "path": "meal-prep-recipes.js",
+    "sha256": "8f94d277dd6a19703e35d93b7b30a4bb0628191ba7fe7353b4b527e0a0644c61"
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "id": "shared",
+  "name": "Daily Nutrition Tracker",
+  "storageNamespace": "shared.",
+  "manifest": {
+    "name": "Daily Nutrition Tracker",
+    "shortName": "Nutrition",
+    "icon": "icon.svg",
+    "startUrl": "./",
+    "display": "standalone",
+    "orientation": "portrait"
+  },
+  "iconSource": "icon.svg",
+  "theme": {
+    "default": "tidepool",
+    "values": {
+      "tidepool": {
+        "name": "Tidepool",
+        "desc": "deep teal",
+        "themeColor": "#EAF0EF",
+        "bg": "#EAF0EF",
+        "accent": "oklch(0.50 0.075 205)",
+        "good": "oklch(0.585 0.152 142)",
+        "cssVariables": {
+          "--bg": "#EAF0EF",
+          "--surface-2": "#F4F8F7",
+          "--accent": "oklch(0.50 0.075 205)",
+          "--accent-press": "oklch(0.43 0.075 205)",
+          "--accent-bg": "oklch(0.50 0.075 205 / 0.10)",
+          "--accent-line": "oklch(0.50 0.075 205 / 0.30)",
+          "--good": "oklch(0.585 0.152 142)"
+        }
+      },
+      "harbor": {
+        "name": "Harbor",
+        "desc": "denim blue",
+        "themeColor": "#ECF0F2",
+        "bg": "#ECF0F2",
+        "accent": "oklch(0.52 0.10 248)",
+        "good": "oklch(0.575 0.152 145)",
+        "cssVariables": {
+          "--bg": "#ECF0F2",
+          "--surface-2": "#F5F8FA",
+          "--accent": "oklch(0.52 0.10 248)",
+          "--accent-press": "oklch(0.44 0.10 248)",
+          "--accent-bg": "oklch(0.52 0.10 248 / 0.10)",
+          "--accent-line": "oklch(0.52 0.10 248 / 0.30)",
+          "--good": "oklch(0.575 0.152 145)"
+        }
+      }
+    }
+  },
+  "eatingWindow": { "startHour": 8, "endHour": 21 },
+  "cuisineOrder": ["generic", "american", "mediterranean", "east-asian", "southeast-asian", "mexican", "indian", "middle-eastern", "japanese", "korean"],
+  "suggestionPolicy": {
+    "setSize": 7,
+    "maxPerCuisine": 2,
+    "states": {
+      "anchor": { "counts": { "anchor": 3, "balanced": 3, "filler": 1 }, "fallbackOrder": ["anchor", "balanced", "filler"] },
+      "balanced": { "counts": { "anchor": 2, "balanced": 3, "filler": 2 }, "fallbackOrder": ["balanced", "anchor", "filler"] },
+      "filler": { "counts": { "anchor": 1, "balanced": 3, "filler": 3 }, "fallbackOrder": ["filler", "balanced", "anchor"] }
+    }
+  },
+  "defaultTargets": {
+    "protein": 140,
+    "caloriesTarget": 2000,
+    "caloriesFloor": 1500,
+    "fat": { "min": 55, "max": 75 },
+    "carbs": { "min": 180, "max": 250 },
+    "fiber": { "min": 25, "max": 35 }
+  },
+  "copy": { "dashboardTitle": "Daily nutrition" }
+  ,"features": { "mealPrep": false, "dietaryPreferences": false, "qualifiedFoodCatalog": false, "fastLog": false }
+}

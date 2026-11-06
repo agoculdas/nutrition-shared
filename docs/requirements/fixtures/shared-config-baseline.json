@@ -1,0 +1,19 @@
+{
+  "sourceCommit": "1a92635762d73c5c037910ba225805004b9cd78c",
+  "catalog": {
+    "components": 167,
+    "presets": 314
+  },
+  "defaultTargets": {
+    "protein": 140,
+    "caloriesTarget": 2000,
+    "caloriesFloor": 1500,
+    "fat": { "min": 55, "max": 75 },
+    "carbs": { "min": 180, "max": 250 },
+    "fiber": { "min": 25, "max": 35 }
+  },
+  "eatingWindow": {
+    "startHour": 8,
+    "endHour": 21
+  }
+}

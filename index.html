@@ -2070,6 +2070,150 @@
     .presets-search .s-ic { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 17px; height: 17px; color: var(--muted); pointer-events: none; }
     .presets-search-clear { position: absolute; right: 7px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; border: none; background: var(--surface-2); color: var(--ink-2); cursor: pointer; display: grid; place-items: center; }
     .presets-search-clear svg { width: 15px; height: 15px; }
+    /* Fast log — one-tap strip, three picks, period view. India only. */
+    .fl-hero { margin-bottom: 10px; }
+    .fl-hero .hero { margin-bottom: 0; }
+    .fl-tabs {
+      display: flex; gap: 2px; padding: 2px; margin-bottom: 8px;
+      background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 9px;
+    }
+    .fl-tab {
+      flex: 1; min-height: 32px; padding: 6px 10px;
+      background: transparent; border: none; border-radius: 7px;
+      font-family: var(--font-sans); font-size: 12.5px; font-weight: 600;
+      color: var(--muted); cursor: pointer;
+    }
+    .fl-tab.active { background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px var(--hairline-strong); }
+    .fl-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+    .fl-phero { display: block; }
+    .fl-phero-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+    .fl-phero-hit { font-size: 10.5px; color: var(--muted); letter-spacing: 0.02em; }
+    .fl-phero-stats { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0; }
+    .fl-phero-divider { background: var(--hairline); }
+    .fl-pstat { padding: 0 4px; display: flex; flex-direction: column; gap: 6px; }
+    .fl-pstat-label {
+      font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .fl-pstat-num { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .fl-pstat-num .unit { font-size: 10.5px; font-weight: 500; color: var(--muted); margin-left: 4px; letter-spacing: 0; }
+
+    .fl-cells { display: flex; align-items: flex-end; gap: 3px; height: 42px; margin-top: 14px; }
+    .fl-cells.month { gap: 2px; }
+    .fl-cell {
+      flex: 1 1 0; min-width: 0; height: 100%;
+      display: flex; align-items: flex-end;
+      background: var(--surface-2); border-radius: 3px;
+      box-shadow: inset 0 0 0 1px var(--hairline);
+    }
+    .fl-cell-fill { width: 100%; border-radius: 3px; background: var(--dim); }
+    .fl-cell.hit .fl-cell-fill { background: var(--good); }
+    .fl-cell.miss .fl-cell-fill { background: var(--warn); }
+    .fl-cell.empty { box-shadow: inset 0 0 0 1px var(--hairline); background: transparent; }
+
+    .fl-strip {
+      display: flex; gap: 6px; overflow-x: auto; overflow-y: hidden;
+      margin-bottom: 10px; padding-bottom: 2px;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    }
+    .fl-strip::-webkit-scrollbar { display: none; }
+    .fl-chip { min-height: 44px; flex: 0 0 auto; padding: 8px 12px; max-width: 74vw; }
+    .fl-chip-name { max-width: 40vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .fl-chip-p { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--good); }
+    .fl-strip-empty { font-size: 12px; color: var(--muted); padding: 2px 2px 12px; }
+
+    .fl-picks { margin-bottom: 10px; }
+    .fl-picks-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .fl-picks-list { display: flex; flex-direction: column; gap: 8px; }
+    /* Three full preset cards overflow 390 × 844, so picks render the same
+       PresetCard (same tap, hold and ⋯ handlers) as a compact row: the
+       ingredient chips are the only thing dropped. */
+    .fl-picks .pcard { padding: 10px 12px; gap: 0; contain-intrinsic-size: auto 66px; }
+    .fl-picks .pcard-chips { display: none; }
+    .fl-picks .pcard-top { padding-right: 26px; align-items: center; gap: 10px; }
+    .fl-picks .pcard-name { font-size: 16px; }
+    .fl-picks .pcard-sub { font-size: 11px; margin-top: 2px; }
+    .fl-picks .pcard-macro .k { font-size: 18px; }
+    .fl-picks .pcard-macro .kc { font-size: 10px; }
+    .fl-picks .pcard-macro .pr { font-size: 11.5px; margin-top: 2px; }
+    .fl-picks .pcard-more { top: 50%; bottom: auto; right: 2px; transform: translateY(-50%); }
+
+    .fl-toast {
+      position: fixed; left: 16px; right: 16px; bottom: 84px; z-index: 35;
+      max-width: 428px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 10px 10px 10px 14px;
+      background: var(--ink); color: var(--bg);
+      border-radius: 12px; box-shadow: var(--shadow-card, 0 4px 16px rgba(0,0,0,0.25));
+      font-size: 13px;
+    }
+    .fl-toast-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .fl-toast-undo {
+      flex: 0 0 auto; min-height: 34px; padding: 6px 14px;
+      background: transparent; color: var(--bg);
+      border: 1px solid rgba(255,255,255,0.34); border-radius: 999px;
+      font-family: var(--font-sans); font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    @media (min-width: 720px) { .fl-toast { max-width: 528px; } }
+
+    /* .app-shell already reserves 140px under the fold for the FAB. */
+    .fl-details { margin: 10px 0 0; }
+    .fl-details-btn {
+      width: 100%; min-height: 44px; padding: 12px 14px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius);
+      color: var(--ink-2); font-family: var(--font-sans); font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .fl-details-chev { width: 16px; height: 16px; transition: transform 0.15s ease; }
+    .fl-details-chev.open { transform: rotate(180deg); }
+    .fl-details-body { margin-top: 10px; }
+    .fl-on .meal-prep-entry { margin-bottom: 0; }
+
+    /* Meal-prep annex */
+    .meal-prep-entry { width:100%; margin:14px 0 88px; padding:16px; display:flex; align-items:center; gap:14px; text-align:left; color:var(--ink); background:linear-gradient(135deg,var(--surface),var(--accent-bg)); border:1px solid var(--accent-line); border-radius:18px; cursor:pointer; }
+    .meal-prep-entry strong { display:block; font-family:var(--font-serif); font-size:18px; font-weight:500; }
+    .meal-prep-entry span { display:block; margin-top:3px; color:var(--ink-2); font-size:12.5px; line-height:1.4; }
+    .meal-prep-entry .arrow { margin-left:auto; color:var(--accent); font-size:22px; }
+    .mp-sheet { max-height:min(92vh,900px); overflow:hidden; display:flex; flex-direction:column; }
+    .mp-head { padding:12px 16px 10px; border-bottom:1px solid var(--hairline); display:flex; align-items:center; gap:10px; }
+    .mp-head-copy { min-width:0; flex:1; }
+    .mp-head h2 { margin:0; font-family:var(--font-serif); font-size:20px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .mp-head p { margin:2px 0 0; color:var(--muted); font-size:11px; }
+    .mp-scroll { overflow:auto; padding:14px 16px 32px; }
+    .mp-filter-row { display:flex; gap:7px; overflow:auto; padding-bottom:12px; }
+    .mp-chip { flex:none; border:1px solid var(--hairline-strong); background:var(--surface); color:var(--ink-2); border-radius:999px; padding:7px 11px; font:600 11px var(--font-sans); cursor:pointer; }
+    .mp-chip.active { color:var(--accent-press); background:var(--accent-bg); border-color:var(--accent-line); }
+    .mp-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .mp-card { border:1px solid var(--hairline); background:var(--surface); border-radius:15px; padding:13px; text-align:left; color:var(--ink); cursor:pointer; min-height:152px; }
+    .mp-card h3 { margin:8px 0 5px; font-family:var(--font-serif); font-size:17px; font-weight:500; line-height:1.14; }
+    .mp-card p { margin:0; font-size:11.5px; color:var(--ink-2); line-height:1.4; }
+    .mp-badge { display:inline-flex; border-radius:999px; padding:4px 7px; font-size:9px; line-height:1; font-weight:700; letter-spacing:.055em; text-transform:uppercase; background:var(--warn-bg,var(--accent-bg)); color:var(--accent-press); }
+    .mp-meta { display:flex; flex-wrap:wrap; gap:6px 10px; margin-top:10px; color:var(--muted); font-size:10.5px; }
+    .mp-section { margin-top:20px; }
+    .mp-section h3 { margin:0 0 9px; font-family:var(--font-serif); font-size:17px; font-weight:500; }
+    .mp-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+    .mp-field label { display:block; margin-bottom:5px; font-size:10px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.055em; }
+    .mp-field input { width:100%; height:42px; border:1px solid var(--hairline-strong); border-radius:10px; padding:0 10px; background:var(--surface); color:var(--ink); font:14px var(--font-sans); }
+    .mp-field input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-bg); }
+    .mp-ingredients { list-style:none; padding:0; margin:0; border-top:1px solid var(--hairline); }
+    .mp-ingredients li { display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid var(--hairline); font-size:12px; }
+    .mp-ingredients small { display:block; color:var(--muted); margin-top:2px; }
+    .mp-nutrition { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; padding:12px 8px; background:var(--surface-2); border-radius:12px; text-align:center; }
+    .mp-nutrition strong { display:block; font:600 14px var(--font-sans); }
+    .mp-nutrition span { font-size:9px; color:var(--muted); text-transform:uppercase; }
+    .mp-coverage { border-left:3px solid var(--accent); background:var(--accent-bg); border-radius:0 12px 12px 0; padding:12px; font-size:12px; line-height:1.5; }
+    .mp-storage { padding:12px; border:1px solid var(--hairline); border-radius:12px; font-size:11.5px; line-height:1.5; color:var(--ink-2); }
+    .mp-storage strong { color:var(--ink); }
+    .mp-error { margin-top:8px; color:var(--bad); font-size:11px; }
+    .mp-actions { position:sticky; bottom:-32px; display:flex; gap:8px; margin:22px -16px -32px; padding:12px 16px 20px; background:linear-gradient(transparent,var(--surface) 18%); }
+    .mp-actions .btn { flex:1; }
+    .mp-instructions { margin-top:10px; padding:13px; background:var(--surface-2); border-radius:12px; }
+    .mp-instructions ol { margin:8px 0 0; padding-left:20px; }
+    .mp-instructions li { margin:7px 0; font-size:12px; line-height:1.45; }
+    .mp-saved { margin:14px 0; padding:12px; border:1px dashed var(--hairline-strong); border-radius:12px; }
+    .mp-saved button { margin-top:8px; }
+    @media (max-width:380px) { .mp-grid,.mp-fields { grid-template-columns:1fr; } .mp-nutrition { grid-template-columns:repeat(3,1fr); row-gap:10px; } }
   </style>
 </head>
 <body>
@@ -2079,17 +2223,38 @@
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
+  <script src="food-model-data.js"></script>
+  <script src="food-model-core.js"></script>
+  <script src="meal-prep-core.js"></script>
+  <script src="meal-prep-recipes.js"></script>
+  <script src="fast-log-core.js"></script>
   <script type="text/babel" data-presets="env,react">
 const { useState, useEffect, useMemo, useCallback, useRef, useContext } = React;
 
-const DEFAULT_TARGETS = {
-  protein: 140,
-  caloriesTarget: 2000,
-  caloriesFloor: 1500,
-  fat: { min: 55, max: 75 },
-  carbs: { min: 180, max: 250 },
-  fiber: { min: 25, max: 35 },
-};
+const EDITION = window.__NUTRITION_EDITION__;
+if (!EDITION || typeof EDITION !== 'object') {
+  throw new Error('Edition configuration is missing. Build the app before running it.');
+}
+
+const DEFAULT_TARGETS = EDITION.defaultTargets;
+const FOOD_MODEL = window.NutritionFoodModel || null;
+const DIET_FEATURE = EDITION.features?.dietaryPreferences === true;
+const DEFAULT_DIET_PREFERENCE = { dietType: 'all', noOnionGarlic: false };
+function normalizeDietPreference(value) {
+  if (!DIET_FEATURE || !FOOD_MODEL) return DEFAULT_DIET_PREFERENCE;
+  try { return FOOD_MODEL.normalizePreference(value); } catch (e) { return DEFAULT_DIET_PREFERENCE; }
+}
+function dietEvaluation(food, preference) {
+  if (!DIET_FEATURE || !FOOD_MODEL) return { compatible: true, unknown: false, reasons: [] };
+  try {
+    let candidate = food;
+    if (food && Array.isArray(food._builder) && !(food.dietClass && typeof food.containsOnionGarlic === 'boolean')) {
+      candidate = { ...food, ...FOOD_MODEL.derivePresetMetadata(food, COMP_BY_ID, window.NutritionFoodModelData) };
+    }
+    return FOOD_MODEL.evaluateFood(candidate, preference);
+  } catch (e) { return { compatible: null, unknown: true, reasons: ['Ingredient information is unavailable.'] }; }
+}
+function dietAllows(food, preference) { return dietEvaluation(food, preference).compatible === true; }
 
 const TargetsContext = React.createContext(DEFAULT_TARGETS);
 
@@ -2448,24 +2613,22 @@ const PRESET_DEFS = [
   { name: "Tofu kimchi", sub: "", tags: ["side","vegetarian"], cuisine: "korean", _builder: [{ componentId: "tofu", qty: 200, unit: "g" }, { componentId: "kimchi", qty: 80, unit: "g" }, { componentId: "sesame-oil", qty: 0.5, unit: "tbsp" }] },
 ];
 
-const CATEGORIES = [
-  { key: 'anchor',   label: 'Protein anchors', meta: '> 10 g/100kcal' },
-  { key: 'balanced', label: 'Balanced meals',  meta: '6–10 g/100kcal' },
-  { key: 'filler',   label: 'Fillers',         meta: '< 6 g/100kcal · carbs/fat/fiber' },
-];
-
-const CUISINES = [
-  { key: 'generic',         label: 'Generic',         glyph: 'GE' },
-  { key: 'american',        label: 'American',        glyph: 'US' },
-  { key: 'mediterranean',   label: 'Mediterranean',   glyph: 'MD' },
-  { key: 'east-asian',      label: 'East Asian',      glyph: 'EA' },
-  { key: 'southeast-asian', label: 'SE Asian',        glyph: 'SE' },
-  { key: 'mexican',         label: 'Mexican',         glyph: 'MX' },
-  { key: 'indian',          label: 'Indian',          glyph: 'IN' },
-  { key: 'middle-eastern',  label: 'Middle Eastern',  glyph: 'ME' },
-  { key: 'japanese',        label: 'Japanese',        glyph: 'JP' },
-  { key: 'korean',          label: 'Korean',          glyph: 'KR' },
-];
+const CUISINE_DEFS = {
+  generic:          { key: 'generic',         label: 'Generic',         glyph: 'GE' },
+  american:         { key: 'american',        label: 'American',        glyph: 'US' },
+  mediterranean:    { key: 'mediterranean',   label: 'Mediterranean',   glyph: 'MD' },
+  'east-asian':     { key: 'east-asian',      label: 'East Asian',      glyph: 'EA' },
+  'southeast-asian':{ key: 'southeast-asian', label: 'SE Asian',        glyph: 'SE' },
+  mexican:          { key: 'mexican',         label: 'Mexican',         glyph: 'MX' },
+  indian:           { key: 'indian',          label: 'Indian',          glyph: 'IN' },
+  'middle-eastern': { key: 'middle-eastern',  label: 'Middle Eastern',  glyph: 'ME' },
+  japanese:         { key: 'japanese',        label: 'Japanese',        glyph: 'JP' },
+  korean:           { key: 'korean',          label: 'Korean',          glyph: 'KR' },
+};
+const CUISINES = EDITION.cuisineOrder.map(key => {
+  if (!CUISINE_DEFS[key]) throw new Error(`Unknown cuisine in edition configuration: ${key}`);
+  return CUISINE_DEFS[key];
+});
 
 function isStaple(p) { return Array.isArray(p.tags) && p.tags.includes('staple'); }
 
@@ -2495,7 +2658,7 @@ const BUILDER_COMPONENTS = [
   { id: 'rajma',             name: 'Rajma / kidney beans (cooked)', group: 'protein', sub: 'Legumes', defaultUnit: 'g',  units: ['g', 'cup'],     defaultQty: 100, step: 50, unitFactor: { g: 1, cup: 200 }, macros: { kcal: 115, p: 6, f: 0.5, c: 20, fiber: 4 } },
   { id: 'black-beans',       name: 'Black beans (cooked)',    group: 'protein', sub: 'Legumes',    defaultUnit: 'g',     units: ['g', 'cup'],     defaultQty: 100, step: 50, unitFactor: { g: 1, cup: 200 }, macros: { kcal: 130, p: 9, f: 0.5, c: 24, fiber: 7 } },
   { id: 'chocolate-milk',    name: 'Chocolate milk',          group: 'protein', sub: 'Drinks',     defaultUnit: 'mug',   units: ['mug', 'ml'],    defaultQty: 1,   step: 0.5, unitFactor: { mug: 1, ml: 1 / 250 }, macros: { kcal: 180, p: 8, f: 5, c: 26, fiber: 0 } },
-  { id: 'salt-lassi',        name: 'Yogurt drink (lassi)',    group: 'protein', sub: 'Drinks',     defaultUnit: 'glass', units: ['glass', 'ml'],  defaultQty: 1,   step: 0.5, unitFactor: { glass: 1, ml: 1 / 250 }, macros: { kcal: 150, p: 8, f: 5, c: 18, fiber: 0 } },
+  { id: 'salt-lassi',        name: 'Salt lassi',              group: 'protein', sub: 'Drinks',     defaultUnit: 'glass', units: ['glass', 'ml'], defaultQty: 1, step: 0.5, unitFactor: { glass: 1, ml: 1 / 250 }, macros: { kcal: 150, p: 8, f: 5, c: 18, fiber: 0 } },
   { id: 'whey',              name: 'Whey protein',            group: 'protein', sub: 'Supplement', defaultUnit: 'scoop', units: ['scoop', 'g'],   defaultQty: 1,   step: 0.5, unitFactor: { scoop: 1, g: 1 / 30 }, macros: { kcal: 120, p: 25, f: 2, c: 3, fiber: 0 } },
   { id: 'creatine',          name: 'Creatine',                group: 'protein', sub: 'Supplement', defaultUnit: 'g',     units: ['g'],            defaultQty: 5,   step: 1, macros: { kcal: 0, p: 0, f: 0, c: 0, fiber: 0 } },
   { id: 'egg',               name: 'Egg (whole)',             group: 'protein', sub: 'Eggs',       defaultUnit: 'pc',    units: ['pc'],           defaultQty: 1,   step: 1, macros: { kcal: 72, p: 6.3, f: 4.8, c: 0.4, fiber: 0 } },
@@ -2680,6 +2843,13 @@ function resolveComposition(builder) {
 
 // Presets derive macros + category from their component composition, so the
 // numbers can never drift from the parts. Edit a component → its presets follow.
+if (FOOD_MODEL?.enrichCatalog) {
+  const enriched = FOOD_MODEL.enrichCatalog(BUILDER_COMPONENTS, PRESET_DEFS, window.NutritionFoodModelData, {
+    applyCatalogOverrides: EDITION.features?.qualifiedFoodCatalog === true,
+  });
+  if (Array.isArray(enriched?.components)) BUILDER_COMPONENTS.splice(0, BUILDER_COMPONENTS.length, ...enriched.components);
+  if (Array.isArray(enriched?.presets)) PRESET_DEFS.splice(0, PRESET_DEFS.length, ...enriched.presets);
+}
 const PRESETS = PRESET_DEFS.map(d => {
   const m = resolveComposition(d._builder);
   const r1 = (n) => Math.round(n * 10) / 10;
@@ -2724,10 +2894,9 @@ function presetComponents(p) {
 }
 
 
-// All persisted keys are namespaced so this shared build never collides with
-// another Nutrition app on the same origin (e.g. GitHub Pages project sites
-// all share <user>.github.io). Bump or change NS to fork storage again.
-const NS = 'shared.';
+// Every build receives its namespace from edition configuration so editions
+// remain isolated even when they share a parent origin.
+const NS = EDITION.storageNamespace;
 
 const storage = {
   async get(key) {
@@ -2881,16 +3050,12 @@ function requiredTier(totals, targets) {
   const ratio = (proteinLeft / kcalLeft) * 100; // same boundaries as the dish tiers
   return ratio >= 10 ? 'anchor' : ratio >= 6 ? 'balanced' : 'filler';
 }
-const BASE_MIX = {
-  anchor:   { anchor: 4, balanced: 4, filler: 2 },
-  balanced: { anchor: 3, balanced: 4, filler: 3 },
-  filler:   { anchor: 2, balanced: 4, filler: 4 },
-};
 function mixCounts(tier, count) {
-  const base = BASE_MIX[tier], total = 10;
+  const base = EDITION.suggestionPolicy.states[tier].counts;
+  const total = EDITION.suggestionPolicy.setSize;
   let a = Math.round(base.anchor / total * count), b = Math.round(base.balanced / total * count), f = Math.round(base.filler / total * count);
   let drift = count - (a + b + f);
-  const order = tier === 'anchor' ? ['anchor', 'balanced', 'filler'] : tier === 'filler' ? ['filler', 'balanced', 'anchor'] : ['balanced', 'anchor', 'filler'];
+  const order = EDITION.suggestionPolicy.states[tier].fallbackOrder;
   const inc = { anchor: () => a++, balanced: () => b++, filler: () => f++ };
   const cur = () => ({ anchor: a, balanced: b, filler: f });
   let gi = 0;
@@ -2905,7 +3070,7 @@ function drawMix(pool, tier, count, rng) {
   const want = mixCounts(tier, count);
   const buckets = { anchor: seededShuffle(pool.filter(p => p.cat === 'anchor'), rng), balanced: seededShuffle(pool.filter(p => p.cat === 'balanced'), rng), filler: seededShuffle(pool.filter(p => p.cat === 'filler'), rng) };
   const picked = [];
-  const order = tier === 'anchor' ? ['anchor', 'balanced', 'filler'] : tier === 'filler' ? ['filler', 'balanced', 'anchor'] : ['balanced', 'anchor', 'filler'];
+  const order = EDITION.suggestionPolicy.states[tier].fallbackOrder;
   order.forEach(k => { for (let i = 0; i < want[k] && buckets[k].length; i++) picked.push(buckets[k].shift()); });
   let guard = 0;
   while (picked.length < count && guard++ < 60) { let added = false; for (const k of order) { if (buckets[k].length) { picked.push(buckets[k].shift()); added = true; break; } } if (!added) break; }
@@ -2917,7 +3082,7 @@ function drawSuggestions(presets, tier, count, seed, excludedSet, maxPerCuisine 
   const want = mixCounts(tier, count);
   const buckets = { anchor: seededShuffle(pool.filter(p => p.cat === 'anchor'), rng), balanced: seededShuffle(pool.filter(p => p.cat === 'balanced'), rng), filler: seededShuffle(pool.filter(p => p.cat === 'filler'), rng) };
   const picked = [], cc = {};
-  const order = tier === 'anchor' ? ['anchor', 'balanced', 'filler'] : tier === 'filler' ? ['filler', 'balanced', 'anchor'] : ['balanced', 'anchor', 'filler'];
+  const order = EDITION.suggestionPolicy.states[tier].fallbackOrder;
   const tryTake = (k, n) => { let taken = 0; const skip = []; while (taken < n && buckets[k].length) { const c = buckets[k].shift(); if ((cc[c.cuisine] || 0) < maxPerCuisine) { picked.push(c); cc[c.cuisine] = (cc[c.cuisine] || 0) + 1; taken++; } else skip.push(c); } buckets[k] = skip.concat(buckets[k]); };
   order.forEach(k => tryTake(k, want[k]));
   let guard = 0;
@@ -2929,14 +3094,181 @@ function drawCuisine(presets, cuisineKey, tier, count, seed, excludedSet) {
   return drawMix(pool, tier, Math.min(count, pool.length), mulberry32(seed ^ hashStr(cuisineKey)));
 }
 
-// Fraction of "active eating window" elapsed: 8am → 9pm (13h)
+// Fraction of the edition-configured active eating window elapsed.
 function dayPaceFraction(d = new Date()) {
-  const start = 8;
-  const end = 21;
+  const start = EDITION.eatingWindow.startHour;
+  const end = EDITION.eatingWindow.endHour;
   const hours = d.getHours() + d.getMinutes() / 60;
   if (hours < start) return 0;
   if (hours > end) return 1;
   return (hours - start) / (end - start);
+}
+
+// ── Fast log (edition-gated) ────────────────────────────────────────
+// One-tap re-logging, three picks and the period view. Off unless the edition
+// asks for it AND the core module is on the page; the gate is read once so the
+// shared edition never branches at render time.
+const FAST_LOG_CORE = window.NutritionFastLog || null;
+const FAST_LOG = EDITION.features?.fastLog === true && !!window.NutritionFastLog;
+
+// rankMeals hands back deep-frozen records. Re-logging must own its data, so
+// every one-tap path takes a mutable copy without the previous id/timestamp.
+function freshMealCopy(m) {
+  let copy;
+  try { copy = JSON.parse(JSON.stringify(m)); } catch (e) { copy = { ...m }; }
+  delete copy.id;
+  delete copy.addedAt;
+  return copy;
+}
+
+const MEAL_PREP = window.NutritionMealPrep || null;
+const MEAL_PREP_RECIPES = Array.isArray(window.NutritionMealPrepRecipes)
+  ? window.NutritionMealPrepRecipes
+  : (window.NutritionMealPrepRecipes?.recipes || []);
+
+function mpDiet(recipe) {
+  const raw = recipe.diet || recipe.diets || [];
+  return (Array.isArray(raw) ? raw : [raw]).map(x => String(x).toLowerCase());
+}
+function mpDietCandidate(recipe) {
+  return { ...recipe, ...FOOD_MODEL.deriveRecipeMetadata(recipe, COMP_BY_ID) };
+}
+function mpOutput(recipe) {
+  const output = recipe.output || {};
+  return {
+    singular: output.singular || output.unit || recipe.outputUnit || 'portion',
+    plural: output.plural || `${output.singular || output.unit || recipe.outputUnit || 'portion'}s`,
+    increment: Number(output.servingIncrement || recipe.servingIncrement) || 0.5,
+    defaultMeal: Number(output.defaultUnitsPerMeal || recipe.defaultUnitsPerMeal) || 1,
+  };
+}
+function mpNumber(value, digits = 1) {
+  const n = Number(value) || 0;
+  return n.toLocaleString(undefined, { maximumFractionDigits: digits });
+}
+function mpMinutes(recipe) { const value=recipe.estimatedMinutes ?? recipe.totalMinutes; return typeof value==='object' ? value.total : value; }
+function mpBaseMacros(recipe) { return (recipe.ingredients||[]).reduce((a,i)=>{ const m=mpMacros(i.macros); for(const k of Object.keys(a)) a[k]+=Number(m[k])||0; return a; },mpMacros()); }
+function mpMacros(raw = {}) {
+  return { calories: raw.calories ?? raw.kcal ?? 0, protein: raw.protein ?? raw.p ?? 0, carbs: raw.carbs ?? raw.c ?? 0, fat: raw.fat ?? raw.f ?? 0, fibre: raw.fibre ?? raw.fiber ?? 0 };
+}
+
+function MealPrepEntry({ onOpen }) {
+  return <button className="meal-prep-entry" onClick={onOpen} aria-haspopup="dialog">
+    <span aria-hidden="true" style={{fontSize:28}}>◫</span>
+    <span><strong>Meal prep</strong><span>Scale a batch, check household coverage, and log actual servings.</span></span>
+    <span className="arrow" aria-hidden="true">›</span>
+  </button>;
+}
+
+function MealPrepSheet({ excluded, savedSetups, onSave, onLog, onClose, dietPreference }) {
+  const [selected, setSelected] = useState(null);
+  const [diet, setDiet] = useState('all');
+  const [desired, setDesired] = useState('');
+  const [unitsPerMeal, setUnitsPerMeal] = useState('1');
+  const [people, setPeople] = useState('1');
+  const [mealsPerDay, setMealsPerDay] = useState('1');
+  const [logUnits, setLogUnits] = useState('1');
+  const [instructions, setInstructions] = useState(false);
+  const [logError, setLogError] = useState('');
+  const [saveNote, setSaveNote] = useState('');
+  const dialogRef = useRef(null);
+  const detailTitleRef = useRef(null);
+  const firstRecipeRef = useRef(null);
+  const navigatedRef = useRef(false);
+  const closeRef = useRef(onClose);
+  closeRef.current = onClose;
+
+  useEffect(() => {
+    const node = dialogRef.current;
+    const prior = document.activeElement;
+    node?.focus();
+    const keydown = (event) => {
+      if (event.key === 'Escape') closeRef.current();
+      if (event.key !== 'Tab' || !node) return;
+      const focusable = [...node.querySelectorAll('button:not([disabled]),input:not([disabled]),a[href]')];
+      if (!focusable.length) return;
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (!node.contains(document.activeElement) || document.activeElement === node) { event.preventDefault(); (event.shiftKey ? last : first).focus(); }
+      else if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    document.addEventListener('keydown', keydown);
+    return () => { document.removeEventListener('keydown', keydown); prior?.focus?.(); };
+  }, []);
+
+  useEffect(() => { setInstructions(false); }, [selected?.id]);
+  useEffect(() => {
+    if (selected) { navigatedRef.current = true; requestAnimationFrame(() => detailTitleRef.current?.focus()); }
+    else if (navigatedRef.current) requestAnimationFrame(() => firstRecipeRef.current?.focus());
+  }, [selected]);
+
+  const openRecipe = (recipe, setup = null) => {
+    setSelected(recipe);
+    setDesired(String(setup?.requestedYield ?? recipe.baseYield));
+    setUnitsPerMeal(String(setup?.use?.unitsPerMeal ?? setup?.unitsPerMeal ?? mpOutput(recipe).defaultMeal));
+    setPeople(String(setup?.use?.people ?? setup?.people ?? 1));
+    setMealsPerDay(String(setup?.use?.mealsPerDay ?? setup?.mealsPerDay ?? 1));
+    setLogUnits(String(setup?.use?.unitsPerMeal ?? setup?.unitsPerMeal ?? mpOutput(recipe).defaultMeal));
+    setInstructions(false);
+    setSaveNote('');
+  };
+  const compatible = recipe => {
+    if ((recipe.ingredients || []).some(i => i.componentId && excluded.has(i.componentId))) return false;
+    if (DIET_FEATURE && !dietAllows(mpDietCandidate(recipe), dietPreference)) return false;
+    return diet === 'all' || mpDiet(recipe).includes(diet) || (diet === 'vegetarian' && recipe.vegetarian === true);
+  };
+  const visible = MEAL_PREP_RECIPES.filter(compatible);
+  let scaled = null, coverage = null, error = '';
+  if (selected && MEAL_PREP) {
+    try {
+      scaled = MEAL_PREP.scale(selected, Number(desired));
+      coverage = MEAL_PREP.coverage(scaled.actualYield, Number(unitsPerMeal), Number(people), Number(mealsPerDay));
+    } catch (e) { error = e.message || 'Enter positive amounts to calculate this batch.'; }
+  }
+  const out = selected ? mpOutput(selected) : null;
+  const mealMacros = scaled ? Object.fromEntries(Object.entries(mpMacros(scaled.perUnitMacros)).map(([k,v]) => [k, v * Number(unitsPerMeal)])) : null;
+  const storageInfo = selected?.storage || {};
+  const recipeIdOf = setup => setup.recipeId || setup.recipe?.id;
+
+  return <>
+    <div className="sheet-backdrop" onClick={onClose} />
+    <div className="sheet mp-sheet" role="dialog" aria-modal="true" aria-labelledby="meal-prep-title" tabIndex="-1" ref={dialogRef}>
+      <div className="sheet-handle" />
+      <div className="mp-head">
+        {selected && <button className="icon-btn" onClick={() => { setSelected(null); setInstructions(false); }} aria-label="Back to recipes">‹</button>}
+        <div className="mp-head-copy"><h2 id="meal-prep-title" ref={detailTitleRef} tabIndex={selected ? -1 : undefined}>{selected ? selected.name : 'Meal prep'}</h2><p>{selected ? `${mpMinutes(selected) || '—'} min · base batch ${selected.baseYield} ${mpOutput(selected).plural}` : 'Batch recipes and household coverage'}</p></div>
+        <button className="icon-btn" onClick={onClose} aria-label="Close meal prep">×</button>
+      </div>
+      <div className="mp-scroll">
+      {!selected ? <>
+        <div className="mp-filter-row" aria-label="Filter recipes by diet">
+          {['all','vegetarian','non-vegetarian'].map(key => <button key={key} className={`mp-chip ${diet===key?'active':''}`} onClick={() => setDiet(key)} aria-pressed={diet===key}>{key === 'all' ? 'All recipes' : key === 'vegetarian' ? 'Vegetarian' : 'Includes meat'}</button>)}
+        </div>
+        {savedSetups.some(setup => setup.recipe && compatible(setup.recipe)) && <div className="mp-saved"><strong>Saved setups</strong>{savedSetups.map((setup, index) => { const recipe=setup.recipe; return recipe && compatible(recipe) ? <div key={`${recipe.id}-${index}`}><button className="btn btn-secondary" onClick={() => openRecipe(recipe,setup)}>{setup.name || recipe.name} · {setup.requestedYield || recipe.baseYield} {mpOutput(recipe).plural}</button></div> : null; })}</div>}
+        <div className="mp-grid">{visible.map((recipe,index) => <button className="mp-card" ref={index===0?firstRecipeRef:null} key={recipe.id} onClick={() => openRecipe(recipe)}>
+          <span className="mp-badge">Provisional · cooking check pending</span><h3>{recipe.name}</h3><p>{recipe.description || recipe.portioning || `${recipe.baseYield} ${mpOutput(recipe).plural}`}</p>
+          <div className="mp-meta"><span>{mpMinutes(recipe) || '—'} min</span><span>{recipe.baseYield} {mpOutput(recipe).plural}</span><span>{Math.round(mpBaseMacros(recipe).calories/recipe.baseYield)} kcal · {Math.round(mpBaseMacros(recipe).protein/recipe.baseYield)}g protein / {mpOutput(recipe).singular}</span><span>{mpDiet(recipe).join(' · ')}</span></div>
+        </button>)}</div>
+        {!visible.length && <div className="saved-empty">No recipes match this filter and your excluded ingredients.</div>}
+      </> : <>
+        <span className="mp-badge">Provisional · human cooking verification pending</span>
+        <div className="mp-section"><h3>How much to make</h3><div className="mp-fields"><div className="mp-field"><label htmlFor="mp-yield">Desired {out.plural}</label><input id="mp-yield" type="number" min={selected.minimumYield || 1} step="0.5" value={desired} onChange={e=>{setDesired(e.target.value);setSaveNote('');}} /></div><div className="mp-field"><label htmlFor="mp-actual-yield">Actual output</label><input id="mp-actual-yield" readOnly value={scaled ? `${mpNumber(scaled.actualYield)} ${scaled.actualYield===1?out.singular:out.plural}` : '—'} /></div></div>{scaled?.minimumApplied && <div className="mp-error">Minimum supported batch applied: {scaled.adjustedRequestedYield} {out.plural}.</div>}</div>
+        <div className="mp-section"><h3>How you will use it</h3><div className="mp-fields">
+          <div className="mp-field"><label htmlFor="mp-units">Units / person / meal</label><input id="mp-units" type="number" min={out.increment} step={out.increment} value={unitsPerMeal} onChange={e=>{setUnitsPerMeal(e.target.value);setSaveNote('');}} /></div>
+          <div className="mp-field"><label htmlFor="mp-people">People sharing</label><input id="mp-people" type="number" min="1" step="1" value={people} onChange={e=>{setPeople(e.target.value);setSaveNote('');}} /></div>
+          <div className="mp-field"><label htmlFor="mp-frequency">Meals / person / day</label><input id="mp-frequency" type="number" min="1" step="1" value={mealsPerDay} onChange={e=>{setMealsPerDay(e.target.value);setSaveNote('');}} /></div>
+        </div>{error && <div className="mp-error" role="alert">{error}</div>}</div>
+        {coverage && <div className="mp-section"><h3>Quantity coverage</h3><div className="mp-coverage"><strong>{coverage.completeSharedMeals} complete shared meal {coverage.completeSharedMeals===1?'occasion':'occasions'} · {coverage.completeDays} complete {coverage.completeDays===1?'day':'days'}</strong><br/>{mpNumber(coverage.unitsLeft)} {coverage.unitsLeft===1?out.singular:out.plural} left after those complete days. This is a portion plan, not a storage-life estimate.</div></div>}
+        {scaled && <><div className="mp-section"><h3>Ingredients for this batch</h3><ul className="mp-ingredients">{scaled.ingredients.map((item,index)=><li key={item.id||item.componentId||index}><span>{item.name||item.label}<small>{item.state}</small></span><strong>{mpNumber(item.amount ?? item.quantity,2)} {item.unit}</strong></li>)}</ul></div>
+        {[['Per '+out.singular,mpMacros(scaled.perUnitMacros)],['Per planned meal',mealMacros],['Whole batch',mpMacros(scaled.batchMacros)]].map(([title,values])=><div className="mp-section" key={title}><h3>Nutrition · {title}</h3><div className="mp-nutrition">{[['calories','kcal'],['protein','protein'],['carbs','carbs'],['fat','fat'],['fibre','fibre']].map(([key,label])=><div key={key}><strong>{mpNumber(values[key])}{key==='calories'?'':'g'}</strong><span>{label}</span></div>)}</div></div>)}<p style={{fontSize:10.5,color:'var(--muted)'}}>Planned meal means {unitsPerMeal} {Number(unitsPerMeal)===1?out.singular:out.plural}. Nutrition is estimated from the scaled composition.</p></>}
+        <div className="mp-section"><h3>Storage</h3><div className="mp-storage"><strong>{storageInfo.brief || storageInfo.summary || storageInfo.refrigerator}</strong><br/>{storageInfo.caution || 'Cool promptly and follow the recipe-specific refrigeration guidance.'}{coverage && (coverage.completeDays > Number(storageInfo.refrigeratorDays || 0)) && storageInfo.freezer ? <><br/><strong>Longer coverage:</strong> {storageInfo.freezer}</> : null}{storageInfo.sourceUrl && <><br/><a href={storageInfo.sourceUrl} target="_blank" rel="noreferrer">Storage guidance source</a>{storageInfo.accessed ? ` · accessed ${storageInfo.accessed}` : ''}</>}</div></div>
+        <div className="mp-section"><button className="btn btn-secondary" aria-expanded={instructions} onClick={()=>setInstructions(v=>!v)}>{instructions?'Hide instructions':'View instructions'}</button>{instructions && <div className="mp-instructions"><strong>Equipment</strong><div>{(selected.equipment||[]).join(', ')}</div><ol>{(selected.instructions||selected.steps||[]).map((step,i)=><li key={i}>{typeof step==='string'?step:step.text}</li>)}</ol><p>{selected.portioning}</p>{storageInfo.cooling&&<p><strong>Cool:</strong> {storageInfo.cooling}</p>}{storageInfo.refrigerator&&<p><strong>Refrigerate:</strong> {storageInfo.refrigerator}</p>}{storageInfo.freezer&&<p><strong>Freeze:</strong> {storageInfo.freezer}</p>}{storageInfo.thawing&&<p><strong>Thaw:</strong> {storageInfo.thawing}</p>}{storageInfo.reheating&&<p><strong>Reheat:</strong> {storageInfo.reheating}</p>}</div>}</div>
+        {scaled && <div className="mp-section"><h3>Log an actual serving</h3><div className="mp-fields"><div className="mp-field"><label htmlFor="mp-log-units">Units eaten</label><input id="mp-log-units" type="number" min={out.increment} step={out.increment} value={logUnits} onChange={e=>{setLogUnits(e.target.value);setLogError('');}} /></div></div>{logError&&<div className="mp-error" role="alert">{logError}</div>}</div>}
+        {saveNote&&<div role="status" style={{fontSize:11,color:'var(--good)',marginTop:12}}>{saveNote}</div>}<div className="mp-actions"><button className="btn btn-secondary" disabled={!scaled||!!error} onClick={()=>{try{onSave(selected,scaled,{requestedYield:Number(desired),unitsPerMeal:Number(unitsPerMeal),people:Number(people),mealsPerDay:Number(mealsPerDay)});setSaveNote('Setup saved locally. No food was logged.');}catch(e){setSaveNote(e.message||'Could not save this setup.');}}}>Save setup</button><button className="btn" disabled={!scaled||!!error||!(Number(logUnits)>0)} onClick={()=>{try{onLog(selected,scaled,Number(logUnits));setLogError('');}catch(e){setLogError(e.message||'Enter a supported serving amount.');}}}>Confirm & log</button></div>
+      </>}
+      </div>
+    </div>
+  </>;
 }
 
 function App() {
@@ -2957,32 +3289,73 @@ function App() {
   const [targets, setTargets] = useState(DEFAULT_TARGETS);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
-  const [theme, setTheme] = useState('tidepool'); // 'tidepool' | 'harbor'
+  const [mealPrepOpen, setMealPrepOpen] = useState(false);
+  const [mealPrepSetups, setMealPrepSetups] = useState([]);
+  const [theme, setTheme] = useState(EDITION.theme.default);
+  const [dietPreference, setDietPreference] = useState(DEFAULT_DIET_PREFERENCE);
+  // Fast log — session-only view state, no new persisted keys.
+  const [historyDays, setHistoryDays] = useState([]); // [{ key, meals }] newest first, last 30 days
+  const [period, setPeriod] = useState('today');      // 'today' | 'week' | 'month'
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [logToast, setLogToast] = useState(null);     // { id, name, p }
+  const toastTimer = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const [mealsRaw, savedRaw, targetsRaw, themeRaw, excludesRaw] = await Promise.all([
+      const [mealsRaw, savedRaw, targetsRaw, themeRaw, excludesRaw, mealPrepRaw, dietRaw] = await Promise.all([
         storage.get(activeKey),
         storage.get('meals:saved'),
         storage.get('targets:v1'),
         storage.get('theme:v1'),
         storage.get('excludes:v1'),
+        storage.get('meal-prep:setups:v1'),
+        storage.get('dietary-preference:v1'),
       ]);
       if (cancelled) return;
       try { setMeals(mealsRaw ? JSON.parse(mealsRaw) || [] : []); } catch (e) { setMeals([]); }
       try { setSavedMeals(savedRaw ? JSON.parse(savedRaw) || [] : []); } catch (e) { setSavedMeals([]); }
       try { setTargets(mergeTargets(targetsRaw ? JSON.parse(targetsRaw) : null)); } catch (e) { setTargets(DEFAULT_TARGETS); }
-      if (themeRaw === 'harbor' || themeRaw === 'tidepool') setTheme(themeRaw);
+      if (themeRaw && EDITION.theme.values[themeRaw]) setTheme(themeRaw);
       try { const ex = excludesRaw ? JSON.parse(excludesRaw) : []; if (Array.isArray(ex)) setExcluded(new Set(ex)); } catch (e) {}
+      try { const setups = mealPrepRaw ? JSON.parse(mealPrepRaw) : []; if (Array.isArray(setups)) setMealPrepSetups(setups.filter(setup => MEAL_PREP?.validateSetupSnapshot(setup))); } catch (e) { setMealPrepSetups([]); }
+      try { setDietPreference(normalizeDietPreference(dietRaw ? JSON.parse(dietRaw) : null)); } catch (e) { setDietPreference(DEFAULT_DIET_PREFERENCE); }
       setLoaded(true);
     })();
     return () => { cancelled = true; };
   }, [activeKey]);
 
+  // Fast log reads the last 30 stored days once per active day. Read-only:
+  // today's row is replaced by live `meals` below so nothing goes stale.
+  useEffect(() => {
+    if (!FAST_LOG) return undefined;
+    let cancelled = false;
+    (async () => {
+      let keys;
+      try { keys = FAST_LOG_CORE.periodKeys(new Date(), 'month'); } catch (e) { return; }
+      const out = [];
+      for (const key of keys) {
+        let dayMeals = [];
+        try {
+          const raw = await storage.get(key);
+          const parsed = raw ? JSON.parse(raw) : null;
+          if (Array.isArray(parsed)) dayMeals = parsed;
+        } catch (e) { dayMeals = []; }
+        out.push({ key, meals: dayMeals });
+      }
+      if (!cancelled) setHistoryDays(out);
+    })();
+    return () => { cancelled = true; };
+  }, [activeKey]);
+
+  useEffect(() => () => { if (toastTimer.current) clearTimeout(toastTimer.current); }, []);
+
   useEffect(() => {
     if (loaded) storage.set('targets:v1', JSON.stringify(targets));
   }, [targets, loaded]);
+  useEffect(() => {
+    if (loaded && DIET_FEATURE) storage.set('dietary-preference:v1', JSON.stringify(normalizeDietPreference(dietPreference)));
+  }, [dietPreference, loaded]);
 
   // Persist never-recommend excludes.
   useEffect(() => {
@@ -2994,10 +3367,11 @@ function App() {
   // Apply + persist the accent theme (Tidepool / Harbor) on the root element.
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === 'harbor') root.setAttribute('data-theme', 'harbor');
-    else root.removeAttribute('data-theme');
+    root.setAttribute('data-theme', theme);
+    const selectedTheme = EDITION.theme.values[theme] || EDITION.theme.values[EDITION.theme.default];
+    for (const [property, value] of Object.entries(selectedTheme.cssVariables || {})) root.style.setProperty(property, value);
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'harbor' ? '#ECF0F2' : '#EAF0EF');
+    if (meta) meta.setAttribute('content', selectedTheme.themeColor);
     if (loaded) storage.set('theme:v1', theme);
   }, [theme, loaded]);
 
@@ -3017,13 +3391,23 @@ function App() {
 
   // body scroll lock when sheet is open
   useEffect(() => {
-    if (sheetOpen) {
+    if (sheetOpen || settingsOpen || historyOpen || mealPrepOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
     return () => { document.body.style.overflow = ''; };
-  }, [sheetOpen]);
+  }, [sheetOpen, settingsOpen, historyOpen, mealPrepOpen]);
+
+  const saveMealPrepSetup = useCallback((recipe, scaled, usage) => {
+    let snapshot = MEAL_PREP.createSetupSnapshot(recipe, usage.requestedYield, usage);
+    snapshot = { ...snapshot, name: recipe.name, savedAt: new Date().toISOString(), scaled };
+    setMealPrepSetups(prev => {
+      const next = [snapshot, ...prev.filter(x => (x.recipeId || x.recipe?.id) !== recipe.id)].slice(0, 12);
+      storage.set('meal-prep:setups:v1', JSON.stringify(next));
+      return next;
+    });
+  }, []);
 
   const totals = useMemo(() => meals.reduce((acc, m) => ({
     kcal: acc.kcal + (Number(m.kcal) || 0),
@@ -3044,14 +3428,94 @@ function App() {
     setMeals(prev => [...prev, { ...m, id, addedAt: new Date().toISOString() }]);
     setRecentlyAddedId(id);
     setTimeout(() => setRecentlyAddedId(null), 800);
+    return id;
   }, []);
+
+  const logMealPrepServing = useCallback((recipe, scaled, unitsEaten) => {
+    const logSnapshot = MEAL_PREP.createLogSnapshot(scaled, unitsEaten);
+    const macro = mpMacros(logSnapshot.totals || logSnapshot.macros || logSnapshot);
+    const unit = mpOutput(recipe);
+    if (!window.confirm(`Log ${mpNumber(unitsEaten)} ${unitsEaten===1?unit.singular:unit.plural} of ${recipe.name} (${Math.round(macro.calories)} kcal)?`)) return;
+    addMeal({ name: recipe.name, sub: `${mpNumber(unitsEaten)} ${unitsEaten===1?unit.singular:unit.plural} · meal-prep serving`, kcal: macro.calories, p: macro.protein, c: macro.carbs, f: macro.fat, fiber: macro.fibre, _mealPrep: { recipeId: recipe.id, recipeVersion: recipe.version, unitsEaten, composition: scaled, totals: macro, logSnapshot } });
+    setMealPrepOpen(false);
+  }, [addMeal]);
 
   const removeMeal = useCallback((id) => {
     setMeals(prev => prev.filter(x => x.id !== id));
   }, []);
 
+  // ── Fast log derivations ──────────────────────────────────────────
+  // Stored history with today's row swapped for the live state, so a meal
+  // logged a second ago already counts toward the strip and the period view.
+  const fastLogDays = useMemo(() => {
+    if (!FAST_LOG) return [];
+    const rows = historyDays.map(d => (d.key === activeKey ? { key: d.key, meals } : d));
+    return rows.some(d => d.key === activeKey) ? rows : [{ key: activeKey, meals }, ...rows];
+  }, [historyDays, activeKey, meals]);
+
+  const nowHour = now.getHours();
+  const ranked = useMemo(() => {
+    if (!FAST_LOG) return [];
+    try { return FAST_LOG_CORE.rankMeals({ days: fastLogDays, now, limit: 8 }); } catch (e) { return []; }
+  }, [fastLogDays, nowHour]);
+
+  const picksVisible = useMemo(() => {
+    if (!FAST_LOG) return false;
+    try {
+      return FAST_LOG_CORE.picksVisible({ now, meals, proteinRemaining, eatingWindow: EDITION.eatingWindow }) === true;
+    } catch (e) { return false; }
+  }, [now, meals, proteinRemaining]);
+
+  const showLogToast = useCallback((id, name, protein) => {
+    setLogToast({ id, name, p: protein });
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => { setLogToast(null); toastTimer.current = null; }, 4000);
+  }, []);
+
+  // One-tap log from the strip or the picks: always a fresh, unfrozen copy so
+  // the composition snapshot travels with the meal without sharing structure.
+  const logFast = useCallback((m) => {
+    const copy = freshMealCopy(m);
+    const id = addMeal(copy);
+    showLogToast(id, copy.name, Math.round(Number(copy.p) || 0));
+  }, [addMeal, showLogToast]);
+
+  const undoLastLog = useCallback(() => {
+    setLogToast(prev => {
+      if (prev) removeMeal(prev.id);
+      return null;
+    });
+    if (toastTimer.current) { clearTimeout(toastTimer.current); toastTimer.current = null; }
+  }, [removeMeal]);
+
+  const openFastSheet = useCallback(() => {
+    setMealPrepOpen(false);
+    setEditingBuilderMeal(null);
+    setBuilderPrefill(null);
+    setSheetTab('presets');
+    setSheetIntent('options');
+    setSheetOpen(true);
+  }, []);
+
+  // Hold-to-adjust on a dashboard pick routes into the same Build path the
+  // sheet's own Modify flow uses — prefill the builder, then open on Build.
+  const adjustPreset = useCallback((p) => {
+    setMealPrepOpen(false);
+    setEditingBuilderMeal(null);
+    setBuilderPrefill(p);
+    setSheetTab('build');
+    setSheetOpen(true);
+  }, []);
+
   const updateMeal = useCallback((id, patch) => {
-    setMeals(prev => prev.map(x => x.id === id ? { ...x, ...patch } : x));
+    setMeals(prev => prev.map(x => {
+      if (x.id !== id) return x;
+      const next = { ...x, ...patch };
+      if (x._mealPrep && ['kcal','p','c','f','fiber'].some(key => Object.prototype.hasOwnProperty.call(patch,key))) {
+        next._mealPrep = { ...x._mealPrep, adjustedTotals: { calories: next.kcal, protein: next.p, carbs: next.c, fat: next.f, fibre: next.fiber }, adjustedAt: new Date().toISOString() };
+      }
+      return next;
+    }));
     setEditingId(null);
   }, []);
 
@@ -3155,36 +3619,59 @@ function App() {
     paceStatus = 'good'; paceMsg = 'Ahead of pace';
   }
 
+  // Today view = the whole existing dashboard. Week/Month replace it with the
+  // period hero alone. Without fast log there is only ever the today view.
+  const todayView = !FAST_LOG || period === 'today';
+
   return (
     <TargetsContext.Provider value={targets}>
-    <div className="app-shell">
-      <Topbar now={now} paceStatus={paceStatus} paceMsg={paceMsg} mealCount={meals.length} onClear={clearToday} onSettings={() => setSettingsOpen(true)} onHistory={() => setHistoryOpen(true)} />
+    <div className={FAST_LOG ? 'app-shell fl-on' : 'app-shell'}>
+      <Topbar now={now} paceStatus={paceStatus} paceMsg={paceMsg} mealCount={meals.length} onClear={clearToday} onSettings={() => { setSheetOpen(false); setHistoryOpen(false); setMealPrepOpen(false); setSettingsOpen(true); }} onHistory={() => { setSheetOpen(false); setSettingsOpen(false); setMealPrepOpen(false); setHistoryOpen(true); }} />
 
-      <Hero totals={totals} />
+      {FAST_LOG
+        ? <Hero totals={totals} period={period} onPeriod={setPeriod} days={fastLogDays} />
+        : <Hero totals={totals} />}
 
-      <ImpliedRatio
+      {FAST_LOG && todayView && <LogStrip items={ranked} onLog={logFast} />}
+
+      {FAST_LOG && todayView && picksVisible && (
+        <Picks
+          presets={PRESETS}
+          totals={totals}
+          targets={targets}
+          excluded={excluded}
+          suggestSeed={suggestSeed}
+          onRefresh={() => setSuggestSeed(s => s + 1)}
+          onLog={logFast}
+          onAdjust={adjustPreset}
+          onExclude={excludeComponent}
+          dietPreference={dietPreference}
+        />
+      )}
+
+      {todayView && <ImpliedRatio
         impliedRatio={impliedRatio}
         proteinHit={proteinHit}
         kcalHit={kcalHit}
         proteinRemaining={proteinRemaining}
         kcalRemaining={kcalRemaining}
         mealsLogged={meals.length}
-      />
+      />}
 
-      <PaceStrip
+      {!FAST_LOG && <PaceStrip
         now={now}
         paceFrac={paceFrac}
         kcalFrac={kcalFrac}
         proteinFrac={proteinFrac}
         paceStatus={paceStatus}
         hasLogged={meals.length > 0}
-      />
+      />}
 
-      <BudgetTable totals={totals} kcalRemaining={kcalRemaining} proteinRemaining={proteinRemaining} />
+      {!FAST_LOG && <BudgetTable totals={totals} kcalRemaining={kcalRemaining} proteinRemaining={proteinRemaining} />}
 
-      <ProteinDensityChart meals={meals} />
+      {todayView && <ProteinDensityChart meals={meals} />}
 
-      {warnings.length > 0 && (
+      {todayView && warnings.length > 0 && (
         <div style={{ marginTop: 10 }}>
           {warnings.map((w, i) => (
             <div key={i} className={`nudge ${w.severity}`}>
@@ -3195,9 +3682,9 @@ function App() {
         </div>
       )}
 
-      {meals.length === 0 && <ArchitectureGuidance />}
+      {todayView && meals.length === 0 && <ArchitectureGuidance dietPreference={dietPreference} />}
 
-      {meals.length > 0 && (
+      {todayView && meals.length > 0 && (
         <MealList
           meals={meals}
           editingId={editingId}
@@ -3210,12 +3697,35 @@ function App() {
         />
       )}
 
-      {meals.length > 0 && <DaySummary totals={totals} />}
+      {!FAST_LOG && meals.length > 0 && <DaySummary totals={totals} />}
 
-      <FabAdd
-        onOptions={() => { setEditingBuilderMeal(null); setBuilderPrefill(null); setSheetTab('presets'); setSheetIntent('options'); setSheetOpen(true); }}
-        onAdd={() => { setEditingBuilderMeal(null); setBuilderPrefill(null); setSheetTab('presets'); setSheetIntent('add'); setSheetOpen(true); }}
-      />
+      {EDITION.features?.mealPrep && MEAL_PREP && <MealPrepEntry onOpen={() => { setSheetOpen(false); setSettingsOpen(false); setHistoryOpen(false); setMealPrepOpen(true); }} />}
+
+      {FAST_LOG && todayView && (
+        <Details open={detailsOpen} onToggle={() => setDetailsOpen(v => !v)}>
+          <PaceStrip
+            now={now}
+            paceFrac={paceFrac}
+            kcalFrac={kcalFrac}
+            proteinFrac={proteinFrac}
+            paceStatus={paceStatus}
+            hasLogged={meals.length > 0}
+          />
+          <BudgetTable totals={totals} kcalRemaining={kcalRemaining} proteinRemaining={proteinRemaining} />
+          {meals.length > 0 && <DaySummary totals={totals} />}
+        </Details>
+      )}
+
+      {FAST_LOG
+        ? <FabFastAdd onAdd={openFastSheet} />
+        : <FabAdd
+            onOptions={() => { setMealPrepOpen(false); setEditingBuilderMeal(null); setBuilderPrefill(null); setSheetTab('presets'); setSheetIntent('options'); setSheetOpen(true); }}
+            onAdd={() => { setMealPrepOpen(false); setEditingBuilderMeal(null); setBuilderPrefill(null); setSheetTab('presets'); setSheetIntent('add'); setSheetOpen(true); }}
+          />}
+
+      {FAST_LOG && logToast && (
+        <UndoToast name={logToast.name} protein={logToast.p} onUndo={undoLastLog} />
+      )}
 
       {sheetOpen && (
         <AddSheet
@@ -3246,7 +3756,10 @@ function App() {
           onRestore={restoreComponent}
           suggestSeed={suggestSeed}
           onRefresh={() => setSuggestSeed(s => s + 1)}
-          autoSearch={sheetIntent === 'add'}
+          autoSearch={FAST_LOG ? false : sheetIntent === 'add'}
+          dietPreference={dietPreference}
+          fastLog={FAST_LOG}
+          recentItems={ranked}
         />
       )}
 
@@ -3259,6 +3772,8 @@ function App() {
           onClose={() => setSettingsOpen(false)}
           onSave={(t) => { setTargets(t); }}
           onReset={() => { setTargets(DEFAULT_TARGETS); }}
+          dietPreference={dietPreference}
+          setDietPreference={setDietPreference}
         />
       )}
       {historyOpen && (
@@ -3268,6 +3783,9 @@ function App() {
           todayMeals={meals}
           onClose={() => setHistoryOpen(false)}
         />
+      )}
+      {EDITION.features?.mealPrep && mealPrepOpen && MEAL_PREP && (
+        <MealPrepSheet excluded={excluded} savedSetups={mealPrepSetups} onSave={saveMealPrepSetup} onLog={logMealPrepServing} onClose={() => setMealPrepOpen(false)} dietPreference={dietPreference} />
       )}
     </div>
     </TargetsContext.Provider>
@@ -3283,7 +3801,7 @@ function Topbar({ now, paceStatus, paceMsg, mealCount, onClear, onSettings, onHi
           <svg viewBox="0 0 14 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="1" width="12" height="14" rx="1.5"/><path d="M1 1v14" stroke="currentColor" strokeWidth="2"/><path d="M5 5h6M5 8h5M5 11h4" opacity="0.6"/></svg>
         </div>
         <div>
-          <div className="topbar-h">Daily nutrition</div>
+          <div className="topbar-h">{EDITION.copy.dashboardTitle}</div>
           <div className="topbar-date mono">{formatToday()} · {time}</div>
         </div>
       </div>
@@ -3305,7 +3823,7 @@ function Topbar({ now, paceStatus, paceMsg, mealCount, onClear, onSettings, onHi
   );
 }
 
-function Hero({ totals }) {
+function Hero({ totals, period, onPeriod, days }) {
   const targets = useContext(TargetsContext);
   const started = totals.kcal > 0 || totals.p > 0;
   const proteinPct = Math.min(100, (totals.p / targets.protein) * 100);
@@ -3316,7 +3834,7 @@ function Hero({ totals }) {
   const proteinLeft = Math.max(0, targets.protein - totals.p);
   const kcalLeft = Math.max(0, targets.caloriesTarget - totals.kcal);
 
-  return (
+  const today = (
     <div className="hero">
       <div className="hero-col">
         <div className="hero-label-row">
@@ -3343,6 +3861,166 @@ function Hero({ totals }) {
           <div className={`hero-rail-fill ${kcalColor}`} style={{ width: `${kcalPct}%` }} />
         </div>
       </div>
+    </div>
+  );
+
+  if (!FAST_LOG || !onPeriod) return today;
+
+  return (
+    <div className="fl-hero">
+      <PeriodTabs value={period} onChange={onPeriod} />
+      {period === 'today' ? today : <PeriodHero period={period} days={days} targets={targets} />}
+    </div>
+  );
+}
+
+// Today / Week / Month. Roving tabindex, arrows + Home/End, per WAI-ARIA tabs.
+function PeriodTabs({ value, onChange }) {
+  const options = [['today', 'Today'], ['week', 'Week'], ['month', 'Month']];
+  const refs = useRef([]);
+  const move = (e, i) => {
+    let next = null;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % options.length;
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + options.length) % options.length;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = options.length - 1;
+    if (next === null) return;
+    e.preventDefault();
+    onChange(options[next][0]);
+    const el = refs.current[next];
+    if (el) el.focus();
+  };
+  return (
+    <div className="fl-tabs" role="tablist" aria-label="Dashboard period">
+      {options.map(([key, label], i) => (
+        <button
+          key={key}
+          ref={(el) => { refs.current[i] = el; }}
+          className={`fl-tab ${value === key ? 'active' : ''}`}
+          role="tab"
+          aria-selected={value === key}
+          tabIndex={value === key ? 0 : -1}
+          onClick={() => onChange(key)}
+          onKeyDown={(e) => move(e, i)}
+        >{label}</button>
+      ))}
+    </div>
+  );
+}
+
+// Week / Month hero body. Same hit rule as the history sheet, via periodStats.
+function PeriodHero({ period, days, targets }) {
+  const span = period === 'week' ? 7 : 30;
+  const stats = useMemo(() => {
+    try { return FAST_LOG_CORE.periodStats({ days: (days || []).slice(0, span), targets }); } catch (e) { return null; }
+  }, [days, span, targets]);
+  if (!stats) return null;
+  const cells = stats.cells.slice().reverse(); // oldest → newest, left to right
+  const scale = Math.max(targets.protein, ...cells.map(c => c.p || 0)) || 1;
+  const label = period === 'week' ? 'Last 7 days' : 'Last 30 days';
+  return (
+    <div className="hero fl-phero">
+      <div className="fl-phero-head">
+        <span className="eyebrow">{label}</span>
+        <span className="fl-phero-hit mono">hit {stats.hitDays} of {stats.loggedDays} logged days</span>
+      </div>
+      <div className="fl-phero-stats">
+        <div className="fl-pstat">
+          <span className="fl-pstat-label">Protein</span>
+          <span className="fl-pstat-num mono">{FAST_LOG_CORE.formatProteinTotal(Math.max(0, stats.proteinTotal))}</span>
+        </div>
+        <div className="fl-phero-divider" />
+        <div className="fl-pstat">
+          <span className="fl-pstat-label">Density</span>
+          <span className="fl-pstat-num mono">{stats.density.toFixed(1)}<span className="unit">g/100kcal</span></span>
+        </div>
+      </div>
+      <div className={`fl-cells ${period}`} role="img" aria-label={`Daily protein against a ${targets.protein}g target over ${label.toLowerCase()}`}>
+        {cells.map(c => (
+          <div key={c.key} className={`fl-cell ${c.logged ? (c.hit ? 'hit' : 'miss') : 'empty'}`}>
+            <div className="fl-cell-fill" style={{ height: `${Math.max(c.logged ? 6 : 0, Math.min(100, ((c.p || 0) / scale) * 100))}%` }} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// One-tap re-log of the user's own meals, ranked by fast-log-core.
+function LogStrip({ items, onLog }) {
+  if (!items || items.length === 0) {
+    return <div className="fl-strip-empty">Meals you log show up here for one-tap re-logging.</div>;
+  }
+  return (
+    <div className="fl-strip">
+      {items.map(item => (
+        <button
+          key={item.key}
+          className="saved-chip fl-chip"
+          onClick={() => onLog(item.meal)}
+          aria-label={`Log ${item.name}, ${Math.round(Number(item.meal.p) || 0)} grams protein, ${Math.round(Number(item.meal.kcal) || 0)} calories`}
+        >
+          <span className="fl-chip-name">{item.name}</span>
+          <span className="fl-chip-p mono" aria-hidden="true">{Math.round(Number(item.meal.p) || 0)}p</span>
+          <span className="kcal mono" aria-hidden="true">{Math.round(Number(item.meal.kcal) || 0)}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// Three suggestion cards on the dashboard. Same engine, same cards, same
+// hold-to-adjust sheet as the add sheet — only the surface is new.
+function Picks({ presets, totals, targets, excluded, suggestSeed, onRefresh, onLog, onAdjust, onExclude, dietPreference }) {
+  const [modify, setModify] = useState(null);
+  const [pulseId, setPulseId] = useState(null);
+  const tier = requiredTier(totals || { kcal: 0, p: 0 }, targets);
+  const eligiblePresets = useMemo(() => presets.filter(p => dietAllows(p, dietPreference)), [presets, dietPreference]);
+  const picks = useMemo(
+    () => drawSuggestions(eligiblePresets, tier, 3, suggestSeed, excluded, EDITION.suggestionPolicy.maxPerCuisine),
+    [eligiblePresets, tier, suggestSeed, excluded]
+  );
+  if (picks.length === 0) return null;
+  const add = (p) => {
+    setPulseId(p.name);
+    setTimeout(() => setPulseId(null), 200);
+    onLog(p);
+  };
+  return (
+    <div className="fl-picks">
+      <div className="fl-picks-head">
+        <span className="eyebrow">Pick one</span>
+        <button className="refresh-btn" onClick={onRefresh} aria-label="Shuffle picks">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+          Shuffle
+        </button>
+      </div>
+      <div className="fl-picks-list">
+        {picks.map(p => <PresetCard key={p.name} p={p} onAdd={add} onModify={setModify} pulse={pulseId === p.name} />)}
+      </div>
+      <ModifySheet preset={modify} onAdjust={onAdjust} onExclude={onExclude} onClose={() => setModify(null)} />
+    </div>
+  );
+}
+
+function UndoToast({ name, protein, onUndo }) {
+  return (
+    <div className="fl-toast" role="status">
+      <span className="fl-toast-text">Logged {name} · {protein}g protein</span>
+      <button className="fl-toast-undo" onClick={onUndo}>Undo</button>
+    </div>
+  );
+}
+
+// Collapsed home for the pace strip, budget table and day summary.
+function Details({ open, onToggle, children }) {
+  return (
+    <div className="fl-details">
+      <button className="fl-details-btn" onClick={onToggle} aria-expanded={open}>
+        <span>Details</span>
+        <svg className={`fl-details-chev ${open ? 'open' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      {open && <div className="fl-details-body">{children}</div>}
     </div>
   );
 }
@@ -3414,33 +4092,30 @@ function PaceStrip({ now, paceFrac, kcalFrac, proteinFrac, paceStatus, hasLogged
 
   const timeLabel = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }).toLowerCase();
 
-  // Time axis: linear from 8a to 9p (13h)
-  const START_H = 8, END_H = 21;
+  // Time axis follows the edition-configured eating window.
+  const START_H = EDITION.eatingWindow.startHour, END_H = EDITION.eatingWindow.endHour;
   const SPAN = END_H - START_H;
   const hoursNow = now.getHours() + now.getMinutes() / 60;
   const nowPct = Math.min(100, Math.max(0, ((hoursNow - START_H) / SPAN) * 100));
-  const ticks = [
-    { h: 8,  label: '8a' },
-    { h: 10, label: '10a' },
-    { h: 12, label: '12p' },
-    { h: 14, label: '2p' },
-    { h: 16, label: '4p' },
-    { h: 18, label: '6p' },
-    { h: 20, label: '8p' },
-    { h: 21, label: '9p' },
-  ];
+  const hourLabel = h => new Date(2000, 0, 1, h).toLocaleTimeString([], { hour: 'numeric' }).toLowerCase().replace(':00', '');
+  const ticks = [];
+  for (let h = START_H; h < END_H; h += 2) ticks.push({ h, label: hourLabel(h) });
+  if (!ticks.some(t => t.h === END_H)) ticks.push({ h: END_H, label: hourLabel(END_H) });
+  const windowLabel = `${hourLabel(START_H)}–${hourLabel(END_H)}`;
+  const endLabel = hourLabel(END_H);
+  const startLabel = hourLabel(START_H);
 
   const kcalDelta = Math.round((kcalFrac - paceFrac) * 100);
   const proteinDelta = Math.round((proteinFrac - paceFrac) * 100);
   let foot;
   if (!hasLogged) {
-    foot = <>Your eating window is <span className="num">8a–9p</span>. Log a meal and pace tracking begins.</>;
+    foot = <>Your eating window is <span className="num">{windowLabel}</span>. Log a meal and pace tracking begins.</>;
   } else if (paceFrac < 0.05) {
-    foot = <>Eating window <span className="num">8a–9p</span>. Pace tracker activates after 8a.</>;
+    foot = <>Eating window <span className="num">{windowLabel}</span>. Pace tracker activates after {startLabel}.</>;
   } else if (paceFrac >= 1) {
-    foot = <>Window closed at <span className="num">9p</span>.</>;
+    foot = <>Window closed at <span className="num">{endLabel}</span>.</>;
   } else if (headlineStatus === 'good') {
-    foot = <>On pace at <span className="num">{timeLabel}</span>. Window closes at <span className="num">9p</span>.</>;
+    foot = <>On pace at <span className="num">{timeLabel}</span>. Window closes at <span className="num">{endLabel}</span>.</>;
   } else {
     const lagging = [];
     if (kcalDelta < -10) lagging.push({ name: 'calories', d: kcalDelta });
@@ -3448,7 +4123,7 @@ function PaceStrip({ now, paceFrac, kcalFrac, proteinFrac, paceStatus, hasLogged
     if (lagging.length === 0) lagging.push({ name: 'overall', d: delta });
     foot = <><span className={`accent ${headlineStatus}`}>Lagging:</span> {lagging.map((l, i) => (
       <span key={l.name}>{i > 0 ? ', ' : ''}{l.name} <span className="num">{l.d}%</span></span>
-    ))}. Window closes at <span className="num">9p</span>.</>;
+    ))}. Window closes at <span className="num">{endLabel}</span>.</>;
   }
 
   return (
@@ -3669,7 +4344,7 @@ function ProteinDensityChart({ meals }) {
         {current == null ? (
           <>Stay above <span className="num accent good">{TARGET.toFixed(1)}</span> by end of day to land {targets.protein}g protein at {targets.caloriesTarget.toLocaleString()} kcal.</>
         ) : current >= TARGET ? (
-          <>Currently <span className="num accent good">{current.toFixed(1)}</span> · <span className="num">{(current - TARGET).toFixed(1)}</span> above target. Room for fillers.</>
+          <>Currently <span className="num accent good">{current.toFixed(1)}</span> · <span className="num">{(current - TARGET).toFixed(1)}</span> above target. {EDITION.copy.densityHeadroomNote || 'Room for fillers.'}</>
         ) : current >= TARGET - 1 ? (
           <>Currently <span className="num accent warn">{current.toFixed(1)}</span> · <span className="num">{(TARGET - current).toFixed(1)}</span> below target. Bias next meal toward protein.</>
         ) : (
@@ -3710,7 +4385,7 @@ function MealItem({ meal, flash, onEdit, onRemove, onSaveQuick, onRebuild }) {
   const ratio = ppKc(meal);
   const fiberBolus = meal.fiber > 17;
   const role = categoryFromPp(ratio);
-  const roleLabel = role === 'anchor' ? 'ANCHOR' : role === 'balanced' ? 'BALANCED' : 'FILLER';
+  const roleLabel = role === 'anchor' ? 'ANCHOR' : role === 'balanced' ? 'BALANCED' : (EDITION.copy.lightTierTag || 'FILLER');
 
   return (
     <div className="meal" style={flash ? { background: 'color-mix(in oklab, var(--good) 8%, transparent)' } : null}>
@@ -3810,7 +4485,20 @@ function FabAdd({ onOptions, onAdd }) {
   );
 }
 
-function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveSaved, tab, setTab, seedMeal, seedKind, onAdjust, totals, targets, excluded, onExclude, onRestore, suggestSeed, onRefresh, autoSearch }) {
+// Fast log collapses the pair into one primary action; the sheet opens on
+// Presets with search reachable but never auto-focused.
+function FabFastAdd({ onAdd }) {
+  return (
+    <div className="fab-wrap">
+      <button className="fab" onClick={onAdd} aria-label="Add meal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        Add meal
+      </button>
+    </div>
+  );
+}
+
+function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveSaved, tab, setTab, seedMeal, seedKind, onAdjust, totals, targets, excluded, onExclude, onRestore, suggestSeed, onRefresh, autoSearch, dietPreference, fastLog, recentItems }) {
   const [pulseId, setPulseId] = useState(null);
   const handleAdd = (m) => {
     setPulseId(m.name);
@@ -3854,6 +4542,9 @@ function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveS
               suggestSeed={suggestSeed}
               onRefresh={onRefresh}
               autoSearch={autoSearch}
+              dietPreference={dietPreference}
+              fastLog={fastLog}
+              recentItems={recentItems}
             />
           ) : (
             <BuildTab
@@ -3862,6 +4553,7 @@ function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveS
               onSubmit={(m) => { handleAdd(m); }}
               onCancel={onClose}
               onSavePreset={onSavePreset}
+              dietPreference={dietPreference}
             />
           )}
         </div>
@@ -3872,7 +4564,7 @@ function AddSheet({ onClose, onAdd, onSavePreset, presets, savedMeals, onRemoveS
 
 // Build tab = component picker ("From components") + totals fallback ("Just totals").
 // Absorbs the former Builder and Custom tabs into one surface.
-function BuildTab({ seedMeal, seedKind, onSubmit, onCancel, onSavePreset }) {
+function BuildTab({ seedMeal, seedKind, onSubmit, onCancel, onSavePreset, dietPreference }) {
   const [mode, setMode] = useState('components');
   const locked = !!seedKind; // seeded → always component mode
   const m = locked ? 'components' : mode;
@@ -3899,6 +4591,7 @@ function BuildTab({ seedMeal, seedKind, onSubmit, onCancel, onSavePreset }) {
           onSavePreset={onSavePreset}
           editingMeal={seedMeal}
           submitLabel={seedKind === 'edit' ? 'Save changes' : seedKind === 'adjust' ? 'Log meal' : 'Add meal'}
+          dietPreference={dietPreference}
         />
       ) : (
         <TotalsForm onSubmit={onSubmit} onCancel={onCancel} />
@@ -4040,27 +4733,29 @@ function ModifySheet({ preset, onAdjust, onExclude, onClose }) {
   );
 }
 
-function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId, totals, targets, excluded, onExclude, onRestore, suggestSeed, onRefresh, autoSearch }) {
+function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId, totals, targets, excluded, onExclude, onRestore, suggestSeed, onRefresh, autoSearch, dietPreference, fastLog, recentItems }) {
   const [openCuisine, setOpenCuisine] = useState(null);
   const [modify, setModify] = useState(null);
   const [query, setQuery] = useState('');
   const searchRef = useRef(null);
-  useEffect(() => { if (autoSearch && searchRef.current) searchRef.current.focus(); }, [autoSearch]);
+  useEffect(() => { if (autoSearch && !fastLog && searchRef.current) searchRef.current.focus(); }, [autoSearch]);
   const q = query.trim().toLowerCase();
   const tier = requiredTier(totals || { kcal: 0, p: 0 }, targets);
 
-  const nonStaples = presets.filter(p => !isStaple(p));
-  const staples = presets.filter(isStaple);
+  const eligiblePresets = useMemo(() => presets.filter(p => dietAllows(p, dietPreference)), [presets, dietPreference]);
+  const eligibleSaved = useMemo(() => savedMeals.filter(p => dietAllows(p, dietPreference)), [savedMeals, dietPreference]);
+  const nonStaples = eligiblePresets.filter(p => !isStaple(p));
+  const staples = eligiblePresets.filter(isStaple);
   const cuisineCounts = {};
   for (const p of nonStaples) cuisineCounts[p.cuisine] = (cuisineCounts[p.cuisine] || 0) + 1;
   const cuisinesWithItems = CUISINES.filter(c => (cuisineCounts[c.key] || 0) > 0);
   const excludedList = [...(excluded || [])].map(id => COMP_BY_ID[id]).filter(Boolean);
-  const suggestions = useMemo(() => drawSuggestions(presets, tier, 7, suggestSeed, excluded), [presets, tier, suggestSeed, excluded]);
+  const suggestions = useMemo(() => drawSuggestions(eligiblePresets, tier, EDITION.suggestionPolicy.setSize, suggestSeed, excluded, EDITION.suggestionPolicy.maxPerCuisine), [eligiblePresets, tier, suggestSeed, excluded]);
   const results = useMemo(() => {
     if (!q) return null;
     const terms = q.split(/\s+/);
     const scored = [];
-    for (const p of presets) {
+    for (const p of eligiblePresets) {
       const hay = (p.name + ' ' + (p.sub || '') + ' ' + p._builder.map(r => (COMP_BY_ID[r.componentId] ? COMP_BY_ID[r.componentId].name : '')).join(' ')).toLowerCase();
       if (!terms.every(t => hay.includes(t))) continue;
       const nm = p.name.toLowerCase();
@@ -4069,7 +4764,7 @@ function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId
     }
     scored.sort((a, b) => a.rank - b.rank || a.p.name.localeCompare(b.p.name));
     return scored.map(s => s.p);
-  }, [q, presets]);
+  }, [q, eligiblePresets]);
 
   const searchBar = (
     <div className="presets-search">
@@ -4119,7 +4814,7 @@ function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId
     );
   } else if (openCuisine) {
     const cuisine = CUISINES.find(c => c.key === openCuisine);
-    const items = drawCuisine(presets, openCuisine, tier, 20, suggestSeed, excluded);
+    const items = drawCuisine(eligiblePresets, openCuisine, tier, 20, suggestSeed, excluded);
     bodyEl = (
       <div>
         <button className="cuisine-back" onClick={() => setOpenCuisine(null)}>
@@ -4144,16 +4839,38 @@ function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId
           Tap to log instantly · hold a card to adjust or hide
         </div>
         {excludedBar}
+        {fastLog && Array.isArray(recentItems) && recentItems.length > 0 && (
+          <div className="sheet-section">
+            <div className="sheet-section-head">
+              <span className="sheet-section-title">Recent</span>
+              <span className="sheet-section-meta">tap to log again</span>
+            </div>
+            <div className="saved-row">
+              {recentItems.map(item => (
+                <button
+                  key={item.key}
+                  className="saved-chip fl-chip"
+                  onClick={() => onAdd(freshMealCopy(item.meal))}
+                  aria-label={`Log ${item.name}, ${Math.round(Number(item.meal.p) || 0)} grams protein, ${Math.round(Number(item.meal.kcal) || 0)} calories`}
+                >
+                  <span className="fl-chip-name">{item.name}</span>
+                  <span className="fl-chip-p mono" aria-hidden="true">{Math.round(Number(item.meal.p) || 0)}p</span>
+                  <span className="kcal mono" aria-hidden="true">{Math.round(Number(item.meal.kcal) || 0)}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="sheet-section">
           <div className="sheet-section-head">
             <span className="sheet-section-title">Saved</span>
             <span className="sheet-section-meta">long-press to remove</span>
           </div>
-          {savedMeals.length === 0 ? (
+            {eligibleSaved.length === 0 ? (
             <div className="saved-empty">Star a meal in your log to save it here.</div>
           ) : (
             <div className="saved-row">
-              {savedMeals.map(m => (
+              {eligibleSaved.map(m => (
                 <button key={m.id} className="saved-chip" onClick={() => onAdd(m)} onContextMenu={(e) => { e.preventDefault(); if (window.confirm('Remove "' + m.name + '" from saved?')) onRemoveSaved(m.id); }}>
                   {m.name} <span className="kcal mono">{Math.round(m.kcal)}</span>
                 </button>
@@ -4162,7 +4879,24 @@ function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId
           )}
         </div>
 
-        {autoSearch ? (
+        {fastLog ? (
+          <>
+            <div className="sheet-section">
+              <div className="sheet-section-head">
+                <span className="sheet-section-title">Suggestions</span>
+                <Refresh />
+              </div>
+              <div className="food-grid">{suggestions.map(renderCard)}</div>
+            </div>
+            <div className="sheet-section">
+              <div className="sheet-section-head">
+                <span className="sheet-section-title">Staples</span>
+                <span className="sheet-section-meta">your core items</span>
+              </div>
+              <div className="food-grid">{staples.map(renderCard)}</div>
+            </div>
+          </>
+        ) : autoSearch ? (
           <div className="sheet-section">
             <div className="sheet-section-head">
               <span className="sheet-section-title">Staples</span>
@@ -4210,7 +4944,7 @@ function QuickAdd({ presets, savedMeals, onAdd, onAdjust, onRemoveSaved, pulseId
 }
 
 // Recent components persistence (last 6 per folder).
-const RECENT_KEY = 'shared.nutrition.builder.recent.v1';
+const RECENT_KEY = `${NS}nutrition.builder.recent.v1`;
 const RECENT_LIMIT = 6;
 function loadRecent() {
   try {
@@ -4224,7 +4958,7 @@ function saveRecent(r) {
   try { localStorage.setItem(RECENT_KEY, JSON.stringify(r)); } catch (e) {}
 }
 
-function BuilderAdd({ onSubmit, onCancel, onSavePreset, editingMeal, submitLabel }) {
+function BuilderAdd({ onSubmit, onCancel, onSavePreset, editingMeal, submitLabel, dietPreference }) {
   const [rows, setRows] = useState(() => {
     if (editingMeal && Array.isArray(editingMeal._builder)) {
       return editingMeal._builder.map(r => ({
@@ -4353,7 +5087,7 @@ function BuilderAdd({ onSubmit, onCancel, onSavePreset, editingMeal, submitLabel
     const out = {};
     const byId = new Map(BUILDER_COMPONENTS.map(c => [c.id, c]));
     for (const g of BUILDER_GROUPS) {
-      const inGroup = BUILDER_COMPONENTS.filter(c => c.group === g.key);
+      const inGroup = BUILDER_COMPONENTS.filter(c => c.group === g.key && dietAllows(c, dietPreference));
       const filtered = q ? inGroup.filter(c => c.name.toLowerCase().includes(q)) : inGroup;
       const subs = {};
       const subOrder = [];
@@ -4373,7 +5107,7 @@ function BuilderAdd({ onSubmit, onCancel, onSavePreset, editingMeal, submitLabel
       out[g.key] = { total: inGroup.length, shown: filtered.length, subs, subOrder };
     }
     return out;
-  }, [q, recent]);
+  }, [q, recent, dietPreference]);
 
   // Selection counts per component id (multiple rows of same id stack).
   const selectionCount = useMemo(() => {
@@ -4716,6 +5450,7 @@ function TotalsForm({ onSubmit, onCancel }) {
   };
   return (
     <div className="custom-form">
+      {DIET_FEATURE && <div className="settings-section-help" style={{marginBottom:10}}>Totals-only entries can be logged, but cannot be checked against your food preference because ingredient details are unknown.</div>}
       <input value={form.name} onChange={handle('name')} placeholder="What was it? e.g. Mom's lasagne" />
       <div className="input-with-label"><span className="lbl">CALORIES</span><input className="mono" type="number" inputMode="decimal" value={form.kcal} onChange={handle('kcal')} placeholder="required" /></div>
       <div className="form-grid-3">
@@ -4946,8 +5681,8 @@ function HistorySheet({ targets, activeKey, todayMeals, onClose }) {
       .empty { color: #aaa; font-style: italic; font-size: 12px; padding: 4px 0 4px 12px; }
       @media print { body { margin: 12mm; } }
     `;
-    let html = `<!doctype html><html><head><meta charset="utf-8"><title>Nutrition · ${rangeLabel}</title><style>${css}</style></head><body>`;
-    html += `<h1>Nutrition history</h1><div class="meta">${rangeLabel} · ${dateRange}</div>`;
+    let html = `<!doctype html><html><head><meta charset="utf-8"><title>${EDITION.name} · ${rangeLabel}</title><style>${css}</style></head><body>`;
+    html += `<h1>${EDITION.name} history</h1><div class="meta">${rangeLabel} · ${dateRange}</div>`;
     html += `<div class="summary">
       <div class="summary-cell"><div class="l">Days logged</div><div class="v">${stats.logged}/${stats.total}</div></div>
       <div class="summary-cell"><div class="l">Avg kcal</div><div class="v">${stats.avgKcal}</div></div>
@@ -5108,7 +5843,7 @@ function HistorySheet({ targets, activeKey, todayMeals, onClose }) {
   );
 }
 
-function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onReset }) {
+function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onReset, dietPreference, setDietPreference }) {
   const [form, setForm] = useState({
     protein: String(targets.protein),
     caloriesTarget: String(targets.caloriesTarget),
@@ -5298,10 +6033,7 @@ function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onRe
             </div>
             <div className="settings-section-help">Sets the highlight color across the app. The protein-anchor green stays a distinct signal in both.</div>
             <div className="theme-picker">
-              {[
-                { key: 'tidepool', name: 'Tidepool', desc: 'deep teal', bg: '#EAF0EF', accent: 'oklch(0.50 0.075 205)', good: 'oklch(0.585 0.152 142)' },
-                { key: 'harbor', name: 'Harbor', desc: 'denim blue', bg: '#ECF0F2', accent: 'oklch(0.52 0.10 248)', good: 'oklch(0.575 0.152 145)' },
-              ].map(opt => (
+              {Object.entries(EDITION.theme.values).map(([key, value]) => ({ key, ...value })).map(opt => (
                 <button
                   key={opt.key}
                   type="button"
@@ -5324,6 +6056,29 @@ function SettingsSheet({ targets, totals, theme, setTheme, onClose, onSave, onRe
               ))}
             </div>
           </div>
+
+          {DIET_FEATURE && <div className="settings-section">
+            <div className="settings-section-head">
+              <span className="settings-section-title">Food preference</span>
+              <span className="settings-section-meta">used across suggestions and meal prep</span>
+            </div>
+            <div className="settings-section-help">Meals with known incompatible ingredients are hidden. Restaurant and packaged foods can vary, so check how they were prepared.</div>
+            <div className="theme-picker" role="radiogroup" aria-label="Food preference">
+              {[
+                ['all', 'All foods', 'No diet filter'],
+                ['vegetarian', 'Vegetarian', 'Dairy allowed'],
+                ['vegan', 'Vegan', 'Plant foods only'],
+                ['vegetarian_eggs', 'Vegetarian + eggs', 'Dairy and eggs allowed'],
+              ].map(([key, label, desc]) => <button key={key} type="button" className={`theme-opt ${dietPreference.dietType === key ? 'active' : ''}`} onClick={() => setDietPreference(normalizeDietPreference({ ...dietPreference, dietType: key }))} role="radio" aria-checked={dietPreference.dietType === key}>
+                <span className="theme-labels"><span className="theme-name">{label}</span><span className="theme-desc">{desc}</span></span>
+                {dietPreference.dietType === key && <svg className="theme-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M20 6L9 17l-5-5"/></svg>}
+              </button>)}
+            </div>
+            <label style={{display:'flex',gap:10,alignItems:'center',marginTop:12,fontSize:13,fontWeight:600}}>
+              <input type="checkbox" checked={dietPreference.noOnionGarlic} onChange={e => setDietPreference(normalizeDietPreference({ ...dietPreference, noOnionGarlic: e.target.checked }))} />
+              No onion or garlic
+            </label>
+          </div>}
 
           <div className="settings-section">
             <div className="settings-section-head">
@@ -5461,13 +6216,26 @@ function DaySummary({ totals }) {
   );
 }
 
-function ArchitectureGuidance() {
+function ArchitectureGuidance({ dietPreference }) {
   const targets = useContext(TargetsContext);
+  const dietType = DIET_FEATURE ? normalizeDietPreference(dietPreference).dietType : 'all';
+  const examples = dietType === 'vegan'
+    ? { anchor: 'soy or pea protein shake', protein: 'tofu, tempeh, seitan, lentils', snacks: 'fruit, nuts, hummus, edamame' }
+    : dietType === 'vegetarian'
+      ? { anchor: 'whey or yogurt shake', protein: 'paneer, tofu, Greek yogurt, lentils', snacks: 'milk, fruit, nuts, Greek yogurt' }
+      : dietType === 'vegetarian_eggs'
+        ? { anchor: 'whey or yogurt shake', protein: 'eggs, paneer, tofu, Greek yogurt', snacks: 'milk, fruit, nuts, boiled eggs' }
+        : { anchor: 'shake', protein: 'chicken, fish, eggs, kebabs', snacks: 'milk, fruit, nuts, Greek yogurt' };
+  if (DIET_FEATURE && normalizeDietPreference(dietPreference).noOnionGarlic) {
+    examples.anchor = 'a plain protein option that matches your preference';
+    examples.protein = 'plain proteins with preparation confirmed';
+    examples.snacks = 'plain fruit and nuts; check packaged labels';
+  }
   const items = [
-    { n: '01', label: 'Protein anchor', meta: '~550 kcal · 60g P', detail: 'shake' },
-    { n: '02', label: 'Protein meal',   meta: '400–600 kcal · 40–60g P', detail: 'chicken, fish, eggs, kebabs' },
+    { n: '01', label: 'Protein anchor', meta: '~550 kcal · 60g P', detail: examples.anchor },
+    { n: '02', label: 'Protein meal',   meta: '400–600 kcal · 40–60g P', detail: examples.protein },
     { n: '03', label: 'Balance meal',   meta: '~400–500 kcal · 15–20g P', detail: 'rice + legumes, beans + rice, vegetables + bread' },
-    { n: '04', label: 'Snacks/extras',  meta: 'fill remaining', detail: 'milk, fruit, nuts, Greek yogurt' },
+    { n: '04', label: 'Snacks/extras',  meta: 'fill remaining', detail: examples.snacks },
   ];
   return (
     <div className="card" style={{ marginTop: 10 }}>

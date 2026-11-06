@@ -6,11 +6,21 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "validate:catalog": "node scripts/validate-catalog.mjs",
+    "validate:food-model": "node scripts/validate-food-model.mjs",
+    "validate:food-model:release": "node scripts/validate-food-model.mjs --release",
+    "test:food-model": "node --test tests/food-model.test.mjs tests/portion-qualification.test.mjs",
+    "test:food-model-integration": "node --test tests/food-model-integration.test.mjs",
     "test:backup": "node --test tests/backup.test.mjs",
     "test:catalog": "node --test tests/catalog-validator.test.mjs",
+    "test:editions": "node --test tests/edition-architecture.test.mjs",
+    "test:shared-regression": "node --test tests/shared-regression.test.mjs",
+    "test:meal-prep": "node --test tests/meal-prep.test.mjs",
+    "test:meal-prep-integration": "node --test tests/meal-prep-integration.test.mjs",
+    "test:fast-log": "node --test tests/fast-log.test.mjs",
+    "verify:editions": "node scripts/verify-edition-architecture.mjs",
     "verify:reproducible": "node scripts/verify-reproducible-build.mjs",
     "verify:requirements": "node scripts/verify-requirements.mjs",
-    "test": "npm run verify:requirements && npm run test:catalog && npm run validate:catalog && npm run test:backup && npm run build"
+    "test": "npm run verify:requirements && npm run test:catalog && npm run validate:catalog && npm run validate:food-model && npm run test:food-model && npm run test:food-model-integration && npm run test:backup && npm run test:meal-prep && npm run test:fast-log && npm run build && npm run test:meal-prep-integration && npm run test:editions && npm run test:shared-regression && npm run verify:editions"
   },
   "dependencies": {
     "react": "18.3.1",

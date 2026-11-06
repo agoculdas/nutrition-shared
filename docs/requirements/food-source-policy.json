@@ -1,0 +1,500 @@
+{
+  "schemaVersion": "1.0.0",
+  "defaultSelection": "highest-scoring complete USDA candidate",
+  "selectionOverrides": {
+    "mutton-bone-in": {
+      "fdcId": 167634,
+      "selectionNote": "Kept: cooked roasted mutton is the only mutton record in the selected releases. Its 33.4 g protein is a meat-only cooked value and does not represent bone-in purchase weight.",
+      "remediation": "keep"
+    },
+    "prawns": {
+      "fdcId": 175180
+    },
+    "calamari": {
+      "fdcId": 2706333,
+      "selectionNote": "Kept: FNDDS cooked calamari is the same food in the same state at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    "crab-meat": {
+      "fdcId": 174202
+    },
+    "whole-milk": {
+      "fdcId": 746782
+    },
+    "chocolate-milk": {
+      "fdcId": 170879,
+      "basisGrams": 250
+    },
+    "salt-lassi": {
+      "fdcId": 171284,
+      "basisGrams": 250,
+      "selectionNote": "Standardized to the named plain whole-milk yogurt reference; the catalog no longer claims a generic lassi composition."
+    },
+    "cheese-shredded": {
+      "fdcId": 170900
+    },
+    "halloumi": {
+      "fdcId": 172222,
+      "selectionNote": "Standardized to USDA dry white queso seco; no halloumi record exists in the selected USDA releases."
+    },
+    "sushi-rice": {
+      "fdcId": 168882
+    },
+    "hp-flour": {
+      "fdcId": 168147
+    },
+    "hp-roti": {
+      "fdcId": 171844
+    },
+    "pav": {
+      "fdcId": 172793
+    },
+    "bread-toast": {
+      "fdcId": 2707599
+    },
+    "hp-tortilla": {
+      "fdcId": 173242
+    },
+    "flour-tortilla": {
+      "fdcId": 173242,
+      "selectionNote": "Kept: the SR Legacy flour tortilla carries an explicit 32 g medium (approx 6 in) portion matching the app's single regular tortilla.",
+      "remediation": "keep"
+    },
+    "lentil-pasta": {
+      "fdcId": 168934
+    },
+    "roast-potato": {
+      "fdcId": 170031
+    },
+    "banana": {
+      "fdcId": 173944,
+      "basisGrams": 118,
+      "selectionNote": "Kept: 118 g is the USDA medium-banana edible weight and reproduces the catalog value.",
+      "remediation": "keep"
+    },
+    "mango": {
+      "fdcId": 169910,
+      "basisGrams": 200,
+      "portionBasis": "1 pc modeled as 200 g edible flesh; application-controlled medium-mango convention",
+      "selectionNote": "Rebased from the 336 g USDA whole-fruit basis, which is a large fruit, to a 200 g medium-mango edible-flesh convention.",
+      "remediation": "rebase"
+    },
+    "apple": {
+      "fdcId": 171688,
+      "basisGrams": 182,
+      "selectionNote": "Kept: 182 g is the USDA medium-apple edible weight and reproduces the catalog value.",
+      "remediation": "keep"
+    },
+    "teriyaki-glaze": {
+      "fdcId": 2707445,
+      "selectionNote": "Kept: USDA ready-to-serve teriyaki sauce with its own 16 g tablespoon portion. No thicker teriyaki glaze record exists in the selected releases, so the value is conservative for a sweetened glaze.",
+      "remediation": "keep"
+    },
+    "burger-bun": {
+      "fdcId": 2707657
+    },
+    "onion": {
+      "fdcId": 170000,
+      "selectionNote": "Kept: raw onion at 40 kcal/100 g yields 20 kcal for the app's 50 g portion; the prior catalog figure applied a per-100 g number to a 50 g portion.",
+      "remediation": "keep"
+    },
+    "tomato": {
+      "fdcId": 170457
+    },
+    "gravy-base": {
+      "fdcId": 746777,
+      "selectionNote": "Standardized to USDA ready-to-serve salsa; the prior generic onion-tomato gravy had no defined recipe. Kept at the 124 g katori convention.",
+      "remediation": "keep"
+    },
+    "bhaji-mash": {
+      "fdcId": 2710810,
+      "selectionNote": "Reselected to the FNDDS \"Vegetables as ingredient in curry\" record. Bhaji mash is a spiced mashed vegetable mixture, not the school-lunch mashed potato previously standardized to.",
+      "remediation": "reselect"
+    },
+    "butter": {
+      "fdcId": 173410
+    },
+    "tadka": {
+      "fdcId": 171314,
+      "selectionNote": "Standardized to clarified butter; the prior generic spice mixture had no defined recipe."
+    },
+    "cream": {
+      "fdcId": 170859
+    },
+    "sour-cream": {
+      "fdcId": 171257
+    },
+    "coconut-milk": {
+      "fdcId": 2707568,
+      "selectionNote": "Kept: raw coconut milk at 230 kcal/100 g is the full-fat cooking milk the label names; the prior 150 kcal matched a diluted carton beverage.",
+      "remediation": "keep"
+    },
+    "tortilla-chips": {
+      "fdcId": 167558
+    },
+    "peanut-butter": {
+      "fdcId": 174294,
+      "basisGrams": 16,
+      "portionBasis": "1 tbsp modeled as 16 g; the USDA record's 32 g \"tbsp\" entry is a 2-tablespoon reference amount",
+      "selectionNote": "Rebased: one tablespoon of peanut butter is 16 g, so the prior 32 g basis doubled every macro.",
+      "remediation": "rebase"
+    },
+    "dumplings": {
+      "fdcId": 2708708,
+      "selectionNote": "Reselected to \"Wonton, dumpling or pot sticker, steamed\", which is the filled Asian dumpling the app label names; the prior \"Dumpling, no meat\" record is a plain boiled flour dumpling. The 25 g item weight is USDA's own.",
+      "remediation": "reselect"
+    },
+    "lentil-soup": {
+      "fdcId": 2707462,
+      "dietClass": "vegan",
+      "basisGrams": 510,
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (255 g each)",
+      "selectionNote": "Rebased from one cup to a two-cup bowl, matching the app's bowl unit.",
+      "remediation": "rebase"
+    },
+    "pho-bowl": {
+      "fdcId": 2707124,
+      "basisGrams": 490,
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (245 g each)",
+      "selectionNote": "Rebased from one cup to a two-cup bowl, matching the app's bowl unit.",
+      "remediation": "rebase"
+    },
+    "spring-rolls": {
+      "fdcId": 172105,
+      "basisGrams": 60,
+      "portionBasis": "2 pc modeled as 2 × 30 g; application-controlled fried spring-roll convention",
+      "selectionNote": "Rebased: the USDA 68 g portion is a full egg roll, not a spring roll. Two 30 g fried spring rolls are the app's item.",
+      "remediation": "rebase"
+    },
+    "summer-rolls": {
+      "fdcId": 2708704,
+      "selectionNote": "Kept: the USDA 71 g rice-paper roll is a realistic fresh summer roll, so 2 pc = 142 g stands.",
+      "remediation": "keep"
+    },
+    "pork-chop": {
+      "fdcId": 167841
+    },
+    "pork-belly": {
+      "fdcId": 2705901,
+      "selectionNote": "Kept: cooked pork belly is genuinely around 400 kcal/100 g; the prior 290 kcal understated it.",
+      "remediation": "keep"
+    },
+    "ham": {
+      "fdcId": 168355
+    },
+    "seitan": {
+      "fdcId": 168147
+    },
+    "corn-tortilla": {
+      "fdcId": 2707823
+    },
+    "bagel": {
+      "fdcId": 174899
+    },
+    "baguette": {
+      "fdcId": 2707610
+    },
+    "gnocchi": {
+      "fdcId": 168902,
+      "selectionNote": "Standardized to USDA cooked homemade egg-free pasta; no gnocchi record exists in the selected USDA releases. Kept at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    "polenta": {
+      "fdcId": 2708374,
+      "selectionNote": "Kept: cornmeal mush with no added fat is the only cooked-cornmeal porridge in the selected releases. It is a thinner preparation than firm polenta, so 58 kcal/100 g is conservative.",
+      "remediation": "keep"
+    },
+    "mushrooms": {
+      "fdcId": 169253
+    },
+    "bell-pepper": {
+      "fdcId": 170108
+    },
+    "mayo": {
+      "fdcId": 171009
+    },
+    "cream-cheese": {
+      "fdcId": 2705760
+    },
+    "alfredo-sauce": {
+      "fdcId": 2705809,
+      "selectionNote": "Kept: FNDDS alfredo sauce at the declared 100 ml = 100 g application convention.",
+      "remediation": "keep"
+    },
+    "aioli": {
+      "fdcId": 171009,
+      "containsOnionGarlic": false,
+      "selectionNote": "Standardized to regular mayonnaise; the prior generic aioli had no defined recipe."
+    },
+    "coconut-oil": {
+      "fdcId": 171412
+    },
+    "cheese-sauce": {
+      "fdcId": 2705808,
+      "selectionNote": "Kept: FNDDS cheese sauce at the declared 50 ml = 50 g application convention.",
+      "remediation": "keep"
+    },
+    "poke-bowl": {
+      "fdcId": 173339,
+      "selectionNote": "Standardized to the named USDA prepared chicken rice-bowl entree; no poke-bowl record exists in the selected USDA releases."
+    },
+    "katsu-curry": {
+      "fdcId": 2706438
+    },
+    "gyudon": {
+      "fdcId": 2706497
+    },
+    "onigiri": {
+      "fdcId": 168882,
+      "basisGrams": 100,
+      "dietClass": "vegan",
+      "containsOnionGarlic": false,
+      "selectionNote": "Standardized to cooked short-grain white rice; no filled rice-ball record exists in the selected USDA releases."
+    },
+    "tonkatsu": {
+      "fdcId": 168082,
+      "selectionNote": "Standardized to USDA restaurant sweet-and-sour pork; no tonkatsu record exists in the selected USDA releases."
+    },
+    "japchae": {
+      "fdcId": 174258
+    },
+    "tteokbokki": {
+      "fdcId": 2708957,
+      "selectionNote": "Kept: the FNDDS dukboki/tteokbokki record is the dish itself at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    "kimbap": {
+      "fdcId": 2708966,
+      "dietClass": "vegan",
+      "selectionNote": "Standardized to USDA vegetable sushi roll; no kimbap record exists in the selected USDA releases."
+    },
+    "chicken-mince": {
+      "selectionNote": "Kept: USDA pan-browned ground chicken is the same food in the same cooked state at the app's 100 g basis; the prior 110 kcal understated cooked ground chicken.",
+      "remediation": "keep"
+    },
+    "lamb-mince": {
+      "selectionNote": "Kept: USDA imported ground lamb, cooked braised, is the leanest generic cooked ground-lamb record; the broiled ground-lamb alternative (283 kcal/100 g) is further from the label.",
+      "remediation": "keep"
+    },
+    "chickpeas": {
+      "selectionNote": "Kept: boiled mature chickpeas at 164 kcal/100 g is the correct cooked-and-drained value; the prior 120 kcal assumed a wetter preparation.",
+      "remediation": "keep"
+    },
+    "rajma": {
+      "selectionNote": "Kept: boiled kidney beans without salt is the same food in the same state.",
+      "remediation": "keep"
+    },
+    "turkey-deli": {
+      "selectionNote": "Kept: prepackaged/deli turkey breast is the same food; the higher protein is the USDA value.",
+      "remediation": "keep"
+    },
+    "puri": {
+      "selectionNote": "Kept: the FNDDS puri record carries an explicit 36 g \"approx 4-4/5 in dia\" puri portion, which is a realistic single fried puri.",
+      "remediation": "keep"
+    },
+    "stir-fry-veg": {
+      "selectionNote": "Kept: the record is explicitly cooked with no added fat, which matches the app label; the oil-added variant was not selected.",
+      "remediation": "keep"
+    },
+    "guacamole": {
+      "selectionNote": "Kept: FNDDS guacamole (NFS) at the app's 50 g portion.",
+      "remediation": "keep"
+    },
+    "hummus": {
+      "selectionNote": "Kept: FNDDS plain hummus at the app's 30 g portion; the lower protein is the USDA value.",
+      "remediation": "keep"
+    },
+    "tzatziki": {
+      "selectionNote": "Kept: FNDDS tzatziki dip is the same food at the app's 100 g basis; the higher protein is the USDA value.",
+      "remediation": "keep"
+    },
+    "protein-bar": {
+      "selectionNote": "Kept for want of a generic record: every protein-bar candidate in the audit is a named brand. The macros are retained from the named South Beach bar and must not be read as a generic protein-bar composition.",
+      "remediation": "keep"
+    },
+    "pad-thai": {
+      "selectionNote": "Kept: FNDDS Pad Thai (NFS) at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    "sushi-roll": {
+      "selectionNote": "Kept: 8 × the USDA 30 g maki piece is a realistic roll. The lower total is the USDA composition, not a portion error.",
+      "remediation": "keep"
+    },
+    "miso-soup": {
+      "selectionNote": "Kept at one 245 g USDA cup: miso is served as a small side bowl, so the two-cup main-dish bowl convention used for ramen, pho, lentil and wonton soup does not apply.",
+      "remediation": "keep"
+    },
+    "rice-noodles": {
+      "selectionNote": "Kept: cooked rice noodles, same food and state, at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    "kimchi": {
+      "selectionNote": "Kept: cabbage kimchi at 15 kcal/100 g yields 7.5 kcal for the app's 50 g portion.",
+      "remediation": "keep"
+    },
+    "seaweed-salad": {
+      "selectionNote": "Kept: cooked seaweed with fat added is the closest match to a dressed seaweed salad; the higher protein is the USDA value.",
+      "remediation": "keep"
+    },
+    "dosa": {
+      "selectionNote": "Kept: the FNDDS dosa record's 80 g medium portion is a realistic plain dosa.",
+      "remediation": "keep"
+    },
+    "idli": {
+      "selectionNote": "Kept: 2 × the USDA 38 g idli is a realistic pair.",
+      "remediation": "keep"
+    },
+    "chorizo": {
+      "selectionNote": "Kept: FNDDS chorizo at 341 kcal/100 g is the cooked-sausage generic. The prior 230 kcal per 50 g matched dry-cured Spanish chorizo, which the selected releases do not carry.",
+      "remediation": "keep"
+    },
+    "brown-rice": {
+      "selectionNote": "Kept: cooked long-grain brown rice. The \"Food Distribution Program\" suffix is a USDA sampling label, not a branded product.",
+      "remediation": "keep"
+    },
+    "udon": {
+      "selectionNote": "Kept: the selected USDA releases carry no udon record; cooked Japanese somen is the closest wheat-noodle generic and is declared as such rather than presented as udon.",
+      "remediation": "keep"
+    },
+    "whey": {
+      "fdcId": 173180,
+      "basisGrams": 30,
+      "portionBasis": "1 scoop modeled as 30 g; application-controlled scoop convention (the generic USDA record reports only a 32 g cup portion)",
+      "selectionNote": "Reselected from the branded ABBOTT/EAS powder to the generic USDA \"Beverages, Protein powder whey based\" record, scaled to the application's 30 g scoop.",
+      "remediation": "reselect"
+    },
+    "mozzarella": {
+      "fdcId": 170845,
+      "selectionNote": "Reselected from part-skim to whole-milk mozzarella: the app label is fresh mozzarella, and the selected releases carry no high-moisture fresh record. Whole-milk mozzarella is the closest generic on fat and protein.",
+      "remediation": "reselect"
+    },
+    "roti": {
+      "fdcId": 2707713,
+      "basisGrams": 27,
+      "portionBasis": "1 × USDA portion “1 small chappatti or roti (6 in)” (27 g each)",
+      "selectionNote": "Reselected to the FNDDS generic chapati/roti record, which carries an explicit 6-inch 27 g portion matching the app label. The prior 68 g \"piece\" was a commercially prepared chapati, roughly two home rotis.",
+      "remediation": "reselect"
+    },
+    "mashed-potato": {
+      "fdcId": 2709492,
+      "selectionNote": "Reselected from the school-lunch record to the generic FNDDS \"Potato, mashed, NFS\".",
+      "remediation": "reselect"
+    },
+    "steamed-veg": {
+      "fdcId": 2710014,
+      "selectionNote": "Reselected to \"Classic mixed vegetables, canned, cooked, no added fat\": the prior record was an uncooked canned pack, and the cooked no-added-fat record matches the steamed label.",
+      "remediation": "reselect"
+    },
+    "side-salad": {
+      "fdcId": 2709822,
+      "selectionNote": "Reselected from the branded McDonald's side salad to the generic FNDDS \"Lettuce, salad with assorted vegetables including tomatoes and/or carrots, no dressing\".",
+      "remediation": "reselect"
+    },
+    "pesto": {
+      "fdcId": 2710175,
+      "selectionNote": "Reselected from the branded MEZZETTA pesto to the generic FNDDS \"Pesto sauce\", which also supplies an explicit 16 g tablespoon portion.",
+      "remediation": "reselect"
+    },
+    "minestrone": {
+      "fdcId": 2710114,
+      "basisGrams": 490,
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (245 g each)",
+      "selectionNote": "Reselected from the condensed canned record (which is undiluted) to the FNDDS prepared minestrone, at a two-cup bowl.",
+      "remediation": "reselect"
+    },
+    "sausage": {
+      "fdcId": 172971,
+      "selectionNote": "Reselected to a cooked pork sausage link with an explicit 21 g link portion. The prior record was chorizo at an 80.4 g \"medium\" reference amount, which is not a breakfast link.",
+      "remediation": "reselect"
+    },
+    "wonton-soup": {
+      "fdcId": 2709160,
+      "basisGrams": 490,
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (245 g each)",
+      "selectionNote": "Reselected to the FNDDS generic wonton soup at a two-cup bowl; the prior record was a single restaurant cup.",
+      "remediation": "reselect"
+    },
+    "falafel": {
+      "basisGrams": 30,
+      "portionBasis": "1 pc modeled as 30 g; application-controlled falafel-ball convention",
+      "selectionNote": "Rebased: the USDA 17 g \"patty (approx 2-1/4 in dia)\" is a mini falafel; a standard ball is about 30 g.",
+      "remediation": "rebase"
+    },
+    "ramen-bowl": {
+      "basisGrams": 490,
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (245 g each)",
+      "selectionNote": "Rebased from one cup to a two-cup bowl; a served ramen bowl is not a single cup.",
+      "remediation": "rebase"
+    },
+    "sourdough": {
+      "basisGrams": 50,
+      "portionBasis": "1 pc modeled as a 50 g slice; application-controlled sourdough-slice convention",
+      "selectionNote": "Rebased: the USDA 139 g \"slice\" for french/vienna bread is a loaf section, not a sandwich slice.",
+      "remediation": "rebase"
+    }
+  },
+  "nonFdcRecords": {
+    "creatine": {
+      "displayName": "Creatine monohydrate supplement (energy not represented)",
+      "macros": {
+        "kcal": 0,
+        "p": 0,
+        "f": 0,
+        "c": 0,
+        "fiber": 0
+      },
+      "source": "NIH Office of Dietary Supplements: Dietary Supplements for Exercise and Athletic Performance — Creatine",
+      "sourceUrl": "https://ods.od.nih.gov/factsheets/ExerciseAndAthleticPerformance-HealthProfessional/",
+      "portionBasis": "Application-controlled 5 g supplement entry. Zero macros means food energy is not represented; it is not an analytical nutrient measurement.",
+      "licenseStatus": "approved-public-domain"
+    }
+  },
+  "revertToCatalog": {
+    "hp-flour": {
+      "reason": "Vital wheat gluten is a 75 g/100 g protein isolate, not a blended high-protein flour. No high-protein flour record exists in the selected USDA releases."
+    },
+    "hp-roti": {
+      "reason": "A high-protein roti is a formulated product; the commercial plain chapati record halves its protein and doubles its energy."
+    },
+    "hp-tortilla": {
+      "reason": "A high-protein tortilla is a formulated product; the plain flour tortilla record reports 2.8 g protein against the label's 12 g."
+    },
+    "lentil-pasta": {
+      "reason": "The app component is dry lentil pasta; the selected record was cooked protein-fortified wheat spaghetti, wrong in both ingredient and state. No dry legume pasta record exists in the selected releases."
+    },
+    "jackfruit-sabzi": {
+      "reason": "Canned jackfruit in syrup is a sweetened fruit pack, not a cooked spiced sabzi."
+    },
+    "salad-dressing": {
+      "reason": "Every creamy dressing candidate in the audit is a reduced-calorie or flavored variant; no regular creamy dressing record is available, and the reduced-calorie record understates energy by two thirds."
+    },
+    "protein-pancakes": {
+      "reason": "The only pancake candidates are ordinary or gluten-free pancakes at 4.8 g protein against the label's 30 g. No protein-pancake record exists in the selected releases."
+    },
+    "seitan": {
+      "reason": "Cooked seitan is hydrated gluten; vital wheat gluten is the dry flour and triples the energy per 100 g."
+    },
+    "poke-bowl": {
+      "reason": "A frozen chicken rice-bowl entree is a different dish; no poke or raw-fish rice-bowl record exists in the selected releases."
+    },
+    "katsu-curry": {
+      "reason": "Chicken curry with rice omits the breaded fried cutlet that defines katsu curry; no rebase of that record reaches a plausible katsu-curry energy value."
+    },
+    "gyudon": {
+      "reason": "The \"Beef and rice with soy-based sauce\" record carries only 8 g carbohydrate per 100 g, which cannot represent a rice bowl; its macro shape is wrong regardless of the portion chosen."
+    },
+    "onigiri": {
+      "reason": "Plain cooked short-grain rice omits the filling and nori that define onigiri."
+    },
+    "tonkatsu": {
+      "reason": "Restaurant sweet-and-sour pork is a different dish with a different batter and sauce; no breaded pork cutlet record exists in the selected releases."
+    },
+    "japchae": {
+      "reason": "The selected record is dehydrated cellophane noodles, not the cooked dressed dish; it reports 351 kcal and 0.2 g protein per 100 g."
+    },
+    "kimbap": {
+      "reason": "A vegetable sushi roll at a 22 g piece understates kimbap, which is a larger filled roll; no kimbap record exists in the selected releases."
+    }
+  },
+  "revertToCatalogNote": "Components listed in revertToCatalog withdraw the CP3A USDA nutrition claim and restore the inherited pre-CP3A catalog macros under provenance record \"inherited-catalog-nutrition\" (licenseStatus \"unapproved\"). revertToCatalog takes precedence over selectionOverrides; a retained selectionOverrides entry for the same id preserves its authored dietClass/containsOnionGarlic metadata and records the selection a future re-run would make if the revert were lifted."
+}

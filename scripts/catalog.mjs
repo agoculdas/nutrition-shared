@@ -1,6 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import '../food-model-core.js';
+
+export const FoodModel = globalThis.NutritionFoodModel;
 
 export const MACROS = ['kcal', 'p', 'f', 'c', 'fiber'];
 export const TOTAL_TOLERANCE = 0.05;
@@ -21,6 +24,22 @@ export function loadCatalog(indexPath = path.resolve('index.html')) {
     components: extractArray(source, 'BUILDER_COMPONENTS'),
     presets: extractArray(source, 'PRESET_DEFS'),
   };
+}
+
+export function loadFoodModelData(dataPath = path.resolve('food-model-data.js')) {
+  const source = fs.readFileSync(dataPath, 'utf8');
+  const context = Object.create(null);
+  context.globalThis = context;
+  context.window = context;
+  vm.runInNewContext(source, context, { timeout: 2000, filename: dataPath });
+  const data = context.NutritionFoodModelData;
+  if (!data || typeof data !== 'object') throw new Error('food-model-data.js did not define NutritionFoodModelData');
+  return data;
+}
+
+export function loadEnrichedCatalog(indexPath = path.resolve('index.html'), dataPath = path.resolve('food-model-data.js')) {
+  const catalog = loadCatalog(indexPath);
+  return FoodModel.enrichCatalog(catalog.components, catalog.presets, loadFoodModelData(dataPath));
 }
 
 export function deriveTotals(builder, components) {

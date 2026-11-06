@@ -1,0 +1,78 @@
+{
+  "id": "india",
+  "name": "Protein India",
+  "storageNamespace": "india.",
+  "manifest": {
+    "name": "Protein India — Daily Nutrition",
+    "shortName": "Protein India",
+    "icon": "india-icon.svg",
+    "startUrl": "/nutrition-india/",
+    "display": "standalone",
+    "orientation": "portrait"
+  },
+  "iconSource": "editions/india-icon.svg",
+  "theme": {
+    "default": "malabar",
+    "values": {
+      "malabar": {
+        "name": "Malabar",
+        "desc": "warm ivory",
+        "themeColor": "#F5F0E8",
+        "bg": "#F5F0E8",
+        "accent": "oklch(0.54 0.12 58)",
+        "good": "oklch(0.56 0.14 145)",
+        "cssVariables": {
+          "--bg": "#F5F0E8",
+          "--surface-2": "#FBF8F2",
+          "--hairline": "#E7DED0",
+          "--hairline-strong": "#D7C9B7",
+          "--accent": "oklch(0.54 0.12 58)",
+          "--accent-press": "oklch(0.46 0.11 58)",
+          "--accent-bg": "oklch(0.54 0.12 58 / 0.10)",
+          "--accent-line": "oklch(0.54 0.12 58 / 0.30)",
+          "--good": "oklch(0.56 0.14 145)"
+        }
+      },
+      "marine": {
+        "name": "Marine",
+        "desc": "Arabian Sea blue",
+        "themeColor": "#EDF2F4",
+        "bg": "#EDF2F4",
+        "accent": "oklch(0.49 0.10 232)",
+        "good": "oklch(0.56 0.14 145)",
+        "cssVariables": {
+          "--bg": "#EDF2F4",
+          "--surface-2": "#F6F9FA",
+          "--hairline": "#DCE5E8",
+          "--hairline-strong": "#C8D6DB",
+          "--accent": "oklch(0.49 0.10 232)",
+          "--accent-press": "oklch(0.42 0.10 232)",
+          "--accent-bg": "oklch(0.49 0.10 232 / 0.10)",
+          "--accent-line": "oklch(0.49 0.10 232 / 0.30)",
+          "--good": "oklch(0.56 0.14 145)"
+        }
+      }
+    }
+  },
+  "eatingWindow": { "startHour": 7, "endHour": 22 },
+  "cuisineOrder": ["indian", "generic", "middle-eastern", "east-asian", "southeast-asian", "mediterranean", "japanese", "korean", "american", "mexican"],
+  "suggestionPolicy": {
+    "setSize": 7,
+    "maxPerCuisine": 2,
+    "states": {
+      "anchor": { "counts": { "anchor": 3, "balanced": 3, "filler": 1 }, "fallbackOrder": ["anchor", "balanced", "filler"] },
+      "balanced": { "counts": { "anchor": 2, "balanced": 3, "filler": 2 }, "fallbackOrder": ["balanced", "anchor", "filler"] },
+      "filler": { "counts": { "anchor": 1, "balanced": 3, "filler": 3 }, "fallbackOrder": ["filler", "balanced", "anchor"] }
+    }
+  },
+  "defaultTargets": {
+    "protein": 140,
+    "caloriesTarget": 2000,
+    "caloriesFloor": 1500,
+    "fat": { "min": 55, "max": 75 },
+    "carbs": { "min": 180, "max": 250 },
+    "fiber": { "min": 25, "max": 35 }
+  },
+  "copy": { "dashboardTitle": "Protein today", "lightTierTag": "LIGHT", "densityHeadroomNote": "Room for lighter meals." }
+  ,"features": { "mealPrep": true, "dietaryPreferences": true, "qualifiedFoodCatalog": true, "fastLog": true }
+}

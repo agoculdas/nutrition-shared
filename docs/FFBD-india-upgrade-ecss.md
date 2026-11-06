@@ -13,11 +13,13 @@
 - **AND gates mark real concurrency.** Branches leaving an `AND` gate can be worked in parallel; all must complete before the joining gate releases the next function.
 - **Dashed edges are plan §11 return paths, not failure states.** They route rework to the checkpoint that owns the causal requirement.
 - **`LP` loops are planned iteration** (e.g. extend catalog until corpus coverage ≥ 80% at CP4R), so cycling through them is expected, not a nonconformance.
-- All 109 requirements are allocated to exactly one second-level function (dictionary at the end). A requirements change under GOV-004 updates the allocation here in the same change record.
+- All 109 core requirements are allocated to exactly one second-level function (dictionary at the end). The approved 13-requirement meal-prep annex is allocated separately below. A requirements change under GOV-004 updates the allocation here in the same change record.
 
 **Level 0 (mission function):** `F0 — Deliver a validated, independently deployed India edition while preserving the shared edition.` All functions below decompose F0.
 
-**Verification status as of 2026-07-16:** F1 closed (CP0 `Pass`). F2 partially closed — CP1A `Pass`; CP1B open with `FND-007` **Blocked** (offline reload could not be completed under the verifying agent's browser policy and needs a manual or re-tooled run). F3 cannot open until CP1B closes. F3 onward has not started.
+**Verification status as of 2026-07-16:** F1 and F2 are closed: CP0, CP1A and CP1B are `Pass`. The repository stakeholder verified `FND-007` by offline-reopen demonstration after the original automated browser attempt was policy-blocked. F3 is active: CP2A is closed, `REG-001` through `REG-004` passed technical verification, and CP2B awaits the stakeholder review decision.
+
+**Progression update 2026-09-05:** CP2B evidence was reviewed and progression authorized by the stakeholder's “go ahead”; see [review-record.md](requirements/evidence/CP2B/review-record.md). F4/CP3A local implementation is active. Later acceptance, pilot, annex qualification and public-release gates remain open.
 
 ---
 
@@ -64,7 +66,7 @@ flowchart LR
 
 Closed 2026-07-16. Participant collection is explicitly deferred to F6 (CP4R) by the stakeholder tailoring decision; only the schema and procedure are controlled here.
 
-## Level 2 — F2: Reproducible and resilient foundation (CP1A ✔, CP1B open)
+## Level 2 — F2: Reproducible and resilient foundation (CP1A ✔, CP1B ✔)
 
 ```mermaid
 flowchart LR
@@ -77,7 +79,7 @@ flowchart LR
     F23 --> G1{"CP1A<br/>Build Verification<br/>Review"}
     G1 -->|pass| A3((AND))
     G1 -.->|"fail: rework"| A1
-    A3 --> F25["2.5 Offline operation<br/>FND-007 — BLOCKED"]
+    A3 --> F25["2.5 Offline operation<br/>FND-007"]
     A3 --> F26["2.6 Storage migration<br/>compatibility<br/>FND-008"]
     A3 --> F27["2.7 Backup and restore<br/>FND-009, FND-010, FND-011"]
     A3 --> F28["2.8 Production<br/>non-interference check<br/>FND-012"]
@@ -90,7 +92,7 @@ flowchart LR
     G2 -.->|"fail: rework"| A3
 ```
 
-CP1A closed 2026-07-16. CP1B cannot close until `FND-007` moves from `Blocked` to `Pass` or receives an approved waiver — plan rule 6.
+CP1A and CP1B closed 2026-07-16. `FND-007` passed by stakeholder offline-reopen demonstration; `FND-008` through `FND-012` passed through the recorded migration, backup/restore and non-interference evidence.
 
 ## Level 2 — F3: Edition architecture (CP2A, CP2B)
 
@@ -108,6 +110,8 @@ flowchart LR
 ```
 
 A CP2B failure blocks **all** later checkpoints (plan §11) — shared-edition behavioral compatibility is a standing invariant from here forward.
+
+CP2A closed with stakeholder approval on 2026-07-16. CP2B technical verification then confirmed the CP0 catalog and defaults, all six named shared-edition flows, and two-way same-origin storage isolation; the checkpoint awaits stakeholder review.
 
 ## Level 2 — F4: Dietary model and prototype catalog (CP3A, CP3B)
 
@@ -220,7 +224,7 @@ The disposal branch (8.5) is calendar-driven, not release-driven — it complete
 | 2.1 | One-command reproducible build | FND-001, FND-006 | CP1A ✔ | 2.3 |
 | 2.2 | Catalog validator and fixtures | FND-003, FND-004 | CP1A ✔ | 2.3, 4.2 |
 | 2.3 | Self-contained artifact and smoke | FND-002, FND-005 | CP1A ✔ | CP1A gate |
-| 2.5 | Offline operation | FND-007 **(Blocked)** | CP1B | CP1B gate |
+| 2.5 | Offline operation | FND-007 | CP1B ✔ | CP1B gate |
 | 2.6 | Storage migration compatibility | FND-008 | CP1B | CP1B gate |
 | 2.7 | Backup and restore | FND-009, FND-010, FND-011 | CP1B | CP1B gate |
 | 2.8 | Production non-interference | FND-012 | CP1B | CP1B gate |
@@ -251,3 +255,40 @@ The disposal branch (8.5) is calendar-driven, not release-driven — it complete
 | 8.5 | Pilot data disposal | PIL-010, PIL-011 | CP6D | F0 complete |
 
 **Allocation check:** all 109 plan requirements appear exactly once above (GOV 4, BAS 5, FND 12, EDI 6, REG 4, CNT 9, CAT 7, PRT 10, CDR 6, ONB 9, ACC 4, PIL 11, TAC 5, VAL 10, REL 7). Functions 1.4, 6.4 and 7.3 are pure work functions whose output is verified by the requirements of their successor functions.
+
+## Approved annex — MP: Batch meal preparation (CPMP)
+
+Added 2026-09-05 under the stakeholder-approved [meal-prep annex](PLAN-meal-prep-annex.md). This branch permits local development while existing core review statuses remain unchanged. Acceptance joins the release flow only after CP2B and applicable CP3A interfaces are verified; it does not bypass any original gate.
+
+```mermaid
+flowchart LR
+    A([Approved annex scope]) --> B["MP.1 Recipes, quantities and coverage"]
+    B --> C["MP.2 Annex interaction, preferences and instructions"]
+    C --> D["MP.3 Saved setups, logging and resilience"]
+    D --> E{"CPMP acceptance"}
+    CORE([CP2B and applicable CP3A interfaces]) --> E
+    E --> RELEASE([Existing public-release gates])
+    E -.->|recipe or calculation issue| B
+    E -.->|interaction issue| C
+    E -.->|state or regression issue| D
+```
+
+| Function | Work | Allocated requirements |
+|---|---|---|
+| MP.1 | Recipe qualification, count rounding, derived nutrition, coverage and sourced storage guidance | `MP-001`, `MP-002`, `MP-004`, `MP-005` |
+| MP.2 | Serving definitions, dietary compatibility, accessibility and user-opened instructions | `MP-003`, `MP-010`, `MP-011`, `MP-013` |
+| MP.3 | Saved setup snapshots, serving logs, backup, offline operation and shared regression | `MP-006`, `MP-007`, `MP-008`, `MP-009`, `MP-012` |
+
+Practical recipe checks, reference-device acceptance and the five-user formative check remain pending until performed; implementation alone cannot close CPMP.
+
+## Approved annex — FL: Fast logging (CPFL)
+
+Added 2026-09-06 under the stakeholder-approved [fast-log annex](PLAN-fast-log.md) and registered 2026-11-06. India-only behind `features.fastLog`; the shared edition is unaffected.
+
+| Function | Work | Allocated requirements |
+|---|---|---|
+| FL.1 | Rank and re-log the user's own meals with undo | `FL-001`, `FL-002`, `FL-003` |
+| FL.2 | Dashboard picks and the week/month view | `FL-004`, `FL-005`, `FL-006` |
+| FL.3 | Release packaging and shared-edition isolation | `FL-007`, `FL-008` |
+
+**Combined allocation:** 109 core, 13 meal-prep annex and 8 fast-log annex requirements = 130.

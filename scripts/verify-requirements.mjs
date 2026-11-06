@@ -1,16 +1,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const planPath = path.resolve('docs/PLAN-india-upgrade-ecss.md');
+const planPaths = [path.resolve('docs/PLAN-india-upgrade-ecss.md'), path.resolve('docs/PLAN-meal-prep-annex.md'), path.resolve('docs/PLAN-fast-log.md')];
 const vcdPath = path.resolve('docs/requirements/vcd.json');
-const lines = fs.readFileSync(planPath, 'utf8').split(/\r?\n/);
 const requirements = [];
-let checkpoint = null;
-for (const line of lines) {
-  const checkpointMatch = line.match(/^### Checkpoint (CP\w+|CDR)/);
-  if (checkpointMatch) checkpoint = checkpointMatch[1];
-  const match = line.match(/^\| `([A-Z]{3}-\d{3})` \| (.*?) \| `(MO-\d{2})` \| `(T|A|RoD|I)` \| (.*?) \|$/);
-  if (match) requirements.push({ id: match[1], requirement: match[2], objective: match[3], method: match[4], passCriterion: match[5], checkpoint });
+for (const planPath of planPaths) {
+  const lines = fs.readFileSync(planPath, 'utf8').split(/\r?\n/);
+  let checkpoint = null;
+  for (const line of lines) {
+    const checkpointMatch = line.match(/^### Checkpoint (CP\w+|CDR)/);
+    if (checkpointMatch) checkpoint = checkpointMatch[1];
+    const match = line.match(/^\| `([A-Z]{2,3}-\d{3})` \| (.*?) \| `(MO-\d{2})` \| `(T|A|RoD|I)` \| (.*?) \|$/);
+    if (match) requirements.push({ id: match[1], requirement: match[2], objective: match[3], method: match[4], passCriterion: match[5], checkpoint });
+  }
 }
 
 const errors = [];

@@ -1,9 +1,13 @@
 # India Edition Upgrade — ECSS-Tailored Development and Verification Plan
 
-**Status:** Baselined; Phase 1 implementation in progress
+**Status:** Baselined; CP2B accepted for progression on 2026-09-05; all CP3A exit requirements have passing local evidence as of 2026-09-06 and await stakeholder checkpoint acceptance
 **Date:** 2026-07-16
 **Product:** `nutrition-shared` core and a separately deployed India edition
 **Initial validation cohort:** South Bombay users; expansion target: affluent urban India
+
+**Approved annex (2026-09-05):** [Meal-prep annex](PLAN-meal-prep-annex.md) adds `MP-001`–`MP-013` at `CPMP` for India-first batch recipes, rounded ingredient counts, scalable portions, coverage and opt-in preparation instructions. Local implementation is approved; existing checkpoint review statuses remain unchanged. CPMP is an additional acceptance gate before public release of an artifact containing the annex, including recipe qualification, relevant core interface verification and review. The VCD covers the 109 core requirements and these 13 annex requirements separately.
+
+**Approved annex (2026-09-06, registered 2026-11-06):** [Fast-log annex](PLAN-fast-log.md) adds `FL-001`–`FL-008` at `CPFL` for one-tap re-logging, dashboard picks and the week/month view. It is India-only behind `features.fastLog`; existing checkpoint statuses are unchanged.
 
 ## 1. Purpose and tailoring
 
@@ -38,6 +42,17 @@ The following rules are mandatory for this project:
 | `A` | Analysis, including similarity | Dataset coverage, performance results, pilot statistics and traceability analysis |
 | `RoD` | Review of design | Approved architecture, source, design records or configuration showing compliance |
 | `I` | Inspection | Direct inspection of the artifact, manifest, copy, report or evidence record |
+
+Verification results tables shall retain the planned ECSS method and also state the closest executed verification approach in plain language:
+
+| Executed approach | Meaning in results tables |
+|---|---|
+| `Inspection` | A person or deterministic checker examined a static artifact, configuration, manifest, source record or rendered output. |
+| `Test` | An automated or manual procedure applied inputs or operating conditions and asserted an objective pass/fail result. |
+| `Analysis` | A result was derived by calculation, comparison, coverage assessment or interpretation of collected evidence. |
+| `Demonstration` | A workflow or controlled change was exercised and its observable outcome recorded, without exhaustive test coverage. |
+
+Where multiple approaches contribute, the results table shall name all applicable approaches and identify the primary one first. This executed-approach label supplements the controlled ECSS method; it does not change the requirement's baselined verification method.
 
 ### 1.2 Controlled definitions and verification configurations
 
@@ -261,14 +276,14 @@ Define `DATA-RULESET-01` as: unique component IDs; unique preset names; resolvab
 | `CNT-001` | Each component shall declare one dietary class from `vegan`, `vegetarian`, `egg` and `nonveg`. | `MO-02` | `T` | Schema validator reports zero missing or invalid dietary classes. |
 | `CNT-002` | Each preset dietary class shall be derived from its component composition. | `MO-02` | `T` | Exhaustive derivation test matches the expected class for every preset. |
 | `CNT-003` | Each component shall declare whether it contains onion or garlic. | `MO-02` | `T` | Schema validator reports zero missing boolean values. |
-| `CNT-004` | Enabling the Jain/no-onion-garlic preference shall exclude every preset containing a component marked as containing onion or garlic. | `MO-02` | `T` | Exhaustive filter test finds zero incompatible results. |
+| `CNT-004` | Enabling the no-onion-or-garlic preference shall exclude every preset containing a component marked as containing onion or garlic. | `MO-02` | `T` | Exhaustive filter test finds zero incompatible results. |
 | `CNT-005` | The India catalog shall support `katori`, `pc`, `tsp`, `tbsp`, `cup`, `glass`, `g` and `ml` where applicable to the component. | `MO-02` | `T` | Approved unit fixture converts every named unit to expected totals within 0.1%. |
 | `CNT-006` | Each prepared-dish preset shall declare one context from `home`, `restaurant`, `delivery`, `packaged` and `generic`. | `MO-02` | `T` | Schema validator reports zero missing or invalid contexts. |
 | `CNT-007` | Each newly added or changed component shall reference a provenance record containing source, access date, portion basis and license status. | `MO-04` | `I` | Provenance inspection finds a complete record for every changed component. |
 | `CNT-008` | The release catalog shall contain no component whose provenance license status is `unapproved`. | `MO-04` | `I` | License-register report contains zero unapproved released components. |
 | `CNT-009` | Preset macro totals shall equal the sum of their scaled components within 1 kcal and 0.1 g per macro. | `MO-04` | `T` | Exhaustive catalog test passes every preset. |
 
-**CP3A exit gate:** the data model expresses dietary class, Jain suitability, household portions, meal context and provenance; `CNT-001` through `CNT-009` are `Pass`.
+**CP3A exit gate:** the data model expresses dietary class, onion/garlic exclusion, household portions, meal context and provenance; `CNT-001` through `CNT-009` are `Pass`. Onion/garlic exclusion is a specifically named ingredient rule and does not claim to express every dietary practice.
 
 ### Checkpoint CP3B — Prototype Catalog Review
 

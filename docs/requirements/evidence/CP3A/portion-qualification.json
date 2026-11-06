@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "reviewDate": "2026-09-06",
+  "reviewer": "Codex coordinator",
+  "status": "approved-local-candidate",
+  "tolerancePercent": 0.1,
+  "conventions": {
+    "metricKitchen": {
+      "source": "NIST Metric Kitchen: Cooking Measurement Equivalencies",
+      "url": "https://www.nist.gov/pml/owm/metric-si/metric-kitchen/metric-kitchen-cooking-measurement-equivalencies",
+      "accessDate": "2026-09-06",
+      "values": { "tspMl": 5, "tbspMl": 15, "cupMl": 240 }
+    },
+    "fdcLicense": {
+      "source": "USDA FoodData Central API Guide — Licensing",
+      "url": "https://fdc.nal.usda.gov/api-guide/",
+      "accessDate": "2026-09-06",
+      "license": "CC0 1.0 / public domain"
+    }
+  },
+  "fixtures": [
+    { "componentId": "onion", "unit": "g", "baseUnit": "g", "expectedBaseQty": 1, "basis": "SI identity conversion; one gram is one catalog gram.", "sourceRef": "nist-metric-units" },
+    { "componentId": "whole-milk", "unit": "ml", "baseUnit": "ml", "expectedBaseQty": 1, "basis": "SI identity conversion; one milliliter is one catalog milliliter.", "sourceRef": "nist-metric-units" },
+    { "componentId": "egg", "unit": "pc", "baseUnit": "pc", "expectedBaseQty": 1, "basis": "One piece is one USDA Grade A large whole egg; FDC 748967 reports 50.3 g without shell.", "sourceRef": "usda-fdc-748967" },
+    { "componentId": "ghee", "unit": "tsp", "baseUnit": "g", "expectedBaseQty": 4.666666666666667, "basis": "FDC 2710168 reports 14 g per tablespoon; the NIST convention defines one tablespoon as three 5 mL teaspoons.", "sourceRef": "usda-fdc-2710168-nist-kitchen" },
+    { "componentId": "olive-oil", "unit": "tbsp", "baseUnit": "ml", "expectedBaseQty": 15, "basis": "NIST metric-kitchen tablespoon definition; FDC 171413 independently reports 13.5 g per tablespoon for olive oil.", "sourceRef": "usda-fdc-171413-nist-kitchen" },
+    { "componentId": "rice-white", "unit": "cup", "baseUnit": "g", "expectedBaseQty": 158, "basis": "FDC 168935 reports 158 g for one cup cooked long-grain white rice.", "sourceRef": "usda-fdc-168935" },
+    { "componentId": "salt-lassi", "unit": "glass", "baseUnit": "ml", "expectedBaseQty": 250, "basis": "Application-controlled serving definition: glass means 250 mL, displayed as such; it is not a universal household-glass claim.", "sourceRef": "authored-250ml-glass" },
+    { "componentId": "sambar", "unit": "katori", "baseUnit": "g", "expectedBaseQty": 124, "basis": "Application-controlled katori equals the 124 g reference serving in FDC 2707430, one-half of its reported 248 g cup.", "sourceRef": "usda-fdc-2707430" },
+    { "componentId": "sambar", "unit": "cup", "baseUnit": "katori", "expectedBaseQty": 2, "basis": "FDC 2707430 reports 248 g per cup and 124 g per reference serving; one cup equals two controlled katori servings.", "sourceRef": "usda-fdc-2707430" }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2026-07-16",
+  "method": "Local browser smoke test of separately served edition artifacts",
+  "shared": {
+    "url": "http://127.0.0.1:4174/",
+    "documentTitle": "Daily Nutrition Tracker",
+    "dashboardCopy": "Daily nutrition",
+    "dashboardCopyVisible": true,
+    "errorConsoleEntries": 0
+  },
+  "india": {
+    "url": "http://127.0.0.1:4175/",
+    "documentTitle": "Protein India",
+    "dashboardCopy": "Protein today",
+    "dashboardCopyVisible": true,
+    "errorConsoleEntries": 0
+  },
+  "result": "Pass"
+}

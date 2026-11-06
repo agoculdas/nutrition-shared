@@ -1,0 +1,47 @@
+{
+  "date": "2026-09-06",
+  "rows": [
+    {
+      "dietType": "all",
+      "noOnionGarlic": false,
+      "count": 314
+    },
+    {
+      "dietType": "all",
+      "noOnionGarlic": true,
+      "count": 89
+    },
+    {
+      "dietType": "vegan",
+      "noOnionGarlic": false,
+      "count": 48
+    },
+    {
+      "dietType": "vegan",
+      "noOnionGarlic": true,
+      "count": 18
+    },
+    {
+      "dietType": "vegetarian",
+      "noOnionGarlic": false,
+      "count": 95
+    },
+    {
+      "dietType": "vegetarian",
+      "noOnionGarlic": true,
+      "count": 46
+    },
+    {
+      "dietType": "vegetarian_eggs",
+      "noOnionGarlic": false,
+      "count": 122
+    },
+    {
+      "dietType": "vegetarian_eggs",
+      "noOnionGarlic": true,
+      "count": 55
+    }
+  ],
+  "strictReleaseValid": false,
+  "strictErrorCount": 176
+}

@@ -1,0 +1,187 @@
+
+> nutrition-shared@1.0.0 test
+> npm run verify:requirements && npm run test:catalog && npm run validate:catalog && npm run test:backup && npm run test:meal-prep && npm run build && npm run test:meal-prep-integration && npm run test:editions && npm run test:shared-regression && npm run verify:editions
+
+
+> nutrition-shared@1.0.0 verify:requirements
+> node scripts/verify-requirements.mjs
+
+{
+  "ok": true,
+  "requirements": 122,
+  "uniqueIds": 122,
+  "errors": []
+}
+
+> nutrition-shared@1.0.0 test:catalog
+> node --test tests/catalog-validator.test.mjs
+
+✔ production catalog satisfies DATA-RULESET-01 (5.9363ms)
+✔ rejects unique-component-id (4.7582ms)
+✔ rejects unique-preset-name (4.8245ms)
+✔ rejects resolvable-component-reference (4.8046ms)
+✔ rejects supported-unit (4.4256ms)
+✔ rejects finite-nonnegative-macro (4.8659ms)
+✔ rejects positive-default-quantity (4.6016ms)
+✔ rejects positive-preset-quantity (4.7941ms)
+✔ rejects derived-total-tolerance (4.5466ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 119.6976
+
+> nutrition-shared@1.0.0 validate:catalog
+> node scripts/validate-catalog.mjs
+
+{
+  "ok": true,
+  "errors": 0,
+  "components": 167,
+  "presets": 314
+}
+
+> nutrition-shared@1.0.0 test:backup
+> node --test tests/backup.test.mjs
+
+✔ backup contains every required namespaced state class and a schema version (1.9241ms)
+✔ export-import-export is byte-identical with canonical ordering (3.095ms)
+✔ unsupported schema is rejected without modifying application data (1.3907ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 72.8828
+
+> nutrition-shared@1.0.0 test:meal-prep
+> node --test tests/meal-prep.test.mjs
+
+✔ count ingredients use nearest whole with halves rounded up and define actual yield (1.1942ms)
+✔ nutrition derives from rounded composition rather than requested scale alone (0.214ms)
+✔ minimum yield clamps continuous requested scaling (0.1974ms)
+✔ recipe minimum must keep essential count ingredients above zero (0.4118ms)
+✔ equal-portion recipes round actual output while keeping proportional ingredients (0.2559ms)
+✔ coverage matches annex examples and explains leftovers (0.6165ms)
+✔ coverage rejects invalid and unsupported inputs (0.243ms)
+✔ saved setup round-trips as a versioned immutable composition snapshot (1.1458ms)
+✔ object coverage alias supports the UI contract (0.1703ms)
+✔ log snapshots preserve totals and composition after recipe mutation (0.3609ms)
+✔ recipe validation catches missing references and invalid macro values (0.1821ms)
+✔ yield-defining base count and countable quantities are coherent (0.1544ms)
+✔ scale rejects finite inputs whose derived values overflow (0.0944ms)
+✔ setup validation rejects missing recipes, invalid servings, and tampering (0.3973ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.2763
+
+> nutrition-shared@1.0.0 build
+> node scripts/build.mjs
+
+Built 2 editions from core 745f1bea9f46.
+
+> nutrition-shared@1.0.0 test:meal-prep-integration
+> node --test tests/meal-prep-integration.test.mjs
+
+✔ all shipped recipes satisfy the core contract and survive setup round-trip (5.4541ms)
+✔ India backup round-trip preserves a validated saved setup and leaves other editions untouched (4.4134ms)
+✔ older backups without meal-prep state remain valid and do not erase another edition (1.3031ms)
+✔ meal-prep log payload is a detached recipe-version composition snapshot (1.3016ms)
+✔ edition flags keep meal prep disabled in shared and enabled in India (2.4683ms)
+✔ both edition builds copy and pre-cache meal-prep runtime assets without deleting unrelated caches (837.5231ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 917.7102
+
+> nutrition-shared@1.0.0 test:editions
+> node --test tests/edition-architecture.test.mjs
+
+✔ both editions declare every EDI-002 configuration field (0.882ms)
+✔ India storage is isolated during simultaneous logical writes (0.1491ms)
+✔ manifest identity is distinct across all four EDI-004 values (0.0653ms)
+✔ one build manifest traces both outputs to one core commit and source hash (1.0006ms)
+✔ edition outputs are complete and non-overlapping (3.0573ms)
+✔ edition-only copy and theme changes leave core application logic untouched (1.7592ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 81.2024
+
+> nutrition-shared@1.0.0 test:shared-regression
+> node --test tests/shared-regression.test.mjs
+
+✔ REG-001 shared catalog preserves CP0 component and preset counts (0.5302ms)
+✔ REG-003 shared defaults preserve every CP0 target and eating-window value (0.4229ms)
+✔ REG-002 logging flow persists and restores a daily meal (0.7133ms)
+✔ REG-002 adjustment flow recalculates a changed preset quantity (0.2267ms)
+✔ REG-002 save flow preserves a meal for quick-add (0.5562ms)
+✔ REG-002 exclusion flow persists excluded component identifiers (0.524ms)
+✔ REG-002 target-edit flow persists a complete target object (0.591ms)
+✔ REG-002 history flow reads daily logs and aggregates their nutrition (0.573ms)
+✔ REG-004 actual storage facade records zero foreign reads and writes on one origin (0.8966ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.9242
+
+> nutrition-shared@1.0.0 verify:editions
+> node scripts/verify-edition-architecture.mjs
+
+{
+  "requirements": [
+    "EDI-001",
+    "EDI-005"
+  ],
+  "sourceCommit": "559ff8e334a1ea6553176a7d275dee91e0050309",
+  "configOnlyCommit": "5da515beb796135e479d8ef977ec9e4e7afabb2e",
+  "firstBuild": {
+    "sourceDirty": false,
+    "editionCoreCommits": [
+      "559ff8e334a1ea6553176a7d275dee91e0050309",
+      "559ff8e334a1ea6553176a7d275dee91e0050309"
+    ],
+    "coreSourceSha256": "84eb92f1ba4037e2252dddae5016fd76839857b8c697ed6628bcd763d5fdb7bd"
+  },
+  "demonstration": {
+    "changedFiles": [
+      "editions/india.json"
+    ],
+    "secondBuildSourceDirty": false,
+    "coreLogicUnchanged": true,
+    "sharedOutputUnchanged": true,
+    "beforeCoreSourceSha256": "84eb92f1ba4037e2252dddae5016fd76839857b8c697ed6628bcd763d5fdb7bd",
+    "afterCoreSourceSha256": "84eb92f1ba4037e2252dddae5016fd76839857b8c697ed6628bcd763d5fdb7bd",
+    "beforeAppSha256": {
+      "shared": "abefea3563cc1908ffc3d90faf12a3573dcc018806dd16467ff01952002b9e98",
+      "india": "abefea3563cc1908ffc3d90faf12a3573dcc018806dd16467ff01952002b9e98"
+    },
+    "afterAppSha256": {
+      "shared": "abefea3563cc1908ffc3d90faf12a3573dcc018806dd16467ff01952002b9e98",
+      "india": "abefea3563cc1908ffc3d90faf12a3573dcc018806dd16467ff01952002b9e98"
+    }
+  },
+  "pass": true
+}

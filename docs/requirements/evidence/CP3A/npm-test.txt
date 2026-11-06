@@ -1,0 +1,1079 @@
+
+> nutrition-shared@1.0.0 test
+> npm run verify:requirements && npm run test:catalog && npm run validate:catalog && npm run validate:food-model && npm run test:food-model && npm run test:food-model-integration && npm run test:backup && npm run test:meal-prep && npm run build && npm run test:meal-prep-integration && npm run test:editions && npm run test:shared-regression && npm run verify:editions
+
+
+> nutrition-shared@1.0.0 verify:requirements
+> node scripts/verify-requirements.mjs
+
+{
+  "ok": true,
+  "requirements": 122,
+  "uniqueIds": 122,
+  "errors": []
+}
+
+> nutrition-shared@1.0.0 test:catalog
+> node --test tests/catalog-validator.test.mjs
+
+✔ production catalog satisfies DATA-RULESET-01 (8.4431ms)
+✔ rejects unique-component-id (6.4986ms)
+✔ rejects unique-preset-name (5.7818ms)
+✔ rejects resolvable-component-reference (4.8539ms)
+✔ rejects supported-unit (5.2617ms)
+✔ rejects finite-nonnegative-macro (4.5244ms)
+✔ rejects positive-default-quantity (4.6351ms)
+✔ rejects positive-preset-quantity (5.2959ms)
+✔ rejects derived-total-tolerance (5.5183ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 141.2744
+
+> nutrition-shared@1.0.0 validate:catalog
+> node scripts/validate-catalog.mjs
+
+{
+  "ok": true,
+  "errors": 0,
+  "components": 167,
+  "presets": 314
+}
+
+> nutrition-shared@1.0.0 validate:food-model
+> node scripts/validate-food-model.mjs
+
+{
+  "mode": "prototype",
+  "errors": [],
+  "warnings": [
+    {
+      "rule": "unapproved-provenance",
+      "subject": "chicken-thigh",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "chicken-breast",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "chicken-mince",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "lamb-mince",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "mutton-bone-in",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "steak-sirloin",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "prawns",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "calamari",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "crab-meat",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "paneer",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tofu",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "greek-yogurt",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "whole-milk",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "skim-milk",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "cheese-shredded",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "toor-dal",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "chickpeas",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "rajma",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "black-beans",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "chocolate-milk",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "salt-lassi",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "whey",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "creatine",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "egg",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "white-fish",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "salmon",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "ground-beef",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "turkey-deli",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "cottage-cheese",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "feta",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "mozzarella",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "halloumi",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "edamame",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "refried-beans",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "rice-white",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "sushi-rice",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "oats-dry",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "hp-flour",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "roti",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "hp-roti",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "puri",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "naan",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "pav",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "bread-toast",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "hp-tortilla",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "flour-tortilla",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "egg-noodles",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "lentil-pasta",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "regular-pasta",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "mashed-potato",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "roast-potato",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "banana",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "mango",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "apple",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "teriyaki-glaze",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "pita",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "burger-bun",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tortilla-chips",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "steamed-veg",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "roasted-veg",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "stir-fry-veg",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "jackfruit-sabzi",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "bhaji-mash",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "side-salad",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "onion",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "gravy-base",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "enchilada-sauce",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "salsa",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tomato",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "butter",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "ghee",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tadka",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "cream",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "sour-cream",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "coconut-milk",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "marinara-sauce",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "guacamole",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "hummus",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "peanut-butter",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "nuts",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "olive-oil",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "pesto",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tahini",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tzatziki",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "salad-dressing",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "protein-bar",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "protein-pancakes",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "pad-thai",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "sushi-roll",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "dumplings",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "miso-soup",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "falafel",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tabbouleh",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "baba-ganoush",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "lentil-soup",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "minestrone",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tuna-canned",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "pork-loin",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "quinoa",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "couscous",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "rice-noodles",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "kimchi",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "seaweed-salad",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "ramen-bowl",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "pho-bowl",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "spring-rolls",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "summer-rolls",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "dosa",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "idli",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "sambar",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "pork-chop",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "pork-belly",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "bacon",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "sausage",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "chorizo",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "ham",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "duck-breast",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "ground-turkey",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "scallops",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "mussels",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "octopus",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "mackerel",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "smoked-salmon",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tempeh",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "seitan",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "egg-white",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "parmesan",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "cheddar",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "lentils-cooked",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "brown-rice",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "sweet-potato",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "soba",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "udon",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "corn-tortilla",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "bagel",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "sourdough",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "baguette",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "gnocchi",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "polenta",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "plantain",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "bulgur",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "spinach",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "broccoli",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "mushrooms",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "bell-pepper",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "cauliflower",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "asparagus",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "green-beans",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "coleslaw",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "sauerkraut",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "avocado",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "mayo",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "sesame-oil",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "cream-cheese",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "alfredo-sauce",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "aioli",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "coconut-oil",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "cheese-sauce",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "poke-bowl",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "katsu-curry",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "gyudon",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "onigiri",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tonkatsu",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "japchae",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "tteokbokki",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "kimbap",
+      "provenanceRef": "inherited-catalog-nutrition"
+    },
+    {
+      "rule": "unapproved-provenance",
+      "subject": "wonton-soup",
+      "provenanceRef": "inherited-catalog-nutrition"
+    }
+  ],
+  "summary": {
+    "components": 167,
+    "presets": 314,
+    "unapproved": 167
+  },
+  "valid": true
+}
+
+> nutrition-shared@1.0.0 test:food-model
+> node --test tests/food-model.test.mjs tests/portion-qualification.test.mjs
+
+✔ normalizes dietary and no-onion-garlic aliases without calling them Jain (5.1107ms)
+✔ derives the strictest dietary class and onion/garlic flag from all components (0.1197ms)
+✔ applies the same compatibility semantics to components and presets (0.2172ms)
+✔ known katori fixture converts to independently calculated totals (0.1515ms)
+✔ all eight named units use fixed, independently expected conversions (0.2514ms)
+✔ prototype reports unapproved provenance but strict release rejects it (0.4981ms)
+✔ validation fails closed for missing metadata and incomplete sources (0.2326ms)
+✔ a false preset qualification cannot certify an unknown component (0.0856ms)
+✔ approved production fixture covers every CP3A household unit (0.822ms)
+✔ production household metadata matches the independently recorded fixture within 0.1% (0.1603ms)
+✔ production catalog conversion factors implement the approved fixture (0.1064ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.912
+
+> nutrition-shared@1.0.0 test:food-model-integration
+> node --test tests/food-model-integration.test.mjs
+
+✔ production sidecar exhaustively covers components and preset contexts (2.324ms)
+✔ enrichment is additive and preserves every existing catalog value (2.2807ms)
+✔ every preset classification and onion/garlic result equals its full composition (0.4747ms)
+✔ global vegan preference keeps both shipped vegan meal-prep recipes usable through saved setup and logging (3.7963ms)
+✔ all supported production conversions remain finite and preserve preset totals (7.7082ms)
+✔ active restrictions never return unknown or incompatible production foods (1.11ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 106.2768
+
+> nutrition-shared@1.0.0 test:backup
+> node --test tests/backup.test.mjs
+
+✔ backup contains every required namespaced state class and a schema version (2.535ms)
+✔ export-import-export is byte-identical with canonical ordering (3.3021ms)
+✔ unsupported schema is rejected without modifying application data (2.0926ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 74.7785
+
+> nutrition-shared@1.0.0 test:meal-prep
+> node --test tests/meal-prep.test.mjs
+
+✔ count ingredients use nearest whole with halves rounded up and define actual yield (1.249ms)
+✔ nutrition derives from rounded composition rather than requested scale alone (0.2256ms)
+✔ minimum yield clamps continuous requested scaling (0.1901ms)
+✔ recipe minimum must keep essential count ingredients above zero (0.4026ms)
+✔ equal-portion recipes round actual output while keeping proportional ingredients (0.2898ms)
+✔ coverage matches annex examples and explains leftovers (0.6467ms)
+✔ coverage rejects invalid and unsupported inputs (0.2174ms)
+✔ saved setup round-trips as a versioned immutable composition snapshot (1.5713ms)
+✔ object coverage alias supports the UI contract (0.1647ms)
+✔ log snapshots preserve totals and composition after recipe mutation (0.3622ms)
+✔ recipe validation catches missing references and invalid macro values (0.1944ms)
+✔ yield-defining base count and countable quantities are coherent (0.1945ms)
+✔ scale rejects finite inputs whose derived values overflow (0.0976ms)
+✔ setup validation rejects missing recipes, invalid servings, and tampering (0.3811ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79.9932
+
+> nutrition-shared@1.0.0 build
+> node scripts/build.mjs
+
+Built 2 editions from core 745f1bea9f46.
+
+> nutrition-shared@1.0.0 test:meal-prep-integration
+> node --test tests/meal-prep-integration.test.mjs
+
+✔ all shipped recipes satisfy the core contract and survive setup round-trip (5.9643ms)
+✔ India backup round-trip preserves a validated saved setup and leaves other editions untouched (5.6326ms)
+✔ older backups without meal-prep state remain valid and do not erase another edition (1.7662ms)
+✔ meal-prep log payload is a detached recipe-version composition snapshot (1.568ms)
+✔ edition flags keep meal prep disabled in shared and enabled in India (1.7906ms)
+✔ both edition builds copy and pre-cache meal-prep runtime assets without deleting unrelated caches (750.3434ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 836.8024
+
+> nutrition-shared@1.0.0 test:editions
+> node --test tests/edition-architecture.test.mjs
+
+✔ both editions declare every EDI-002 configuration field (0.8888ms)
+✔ India storage is isolated during simultaneous logical writes (0.1297ms)
+✔ manifest identity is distinct across all four EDI-004 values (0.0593ms)
+✔ one build manifest traces both outputs to one core commit and source hash (0.9853ms)
+✔ edition outputs are complete and non-overlapping (3.1447ms)
+✔ edition-only copy and theme changes leave core application logic untouched (1.7905ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 76.0855
+
+> nutrition-shared@1.0.0 test:shared-regression
+> node --test tests/shared-regression.test.mjs
+
+✔ REG-001 shared catalog preserves CP0 component and preset counts (0.4709ms)
+✔ REG-003 shared defaults preserve every CP0 target and eating-window value (0.4209ms)
+✔ REG-002 logging flow persists and restores a daily meal (0.7118ms)
+✔ REG-002 adjustment flow recalculates a changed preset quantity (0.2281ms)
+✔ REG-002 save flow preserves a meal for quick-add (0.6003ms)
+✔ REG-002 exclusion flow persists excluded component identifiers (0.484ms)
+✔ REG-002 target-edit flow persists a complete target object (0.6016ms)
+✔ REG-002 history flow reads daily logs and aggregates their nutrition (0.633ms)
+✔ REG-004 actual storage facade records zero foreign reads and writes on one origin (1.0013ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80.4411
+
+> nutrition-shared@1.0.0 verify:editions
+> node scripts/verify-edition-architecture.mjs
+
+{
+  "requirements": [
+    "EDI-001",
+    "EDI-005"
+  ],
+  "sourceCommit": "9d88225d51420c2df195a83e4b9c52158c3d509d",
+  "configOnlyCommit": "eb859f844e3edab453ebfcd4596d5319313de2bf",
+  "firstBuild": {
+    "sourceDirty": false,
+    "editionCoreCommits": [
+      "9d88225d51420c2df195a83e4b9c52158c3d509d",
+      "9d88225d51420c2df195a83e4b9c52158c3d509d"
+    ],
+    "coreSourceSha256": "52611c5ada07acfdd4ceaea159e3524131365a8595e04c722725f74f32dc6ea7"
+  },
+  "demonstration": {
+    "changedFiles": [
+      "editions/india.json"
+    ],
+    "secondBuildSourceDirty": false,
+    "coreLogicUnchanged": true,
+    "sharedOutputUnchanged": true,
+    "beforeCoreSourceSha256": "52611c5ada07acfdd4ceaea159e3524131365a8595e04c722725f74f32dc6ea7",
+    "afterCoreSourceSha256": "52611c5ada07acfdd4ceaea159e3524131365a8595e04c722725f74f32dc6ea7",
+    "beforeAppSha256": {
+      "shared": "343667c7b933905e4855a0f25581acd9f9044b7db3c90fec5ef25277bce75ebc",
+      "india": "343667c7b933905e4855a0f25581acd9f9044b7db3c90fec5ef25277bce75ebc"
+    },
+    "afterAppSha256": {
+      "shared": "343667c7b933905e4855a0f25581acd9f9044b7db3c90fec5ef25277bce75ebc",
+      "india": "343667c7b933905e4855a0f25581acd9f9044b7db3c90fec5ef25277bce75ebc"
+    }
+  },
+  "pass": true
+}

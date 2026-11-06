@@ -1,0 +1,68 @@
+{
+  "date": "2026-07-16",
+  "method": "Same-origin browser demonstration against generated shared and India artifacts",
+  "origin": "http://127.0.0.1:4176",
+  "paths": {
+    "shared": "/shared/index.html",
+    "india": "/india/index.html"
+  },
+  "sharedBaseline": {
+    "title": "Daily Nutrition Tracker",
+    "proteinTarget": 140,
+    "calorieTarget": 2000,
+    "eatingWindow": "08:00-21:00",
+    "errorConsoleEntries": 0
+  },
+  "flows": {
+    "logging": {
+      "result": "Pass",
+      "observation": "Logged Chicken breast (grilled) 200g; dashboard showed one meal, 330 kcal and 62 g protein."
+    },
+    "adjustment": {
+      "result": "Pass",
+      "observation": "Opened Adjust sizes before logging, increased chicken breast to 250 g and logged it; the second meal showed 413 kcal and 78 g protein."
+    },
+    "save": {
+      "result": "Pass",
+      "observation": "Saved the logged meal and found it in the Add meal Saved section."
+    },
+    "exclusion": {
+      "result": "Pass",
+      "observation": "Hid chicken breast through Manage meal; the Hidden bar and tap-to-restore control appeared."
+    },
+    "targetEdit": {
+      "result": "Pass",
+      "observation": "Changed protein target from 140 g to 150 g, observed SAVED and then /150 on the dashboard."
+    },
+    "history": {
+      "result": "Pass",
+      "observation": "History showed 1/7 days logged, two meals, 743 average kcal and 140 g average protein."
+    }
+  },
+  "sameOriginIsolation": {
+    "result": "Pass",
+    "sharedBeforeIndia": {
+      "proteinTarget": 150,
+      "mealCount": 2
+    },
+    "indiaInitialState": {
+      "title": "Protein India",
+      "proteinTarget": 140,
+      "sharedMealsVisible": false,
+      "clearControlVisible": false
+    },
+    "indiaWrite": {
+      "proteinTarget": 160,
+      "savedIndicatorObserved": true
+    },
+    "sharedAfterIndia": {
+      "proteinTarget": 150,
+      "mealCount": 2,
+      "indiaTargetVisible": false
+    },
+    "foreignReadsOrWritesObserved": 0,
+    "errorConsoleEntries": 0
+  },
+  "limitations": "This browser evidence is a focused workflow demonstration, not exhaustive UI-path coverage; automated storage-contract and configuration tests provide the complementary test evidence.",
+  "result": "Pass"
+}

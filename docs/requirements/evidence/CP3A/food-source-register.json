@@ -1,0 +1,3372 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-09-06T19:44:51.211Z",
+  "accessDate": "2026-09-06",
+  "componentCount": 167,
+  "sourceLicense": "USDA FoodData Central data are CC0/public domain; NIH material is a U.S. government public-domain source.",
+  "sourceLicenseUrl": "https://fdc.nal.usda.gov/api-guide/",
+  "policyFile": "../../food-source-policy.json",
+  "generator": "scripts/requalify-from-audit.mjs",
+  "remediationCounts": {
+    "keep": 132,
+    "reselect": 12,
+    "revert": 15,
+    "rebase": 8
+  },
+  "unqualifiedComponents": [
+    "hp-flour",
+    "hp-roti",
+    "hp-tortilla",
+    "lentil-pasta",
+    "jackfruit-sabzi",
+    "salad-dressing",
+    "protein-pancakes",
+    "seitan",
+    "poke-bowl",
+    "katsu-curry",
+    "gyudon",
+    "onigiri",
+    "tonkatsu",
+    "japchae",
+    "kimbap"
+  ],
+  "rows": [
+    {
+      "componentId": "chicken-thigh",
+      "displayName": "Chicken thigh",
+      "sourceDescription": "Chicken, broilers or fryers, dark meat, thigh, meat only, raw",
+      "fdcId": 173627,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173627/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 121,
+        "p": 19.7,
+        "f": 4.1,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "chicken-breast",
+      "displayName": "Chicken breast",
+      "sourceDescription": "Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+      "fdcId": 171477,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171477/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 165,
+        "p": 31,
+        "f": 3.6,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "chicken-mince",
+      "displayName": "Chicken mince (cooked)",
+      "sourceDescription": "Chicken, ground, crumbles, cooked, pan-browned",
+      "fdcId": 171117,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171117/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 189,
+        "p": 23.3,
+        "f": 10.9,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: USDA pan-browned ground chicken is the same food in the same cooked state at the app's 100 g basis; the prior 110 kcal understated cooked ground chicken.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "lamb-mince",
+      "displayName": "Lamb mince (cooked)",
+      "sourceDescription": "Lamb, New Zealand, imported, ground lamb, cooked, braised",
+      "fdcId": 172616,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172616/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 192,
+        "p": 22.6,
+        "f": 11.3,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: USDA imported ground lamb, cooked braised, is the leanest generic cooked ground-lamb record; the broiled ground-lamb alternative (283 kcal/100 g) is further from the label.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "mutton-bone-in",
+      "displayName": "Mutton (bone-in)",
+      "sourceDescription": "Mutton, cooked, roasted (Navajo)",
+      "fdcId": 167634,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/167634/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 234,
+        "p": 33.4,
+        "f": 11.1,
+        "c": 0.1,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: cooked roasted mutton is the only mutton record in the selected releases. Its 33.4 g protein is a meat-only cooked value and does not represent bone-in purchase weight.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "steak-sirloin",
+      "displayName": "Steak (sirloin)",
+      "sourceDescription": "Beef, top sirloin, steak, separable lean and fat, trimmed to 0\" fat, all grades, cooked, broiled",
+      "fdcId": 169457,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169457/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 212,
+        "p": 29.3,
+        "f": 9.7,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "prawns",
+      "displayName": "Prawns",
+      "sourceDescription": "Crustaceans, shrimp, cooked",
+      "fdcId": 175180,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/175180/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 99,
+        "p": 24,
+        "f": 0.3,
+        "c": 0.2,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "calamari",
+      "displayName": "Calamari / squid",
+      "sourceDescription": "Calamari, cooked",
+      "fdcId": 2706333,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2706333/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 155,
+        "p": 19.4,
+        "f": 6.3,
+        "c": 3.8,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: FNDDS cooked calamari is the same food in the same state at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "crab-meat",
+      "displayName": "Crab meat",
+      "sourceDescription": "Crustaceans, crab, alaska king, cooked, moist heat",
+      "fdcId": 174202,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174202/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 97,
+        "p": 19.4,
+        "f": 1.5,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "paneer",
+      "displayName": "Paneer",
+      "sourceDescription": "Cheese, paneer",
+      "fdcId": 2705740,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2705740/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 299,
+        "p": 15.9,
+        "f": 15.5,
+        "c": 22.5,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "tofu",
+      "displayName": "Tofu (firm)",
+      "sourceDescription": "Tofu, raw, firm, prepared with calcium sulfate",
+      "fdcId": 172475,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172475/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 144,
+        "p": 17.3,
+        "f": 8.7,
+        "c": 2.8,
+        "fiber": 2.3
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "greek-yogurt",
+      "displayName": "Greek yogurt",
+      "sourceDescription": "Yogurt, Greek, plain, lowfat",
+      "fdcId": 170903,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170903/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 73,
+        "p": 10,
+        "f": 1.9,
+        "c": 3.9,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "whole-milk",
+      "displayName": "Whole milk",
+      "sourceDescription": "Milk, whole, 3.25% milkfat, with added vitamin D",
+      "fdcId": 746782,
+      "dataType": "Foundation",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/746782/nutrients",
+      "portionBasis": "100 ml modeled as 100 g; declared application density convention",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 60,
+        "p": 3.3,
+        "f": 3.2,
+        "c": 4.6,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "skim-milk",
+      "displayName": "Skim milk",
+      "sourceDescription": "Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",
+      "fdcId": 746776,
+      "dataType": "Foundation",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/746776/nutrients",
+      "portionBasis": "100 ml modeled as 100 g; declared application density convention",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 34,
+        "p": 3.4,
+        "f": 0.1,
+        "c": 4.9,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "cheese-shredded",
+      "displayName": "Cheese (shredded)",
+      "sourceDescription": "Cheese, mozzarella, low moisture, part-skim, shredded",
+      "fdcId": 170900,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170900/nutrients",
+      "portionBasis": "30 g",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 91.2,
+        "p": 7.1,
+        "f": 5.9,
+        "c": 2.4,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "toor-dal",
+      "displayName": "Toor dal (cooked)",
+      "sourceDescription": "Pigeon peas (red gram), mature seeds, cooked, boiled, without salt",
+      "fdcId": 172437,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172437/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 121,
+        "p": 6.8,
+        "f": 0.4,
+        "c": 23.2,
+        "fiber": 6.7
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "chickpeas",
+      "displayName": "Chickpeas / chole (cooked)",
+      "sourceDescription": "Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt",
+      "fdcId": 173757,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173757/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 164,
+        "p": 8.9,
+        "f": 2.6,
+        "c": 27.4,
+        "fiber": 7.6
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: boiled mature chickpeas at 164 kcal/100 g is the correct cooked-and-drained value; the prior 120 kcal assumed a wetter preparation.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "rajma",
+      "displayName": "Rajma / kidney beans (cooked)",
+      "sourceDescription": "Beans, kidney, all types, mature seeds, cooked, boiled, without salt",
+      "fdcId": 173740,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173740/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 127,
+        "p": 8.7,
+        "f": 0.5,
+        "c": 22.8,
+        "fiber": 6.4
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: boiled kidney beans without salt is the same food in the same state.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "black-beans",
+      "displayName": "Black beans (cooked)",
+      "sourceDescription": "Beans, black, mature seeds, cooked, boiled, without salt",
+      "fdcId": 173735,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173735/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 132,
+        "p": 8.9,
+        "f": 0.5,
+        "c": 23.7,
+        "fiber": 8.7
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "chocolate-milk",
+      "displayName": "Chocolate milk",
+      "sourceDescription": "Milk, chocolate, fluid, commercial, whole, with added vitamin A and vitamin D",
+      "fdcId": 170879,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170879/nutrients",
+      "portionBasis": "Policy-defined 250 g basis for 1 mug",
+      "basisGrams": 250,
+      "macros": {
+        "kcal": 207.5,
+        "p": 7.9,
+        "f": 8.5,
+        "c": 25.8,
+        "fiber": 2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "salt-lassi",
+      "displayName": "Salt lassi",
+      "sourceDescription": "Yogurt, plain, whole milk",
+      "fdcId": 171284,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171284/nutrients",
+      "portionBasis": "Policy-defined 250 g basis for 1 glass",
+      "basisGrams": 250,
+      "macros": {
+        "kcal": 152.5,
+        "p": 8.7,
+        "f": 8.1,
+        "c": 11.7,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Standardized to the named plain whole-milk yogurt reference; the catalog no longer claims a generic lassi composition.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "whey",
+      "displayName": "Whey protein",
+      "sourceDescription": "Beverages, Protein powder whey based",
+      "fdcId": 173180,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173180/nutrients",
+      "portionBasis": "1 scoop modeled as 30 g; application-controlled scoop convention (the generic USDA record reports only a 32 g cup portion)",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 105.6,
+        "p": 23.4,
+        "f": 0.5,
+        "c": 1.9,
+        "fiber": 0.9
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected from the branded ABBOTT/EAS powder to the generic USDA \"Beverages, Protein powder whey based\" record, scaled to the application's 30 g scoop.",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "creatine",
+      "displayName": "Creatine",
+      "sourceDescription": "Creatine monohydrate supplement (energy not represented)",
+      "sourceType": "NIH/public-domain",
+      "sourceUrl": "https://ods.od.nih.gov/factsheets/ExerciseAndAthleticPerformance-HealthProfessional/",
+      "portionBasis": "Application-controlled 5 g supplement entry. Zero macros means food energy is not represented; it is not an analytical nutrient measurement.",
+      "macros": {
+        "kcal": 0,
+        "p": 0,
+        "f": 0,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-non-food-record",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "egg",
+      "displayName": "Egg (whole)",
+      "sourceDescription": "Eggs, Grade A, Large, egg whole",
+      "fdcId": 748967,
+      "dataType": "Foundation",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/748967/nutrients",
+      "portionBasis": "1 × USDA portion “RACC” (50 g each)",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 74,
+        "p": 6.2,
+        "f": 5,
+        "c": 0.5,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "white-fish",
+      "displayName": "White fish (cod, cooked)",
+      "sourceDescription": "Fish, cod, Atlantic, cooked, dry heat",
+      "fdcId": 171956,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171956/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 105,
+        "p": 22.8,
+        "f": 0.9,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "salmon",
+      "displayName": "Salmon (cooked)",
+      "sourceDescription": "Fish, salmon, Atlantic, farmed, cooked, dry heat",
+      "fdcId": 175168,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/175168/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 206,
+        "p": 22.1,
+        "f": 12.4,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "ground-beef",
+      "displayName": "Ground beef (90/10, cooked)",
+      "sourceDescription": "Beef, ground, 90% lean meat / 10% fat, patty, cooked, broiled",
+      "fdcId": 174031,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174031/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 217,
+        "p": 26.1,
+        "f": 11.8,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "turkey-deli",
+      "displayName": "Deli turkey",
+      "sourceDescription": "Turkey breast, low salt, prepackaged or deli, luncheon meat",
+      "fdcId": 174572,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174572/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 109,
+        "p": 21.8,
+        "f": 0.8,
+        "c": 3.5,
+        "fiber": 0.5
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: prepackaged/deli turkey breast is the same food; the higher protein is the USDA value.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "cottage-cheese",
+      "displayName": "Cottage cheese",
+      "sourceDescription": "Cheese, cottage, creamed, large or small curd",
+      "fdcId": 172179,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172179/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 98,
+        "p": 11.1,
+        "f": 4.3,
+        "c": 3.4,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "feta",
+      "displayName": "Feta",
+      "sourceDescription": "Cheese, feta",
+      "fdcId": 173420,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173420/nutrients",
+      "portionBasis": "30 g",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 79.5,
+        "p": 4.3,
+        "f": 6.5,
+        "c": 1.2,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "mozzarella",
+      "displayName": "Fresh mozzarella",
+      "sourceDescription": "Cheese, mozzarella, whole milk",
+      "fdcId": 170845,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170845/nutrients",
+      "portionBasis": "50 g",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 149.5,
+        "p": 11.1,
+        "f": 11.1,
+        "c": 1.2,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected from part-skim to whole-milk mozzarella: the app label is fresh mozzarella, and the selected releases carry no high-moisture fresh record. Whole-milk mozzarella is the closest generic on fat and protein.",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "halloumi",
+      "displayName": "Halloumi",
+      "sourceDescription": "Cheese, dry white, queso seco",
+      "fdcId": 172222,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172222/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 325,
+        "p": 24.5,
+        "f": 24.4,
+        "c": 2,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Standardized to USDA dry white queso seco; no halloumi record exists in the selected USDA releases.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "edamame",
+      "displayName": "Edamame (shelled)",
+      "sourceDescription": "Edamame, frozen, prepared",
+      "fdcId": 168411,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168411/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 121,
+        "p": 11.9,
+        "f": 5.2,
+        "c": 8.9,
+        "fiber": 5.2
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "refried-beans",
+      "displayName": "Refried beans",
+      "sourceDescription": "Refried beans, canned, traditional style",
+      "fdcId": 172438,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172438/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 90,
+        "p": 5,
+        "f": 2,
+        "c": 13.6,
+        "fiber": 3.7
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "rice-white",
+      "displayName": "Rice (white, cooked)",
+      "sourceDescription": "Rice, white, cooked, as ingredient",
+      "fdcId": 2710788,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2710788/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 130,
+        "p": 2.5,
+        "f": 0.4,
+        "c": 29,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "sushi-rice",
+      "displayName": "Sushi rice (cooked)",
+      "sourceDescription": "Rice, white, short-grain, enriched, cooked",
+      "fdcId": 168882,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168882/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 130,
+        "p": 2.4,
+        "f": 0.2,
+        "c": 28.7,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "oats-dry",
+      "displayName": "Oats (dry)",
+      "sourceDescription": "Cereals, oats, regular and quick, not fortified, dry",
+      "fdcId": 173904,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173904/nutrients",
+      "portionBasis": "30 g",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 113.7,
+        "p": 4,
+        "f": 2,
+        "c": 20.3,
+        "fiber": 3
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "hp-flour",
+      "displayName": "High-protein flour",
+      "sourceDescription": "High-protein flour — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "100 g; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 387,
+        "p": 46,
+        "f": 2.3,
+        "c": 45.5,
+        "fiber": 9
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "Vital wheat gluten is a 75 g/100 g protein isolate, not a blended high-protein flour. No high-protein flour record exists in the selected USDA releases.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "roti",
+      "displayName": "Roti (plain, 6\")",
+      "sourceDescription": "Bread, chappatti or roti",
+      "fdcId": 2707713,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707713/nutrients",
+      "portionBasis": "1 × USDA portion “1 small chappatti or roti (6 in)” (27 g each)",
+      "basisGrams": 27,
+      "macros": {
+        "kcal": 80.7,
+        "p": 2.1,
+        "f": 2.5,
+        "c": 12.4,
+        "fiber": 2.6
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected to the FNDDS generic chapati/roti record, which carries an explicit 6-inch 27 g portion matching the app label. The prior 68 g \"piece\" was a commercially prepared chapati, roughly two home rotis.",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "hp-roti",
+      "displayName": "High-protein roti (6\")",
+      "sourceDescription": "High-protein roti (6\") — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "1 pc; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 97,
+        "p": 11.5,
+        "f": 0.6,
+        "c": 11.4,
+        "fiber": 2.3
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "A high-protein roti is a formulated product; the commercial plain chapati record halves its protein and doubles its energy.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "puri",
+      "displayName": "Puri",
+      "sourceDescription": "Bread, puri",
+      "fdcId": 2707714,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707714/nutrients",
+      "portionBasis": "1 × USDA portion “1 puri (approx 4-4/5\" dia)” (36 g each)",
+      "basisGrams": 36,
+      "macros": {
+        "kcal": 147.2,
+        "p": 2.5,
+        "f": 9,
+        "c": 14.1,
+        "fiber": 1.3
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: the FNDDS puri record carries an explicit 36 g \"approx 4-4/5 in dia\" puri portion, which is a realistic single fried puri.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "naan",
+      "displayName": "Naan",
+      "sourceDescription": "Bread, naan, plain, commercially prepared, refrigerated",
+      "fdcId": 171845,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171845/nutrients",
+      "portionBasis": "1 × USDA portion “piece” (90 g each)",
+      "basisGrams": 90,
+      "macros": {
+        "kcal": 261.9,
+        "p": 8.7,
+        "f": 5.1,
+        "c": 45.4,
+        "fiber": 2
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "pav",
+      "displayName": "Pav",
+      "sourceDescription": "Rolls, dinner, plain, commercially prepared (includes brown-and-serve)",
+      "fdcId": 172793,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172793/nutrients",
+      "portionBasis": "1 × USDA portion “roll (1 oz)” (28 g each)",
+      "basisGrams": 28,
+      "macros": {
+        "kcal": 86.8,
+        "p": 3.1,
+        "f": 1.8,
+        "c": 14.6,
+        "fiber": 0.6
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "bread-toast",
+      "displayName": "Bread / toast",
+      "sourceDescription": "Bread, white, toasted",
+      "fdcId": 2707599,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707599/nutrients",
+      "portionBasis": "1 × USDA portion “1 medium or regular slice” (25 g each)",
+      "basisGrams": 25,
+      "macros": {
+        "kcal": 73.3,
+        "p": 2.6,
+        "f": 1,
+        "c": 13.5,
+        "fiber": 0.6
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "hp-tortilla",
+      "displayName": "High-protein tortilla",
+      "sourceDescription": "High-protein tortilla — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "1 pc; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 100,
+        "p": 12,
+        "f": 3,
+        "c": 10,
+        "fiber": 5
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "A high-protein tortilla is a formulated product; the plain flour tortilla record reports 2.8 g protein against the label's 12 g.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "flour-tortilla",
+      "displayName": "Regular flour tortilla",
+      "sourceDescription": "Tortillas, ready-to-bake or -fry, flour, without added calcium",
+      "fdcId": 173242,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173242/nutrients",
+      "portionBasis": "1 × USDA portion “tortilla, medium (approx 6\" dia)” (32 g each)",
+      "basisGrams": 32,
+      "macros": {
+        "kcal": 104,
+        "p": 2.8,
+        "f": 2.3,
+        "c": 17.8,
+        "fiber": 1.1
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: the SR Legacy flour tortilla carries an explicit 32 g medium (approx 6 in) portion matching the app's single regular tortilla.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "egg-noodles",
+      "displayName": "Egg noodles (cooked)",
+      "sourceDescription": "Noodles, egg, cooked, enriched, with added salt",
+      "fdcId": 168919,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168919/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 138,
+        "p": 4.5,
+        "f": 2.1,
+        "c": 25.2,
+        "fiber": 1.2
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "lentil-pasta",
+      "displayName": "Lentil pasta (dry)",
+      "sourceDescription": "Lentil pasta (dry) — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "100 g; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 350,
+        "p": 25,
+        "f": 2,
+        "c": 50,
+        "fiber": 8
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "The app component is dry lentil pasta; the selected record was cooked protein-fortified wheat spaghetti, wrong in both ingredient and state. No dry legume pasta record exists in the selected releases.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "regular-pasta",
+      "displayName": "Regular pasta (dry)",
+      "sourceDescription": "Pasta, dry, unenriched",
+      "fdcId": 168927,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168927/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 371,
+        "p": 13,
+        "f": 1.5,
+        "c": 74.7,
+        "fiber": 3.2
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "mashed-potato",
+      "displayName": "Mashed potato",
+      "sourceDescription": "Potato, mashed, NFS",
+      "fdcId": 2709492,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709492/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 114,
+        "p": 2.2,
+        "f": 4.1,
+        "c": 17.6,
+        "fiber": 1.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected from the school-lunch record to the generic FNDDS \"Potato, mashed, NFS\".",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "roast-potato",
+      "displayName": "Roast potato",
+      "sourceDescription": "Potatoes, roasted, salt added in processing, frozen, unprepared",
+      "fdcId": 170031,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170031/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 127,
+        "p": 2.2,
+        "f": 1.8,
+        "c": 26.2,
+        "fiber": 2.6
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "banana",
+      "displayName": "Banana",
+      "sourceDescription": "Bananas, raw",
+      "fdcId": 173944,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173944/nutrients",
+      "portionBasis": "Policy-defined 118 g basis for 1 pc",
+      "basisGrams": 118,
+      "macros": {
+        "kcal": 105,
+        "p": 1.3,
+        "f": 0.4,
+        "c": 26.9,
+        "fiber": 3.1
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: 118 g is the USDA medium-banana edible weight and reproduces the catalog value.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "mango",
+      "displayName": "Mango",
+      "sourceDescription": "Mangos, raw",
+      "fdcId": 169910,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169910/nutrients",
+      "portionBasis": "1 pc modeled as 200 g edible flesh; application-controlled medium-mango convention",
+      "basisGrams": 200,
+      "macros": {
+        "kcal": 120,
+        "p": 1.7,
+        "f": 0.8,
+        "c": 30,
+        "fiber": 3.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Rebased from the 336 g USDA whole-fruit basis, which is a large fruit, to a 200 g medium-mango edible-flesh convention.",
+      "remediation": "rebase"
+    },
+    {
+      "componentId": "apple",
+      "displayName": "Apple",
+      "sourceDescription": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
+      "fdcId": 171688,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171688/nutrients",
+      "portionBasis": "Policy-defined 182 g basis for 1 pc",
+      "basisGrams": 182,
+      "macros": {
+        "kcal": 94.6,
+        "p": 0.5,
+        "f": 0.3,
+        "c": 25.1,
+        "fiber": 4.4
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: 182 g is the USDA medium-apple edible weight and reproduces the catalog value.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "teriyaki-glaze",
+      "displayName": "Teriyaki glaze",
+      "sourceDescription": "Teriyaki sauce",
+      "fdcId": 2707445,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707445/nutrients",
+      "portionBasis": "1 × USDA portion “1 tablespoon” (16 g each)",
+      "basisGrams": 16,
+      "macros": {
+        "kcal": 14.2,
+        "p": 0.9,
+        "f": 0,
+        "c": 2.5,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: USDA ready-to-serve teriyaki sauce with its own 16 g tablespoon portion. No thicker teriyaki glaze record exists in the selected releases, so the value is conservative for a sweetened glaze.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "pita",
+      "displayName": "Pita bread",
+      "sourceDescription": "Bread, pita, white, unenriched",
+      "fdcId": 172816,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172816/nutrients",
+      "portionBasis": "1 × USDA portion “pita, large (6-1/2\" dia)” (60 g each)",
+      "basisGrams": 60,
+      "macros": {
+        "kcal": 165,
+        "p": 5.5,
+        "f": 0.7,
+        "c": 33.4,
+        "fiber": 1.3
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "burger-bun",
+      "displayName": "Burger bun",
+      "sourceDescription": "Roll, white, hamburger bun",
+      "fdcId": 2707657,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707657/nutrients",
+      "portionBasis": "1 × USDA portion “Quantity not specified” (52 g each)",
+      "basisGrams": 52,
+      "macros": {
+        "kcal": 138.8,
+        "p": 4.9,
+        "f": 1.9,
+        "c": 25.6,
+        "fiber": 1.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "tortilla-chips",
+      "displayName": "Tortilla chips",
+      "sourceDescription": "Snacks, tortilla chips, plain, white corn, salted",
+      "fdcId": 167558,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/167558/nutrients",
+      "portionBasis": "30 g",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 141.6,
+        "p": 2.1,
+        "f": 6.2,
+        "c": 20.3,
+        "fiber": 1.6
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "steamed-veg",
+      "displayName": "Steamed veg",
+      "sourceDescription": "Classic mixed vegetables, canned, cooked, no added fat",
+      "fdcId": 2710014,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2710014/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 46,
+        "p": 2.1,
+        "f": 0.7,
+        "c": 8.8,
+        "fiber": 2.6
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected to \"Classic mixed vegetables, canned, cooked, no added fat\": the prior record was an uncooked canned pack, and the cooked no-added-fat record matches the steamed label.",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "roasted-veg",
+      "displayName": "Roasted veg",
+      "sourceDescription": "Classic mixed vegetables, canned, cooked, no added fat",
+      "fdcId": 2710014,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2710014/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 46,
+        "p": 2.1,
+        "f": 0.7,
+        "c": 8.8,
+        "fiber": 2.6
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "stir-fry-veg",
+      "displayName": "Stir fry veg",
+      "sourceDescription": "Asian stir fry vegetables, cooked, no added fat",
+      "fdcId": 2710035,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2710035/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 50,
+        "p": 2.1,
+        "f": 0.3,
+        "c": 9.9,
+        "fiber": 2.9
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: the record is explicitly cooked with no added fat, which matches the app label; the oil-added variant was not selected.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "jackfruit-sabzi",
+      "displayName": "Jackfruit sabzi",
+      "sourceDescription": "Jackfruit sabzi — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "1 katori; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 275,
+        "p": 3,
+        "f": 14.5,
+        "c": 35,
+        "fiber": 3
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "Canned jackfruit in syrup is a sweetened fruit pack, not a cooked spiced sabzi.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "bhaji-mash",
+      "displayName": "Bhaji mash",
+      "sourceDescription": "Vegetables as ingredient in curry",
+      "fdcId": 2710810,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2710810/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 53,
+        "p": 1.8,
+        "f": 0.2,
+        "c": 11.7,
+        "fiber": 2.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected to the FNDDS \"Vegetables as ingredient in curry\" record. Bhaji mash is a spiced mashed vegetable mixture, not the school-lunch mashed potato previously standardized to.",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "side-salad",
+      "displayName": "Side salad",
+      "sourceDescription": "Lettuce, salad with assorted vegetables including tomatoes and/or carrots, no dressing",
+      "fdcId": 2709822,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709822/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 24,
+        "p": 1.1,
+        "f": 0.2,
+        "c": 4.6,
+        "fiber": 1.5
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected from the branded McDonald's side salad to the generic FNDDS \"Lettuce, salad with assorted vegetables including tomatoes and/or carrots, no dressing\".",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "onion",
+      "displayName": "Onion",
+      "sourceDescription": "Onions, raw",
+      "fdcId": 170000,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170000/nutrients",
+      "portionBasis": "50 g",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 20,
+        "p": 0.6,
+        "f": 0.1,
+        "c": 4.7,
+        "fiber": 0.9
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: raw onion at 40 kcal/100 g yields 20 kcal for the app's 50 g portion; the prior catalog figure applied a per-100 g number to a 50 g portion.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "gravy-base",
+      "displayName": "Onion-tomato gravy",
+      "sourceDescription": "Sauce, salsa, ready-to-serve",
+      "fdcId": 746777,
+      "dataType": "Foundation",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/746777/nutrients",
+      "portionBasis": "1 katori; application-controlled 124 g unit convention",
+      "basisGrams": 124,
+      "macros": {
+        "kcal": 36,
+        "p": 1.8,
+        "f": 0.2,
+        "c": 8.4,
+        "fiber": 2.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Standardized to USDA ready-to-serve salsa; the prior generic onion-tomato gravy had no defined recipe. Kept at the 124 g katori convention.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "enchilada-sauce",
+      "displayName": "Enchilada sauce",
+      "sourceDescription": "Sauce, enchilada, red, mild, ready to serve",
+      "fdcId": 174074,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174074/nutrients",
+      "portionBasis": "50 ml modeled as 50 g; declared application density convention",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 15,
+        "p": 0.3,
+        "f": 0.5,
+        "c": 2.4,
+        "fiber": 0.3
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "salsa",
+      "displayName": "Salsa",
+      "sourceDescription": "Sauce, salsa, ready-to-serve",
+      "fdcId": 746777,
+      "dataType": "Foundation",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/746777/nutrients",
+      "portionBasis": "50 g",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 14.5,
+        "p": 0.7,
+        "f": 0.1,
+        "c": 3.4,
+        "fiber": 0.9
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "tomato",
+      "displayName": "Tomato",
+      "sourceDescription": "Tomatoes, red, ripe, raw, year round average",
+      "fdcId": 170457,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170457/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 18,
+        "p": 0.9,
+        "f": 0.2,
+        "c": 3.9,
+        "fiber": 1.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "butter",
+      "displayName": "Butter",
+      "sourceDescription": "Butter, salted",
+      "fdcId": 173410,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173410/nutrients",
+      "portionBasis": "1 × USDA portion “tbsp” (14.2 g each)",
+      "basisGrams": 14.2,
+      "macros": {
+        "kcal": 101.8,
+        "p": 0.1,
+        "f": 11.5,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "ghee",
+      "displayName": "Ghee",
+      "sourceDescription": "Butter, Clarified butter (ghee)",
+      "fdcId": 171314,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171314/nutrients",
+      "portionBasis": "1 tsp; application-controlled 5 g unit convention",
+      "basisGrams": 5,
+      "macros": {
+        "kcal": 45,
+        "p": 0,
+        "f": 5,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "tadka",
+      "displayName": "Tadka (ghee + spices)",
+      "sourceDescription": "Butter, Clarified butter (ghee)",
+      "fdcId": 171314,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171314/nutrients",
+      "portionBasis": "1 tsp; application-controlled 5 g unit convention",
+      "basisGrams": 5,
+      "macros": {
+        "kcal": 45,
+        "p": 0,
+        "f": 5,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Standardized to clarified butter; the prior generic spice mixture had no defined recipe.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "cream",
+      "displayName": "Cream",
+      "sourceDescription": "Cream, fluid, heavy whipping",
+      "fdcId": 170859,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170859/nutrients",
+      "portionBasis": "1 × USDA portion “tbsp” (15 g each)",
+      "basisGrams": 15,
+      "macros": {
+        "kcal": 51,
+        "p": 0.4,
+        "f": 5.4,
+        "c": 0.4,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "sour-cream",
+      "displayName": "Sour cream",
+      "sourceDescription": "Cream, sour, cultured",
+      "fdcId": 171257,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171257/nutrients",
+      "portionBasis": "1 × USDA portion “tbsp” (12 g each)",
+      "basisGrams": 12,
+      "macros": {
+        "kcal": 23.8,
+        "p": 0.3,
+        "f": 2.3,
+        "c": 0.6,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "coconut-milk",
+      "displayName": "Coconut milk (full fat)",
+      "sourceDescription": "Coconut milk, used in cooking",
+      "fdcId": 2707568,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707568/nutrients",
+      "portionBasis": "100 ml modeled as 100 g; declared application density convention",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 230,
+        "p": 2.3,
+        "f": 23.8,
+        "c": 5.5,
+        "fiber": 2.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: raw coconut milk at 230 kcal/100 g is the full-fat cooking milk the label names; the prior 150 kcal matched a diluted carton beverage.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "marinara-sauce",
+      "displayName": "Marinara sauce",
+      "sourceDescription": "Sauce, pasta, spaghetti/marinara, ready-to-serve",
+      "fdcId": 332282,
+      "dataType": "Foundation",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/332282/nutrients",
+      "portionBasis": "100 ml modeled as 100 g; declared application density convention",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 45,
+        "p": 1.4,
+        "f": 1.5,
+        "c": 8.1,
+        "fiber": 1.8
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "guacamole",
+      "displayName": "Guacamole",
+      "sourceDescription": "Guacamole, NFS",
+      "fdcId": 2709307,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709307/nutrients",
+      "portionBasis": "50 g",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 77.5,
+        "p": 1,
+        "f": 7.1,
+        "c": 4.2,
+        "fiber": 3.3
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: FNDDS guacamole (NFS) at the app's 50 g portion.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "hummus",
+      "displayName": "Hummus",
+      "sourceDescription": "Hummus, plain",
+      "fdcId": 2707402,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707402/nutrients",
+      "portionBasis": "30 g",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 72.9,
+        "p": 2.2,
+        "f": 5.1,
+        "c": 4.5,
+        "fiber": 1.6
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: FNDDS plain hummus at the app's 30 g portion; the lower protein is the USDA value.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "peanut-butter",
+      "displayName": "Peanut butter",
+      "sourceDescription": "Peanut Butter, smooth (Includes foods for USDA's Food Distribution Program)",
+      "fdcId": 174294,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174294/nutrients",
+      "portionBasis": "1 tbsp modeled as 16 g; the USDA record's 32 g \"tbsp\" entry is a 2-tablespoon reference amount",
+      "basisGrams": 16,
+      "macros": {
+        "kcal": 94.1,
+        "p": 3.5,
+        "f": 7.9,
+        "c": 3.9,
+        "fiber": 0.9
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Rebased: one tablespoon of peanut butter is 16 g, so the prior 32 g basis doubled every macro.",
+      "remediation": "rebase"
+    },
+    {
+      "componentId": "nuts",
+      "displayName": "Mixed nuts",
+      "sourceDescription": "Mixed nuts, without peanuts, salted",
+      "fdcId": 2707509,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707509/nutrients",
+      "portionBasis": "30 g",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 186,
+        "p": 4.9,
+        "f": 16.7,
+        "c": 6.6,
+        "fiber": 2.1
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "olive-oil",
+      "displayName": "Olive oil",
+      "sourceDescription": "Oil, olive, salad or cooking",
+      "fdcId": 171413,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171413/nutrients",
+      "portionBasis": "1 × USDA portion “tablespoon” (13.5 g each)",
+      "basisGrams": 13.5,
+      "macros": {
+        "kcal": 119.3,
+        "p": 0,
+        "f": 13.5,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "pesto",
+      "displayName": "Pesto",
+      "sourceDescription": "Pesto sauce",
+      "fdcId": 2710175,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2710175/nutrients",
+      "portionBasis": "1 × USDA portion “1 tablespoon” (16 g each)",
+      "basisGrams": 16,
+      "macros": {
+        "kcal": 92.8,
+        "p": 1.4,
+        "f": 9.5,
+        "c": 0.9,
+        "fiber": 0.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected from the branded MEZZETTA pesto to the generic FNDDS \"Pesto sauce\", which also supplies an explicit 16 g tablespoon portion.",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "tahini",
+      "displayName": "Tahini",
+      "sourceDescription": "Seeds, sesame butter, tahini, type of kernels unspecified",
+      "fdcId": 168604,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168604/nutrients",
+      "portionBasis": "1 × USDA portion “tbsp” (15 g each)",
+      "basisGrams": 15,
+      "macros": {
+        "kcal": 88.8,
+        "p": 2.6,
+        "f": 8,
+        "c": 3.2,
+        "fiber": 0.7
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "tzatziki",
+      "displayName": "Tzatziki",
+      "sourceDescription": "Tzatziki dip",
+      "fdcId": 2705448,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2705448/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 91,
+        "p": 5.2,
+        "f": 6,
+        "c": 4.1,
+        "fiber": 0.2
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: FNDDS tzatziki dip is the same food at the app's 100 g basis; the higher protein is the USDA value.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "salad-dressing",
+      "displayName": "Creamy dressing",
+      "sourceDescription": "Creamy dressing — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "1 tbsp; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 75,
+        "p": 0.5,
+        "f": 8,
+        "c": 1,
+        "fiber": 0
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "Every creamy dressing candidate in the audit is a reduced-calorie or flavored variant; no regular creamy dressing record is available, and the reduced-calorie record understates energy by two thirds.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "protein-bar",
+      "displayName": "Protein bar",
+      "sourceDescription": "Formulated Bar, SOUTH BEACH protein bar",
+      "fdcId": 173158,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173158/nutrients",
+      "portionBasis": "1 × USDA portion “bar” (53 g each)",
+      "basisGrams": 53,
+      "macros": {
+        "kcal": 218.4,
+        "p": 16.1,
+        "f": 8.1,
+        "c": 20.4,
+        "fiber": 3.9
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept for want of a generic record: every protein-bar candidate in the audit is a named brand. The macros are retained from the named South Beach bar and must not be read as a generic protein-bar composition.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "protein-pancakes",
+      "displayName": "Protein pancakes",
+      "sourceDescription": "Protein pancakes — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "3 pc; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 380,
+        "p": 30,
+        "f": 10,
+        "c": 45,
+        "fiber": 3
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "The only pancake candidates are ordinary or gluten-free pancakes at 4.8 g protein against the label's 30 g. No protein-pancake record exists in the selected releases.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "pad-thai",
+      "displayName": "Pad thai",
+      "sourceDescription": "Pad Thai, NFS",
+      "fdcId": 2708804,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2708804/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 154,
+        "p": 8.1,
+        "f": 7.5,
+        "c": 14.4,
+        "fiber": 1.2
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: FNDDS Pad Thai (NFS) at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "sushi-roll",
+      "displayName": "Sushi (maki)",
+      "sourceDescription": "Sushi, NFS",
+      "fdcId": 2708959,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2708959/nutrients",
+      "portionBasis": "8 × USDA portion “1 piece” (30 g each)",
+      "basisGrams": 240,
+      "macros": {
+        "kcal": 225.6,
+        "p": 7,
+        "f": 1.6,
+        "c": 44.2,
+        "fiber": 2.4
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: 8 × the USDA 30 g maki piece is a realistic roll. The lower total is the USDA composition, not a portion error.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "dumplings",
+      "displayName": "Dumplings",
+      "sourceDescription": "Wonton, dumpling or pot sticker, steamed",
+      "fdcId": 2708708,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2708708/nutrients",
+      "portionBasis": "6 × USDA portion “1 item, any size” (25 g each)",
+      "basisGrams": 150,
+      "macros": {
+        "kcal": 169.5,
+        "p": 10.4,
+        "f": 6.9,
+        "c": 16.7,
+        "fiber": 1.8
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected to \"Wonton, dumpling or pot sticker, steamed\", which is the filled Asian dumpling the app label names; the prior \"Dumpling, no meat\" record is a plain boiled flour dumpling. The 25 g item weight is USDA's own.",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "miso-soup",
+      "displayName": "Miso soup",
+      "sourceDescription": "Soup, miso or tofu",
+      "fdcId": 2707455,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707455/nutrients",
+      "portionBasis": "1 × USDA portion “Quantity not specified” (245 g each)",
+      "basisGrams": 245,
+      "macros": {
+        "kcal": 58.8,
+        "p": 5.4,
+        "f": 2.1,
+        "c": 5.6,
+        "fiber": 1.5
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept at one 245 g USDA cup: miso is served as a small side bowl, so the two-cup main-dish bowl convention used for ramen, pho, lentil and wonton soup does not apply.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "falafel",
+      "displayName": "Falafel",
+      "sourceDescription": "Falafel, home-prepared",
+      "fdcId": 172455,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172455/nutrients",
+      "portionBasis": "1 pc modeled as 30 g; application-controlled falafel-ball convention",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 99.9,
+        "p": 4,
+        "f": 5.3,
+        "c": 9.5,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Rebased: the USDA 17 g \"patty (approx 2-1/4 in dia)\" is a mini falafel; a standard ball is about 30 g.",
+      "remediation": "rebase"
+    },
+    {
+      "componentId": "tabbouleh",
+      "displayName": "Tabbouleh",
+      "sourceDescription": "Tabbouleh",
+      "fdcId": 2709131,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709131/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 127,
+        "p": 1.6,
+        "f": 9.7,
+        "c": 9.7,
+        "fiber": 1.8
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "baba-ganoush",
+      "displayName": "Baba ganoush",
+      "sourceDescription": "Eggplant dip",
+      "fdcId": 2710049,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2710049/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 183,
+        "p": 4.8,
+        "f": 15,
+        "c": 8.2,
+        "fiber": 3.9
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "lentil-soup",
+      "displayName": "Lentil soup",
+      "sourceDescription": "Soup, lentil",
+      "fdcId": 2707462,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707462/nutrients",
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (255 g each)",
+      "basisGrams": 510,
+      "macros": {
+        "kcal": 306,
+        "p": 19.5,
+        "f": 3.5,
+        "c": 52,
+        "fiber": 18.9
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Rebased from one cup to a two-cup bowl, matching the app's bowl unit.",
+      "remediation": "rebase"
+    },
+    {
+      "componentId": "minestrone",
+      "displayName": "Minestrone",
+      "sourceDescription": "Soup, minestrone",
+      "fdcId": 2710114,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2710114/nutrients",
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (245 g each)",
+      "basisGrams": 490,
+      "macros": {
+        "kcal": 196,
+        "p": 8.4,
+        "f": 2.5,
+        "c": 35.8,
+        "fiber": 7.4
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected from the condensed canned record (which is undiluted) to the FNDDS prepared minestrone, at a two-cup bowl.",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "tuna-canned",
+      "displayName": "Tuna (canned, in water)",
+      "sourceDescription": "Fish, tuna, light, canned in water, without salt, drained solids",
+      "fdcId": 171986,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171986/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 116,
+        "p": 25.5,
+        "f": 0.8,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "pork-loin",
+      "displayName": "Pork loin (cooked)",
+      "sourceDescription": "Pork, fresh, loin, blade (roasts), boneless, separable lean only, cooked, roasted",
+      "fdcId": 169195,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169195/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 175,
+        "p": 27.6,
+        "f": 7.1,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "quinoa",
+      "displayName": "Quinoa (cooked)",
+      "sourceDescription": "Quinoa, cooked",
+      "fdcId": 168917,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168917/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 120,
+        "p": 4.4,
+        "f": 1.9,
+        "c": 21.3,
+        "fiber": 2.8
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "couscous",
+      "displayName": "Couscous (cooked)",
+      "sourceDescription": "Couscous, cooked",
+      "fdcId": 169700,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169700/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 112,
+        "p": 3.8,
+        "f": 0.2,
+        "c": 23.2,
+        "fiber": 1.4
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "rice-noodles",
+      "displayName": "Rice noodles (cooked)",
+      "sourceDescription": "Rice noodles, cooked",
+      "fdcId": 168914,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168914/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 108,
+        "p": 1.8,
+        "f": 0.2,
+        "c": 24,
+        "fiber": 1
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: cooked rice noodles, same food and state, at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "kimchi",
+      "displayName": "Kimchi",
+      "sourceDescription": "Cabbage, kimchi",
+      "fdcId": 170392,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170392/nutrients",
+      "portionBasis": "50 g",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 7.5,
+        "p": 0.6,
+        "f": 0.3,
+        "c": 1.2,
+        "fiber": 0.8
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: cabbage kimchi at 15 kcal/100 g yields 7.5 kcal for the app's 50 g portion.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "seaweed-salad",
+      "displayName": "Seaweed salad",
+      "sourceDescription": "Seaweed, cooked, fat added",
+      "fdcId": 2709990,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709990/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 63,
+        "p": 3.4,
+        "f": 3.1,
+        "c": 7.7,
+        "fiber": 0.7
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: cooked seaweed with fat added is the closest match to a dressed seaweed salad; the higher protein is the USDA value.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "ramen-bowl",
+      "displayName": "Ramen (bowl)",
+      "sourceDescription": "Ramen bowl, NFS",
+      "fdcId": 2709153,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709153/nutrients",
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (245 g each)",
+      "basisGrams": 490,
+      "macros": {
+        "kcal": 622.3,
+        "p": 34.9,
+        "f": 22.4,
+        "c": 68.6,
+        "fiber": 4.4
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Rebased from one cup to a two-cup bowl; a served ramen bowl is not a single cup.",
+      "remediation": "rebase"
+    },
+    {
+      "componentId": "pho-bowl",
+      "displayName": "Pho (bowl)",
+      "sourceDescription": "Soup, pho, with meat",
+      "fdcId": 2707124,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707124/nutrients",
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (245 g each)",
+      "basisGrams": 490,
+      "macros": {
+        "kcal": 377.3,
+        "p": 28.5,
+        "f": 16.3,
+        "c": 27.4,
+        "fiber": 2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Rebased from one cup to a two-cup bowl, matching the app's bowl unit.",
+      "remediation": "rebase"
+    },
+    {
+      "componentId": "spring-rolls",
+      "displayName": "Fried spring rolls",
+      "sourceDescription": "Egg rolls, vegetable, frozen, prepared",
+      "fdcId": 172105,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172105/nutrients",
+      "portionBasis": "2 pc modeled as 2 × 30 g; application-controlled fried spring-roll convention",
+      "basisGrams": 60,
+      "macros": {
+        "kcal": 128.4,
+        "p": 3.6,
+        "f": 4.2,
+        "c": 19.1,
+        "fiber": 1.5
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Rebased: the USDA 68 g portion is a full egg roll, not a spring roll. Two 30 g fried spring rolls are the app's item.",
+      "remediation": "rebase"
+    },
+    {
+      "componentId": "summer-rolls",
+      "displayName": "Summer rolls (fresh)",
+      "sourceDescription": "Roll with meat and/or shrimp, vegetables and rice paper, not fried",
+      "fdcId": 2708704,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2708704/nutrients",
+      "portionBasis": "2 × USDA portion “1 roll (4-1/4\" x 1-1/2\" dia)” (71 g each)",
+      "basisGrams": 142,
+      "macros": {
+        "kcal": 159,
+        "p": 8,
+        "f": 3.8,
+        "c": 24.4,
+        "fiber": 2.7
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: the USDA 71 g rice-paper roll is a realistic fresh summer roll, so 2 pc = 142 g stands.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "dosa",
+      "displayName": "Dosa",
+      "sourceDescription": "Dosa, plain",
+      "fdcId": 2708347,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2708347/nutrients",
+      "portionBasis": "1 × USDA portion “Quantity not specified” (80 g each)",
+      "basisGrams": 80,
+      "macros": {
+        "kcal": 168,
+        "p": 4.6,
+        "f": 3.2,
+        "c": 29.6,
+        "fiber": 1.4
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: the FNDDS dosa record's 80 g medium portion is a realistic plain dosa.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "idli",
+      "displayName": "Idli",
+      "sourceDescription": "Idli",
+      "fdcId": 2708346,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2708346/nutrients",
+      "portionBasis": "2 × USDA portion “1 item” (38 g each)",
+      "basisGrams": 76,
+      "macros": {
+        "kcal": 97.3,
+        "p": 4.8,
+        "f": 0.3,
+        "c": 19,
+        "fiber": 4.4
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: 2 × the USDA 38 g idli is a realistic pair.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "sambar",
+      "displayName": "Sambar",
+      "sourceDescription": "Sambar, vegetable stew",
+      "fdcId": 2707430,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707430/nutrients",
+      "portionBasis": "1 × USDA portion “Quantity not specified” (124 g each)",
+      "basisGrams": 124,
+      "macros": {
+        "kcal": 106.6,
+        "p": 5.4,
+        "f": 3.4,
+        "c": 14.6,
+        "fiber": 5
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "pork-chop",
+      "displayName": "Pork chop (cooked)",
+      "sourceDescription": "Pork, fresh, loin, top loin (chops), boneless, separable lean and fat, cooked, broiled",
+      "fdcId": 167841,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/167841/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 196,
+        "p": 26.6,
+        "f": 9.1,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "pork-belly",
+      "displayName": "Pork belly (cooked)",
+      "sourceDescription": "Pork, belly",
+      "fdcId": 2705901,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2705901/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 404,
+        "p": 26.6,
+        "f": 32.2,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: cooked pork belly is genuinely around 400 kcal/100 g; the prior 290 kcal understated it.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "bacon",
+      "displayName": "Bacon (cooked)",
+      "sourceDescription": "Bacon, NS as to type of meat, cooked",
+      "fdcId": 2705885,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2705885/nutrients",
+      "portionBasis": "30 g",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 145.2,
+        "p": 11.2,
+        "f": 10.7,
+        "c": 0.6,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "sausage",
+      "displayName": "Sausage (link)",
+      "sourceDescription": "Pork sausage, link/patty, fully cooked, microwaved",
+      "fdcId": 172971,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172971/nutrients",
+      "portionBasis": "1 × USDA portion “link” (21 g each)",
+      "basisGrams": 21,
+      "macros": {
+        "kcal": 92,
+        "p": 3.2,
+        "f": 8.8,
+        "c": 0.1,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected to a cooked pork sausage link with an explicit 21 g link portion. The prior record was chorizo at an 80.4 g \"medium\" reference amount, which is not a breakfast link.",
+      "remediation": "reselect"
+    },
+    {
+      "componentId": "chorizo",
+      "displayName": "Chorizo",
+      "sourceDescription": "Chorizo",
+      "fdcId": 2706179,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2706179/nutrients",
+      "portionBasis": "50 g",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 170.5,
+        "p": 9.7,
+        "f": 14.1,
+        "c": 1.3,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: FNDDS chorizo at 341 kcal/100 g is the cooked-sausage generic. The prior 230 kcal per 50 g matched dry-cured Spanish chorizo, which the selected releases do not carry.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "ham",
+      "displayName": "Ham (deli)",
+      "sourceDescription": "Pork, cured, ham with natural juices, whole, boneless, separable lean and fat, heated, roasted",
+      "fdcId": 168355,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168355/nutrients",
+      "portionBasis": "50 g",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 57,
+        "p": 10.3,
+        "f": 1.6,
+        "c": 0.4,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "duck-breast",
+      "displayName": "Duck breast (roasted)",
+      "sourceDescription": "Duck, young duckling, domesticated, White Pekin, breast, meat and skin, boneless, cooked, roasted",
+      "fdcId": 171510,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171510/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 202,
+        "p": 24.5,
+        "f": 10.8,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "ground-turkey",
+      "displayName": "Ground turkey (cooked)",
+      "sourceDescription": "Turkey, Ground, cooked",
+      "fdcId": 171506,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171506/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 203,
+        "p": 27.4,
+        "f": 10.4,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "scallops",
+      "displayName": "Scallops",
+      "sourceDescription": "Scallops, steamed or boiled",
+      "fdcId": 2706358,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2706358/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 87,
+        "p": 15.2,
+        "f": 0.6,
+        "c": 4,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "mussels",
+      "displayName": "Mussels (cooked)",
+      "sourceDescription": "Mollusks, mussel, blue, cooked, moist heat",
+      "fdcId": 174217,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174217/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 172,
+        "p": 23.8,
+        "f": 4.5,
+        "c": 7.4,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "octopus",
+      "displayName": "Octopus (cooked)",
+      "sourceDescription": "Mollusks, octopus, common, cooked, moist heat",
+      "fdcId": 174249,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174249/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 164,
+        "p": 29.8,
+        "f": 2.1,
+        "c": 4.4,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "mackerel",
+      "displayName": "Mackerel (cooked)",
+      "sourceDescription": "Fish, mackerel, Atlantic, cooked, dry heat",
+      "fdcId": 175120,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/175120/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 262,
+        "p": 23.8,
+        "f": 17.8,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "smoked-salmon",
+      "displayName": "Smoked salmon",
+      "sourceDescription": "Fish, salmon, chinook, smoked, (lox), regular",
+      "fdcId": 171985,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171985/nutrients",
+      "portionBasis": "50 g",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 58.5,
+        "p": 9.2,
+        "f": 2.2,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "tempeh",
+      "displayName": "Tempeh",
+      "sourceDescription": "Tempeh",
+      "fdcId": 174272,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174272/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 192,
+        "p": 20.3,
+        "f": 10.8,
+        "c": 7.6,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "seitan",
+      "displayName": "Seitan",
+      "sourceDescription": "Seitan — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "100 g; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 120,
+        "p": 21,
+        "f": 2,
+        "c": 4,
+        "fiber": 1
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "Cooked seitan is hydrated gluten; vital wheat gluten is the dry flour and triples the energy per 100 g.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "egg-white",
+      "displayName": "Egg white",
+      "sourceDescription": "Eggs, Grade A, Large, egg white",
+      "fdcId": 747997,
+      "dataType": "Foundation",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/747997/nutrients",
+      "portionBasis": "1 × USDA portion “white” (34 g each)",
+      "basisGrams": 34,
+      "macros": {
+        "kcal": 18.7,
+        "p": 3.6,
+        "f": 0,
+        "c": 0.8,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "parmesan",
+      "displayName": "Parmesan (grated)",
+      "sourceDescription": "Cheese, Parmesan, dry grated",
+      "fdcId": 2705728,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2705728/nutrients",
+      "portionBasis": "15 g",
+      "basisGrams": 15,
+      "macros": {
+        "kcal": 61.8,
+        "p": 4.5,
+        "f": 4.3,
+        "c": 1.3,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "cheddar",
+      "displayName": "Cheddar (block)",
+      "sourceDescription": "Cheese, low-sodium, cheddar or colby",
+      "fdcId": 173440,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173440/nutrients",
+      "portionBasis": "30 g",
+      "basisGrams": 30,
+      "macros": {
+        "kcal": 119.4,
+        "p": 7.3,
+        "f": 9.8,
+        "c": 0.6,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "lentils-cooked",
+      "displayName": "Lentils (brown, cooked)",
+      "sourceDescription": "Lentils, mature seeds, cooked, boiled, without salt",
+      "fdcId": 172421,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172421/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 116,
+        "p": 9,
+        "f": 0.4,
+        "c": 20.1,
+        "fiber": 7.9
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "brown-rice",
+      "displayName": "Rice (brown, cooked)",
+      "sourceDescription": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+      "fdcId": 169704,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169704/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 123,
+        "p": 2.7,
+        "f": 1,
+        "c": 25.6,
+        "fiber": 1.6
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: cooked long-grain brown rice. The \"Food Distribution Program\" suffix is a USDA sampling label, not a branded product.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "sweet-potato",
+      "displayName": "Sweet potato (baked)",
+      "sourceDescription": "Sweet potato, cooked, baked in skin, flesh, without salt",
+      "fdcId": 168483,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168483/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 90,
+        "p": 2,
+        "f": 0.2,
+        "c": 20.7,
+        "fiber": 3.3
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "soba",
+      "displayName": "Soba noodles (cooked)",
+      "sourceDescription": "Noodles, japanese, soba, cooked",
+      "fdcId": 168907,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168907/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 99,
+        "p": 5.1,
+        "f": 0.1,
+        "c": 21.4,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "udon",
+      "displayName": "Udon noodles (cooked)",
+      "sourceDescription": "Noodles, japanese, somen, cooked",
+      "fdcId": 168909,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168909/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 131,
+        "p": 4,
+        "f": 0.2,
+        "c": 27.5,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Kept: the selected USDA releases carry no udon record; cooked Japanese somen is the closest wheat-noodle generic and is declared as such rather than presented as udon.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "corn-tortilla",
+      "displayName": "Corn tortilla",
+      "sourceDescription": "Tortilla, corn",
+      "fdcId": 2707823,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707823/nutrients",
+      "portionBasis": "1 × USDA portion “1 small” (18 g each)",
+      "basisGrams": 18,
+      "macros": {
+        "kcal": 39.2,
+        "p": 1,
+        "f": 0.5,
+        "c": 8,
+        "fiber": 1.1
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "bagel",
+      "displayName": "Bagel",
+      "sourceDescription": "Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)",
+      "fdcId": 174899,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174899/nutrients",
+      "portionBasis": "1 × USDA portion “bagel” (99 g each)",
+      "basisGrams": 99,
+      "macros": {
+        "kcal": 261.4,
+        "p": 10.5,
+        "f": 1.3,
+        "c": 51.9,
+        "fiber": 1.6
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "sourdough",
+      "displayName": "Sourdough (slice)",
+      "sourceDescription": "Bread, french or vienna (includes sourdough)",
+      "fdcId": 172675,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172675/nutrients",
+      "portionBasis": "1 pc modeled as a 50 g slice; application-controlled sourdough-slice convention",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 136,
+        "p": 5.4,
+        "f": 1.2,
+        "c": 26,
+        "fiber": 1.1
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": "Rebased: the USDA 139 g \"slice\" for french/vienna bread is a loaf section, not a sandwich slice.",
+      "remediation": "rebase"
+    },
+    {
+      "componentId": "baguette",
+      "displayName": "Baguette",
+      "sourceDescription": "Bread, French or Vienna",
+      "fdcId": 2707610,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2707610/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 272,
+        "p": 10.8,
+        "f": 2.4,
+        "c": 51.9,
+        "fiber": 2.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "gnocchi",
+      "displayName": "Gnocchi (cooked)",
+      "sourceDescription": "Pasta, homemade, made without egg, cooked",
+      "fdcId": 168902,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168902/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 124,
+        "p": 4.4,
+        "f": 1,
+        "c": 25.1,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Standardized to USDA cooked homemade egg-free pasta; no gnocchi record exists in the selected USDA releases. Kept at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "polenta",
+      "displayName": "Polenta (cooked)",
+      "sourceDescription": "Cornmeal mush, no added fat",
+      "fdcId": 2708374,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2708374/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 58,
+        "p": 1.1,
+        "f": 0.3,
+        "c": 12.5,
+        "fiber": 0.6
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: cornmeal mush with no added fat is the only cooked-cornmeal porridge in the selected releases. It is a thinner preparation than firm polenta, so 58 kcal/100 g is conservative.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "plantain",
+      "displayName": "Plantain (cooked)",
+      "sourceDescription": "Plantain, cooked, no added fat",
+      "fdcId": 2709558,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709558/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 122,
+        "p": 1.3,
+        "f": 0.4,
+        "c": 31.8,
+        "fiber": 1.7
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "bulgur",
+      "displayName": "Bulgur (cooked)",
+      "sourceDescription": "Bulgur, cooked",
+      "fdcId": 170287,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170287/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 83,
+        "p": 3.1,
+        "f": 0.2,
+        "c": 18.6,
+        "fiber": 4.5
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "spinach",
+      "displayName": "Spinach (cooked)",
+      "sourceDescription": "Spinach, cooked, boiled, drained, without salt",
+      "fdcId": 168463,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168463/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 23,
+        "p": 3,
+        "f": 0.3,
+        "c": 3.8,
+        "fiber": 2.4
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "broccoli",
+      "displayName": "Broccoli (cooked)",
+      "sourceDescription": "Broccoli, cooked, boiled, drained, with salt",
+      "fdcId": 168510,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168510/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 35,
+        "p": 2.4,
+        "f": 0.4,
+        "c": 7.2,
+        "fiber": 3.3
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "mushrooms",
+      "displayName": "Mushrooms (sauteed)",
+      "sourceDescription": "Mushrooms, white, stir-fried",
+      "fdcId": 169253,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169253/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 26,
+        "p": 3.6,
+        "f": 0.3,
+        "c": 4,
+        "fiber": 1.8
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "bell-pepper",
+      "displayName": "Bell pepper",
+      "sourceDescription": "Peppers, sweet, red, raw",
+      "fdcId": 170108,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170108/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 26,
+        "p": 1,
+        "f": 0.3,
+        "c": 6,
+        "fiber": 2.1
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "cauliflower",
+      "displayName": "Cauliflower (cooked)",
+      "sourceDescription": "Cauliflower, fresh, cooked, no added fat",
+      "fdcId": 2709897,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709897/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 26,
+        "p": 2,
+        "f": 0.3,
+        "c": 5.2,
+        "fiber": 2.1
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "asparagus",
+      "displayName": "Asparagus (cooked)",
+      "sourceDescription": "Asparagus, cooked, boiled, drained",
+      "fdcId": 168390,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168390/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 22,
+        "p": 2.4,
+        "f": 0.2,
+        "c": 4.1,
+        "fiber": 2
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "green-beans",
+      "displayName": "Green beans (cooked)",
+      "sourceDescription": "Beans, snap, green, cooked, boiled, drained, without salt",
+      "fdcId": 169141,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169141/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 35,
+        "p": 1.9,
+        "f": 0.3,
+        "c": 7.9,
+        "fiber": 3.2
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "coleslaw",
+      "displayName": "Coleslaw (dressed)",
+      "sourceDescription": "Coleslaw, with fruit",
+      "fdcId": 2709817,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709817/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 113,
+        "p": 0.9,
+        "f": 6.3,
+        "c": 13.6,
+        "fiber": 2.1
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "sauerkraut",
+      "displayName": "Sauerkraut",
+      "sourceDescription": "Sauerkraut, canned, solids and liquids",
+      "fdcId": 169279,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169279/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 19,
+        "p": 0.9,
+        "f": 0.1,
+        "c": 4.3,
+        "fiber": 2.9
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "avocado",
+      "displayName": "Avocado",
+      "sourceDescription": "Avocado, raw",
+      "fdcId": 2709223,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709223/nutrients",
+      "portionBasis": "50 g",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 80,
+        "p": 1,
+        "f": 7.4,
+        "c": 4.3,
+        "fiber": 3.4
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "mayo",
+      "displayName": "Mayonnaise",
+      "sourceDescription": "Salad dressing, mayonnaise, regular",
+      "fdcId": 171009,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171009/nutrients",
+      "portionBasis": "1 × USDA portion “tbsp” (13.8 g each)",
+      "basisGrams": 13.8,
+      "macros": {
+        "kcal": 93.8,
+        "p": 0.1,
+        "f": 10.3,
+        "c": 0.1,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "sesame-oil",
+      "displayName": "Sesame oil",
+      "sourceDescription": "Oil, sesame, salad or cooking",
+      "fdcId": 171016,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171016/nutrients",
+      "portionBasis": "1 × USDA portion “tablespoon” (13.6 g each)",
+      "basisGrams": 13.6,
+      "macros": {
+        "kcal": 120.2,
+        "p": 0,
+        "f": 13.6,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "ranked-candidate-reviewed",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "cream-cheese",
+      "displayName": "Cream cheese",
+      "sourceDescription": "Cream cheese, regular, plain",
+      "fdcId": 2705760,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2705760/nutrients",
+      "portionBasis": "1 × USDA portion “1 tablespoon” (15 g each)",
+      "basisGrams": 15,
+      "macros": {
+        "kcal": 51.5,
+        "p": 0.9,
+        "f": 5,
+        "c": 0.7,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "alfredo-sauce",
+      "displayName": "Alfredo sauce",
+      "sourceDescription": "Alfredo sauce",
+      "fdcId": 2705809,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2705809/nutrients",
+      "portionBasis": "100 ml modeled as 100 g; declared application density convention",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 150,
+        "p": 2.1,
+        "f": 15,
+        "c": 1.8,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: FNDDS alfredo sauce at the declared 100 ml = 100 g application convention.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "aioli",
+      "displayName": "Aioli",
+      "sourceDescription": "Salad dressing, mayonnaise, regular",
+      "fdcId": 171009,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171009/nutrients",
+      "portionBasis": "1 × USDA portion “tbsp” (13.8 g each)",
+      "basisGrams": 13.8,
+      "macros": {
+        "kcal": 93.8,
+        "p": 0.1,
+        "f": 10.3,
+        "c": 0.1,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Standardized to regular mayonnaise; the prior generic aioli had no defined recipe.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "coconut-oil",
+      "displayName": "Coconut oil",
+      "sourceDescription": "Oil, coconut",
+      "fdcId": 171412,
+      "dataType": "SR Legacy",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171412/nutrients",
+      "portionBasis": "1 × USDA portion “tbsp” (13.6 g each)",
+      "basisGrams": 13.6,
+      "macros": {
+        "kcal": 121.3,
+        "p": 0,
+        "f": 13.5,
+        "c": 0,
+        "fiber": 0
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": null,
+      "remediation": "keep"
+    },
+    {
+      "componentId": "cheese-sauce",
+      "displayName": "Cheese sauce (queso)",
+      "sourceDescription": "Cheese sauce",
+      "fdcId": 2705808,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2705808/nutrients",
+      "portionBasis": "50 ml modeled as 50 g; declared application density convention",
+      "basisGrams": 50,
+      "macros": {
+        "kcal": 81.5,
+        "p": 1.6,
+        "f": 6.7,
+        "c": 3.9,
+        "fiber": 0.2
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: FNDDS cheese sauce at the declared 50 ml = 50 g application convention.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "poke-bowl",
+      "displayName": "Poke bowl",
+      "sourceDescription": "Poke bowl — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "1 bowl; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 500,
+        "p": 30,
+        "f": 15,
+        "c": 55,
+        "fiber": 4
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "A frozen chicken rice-bowl entree is a different dish; no poke or raw-fish rice-bowl record exists in the selected releases.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "katsu-curry",
+      "displayName": "Katsu curry",
+      "sourceDescription": "Katsu curry — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "1 bowl; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 700,
+        "p": 30,
+        "f": 25,
+        "c": 85,
+        "fiber": 5
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "Chicken curry with rice omits the breaded fried cutlet that defines katsu curry; no rebase of that record reaches a plausible katsu-curry energy value.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "gyudon",
+      "displayName": "Gyudon (beef bowl)",
+      "sourceDescription": "Gyudon (beef bowl) — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "1 bowl; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 550,
+        "p": 26,
+        "f": 15,
+        "c": 72,
+        "fiber": 3
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "The \"Beef and rice with soy-based sauce\" record carries only 8 g carbohydrate per 100 g, which cannot represent a rice bowl; its macro shape is wrong regardless of the portion chosen.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "onigiri",
+      "displayName": "Onigiri (rice ball)",
+      "sourceDescription": "Onigiri (rice ball) — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "1 pc; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 170,
+        "p": 4,
+        "f": 1.5,
+        "c": 34,
+        "fiber": 1
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "Plain cooked short-grain rice omits the filling and nori that define onigiri.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "tonkatsu",
+      "displayName": "Tonkatsu (pork cutlet)",
+      "sourceDescription": "Tonkatsu (pork cutlet) — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "100 g; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 260,
+        "p": 15,
+        "f": 16,
+        "c": 15,
+        "fiber": 1
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "Restaurant sweet-and-sour pork is a different dish with a different batter and sauce; no breaded pork cutlet record exists in the selected releases.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "japchae",
+      "displayName": "Japchae (glass noodles)",
+      "sourceDescription": "Japchae (glass noodles) — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "100 g; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 150,
+        "p": 4,
+        "f": 5,
+        "c": 24,
+        "fiber": 1
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "The selected record is dehydrated cellophane noodles, not the cooked dressed dish; it reports 351 kcal and 0.2 g protein per 100 g.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "tteokbokki",
+      "displayName": "Tteokbokki (rice cakes)",
+      "sourceDescription": "Dukboki or Tteokbokki, Korean",
+      "fdcId": 2708957,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2708957/nutrients",
+      "portionBasis": "100 g",
+      "basisGrams": 100,
+      "macros": {
+        "kcal": 131,
+        "p": 4.1,
+        "f": 4.1,
+        "c": 19.6,
+        "fiber": 0.8
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Kept: the FNDDS dukboki/tteokbokki record is the dish itself at the app's 100 g basis.",
+      "remediation": "keep"
+    },
+    {
+      "componentId": "kimbap",
+      "displayName": "Kimbap",
+      "sourceDescription": "Kimbap — inherited Nutrition Sol catalog composition (no qualified USDA source)",
+      "fdcId": null,
+      "dataType": null,
+      "sourceUrl": null,
+      "portionBasis": "8 pc; Existing macros and default portions are inherited unchanged; row-level upstream sources were not available for qualification.",
+      "basisGrams": null,
+      "macros": {
+        "kcal": 350,
+        "p": 10,
+        "f": 8,
+        "c": 58,
+        "fiber": 3
+      },
+      "selectionMethod": "reverted-to-catalog",
+      "selectionNote": "A vegetable sushi roll at a 22 g piece understates kimbap, which is a larger filled roll; no kimbap record exists in the selected releases.",
+      "remediation": "revert"
+    },
+    {
+      "componentId": "wonton-soup",
+      "displayName": "Wonton soup",
+      "sourceDescription": "Soup, wonton",
+      "fdcId": 2709160,
+      "dataType": "Survey (FNDDS)",
+      "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/2709160/nutrients",
+      "portionBasis": "1 bowl modeled as 2 × USDA portion “1 cup” (245 g each)",
+      "basisGrams": 490,
+      "macros": {
+        "kcal": 161.7,
+        "p": 11.7,
+        "f": 6.4,
+        "c": 14.5,
+        "fiber": 1.5
+      },
+      "selectionMethod": "curated-override",
+      "selectionNote": "Reselected to the FNDDS generic wonton soup at a two-cup bowl; the prior record was a single restaurant cup.",
+      "remediation": "reselect"
+    }
+  ]
+}

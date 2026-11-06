@@ -1,0 +1,29 @@
+{
+  "verificationDate": "2026-09-06",
+  "commands": {
+    "npm test": {
+      "status": "Pass",
+      "testCount": 80,
+      "failed": 0,
+      "includes": [
+        "requirements validation",
+        "catalog validation",
+        "food-model unit and integration tests",
+        "backup tests",
+        "meal-prep tests",
+        "fast-log tests",
+        "two-edition production build",
+        "Shared regression",
+        "clean edition-change verification"
+      ]
+    },
+    "npm run validate:food-model:release": {
+      "status": "Pass",
+      "components": 167,
+      "presets": 314,
+      "errors": 0,
+      "warnings": 0,
+      "unapproved": 0
+    }
+  }
+}
