@@ -1,25 +1,25 @@
 {
   "requirement": "FND-006",
-  "sourceCommit": "6009e1f2fe5e1b4a33596257396bcc6dd9b86c56",
+  "sourceCommit": "eb1fa005aafb1ab7cdaaef565f2a5adb20be65c9",
   "cleanCheckouts": [
     true,
     true
   ],
   "identical": true,
-  "manifestSha256": "88c47f4e0f09b23de68d134748676604ba41874d934eb26446cebc5f975626b5",
+  "manifestSha256": "ae697c7593d740ecdbec3f5101468d7ec64cbf8aa7acab464cde2dfda175c7aa",
   "manifests": {
     "build": {
       "schemaVersion": 1,
-      "coreCommit": "6009e1f2fe5e1b4a33596257396bcc6dd9b86c56",
-      "coreSourceSha256": "05f42e1f3e4a6bc9908913d4480c92e64e43905b7b5049db1bb7187190f0d8c6",
+      "coreCommit": "eb1fa005aafb1ab7cdaaef565f2a5adb20be65c9",
+      "coreSourceSha256": "7657bee43cd0032b3a7a347d362a1eb179036c3662e7824a51d11768a60b2862",
       "sourceDirty": false,
       "editions": [
         {
           "id": "shared",
           "name": "Daily Nutrition Tracker",
           "outputDirectory": "dist/shared",
-          "coreCommit": "6009e1f2fe5e1b4a33596257396bcc6dd9b86c56",
-          "coreSourceSha256": "05f42e1f3e4a6bc9908913d4480c92e64e43905b7b5049db1bb7187190f0d8c6",
+          "coreCommit": "eb1fa005aafb1ab7cdaaef565f2a5adb20be65c9",
+          "coreSourceSha256": "7657bee43cd0032b3a7a347d362a1eb179036c3662e7824a51d11768a60b2862",
           "configSha256": "4f905946fd6bbe1ac0bcb7912a5408b9ba4e077b7e7e149173ecd580008ef43e",
           "releaseManifest": "dist/shared/release-hashes.json"
         },
@@ -27,9 +27,9 @@
           "id": "india",
           "name": "Protein India",
           "outputDirectory": "dist/india",
-          "coreCommit": "6009e1f2fe5e1b4a33596257396bcc6dd9b86c56",
-          "coreSourceSha256": "05f42e1f3e4a6bc9908913d4480c92e64e43905b7b5049db1bb7187190f0d8c6",
-          "configSha256": "befaa55adff7c49a23684a37b98e7d54f0c7ac82a862fcb15eab6b691f7df6cc",
+          "coreCommit": "eb1fa005aafb1ab7cdaaef565f2a5adb20be65c9",
+          "coreSourceSha256": "7657bee43cd0032b3a7a347d362a1eb179036c3662e7824a51d11768a60b2862",
+          "configSha256": "e9d9a58552f1c5733a65cafc8828e457c5047e6c87f15854f412121fe05a83b7",
           "releaseManifest": "dist/india/release-hashes.json"
         }
       ]
@@ -37,7 +37,7 @@
     "shared": [
       {
         "file": "app.js",
-        "sha256": "a548c18bbb71a826e161a9a70a934a16b71034c201d626cc45d66161fb46d5a7"
+        "sha256": "69f8a5a55e776556ca9db62a179204ab9fc88bef6788d8276d914c355ba4322c"
       },
       {
         "file": "edition-config.js",
@@ -49,11 +49,11 @@
       },
       {
         "file": "food-model-core.js",
-        "sha256": "a760f76be549503d9372e05534ed6584062483e171a45f5c8132a15668870b88"
+        "sha256": "529c2ba5eea7804f6a3f8ac23d985c26b41394b3db56d9b4d1ae917f02896f56"
       },
       {
         "file": "food-model-data.js",
-        "sha256": "db297d5263a259631c1fca3774e0848f025f844d9de794abe3a39f0e47101e90"
+        "sha256": "e0c0736d2cc3f706705b2c345d1b30ebd62c2f24ffdc59febf78ead53a69af59"
       },
       {
         "file": "icon.svg",
@@ -61,7 +61,7 @@
       },
       {
         "file": "index.html",
-        "sha256": "702c14f4b6227709cb8c89f81afb8d7c4219e158e927b105e36fd0ac34df1584"
+        "sha256": "11c0a97dcb7189ad42651ffc133c728848122528294e432a193bcfefe6163973"
       },
       {
         "file": "manifest.webmanifest",
@@ -77,7 +77,7 @@
       },
       {
         "file": "service-worker.js",
-        "sha256": "1a21a0b825e0d2a61ae7e58b655d5dfa0a20b8ce5e847113438c0a57f73bdf65"
+        "sha256": "2922cba4b10676978ab2962182ebb121127cc4668da8847a3236e41089bf60e5"
       },
       {
         "file": "vendor/react-dom.production.min.js",
@@ -91,11 +91,11 @@
     "india": [
       {
         "file": "app.js",
-        "sha256": "a548c18bbb71a826e161a9a70a934a16b71034c201d626cc45d66161fb46d5a7"
+        "sha256": "69f8a5a55e776556ca9db62a179204ab9fc88bef6788d8276d914c355ba4322c"
       },
       {
         "file": "edition-config.js",
-        "sha256": "36dd2022bd4eed24f481a4da5d29fed5022cf904501d00bf44fff5b2b8184d48"
+        "sha256": "bbf03e88656fd15104db68c84644ce8afd3acd804210ae0e7cf2867f7bfa9d03"
       },
       {
         "file": "fast-log-core.js",
@@ -103,15 +103,15 @@
       },
       {
         "file": "food-model-core.js",
-        "sha256": "a760f76be549503d9372e05534ed6584062483e171a45f5c8132a15668870b88"
+        "sha256": "529c2ba5eea7804f6a3f8ac23d985c26b41394b3db56d9b4d1ae917f02896f56"
       },
       {
         "file": "food-model-data.js",
-        "sha256": "db297d5263a259631c1fca3774e0848f025f844d9de794abe3a39f0e47101e90"
+        "sha256": "e0c0736d2cc3f706705b2c345d1b30ebd62c2f24ffdc59febf78ead53a69af59"
       },
       {
         "file": "index.html",
-        "sha256": "9ea2d1d4a16f29fbc52e98b4c3b1ee07992674838e8d462bf7bf5163220a7633"
+        "sha256": "2566b170c48fce92a65da3c91efde41a9d92e1bdab383dc90dc20148b1fd20d8"
       },
       {
         "file": "india-icon.svg",
@@ -131,7 +131,7 @@
       },
       {
         "file": "service-worker.js",
-        "sha256": "05e76596b510f59f0fe651c1685d83b5e85a9914e1db57a0d22da807b568238c"
+        "sha256": "7139c8edb42578dcf7cffffdccf5b6337a29221c96590299829b1ebbfa7e23f5"
       },
       {
         "file": "vendor/react-dom.production.min.js",
